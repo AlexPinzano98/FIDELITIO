@@ -19,3 +19,7 @@ use App\Http\Controllers\CamareroController;
 Route::get('/', [UserController::class, 'login']);
 Route::get('/camarero', [CamareroController::class, 'camarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
+
+//viewCliente vista
+Route::get('viewCliente',function () { return view('viewCliente');});
+
