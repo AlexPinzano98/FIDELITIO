@@ -2,7 +2,7 @@ function validarForm() {
     var email = document.getElementById("email").value;
     var pswd = document.getElementById("contrasenya").value;
     var errors = "";
-    document.getElementById("message").style.color = "black";
+    document.getElementById("message").style.color = "red";
     document.getElementById("message").style.width = "100%";
     document.getElementById("message").style.marginTop = "5%";
     document.getElementById("message").style.textAlign = "center";
