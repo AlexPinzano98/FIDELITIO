@@ -14,21 +14,6 @@
 
 <body>
     <p class="h1">Inicia Sesión</p>
-<<<<<<< HEAD
-        <div class="login">
-            <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
-            {{csrf_field()}}
-            <div class="mb-3">
-                <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Correo electrónico...">
-            </div>
-            <div class="mb-3">
-                <input name="psswd" class="form-control" id="exampleFormControlTextarea1" placeholder="Contrasenya..."></input>
-            </div>
-            <button type="submit" value="enviar">Iniciar</button>
-            </form>
-        </div>
-</div>
-=======
     <div class="container">
         <form action="{{url('/validarlogin')}}" method="POST" onclick="return validarForm()">
             <div class="mb-3">
@@ -59,6 +44,5 @@
     <div class="container" style="margin-top:5%;">
         <a href="./registro.php">Crear cuenta</a>
     </div>
->>>>>>> 2c40b180d59bc1464e39acdb26bcce156fb66291
 </body>
 </html>
