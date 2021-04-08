@@ -21,7 +21,7 @@
                 <input name="email" type="email" class="form-control" id="email" placeholder="Correo electrónico...">
             </div>
             <div class="mb-3">
-                <input name="psswd" class="form-control" id="contrasenya" placeholder="Contrasenya..."></input>
+                <input name="psswd" type="password" class="form-control" id="contrasenya" placeholder="Contrasenya..."></input>
             </div>
 
             @if (!empty($alex))
