@@ -24,9 +24,7 @@
                 <input name="psswd" class="form-control" id="contrasenya" placeholder="Contrasenya..."></input>
             </div>
 
-            @if (!empty($alex))
-                <p style="color: red;">{{$alex}}<p><br>
-            @endif
+            {{Session::get('message')}}
 
             <button type="button" class="btn btn-primary">
                 Continuar con Facebook
@@ -41,9 +39,9 @@
             <div id="message">
             </div>
 
-        </form>  
+        </form>
     </div>
-    
+
     <div class="container" style="margin-top:5%;">
         <a href="./registro.php">Crear cuenta</a>
     </div>
