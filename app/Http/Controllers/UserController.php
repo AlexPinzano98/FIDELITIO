@@ -4,11 +4,69 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+use Swift;
 
 class UserController extends Controller
 {
     public function login() {
         //redirige a la vista login si no has iniciado sesion.
         return view('login');
+    }
+
+    public function viewCamarero(){
+        return view('viewCamarero');
+    }
+
+    public function validarLogin(Request $request) {;
+        // Recibimos los datos del formulario
+        $datos = $request->except('_token','enviar');
+
+        // Buscamos si existe un usuario registrado
+        $user=DB::table('tbl_user')->where([
+            ['email','=',$datos['email']],
+            ['psswd','=',$datos['psswd']]
+        ])->count(); // Contamos el numero de registros(usuarios) en la BBDD
+        // Si existe un usuario $user será igual a 1, si no existe será igual a 0
+
+        if ($user == 1){ // * Existe usuario
+            // Recuperamos los datos del usuario de la BBDD
+            $user = DB::table('tbl_user')->where('email','=',$datos['email'])->where('psswd','=',$datos['psswd'])->first();
+
+            // echo "Tipo usuario: " . $user->id_typeuser_fk;
+            // Iniciamos sesión del usuario (guardamos los datos necesarios: nombre y tipo de usuario)
+            $request->session()->put('name', $user->name);
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
+
+            switch ($user->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                case '1':
+                    echo "Cliente";
+                    break;
+                case '2':
+                    // echo "Camarero";
+                    // return view('viewCamarero');
+                    return redirect('viewCamarero');
+                    break;
+                case '3':
+                    echo "ADM establecimiento";
+                    break;
+                case '4':
+                    echo "ADM grupo";
+                    break;
+                case '5':
+                    echo "ADM master";
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+            // echo var_dump($user->id_typeuser_fk);
+            // print_r($user);
+            // Establecer sesion
+            // return redirect('mostrar');
+        } else { // ! No existe usuario
+            return redirect('/');
+        }
     }
 }
