@@ -14,16 +14,21 @@
 
 <body>
     <p class="h1">Inicia Sesión</p>
-    <div class="container">
-        <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
+        <div class="login">
+            <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
+            {{csrf_field()}}
             <div class="mb-3">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico..."></input>
+                <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Correo electrónico...">
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" id="contrasenya" name="contrasenya" placeholder="Contrasenya..."></input>
+                <input name="psswd" class="form-control" id="exampleFormControlTextarea1" placeholder="Contrasenya..."></input>
             </div>
+            <button type="submit" value="enviar">Iniciar</button>
+            </form>
 
-            <a href="#" class="text-primary">¿Has olvidado tu contraseña?</a><br>
+            @if (!empty($alex))
+                <p style="color: red;">{{$alex}}<p><br>
+            @endif
 
             <button type="button" class="btn btn-primary">
                 <i class="fab fa-facebook">Continuar con Facebook</i>
@@ -44,5 +49,7 @@
     <div class="container" style="margin-top:5%;">
         <a href="./registro.php">Crear cuenta</a>
     </div>
+        </div>
+</div>
 </body>
 </html>
