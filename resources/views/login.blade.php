@@ -17,13 +17,13 @@
     <div class="container">
         <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
             <div class="mb-3">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Correo electrónico...">
+                <input type="email" class="form-control" id="email" placeholder="Correo electrónico..."></input>
             </div>
             <div class="mb-3">
-                <input class="form-control" id="exampleFormControlTextarea1" placeholder="Contrasenya..."></input>
+                <input type="password" class="form-control" id="contrasenya" placeholder="Contrasenya..."></input>
             </div>
 
-            <a href="#" class="text-primary stretched-link">¿Has olvidado tu contraseña?</a>
+            <a href="#" class="text-primary">¿Has olvidado tu contraseña?</a>
 
             <button type="button" class="btn btn-primary">
                 Continuar con Facebook
@@ -31,13 +31,13 @@
             <button type="button" class="btn btn-info">
                 Continuar con Google
             </button>
-            <button type="button" class="btn btn-warning" style="margin-top:10%;">
+            <button type="button" class="btn btn-warning" style="margin-top:15%;">
                 Inicia Sesión
             </button>
         </form>  
     </div>
     
-    <div class="container">
+    <div class="container" style="margin-top:5%;">
         <a href="./registro.php">Crear cuenta</a>
     </div>
 </body>
