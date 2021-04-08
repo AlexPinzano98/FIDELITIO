@@ -15,7 +15,7 @@
 <body>
     <p class="h1">Inicia Sesión</p>
     <div class="container">
-        <form action="{{url('/validarlogin')}}" method="POST" onclick="return validarForm()">
+        <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
             <div class="mb-3">
                 <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico..."></input>
             </div>
@@ -26,12 +26,12 @@
             <a href="#" class="text-primary">¿Has olvidado tu contraseña?</a><br>
 
             <button type="button" class="btn btn-primary">
-                Continuar con Facebook
+                <i class="fab fa-facebook">Continuar con Facebook</i>
             </button>
             <button type="button" class="btn btn-info">
                 Continuar con Google
             </button>
-            <button type="button" id="submit" class="btn btn-warning" style="margin-top:15%;">
+            <button type="submit" id="submit" class="btn btn-warning" style="margin-top:15%;">
                 Inicia Sesión
             </button>
 
