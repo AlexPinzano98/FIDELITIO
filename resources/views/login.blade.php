@@ -14,7 +14,6 @@
 
 <body>
     <p class="h1">Inicia Sesión</p>
-<<<<<<< HEAD
         <div class="login">
             <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
             {{csrf_field()}}
@@ -26,35 +25,12 @@
             </div>
             <button type="submit" value="enviar">Iniciar</button>
             </form>
+
+            @if (!empty($alex))
+                <p style="color: red;">{{$alex}}<p><br>
+            @endif
+
         </div>
 </div>
-=======
-    <div class="container">
-        <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
-            <div class="mb-3">
-                <input type="email" class="form-control" id="email" placeholder="Correo electrónico..."></input>
-            </div>
-            <div class="mb-3">
-                <input type="password" class="form-control" id="contrasenya" placeholder="Contrasenya..."></input>
-            </div>
-
-            <a href="#" class="text-primary">¿Has olvidado tu contraseña?</a>
-
-            <button type="button" class="btn btn-primary">
-                Continuar con Facebook
-            </button>
-            <button type="button" class="btn btn-info">
-                Continuar con Google
-            </button>
-            <button type="button" class="btn btn-warning" style="margin-top:15%;">
-                Inicia Sesión
-            </button>
-        </form>  
-    </div>
-    
-    <div class="container" style="margin-top:5%;">
-        <a href="./registro.php">Crear cuenta</a>
-    </div>
->>>>>>> 2c40b180d59bc1464e39acdb26bcce156fb66291
 </body>
 </html>
