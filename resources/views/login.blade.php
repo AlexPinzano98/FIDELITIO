@@ -18,20 +18,18 @@
             <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
             {{csrf_field()}}
             <div class="mb-3">
-                <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Correo electrónico...">
+                <input name="email" type="email" class="form-control" id="email" placeholder="Correo electrónico...">
             </div>
             <div class="mb-3">
-                <input name="psswd" class="form-control" id="exampleFormControlTextarea1" placeholder="Contrasenya..."></input>
+                <input name="psswd" class="form-control" id="contrasenya" placeholder="Contrasenya..."></input>
             </div>
-            <button type="submit" value="enviar">Iniciar</button>
-            </form>
 
             @if (!empty($alex))
                 <p style="color: red;">{{$alex}}<p><br>
             @endif
 
             <button type="button" class="btn btn-primary">
-                <i class="fab fa-facebook">Continuar con Facebook</i>
+                Continuar con Facebook
             </button>
             <button type="button" class="btn btn-info">
                 Continuar con Google
@@ -40,7 +38,7 @@
                 Inicia Sesión
             </button>
 
-            <div class="text-red" id="message">
+            <div id="message">
             </div>
 
         </form>  
