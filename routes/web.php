@@ -20,3 +20,5 @@ Route::get('/', [UserController::class, 'login']);
 Route::post('/validarlogin', [UserController::class, 'validarLogin']);
 Route::get('/vista_camarero', [CamareroController::class, 'vista_camarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
+//vista cliente
+Route::get('/viewCliente', function (){ return view('viewCliente');});
