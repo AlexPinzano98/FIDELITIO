@@ -15,8 +15,8 @@ class UserController extends Controller
         return view('login');
     }
 
-    public function viewCamarero(){
-        return view('viewCamarero');
+    public function vista_camarero(){
+        return view('vista_camarero');
     }
 
     public function validarLogin(Request $request) {;
@@ -46,7 +46,7 @@ class UserController extends Controller
                 case '2':
                     // echo "Camarero";
                     // return view('viewCamarero');
-                    return redirect('viewCamarero');
+                    return redirect('vista_camarero');
                     break;
                 case '3':
                     echo "ADM establecimiento";
