@@ -15,3 +15,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [UserController::class, 'login']);
+
+Route::post('/validarlogin', [UserController::class, 'validarLogin']);
+
+Route::get('/viewCamarero', [UserController::class, 'viewCamarero']);

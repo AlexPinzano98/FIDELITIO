@@ -18,13 +18,15 @@
     <p class="h1">Inicia Sesión</p>
         <div class="login">
             <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
+            {{csrf_field()}}
             <div class="mb-3">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Correo electrónico...">
+                <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Correo electrónico...">
             </div>
             <div class="mb-3">
-                <input class="form-control" id="exampleFormControlTextarea1" placeholder="Contrasenya..."></input>
+                <input name="psswd" class="form-control" id="exampleFormControlTextarea1" placeholder="Contrasenya..."></input>
             </div>
-            </form>  
+            <button type="submit" value="enviar">Iniciar</button>
+            </form>
         </div>
 </div>
 </body>
