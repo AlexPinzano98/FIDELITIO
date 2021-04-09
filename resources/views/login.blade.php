@@ -24,9 +24,7 @@
                 <input name="psswd" type="password" class="form-control" id="contrasenya" placeholder="Contrasenya..."></input>
             </div>
 
-            @if (!empty($alex))
-                <p style="color: red;">{{$alex}}<p><br>
-            @endif
+            {{Session::get('message')}}
 
             <button type="button" class="btn btn-primary">
                 Continuar con Facebook

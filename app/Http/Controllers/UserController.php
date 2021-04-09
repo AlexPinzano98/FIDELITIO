@@ -66,9 +66,10 @@ class UserController extends Controller
             // Establecer sesion
             // return redirect('mostrar');
         } else { // ! No existe usuario
-            $errores = 'Ha habido un error al intentar entrar en su cuenta, por favor revise que el email y la contraseña esten bien escritos';
-            return redirect('/');
-
+            $message = 'Ha habido un error al intentar entrar en su cuenta, por favor revise que el email y la contraseña esten bien escritos';
+            // return redirect('/',compact('errores'));
+            return redirect('/')->with('message',$message);
+            // Redirect::to('login?errors='.$errores);
             // return redirect('/')->with('errors','Ha habido un error al intentar entrar en su cuenta, por favor revise que el email y la contraseña esten bien escritos');
             // return redirect('/')->with('errors','Datos mal introducidos. Revisa los campos.');
         }
