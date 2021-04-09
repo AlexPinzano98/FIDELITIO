@@ -22,3 +22,4 @@ Route::get('/vista_camarero', [CamareroController::class, 'vista_camarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
 //vista cliente
 Route::get('/viewCliente', function (){ return view('viewCliente');});
+Route::get('/home', function (){ return view('home');});
