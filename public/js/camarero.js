@@ -2,6 +2,7 @@ window.onload = function() {
     ver_promociones();
     modal_qr = document.getElementById("modal");
 }
+
 function objetoAjax() {
     var xmlhttp = false;
     try {
@@ -18,6 +19,7 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
+
 function ver_promociones() {
     var promociones = document.getElementById("promociones");
     //var id_local=1;
