@@ -41,7 +41,7 @@ class UserController extends Controller
 
             switch ($user->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
-                    echo "Cliente";
+                    return redirect('viewCliente');
                     break;
                 case '2':
                     // echo "Camarero";
