@@ -15,7 +15,7 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <div class="card1">
+                <div class="card">
                     <div class="card-body">
                         <img src="img/cafe.png" class="card-img-top" alt="perfil">
                     </div>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="swiper-slide">
-                <div class="card2">
+                <div class="card">
                     <div class="card-body">
                         <img src="img/bocadillo.png" class="card-img-top" alt="perfil">
                     </div>
@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="swiper-slide">
-                <div class="card3">
+                <div class="card">
                     <div class="card-body">
                         <img src="img/imgPerfilNull.png" class="card-img-top" alt="perfil">
                     </div>
@@ -114,6 +114,7 @@
         },
     });
     </script>
+    <script src="js/infoCardsAjax.js"></script>
 </body>
 
 </html>
