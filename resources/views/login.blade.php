@@ -41,9 +41,9 @@
             <div id="message">
             </div>
 
-        </form>  
+        </form>
     </div>
-    
+
     <div class="container" style="margin-top:5%;">
         <a href="./registro.php">Crear cuenta</a>
     </div>

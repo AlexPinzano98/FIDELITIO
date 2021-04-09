@@ -4,24 +4,6 @@
     box-sizing: border-box;
 }
 
-/* .container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.card1, .card2, .card3{
-    display: flex;
-}
-.card1, .card2, .card3{
-    width: 80%;
-    margin: 50% auto;
-    padding: 15px;
-    border: 1px solid rgb(189, 189, 189);
-    border-radius: 10px;
-    box-shadow: 0px 0px 6px #888888;
-} */
-
 .card1{
     background-color: rgb(197, 255, 255);
     /* justify-content: left; */
@@ -41,12 +23,10 @@
     z-index: -1000; */
 }
 
-/* .card2, .card3{
-    transform: scale(0.95);
-} */
 
 .card1,.card2, .card3{
-  padding: 10%;
+  border-radius: 12px;
+  box-shadow: 0px 0px 18px #888888;
 }
 
 .card-body{
@@ -54,21 +34,21 @@
    flex-direction: column;
    align-items: center;
 }
-/* .card-stamp{
-    padding-left: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */
+
+.card-stamp{
+    padding: 8%;
+}
+
 .card-stamp_grid{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     grid-gap: 7px;
     align-items: center;
 }
+
 .stamp-title{
     align-self: flex-start;
-    padding: 5% 0;
+    padding-bottom: 10px;
 }
 .img-thumbnail{
     max-width: 100%;
@@ -76,11 +56,16 @@
 
 .card-img-top{
     max-width: 100%;
+    border-radius: 12px 12px 0 0;
 }
 
-h5, p, small{
+.card-img-top:hover{
+    filter: grayscale(100%);
+}
+
+h5, p{
     align-self: flex-start;
-    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 h5, p{

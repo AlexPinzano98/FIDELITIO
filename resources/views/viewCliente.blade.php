@@ -40,66 +40,73 @@
             <div class="swiper-slide">
                 <div class="card1">
                     <div class="card-body">
-                        <img src="img/perfilPrueba.jpg" class="card-img-top" alt="perfil">
+                        <img src="img/cafe.png" class="card-img-top" alt="perfil">
+                    </div>
+                    <div class="card-stamp">
                         <h5 class="card-title">Descripción</h5>
                         <p class="card-text">promoción café</p>
-                    </div>
-                    <h5 class="stamp-title">Sellos de la promoción</h5>
-                    <div class="card-stamp_grid">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
+                        <h5 class="stamp-title">Sellos de la promoción</h5>
+                        <div class="card-stamp_grid">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="card2">
                     <div class="card-body">
-                        <img src="img/perfilPrueba.jpg" class="card-img-top" alt="perfil">
-                        <h5 class="card-title">Descripción</h5>
-                        <p class="card-text">promoción café</p>
+                        <img src="img/bocadillo.png" class="card-img-top" alt="perfil">
                     </div>
-                    <h5 class="stamp-title">Sellos de la promoción</h5>
-                    <div class="card-stamp_grid">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
+                    <div class="card-stamp">
+                        <h5 class="card-title">Descripción</h5>
+                        <p class="card-text">promoción bocadillo</p>
+                        <h5 class="stamp-title">Sellos de la promoción</h5>
+                        <div class="card-stamp_grid">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/hotdog.svg" class="img-thumbnail" alt="sello">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="card3">
                     <div class="card-body">
-                        <img src="img/perfilPrueba.jpg" class="card-img-top" alt="perfil">
-                        <h5 class="card-title">Descripción</h5>
-                        <p class="card-text">promoción café</p>
+                        <img src="img/imgPerfilNull.png" class="card-img-top" alt="perfil">
                     </div>
-                    <h5 class="stamp-title">Sellos de la promoción</h5>
-                    <div class="card-stamp_grid">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
-                        <img src="img/stamp.jpg" class="img-thumbnail" alt="sello">
+                    <div class="card-stamp">
+                        <h5 class="card-title">Descripción</h5>
+                        <p class="card-text">promoción plato</p>
+                        <h5 class="stamp-title">Sellos de la promoción</h5>
+                        <div class="card-stamp_grid">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+                            <img src="img/utensils.svg" class="img-thumbnail" alt="sello">
+
+                        </div>
                     </div>
                 </div>
             </div>
