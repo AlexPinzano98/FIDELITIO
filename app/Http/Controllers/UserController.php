@@ -38,6 +38,7 @@ class UserController extends Controller
             // Iniciamos sesión del usuario (guardamos los datos necesarios: nombre y tipo de usuario)
             $request->session()->put('name', $user->name);
             $request->session()->put('typeuser', $user->id_typeuser_fk);
+            $request->session()->put('id_user', $user->id_user);
 
             switch ($user->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':

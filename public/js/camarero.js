@@ -1,5 +1,6 @@
 window.onload = function() {
     ver_promociones();
+    modal_qr = document.getElementById("modal");
 }
 
 function objetoAjax() {
@@ -21,35 +22,52 @@ function objetoAjax() {
 
 function ver_promociones() {
     var promociones = document.getElementById("promociones");
-    var id_local = 1;
+    //var id_local=1;
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'ver_promociones', true);
     var datasend = new FormData();
-    datasend.append('id_local', id_local);
+    //datasend.append('id_local', id_local);
     datasend.append('_token', token);
     ajax.onreadystatechange = function() {
+        var tabla = '';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            var tabla = '';
             tabla += '<div>';
-
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += respuesta[i].name;
-                tabla += '</br>';
-                tabla += '<button onclick="generar_qr(&#039' + respuesta[i].name + '&#039)">Generar QR</button>';
-                tabla += '</br>';
+                tabla += '</br>';  
+                tabla +='<button onclick="generar_qr('+respuesta[i].id_promotion+',&#039'+respuesta[i].name+'&#039)">Generar QR</button>';
+                tabla += '</br>';  
             }
-
-            tabla += '</div>';
+            tabla += '</div>';  
+            
+        }else{  
+            var cont=1
         }
+        if(tabla=='<div></div>'){
+            tabla = '<h1>Tu restaurante no tiene promociones activas, habla con el gerente para que las cree!</h1>';  
+
+        }
+
         promociones.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
 
-function generar_qr(nombre_local) {
-    document.getElementById('content').value = nombre_local;
+function closeModal() {
+    modal_qr.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal_qr) {
+        modal_qr.style.display = "none";
+    }
+}
+
+
+function generar_qr(id_promotion,nombre_local){
+    modal_qr.style.display = "block";
+    document.getElementById('content').value=id_promotion;
     // var ajax = new objetoAjax();
     // ajax.open('POST', '../generate_code.php', true);
     // var datasend = new FormData();
@@ -65,17 +83,19 @@ function generar_qr(nombre_local) {
     // ajax.send(datasend);
     // $(document).ready(function() {
     //     $("#codeForm").submit(function(){
-    //var ruta= "asset('camarero.php')";
-    $.ajax({
-        url: './generate_code.php',
-        //url:ruta,
-        type: 'POST',
-        //data: {formData:$("nepe").val(), ecc:$("#ecc").val(), size:$("#size").val()},
-        data: { formData: $("#content").val(), ecc: $("#ecc").val(), size: $("#size").val() },
-        success: function(response) {
-            $(".showQRCode").html(response);
-        },
-    });
+        //var ruta= "asset('camarero.php')";
+        // var formData = new FormData();
+        // formData.append("id_promotion", id_promotion);
+            $.ajax({
+                url:'./generate_code.php',
+                //url:ruta,
+                type:'POST',
+                //data: {data:formData, ecc:$("#ecc").val(), size:$("#size").val()},
+                data: {formData:$("#content").val(), ecc:$("#ecc").val(), size:$("#size").val()},
+                success: function(response) {
+                    $(".showQRCode").html(response);  
+                },
+             });
     //     });
     // });
     //alert(nombre_local);
