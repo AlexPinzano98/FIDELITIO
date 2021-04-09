@@ -24,4 +24,4 @@ Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
 //vista cliente
 Route::get('/viewCliente', function (){ return view('viewCliente');});
 //recoger tarjetas
-Route::post('showCard', [CardController::class, 'showCard']);
+Route::get('showCard', [CardController::class, 'showCard']);
