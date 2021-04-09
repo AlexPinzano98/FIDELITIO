@@ -11,11 +11,12 @@ class CardController extends Controller
 {
     public function showCard() {
         try {
+            $id_user = session()->get('id_user');
             $tarjetas = DB::select('SELECT * FROM tbl_card
             INNER JOIN tbl_promotion
             ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
             GROUP BY tbl_card.id_card
-            HAVING tbl_card.id_user_fk = 1 AND tbl_promotion.status = "enable" AND tbl_card.status = "open";');
+            HAVING tbl_card.id_user_fk = ? AND tbl_promotion.status = "enable" AND tbl_card.status = "open";', [$id_user]);
             return response()->json($tarjetas, 200);
         } catch (\Throwable $th) {
             //throw $th;
