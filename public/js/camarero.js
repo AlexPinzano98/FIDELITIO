@@ -1,6 +1,7 @@
 window.onload = function() {
     ver_promociones();
 }
+
 function objetoAjax() {
     var xmlhttp = false;
     try {
@@ -17,9 +18,10 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
+
 function ver_promociones() {
     var promociones = document.getElementById("promociones");
-    var id_local=1;
+    var id_local = 1;
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'ver_promociones', true);
@@ -34,19 +36,20 @@ function ver_promociones() {
 
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += respuesta[i].name;
-                tabla += '</br>';  
-                tabla +='<button onclick="generar_qr(&#039'+respuesta[i].name+'&#039)">Generar QR</button>';
-                tabla += '</br>';  
+                tabla += '</br>';
+                tabla += '<button onclick="generar_qr(&#039' + respuesta[i].name + '&#039)">Generar QR</button>';
+                tabla += '</br>';
             }
 
-            tabla += '</div>';  
+            tabla += '</div>';
         }
         promociones.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
-function generar_qr(nombre_local){
-    document.getElementById('content').value=nombre_local;
+
+function generar_qr(nombre_local) {
+    document.getElementById('content').value = nombre_local;
     // var ajax = new objetoAjax();
     // ajax.open('POST', '../generate_code.php', true);
     // var datasend = new FormData();
@@ -62,17 +65,17 @@ function generar_qr(nombre_local){
     // ajax.send(datasend);
     // $(document).ready(function() {
     //     $("#codeForm").submit(function(){
-        //var ruta= "asset('camarero.php')";
-            $.ajax({
-                url:'./generate_code.php',
-                //url:ruta,
-                type:'POST',
-                //data: {formData:$("nepe").val(), ecc:$("#ecc").val(), size:$("#size").val()},
-                data: {formData:$("#content").val(), ecc:$("#ecc").val(), size:$("#size").val()},
-                success: function(response) {
-                    $(".showQRCode").html(response);  
-                },
-             });
+    //var ruta= "asset('camarero.php')";
+    $.ajax({
+        url: './generate_code.php',
+        //url:ruta,
+        type: 'POST',
+        //data: {formData:$("nepe").val(), ecc:$("#ecc").val(), size:$("#size").val()},
+        data: { formData: $("#content").val(), ecc: $("#ecc").val(), size: $("#size").val() },
+        success: function(response) {
+            $(".showQRCode").html(response);
+        },
+    });
     //     });
     // });
     //alert(nombre_local);

@@ -6,9 +6,9 @@ const showCart = () => {
         .then((orderJson) => JSON.parse(orderJson))
         .then((response) => {
 
-                for (let i = 0; i < response.length; i++) {
-                    containCards[i].innerHTML = "";
-                    containCards[i].innerHTML = `
+            for (let i = 0; i < response.length; i++) {
+                containCards[i].innerHTML = "";
+                containCards[i].innerHTML = `
                                             <div class="card">
                                                 <div class="card-body">
                                                     <img src="img/bocadillo.png" class="card-img-top" alt="perfil">
@@ -31,10 +31,9 @@ const showCart = () => {
                                                     </div>
                                                 </div>
                                             </div>`;
-                }
+            }
 
         });
 };
 
 showCart();
-
