@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="js/infoCardsAjax.js"></script>
+    <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script type="text/javascript">
 		// A $( document ).ready() block.
@@ -27,6 +28,10 @@
 <div id="wrapper">
 	<section>
 	<header id="#header">
+        <p class="text-start">nombreUsuario</p>  
+        <button class="container">
+            <i class="fas fa-camera"></i>
+        </button>
 		<a id="menu_on">
 			<span></span>
 			<span></span>
