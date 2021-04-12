@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
     showCard();
 };
 
@@ -27,36 +27,39 @@ function showCard() {
     ajax.open("GET", "showCard", true);
     // var datasend = new FormData();
     // datasend.append('_token', token);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var response = JSON.parse(ajax.responseText);
             console.log(response);
+            tabla = '';
             for (let i = 0; i < response.length; i++) {
-                containCards.innerHTML += `
+                tabla += `
               <div class="swiper-slide">
                     <div class="card">
                         <div class="card-body">
                             <img src="img/cafe.png" class="card-img-top" alt="perfil">
                         </div>
                         <div class="card-stamp">
+                            <h5 class="card-title">${response[i].name_promo}</h5>
                             <h5 class="card-title">${response[i].name}</h5>
-                            <p class="card-text">${response[i].reward}</p>
-                            <h5 class="stamp-title">Sellos de la promoción</h5>
-                            <div class="card-stamp_grid">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                                <img src="img/coffee.svg" class="img-thumbnail" alt="sello">
-                            </div>
+                            <p class="card-text">Premio: ${response[i].reward}</p>
+                            <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
+                            <div class="card-stamp_grid">`;
+
+
+                for (var x = 0; x < response[i].stamp_now; x++) {
+                    tabla += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                }
+
+                for (var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++) {
+                    tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                }
+
+                tabla += `</div>
                         </div>
                     </div>
                 </div>`;
+                containCards.innerHTML = tabla;
             }
             var mySwiper = new Swiper(".swiper-container", {
 
@@ -76,15 +79,15 @@ function showCard() {
                 },
                 observer: true,
                 observeParents: true,
-                onSlideChangeEnd: function (swiper) {
+                onSlideChangeEnd: function(swiper) {
                     swiper.update();
                     mySwiper.startAutoplay();
                     mySwiper.reLoop();
                 },
             });
             // mySwiper.lazy.loadInSlide (index);
-            mySwiper.on('slideChange', function () {
-                if(this.activeIndex === 1) {
+            mySwiper.on('slideChange', function() {
+                if (this.activeIndex === 1) {
                     console.log("IM ON SECOND SLIDE!");
                 }
             });
