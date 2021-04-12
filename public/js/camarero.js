@@ -36,7 +36,8 @@ function ver_promociones() {
             tabla += '<div>';
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += respuesta[i].name;
-                tabla += '</br>';  
+                tabla += '</br>';
+
                 tabla +='<button onclick="generar_qr('+respuesta[i].id_promotion+',&#039'+respuesta[i].name+'&#039)">Generar QR</button>';
                 tabla += '</br>';  
             }
@@ -67,7 +68,18 @@ window.onclick = function(event) {
 
 function generar_qr(id_promotion,nombre_local){
     modal_qr.style.display = "block";
-    document.getElementById('content').value=id_promotion;
+
+    var now = new Date();
+    console.log(now.getDate())
+    console.log(now.getMonth()+1)
+    console.log(now.getFullYear())
+    console.log(now.getHours())
+    console.log(now.getMinutes())
+
+    document.getElementById('content').value=id_promotion+','+nombre_local;
+    console.log(document.getElementById('content').value)
+
+    return false;
     // var ajax = new objetoAjax();
     // ajax.open('POST', '../generate_code.php', true);
     // var datasend = new FormData();
