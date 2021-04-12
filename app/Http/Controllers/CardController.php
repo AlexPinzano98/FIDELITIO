@@ -18,11 +18,16 @@ class CardController extends Controller
             INNER JOIN tbl_local
             ON tbl_promotion.id_local_fk = tbl_local.id_local
             GROUP BY tbl_card.id_card
-            HAVING tbl_card.id_user_fk = ? AND tbl_promotion.status = "enable" AND tbl_card.status = "open";', [$id_user]);
+            HAVING tbl_card.id_user_fk = ? 
+            AND tbl_promotion.status = "enable" AND tbl_card.status = "open";', [$id_user]);
             return response()->json($tarjetas, 200);
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
         }
+    }
+
+    public function validarQR() {
+        
     }
 }
