@@ -69,14 +69,17 @@ window.onclick = function(event) {
 function generar_qr(id_promotion,nombre_local){
 
 
-    //var now = new Date();
-    //console.log(now.getDate())
-    //console.log(now.getMonth()+1)
+    var now = new Date();
+    console.log(now.getDate())
+    console.log(now.getMonth()+1)
+    console.log(now.getFullYear())
+    console.log(now.getHours())
+    console.log(now.getMinutes())
 
     document.getElementById('content').value=id_promotion+','+nombre_local;
-    //console.log(document.getElementById('content').value)
+    console.log(document.getElementById('content').value)
 
-    //return false;
+    return false;
     // var ajax = new objetoAjax();
     // ajax.open('POST', '../generate_code.php', true);
     // var datasend = new FormData();
