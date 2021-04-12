@@ -68,7 +68,15 @@ window.onclick = function(event) {
 
 function generar_qr(id_promotion,nombre_local){
     modal_qr.style.display = "block";
+
+    //var now = new Date();
+    //console.log(now.getDate())
+    //console.log(now.getMonth()+1)
+
     document.getElementById('content').value=id_promotion+','+nombre_local;
+    //console.log(document.getElementById('content').value)
+
+    //return false;
     // var ajax = new objetoAjax();
     // ajax.open('POST', '../generate_code.php', true);
     // var datasend = new FormData();
