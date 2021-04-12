@@ -67,7 +67,7 @@ window.onclick = function(event) {
 
 
 function generar_qr(id_promotion,nombre_local){
-    modal_qr.style.display = "block";
+
 
     //var now = new Date();
     //console.log(now.getDate())
@@ -108,4 +108,5 @@ function generar_qr(id_promotion,nombre_local){
     //     });
     // });
     //alert(nombre_local);
+    modal_qr.style.display = "block";
 }
