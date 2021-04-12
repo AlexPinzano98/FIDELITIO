@@ -3,7 +3,7 @@ header {
     position: fixed;
     width: 100%;
     padding: 15px;
-    z-index: 2
+    z-index: 2;
 }
 
 #menu_on {
@@ -12,6 +12,10 @@ header {
     height: 20px;
     position: relative;
     z-index: 2;
+}
+
+#menu_on:hover {
+    cursor: pointer;
 }
 
 #menu_on span {
@@ -46,18 +50,18 @@ header {
 }
 
 nav {
+    /* margin-left: 100%; */
     position: fixed;
     top: 0;
     bottom: 0;
-    left: -300px;
+    left: 100%;
     width: 100%;
     z-index: 1;
-    padding: 90px 30px 30px;
+    padding: 90px 30px;
     background: #68C5DB;
     opacity: 0;
-    transition: all 0.75s ease;
-    font-size: 1.2em;
-    /* overflow-y: auto; */
+    transition: all 0.75s;
+    overflow-y: auto;
 }
 
 .visible_menu nav {
@@ -80,9 +84,9 @@ nav a:hover {
 }
 
 #content {
-    text-align: left;
-    position: relative;
-    width: 100%;
+    /* text-align: left; */
+    /* position: relative; */
+    /* width: 100%; */
     transition: all 0.75s ease;
     z-index: 0;
 }

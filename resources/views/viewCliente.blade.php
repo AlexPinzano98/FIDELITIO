@@ -24,20 +24,23 @@
 </head>
 
 <body>
+<div id="wrapper">
+	<section>
 	<header id="#header">
-		<a href="#" id="menu_on">
+		<a id="menu_on">
 			<span></span>
 			<span></span>
 			<span></span>
 		</a>
 	</header>
-	<nav>	
+	<nav>
 		<ul>
 			<li><a href="#">Perfil del usuario</a></li>
 			<li><a href="#">Modo noche</a></li>
 			<li><a href="#">Cerrar sesión</a></li>
 		</ul>
 	</nav>
+    </section>
     <!-- Swiper -->
     <div class="swiper-container" id="content">
         <div class="swiper-wrapper">
@@ -45,6 +48,7 @@
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
+</div>
      <!-- Swiper JS -->
      <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
