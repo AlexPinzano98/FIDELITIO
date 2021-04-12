@@ -1,6 +1,6 @@
-window.onload = function() {
+window.onload = function () {
     showCard();
-}
+};
 
 function objetoAjax() {
     var xmlhttp = false;
@@ -13,21 +13,21 @@ function objetoAjax() {
             xmlhttp = false;
         }
     }
-    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+    if (!xmlhttp && typeof XMLHttpRequest != "undefined") {
         xmlhttp = new XMLHttpRequest();
     }
     return xmlhttp;
 }
 
 function showCard() {
-    var containCards = document.getElementsByClassName('swiper-wrapper')[0];
+    var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     // var section = document.getElementById('cards');
     var ajax = new objetoAjax();
     // var token = document.getElementById('token').getAttribute('content');
     ajax.open("GET", "showCard", true);
     // var datasend = new FormData();
     // datasend.append('_token', token);
-    ajax.onreadystatechange = function() {
+    ajax.onreadystatechange = function () {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var response = JSON.parse(ajax.responseText);
             console.log(response);
@@ -58,12 +58,40 @@ function showCard() {
                     </div>
                 </div>`;
             }
+            var mySwiper = new Swiper(".swiper-container", {
+
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+                observer: true,
+                observeParents: true,
+                onSlideChangeEnd: function (swiper) {
+                    swiper.update();
+                    mySwiper.startAutoplay();
+                    mySwiper.reLoop();
+                },
+            });
+            // mySwiper.lazy.loadInSlide (index);
+            mySwiper.on('slideChange', function () {
+                if(this.activeIndex === 1) {
+                    console.log("IM ON SECOND SLIDE!");
+                }
+            });
         }
-    }
+    };
     ajax.send();
 }
-
-
 
 // const showCart = () => {
 //     fetch("showCarts")
