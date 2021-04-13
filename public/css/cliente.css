@@ -103,9 +103,7 @@ nav a:hover {
 }
 
 #content {
-    /* text-align: left; */
-    /* position: relative; */
-    /* width: 100%; */
+    background-color: red;
     padding-top: 25%;
     transition: all 0.75s ease;
     z-index: 0;
