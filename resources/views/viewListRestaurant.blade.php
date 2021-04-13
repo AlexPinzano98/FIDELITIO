@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <!-- <header id="#header">
+    <header id="#header">
 		<a href="#" id="menu_on">
 			<span></span>
 			<span></span>
@@ -34,7 +34,7 @@
 			<li><a href="#">Modo noche</a></li>
 			<li><a href="#">Cerrar sesión</a></li>
 		</ul>
-	</nav> -->
+	</nav>
     <div class="container">
         <div id="list">
             <div class="item">

@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 /* .card1{
     background-color: rgb(197, 255, 255);
 }
@@ -48,6 +47,9 @@
 
 .card-img-top {
     max-width: 100%;
+}
+
+.swiper-slide-active .card-img-top{
     border-radius: 12px 12px 0 0;
 }
 

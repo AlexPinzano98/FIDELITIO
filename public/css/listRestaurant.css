@@ -1,11 +1,11 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 #list{
-    width: 70%;
+    width: 80%;
     margin: 5% auto;
     display: flex;
     flex-direction: column;
@@ -16,6 +16,6 @@
     .item{
         display: flex;
     }
-}
+} */
 
 
