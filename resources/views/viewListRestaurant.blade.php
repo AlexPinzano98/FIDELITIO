@@ -37,51 +37,6 @@
 	</nav> -->
     <div class="container">
         <div id="list">
-            <div class="item">
-                <div>
-                    <img src="img/imgPerfilNull.png" alt="perfilRestaurant">
-                </div>
-                <div>
-                    <h5>Restaurante 1</h5>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto deserunt adipisci natus
-                    </p>
-                </div>
-                <div class="play">
-                    <a href="">
-                        <img src="img/caret-right.svg" alt="play">
-                    </a>
-                </div>
-            </div>
-            <div class="item">
-                <div>
-                    <a href="#">
-                        <img src="img/imgPerfilNull.png" alt="perfilRestaurant">
-                    </a>
-                </div>
-                <div>
-                    <h5>Restaurante 2</h5>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto deserunt adipisci natus
-                    </p>
-                </div>
-                <div class="play">
-                    <img src="img/caret-right.svg" alt="play">
-                </div>
-            </div>
-            <div class="item">
-                <div>
-                    <img src="img/imgPerfilNull.png" alt="perfilRestaurant">
-                </div>
-                <div>
-                    <h5>Restaurante 3</h5>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto deserunt adipisci natus
-                    </p>
-                </div>
-                <div class="play">
-                    <a href="#"><img src="img/caret-right.svg" alt="play"></a>
-                </div>
-            </div>
-
-
         </div>
     </div>
 </body>
