@@ -6,9 +6,9 @@
     <title>cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/listRestaurant.css">
-    <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/cliente.css')}}"> -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script type="text/javascript">
     // A $( document ).ready() block.
@@ -17,11 +17,11 @@
             $('body').toggleClass('visible_menu');
         })
     });
-    </script>
+    </script> -->
 </head>
 
 <body>
-    <header id="#header">
+    <!-- <header id="#header">
 		<a href="#" id="menu_on">
 			<span></span>
 			<span></span>
@@ -34,7 +34,7 @@
 			<li><a href="#">Modo noche</a></li>
 			<li><a href="#">Cerrar sesión</a></li>
 		</ul>
-	</nav>
+	</nav> -->
     <div class="container">
         <div id="list">
             <div class="item">
@@ -46,25 +46,25 @@
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto deserunt adipisci natus
                     </p>
                 </div>
-                <div>
-                    <button type="button">
+                <div class="play">
+                    <a href="">
                         <img src="img/caret-right.svg" alt="play">
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="item">
                 <div>
-                    <img src="img/imgPerfilNull.png" alt="perfilRestaurant">
+                    <a href="#">
+                        <img src="img/imgPerfilNull.png" alt="perfilRestaurant">
+                    </a>
                 </div>
                 <div>
                     <h5>Restaurante 2</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto deserunt adipisci natus
                     </p>
                 </div>
-                <div>
-                    <button type="button">
-                        <img src="img/caret-right.svg" alt="play">
-                    </button>
+                <div class="play">
+                    <img src="img/caret-right.svg" alt="play">
                 </div>
             </div>
             <div class="item">
@@ -76,10 +76,8 @@
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto deserunt adipisci natus
                     </p>
                 </div>
-                <div>
-                    <button type="button">
-                        <img src="img/caret-right.svg" alt="play">
-                    </button>
+                <div class="play">
+                    <a href="#"><img src="img/caret-right.svg" alt="play"></a>
                 </div>
             </div>
 
