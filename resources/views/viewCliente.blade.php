@@ -27,9 +27,8 @@
 <div id="wrapper">
 	<section>
 	<header id="#header">
-        <p class="text-start">nombreUsuario</p>
-        <button class="container">
-            <i class="fas fa-camera"></i>
+        <p class="text-start">Pablo Soriano</p>
+        <button class="fas fa-camera">
         </button>
 		<a id="menu_on">
 			<span></span>
@@ -41,7 +40,11 @@
 		<ul>
 			<li><a href="#">Perfil del usuario</a></li>
 			<li><a href="#">Modo noche</a></li>
-			<li><a href="#">Cerrar sesión</a></li>
+			<li>
+                <form method="get" action="{{url('/cerrar_sesion')}}">
+                    <button type="submit">Cerrar Sesion</button>
+                </form>
+            </li>
 		</ul>
 	</nav>
     </section>

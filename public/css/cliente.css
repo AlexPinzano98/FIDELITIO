@@ -8,12 +8,13 @@ header {
 
 #menu_on {
     /* display: inline-block; */
-    width: 30%;
+    width: 10%;
     height: 20px;
     position: relative;
     z-index: 2;
     float: right;
-    background-color: red;
+    margin-top: 2%;
+    /* background-color: green; */
 }
 
 #menu_on:hover {
@@ -21,31 +22,34 @@ header {
 }
 
 #menu_on span {
-    width: 35%;
+    width: 100%;
     height: 4px;
     border-radius: 4px;
     display: block;
     position: absolute;
     background: #fff;
-    transition: all 0.25s ease;
+    transition: all 0.75s ease;
     transform-origin: 0px 100%;
-    margin-left: 65%;
-}
-
-.container {
-    background-color: green;
-    width: 40%;
-    text-align: center;
+    /* margin-left: 50%; */
 }
 
 .fas {
-    background-color: red;
+    background-color: transparent;
+    border: none;
+    font-size: 250%;
+    width: 10%;
+    text-align: center;
+    color: white;
+    /* background-color: red; */
 }
 
 .text-start {
-    background-color: red;
-    width: 30%;
+    padding: 2.5%;
+    width: 45%;
     float: left;
+    color: white;
+    font-size: 130%;
+    /* background-color: green; */
 }
 
 #menu_on span:nth-child(2) {
@@ -57,7 +61,7 @@ header {
 }
 
 .visible_menu span:nth-child(1) {
-    transform: rotate(45deg) translate(-2px, 1px);
+    transform: rotate(45deg) translate(-3px, -1px);
 }
 
 .visible_menu span:nth-child(2) {
@@ -65,7 +69,7 @@ header {
 }
 
 .visible_menu span:nth-child(3) {
-    transform: rotate(-45deg) translate(-3px, 3px);
+    transform: rotate(-45deg) translate(3px, 1px);
 }
 
 nav {
@@ -91,7 +95,7 @@ nav {
 nav a {
     display: block;
     text-decoration: none;
-    padding: 10px;
+    padding: 30px;
     color: rgba(255, 255, 255, 0.75);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     transition: all ease 0.25s;
@@ -103,7 +107,6 @@ nav a:hover {
 }
 
 #content {
-    background-color: red;
     padding-top: 25%;
     transition: all 0.75s ease;
     z-index: 0;
@@ -111,4 +114,10 @@ nav a:hover {
 
 .visible_menu #content {
     transform: translateX(260px);
+}
+
+@media (min-width: 425px) {
+    #content {
+        padding-top: 8%;
+    }
 }
