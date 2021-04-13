@@ -39,6 +39,53 @@
             scanner.stop();
             document.getElementById('preview').style.display = "none";
         }
+        function sellar(content){
+            //alert(content);
+            const array = content.split(',');
+            //alert(array[1]);
+            var id_local=array[1];
+            var year=array[2];
+            var month=array[3];
+            var day=array[4];
+            var hour=array[5];
+            var minute=array[6];
+
+            
+            var now = new Date();
+            var year_now=now.getFullYear();
+            var month_now=now.getMonth()+1;
+            var day_now=now.getDate();
+            var hour_now=now.getHours();
+            var minute_now=now.getMinutes()+25;
+            //alert(minute)
+            var fecha_qr=new Date(year,month,day,hour,minute)
+            var fecha_escaneo=new Date(year_now,month_now,day_now,hour_now,minute_now)
+
+            if (year < year_now) {
+                alert('QR CADUCADO');
+            } else if (year <= year_now && month < month_now) {
+                alert('QR CADUCADO');
+            } else if (year <= year_now && month <= month_now && day < day_now) {
+                alert('QR CADUCADO');
+            } else if (year <= year_now && month <= month_now && day <= day_now && hour < hour_now) {
+                alert('QR CADUCADO');
+            } else if (year <= year_now && month <= month_now && day <= day_now && hour <= hour_now && minute < minute_now) {
+                alert('QR CADUCADO');
+            // if (fecha_qr.getTime() < fecha_escaneo.getTime()) {
+            //     alert('QR CADUCADO');
+            //  } else {
+                alert('QR valido');
+                            //alert(id_local);
+            // var token = document.getElementById("token").getAttribute("content");
+            // var ajax = new objetoAjax();
+            // ajax.open('POST', 'ver_promociones', true);
+            // var datasend = new FormData();
+            // datasend.append('id_local', id_local);
+            // datasend.append('_token', token);
+                //alert('Contenido: ' + content);
+            }
+
+        }
     </script>
 
  </body>

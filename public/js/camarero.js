@@ -65,21 +65,21 @@ window.onclick = function(event) {
     }
 }
 
-
 function generar_qr(id_promotion,nombre_local){
-    modal_qr.style.display = "block";
+    var random= Math.random() * (1 - 100) + 1;
+      //alert(random);
 
     var now = new Date();
-    console.log(now.getDate())
-    console.log(now.getMonth()+1)
-    console.log(now.getFullYear())
-    console.log(now.getHours())
-    console.log(now.getMinutes())
+    var year=now.getFullYear();
+    var month=now.getMonth()+1;
+    var day=now.getDate();
+    var hour=now.getHours();
+    var minute=now.getMinutes();
 
-    document.getElementById('content').value=id_promotion+','+nombre_local;
-    console.log(document.getElementById('content').value)
+    document.getElementById('content').value=random+','+id_promotion+','+year+','+month+','+day+','+hour+','+minute;
+    //console.log(document.getElementById('content').value)
 
-    return false;
+    // return false;
     // var ajax = new objetoAjax();
     // ajax.open('POST', '../generate_code.php', true);
     // var datasend = new FormData();
@@ -111,4 +111,5 @@ function generar_qr(id_promotion,nombre_local){
     //     });
     // });
     //alert(nombre_local);
+    modal_qr.style.display = "block";
 }
