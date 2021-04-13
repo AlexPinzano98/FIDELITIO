@@ -10,23 +10,21 @@
 
     <video id="preview" width="100%" height="100%" style="display: none;"></video>
     <script>
-        console.log(Instascan)
         let scanner = new Instascan.Scanner(
             {
                 video: document.getElementById('preview')
             }
         );
         scanner.addListener('scan', function(content) {
-                //alert('Contenido: ' + content);
-                nepe(content);
-            });
+            alert('Contenido: ' + content);
+            nepe(content);
+        });
         
         function nepe(content){
-            alert('chupamela');
+            //alert('chupamela');
         }
+
         function openCamara(){
-            console.log(Instascan)
-            
             Instascan.Camera.getCameras().then(cameras => 
             {
                 if(cameras.length > 0){
