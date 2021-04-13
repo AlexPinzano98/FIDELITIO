@@ -27,7 +27,29 @@ class CardController extends Controller
         }
     }
 
+    // VALIDACIÓN cuando un usuario LEE un QR
     public function validarQR() {
-        
+        // Comprovamos si la promoción existe en las tarjetas del usuario
+        $promo = 'no';
+        $sellos = "1";
+        if($promo == 'si'){ // ? Existe tarjeta
+            // Comprovamos el número de sellos de la tarjeta
+            if ($sellos <= 'sellos maximos'){ // ? Sellos por debajo del máximo
+                // Comprobar si el número de sellos es 1 menos al máximo
+                if ($sellos == 'sellos maximos - 1 '){ // ? Sellos 1 por debajo del máximo (9/10)
+                    // Mensage de tarjeta completada con exito
+                    // Cambiar estado de la tarjeta a close
+                } else { // ! Sellos sin llegar a los dos últimos (1-8)/10
+                    // Mensaje de sello aplicado correctamente
+                    // Añadimos un sello (+1)
+                }
+            } else { // ! Máximo de sellos (10/10)
+                // Mensage de tarjeta al máximo de sellos
+            }
+        } else { // ! No existe tarjeta
+            // Creamos una tarjeta para el usuario
+            // Añadimos el primer sello
+        }
+
     }
 }

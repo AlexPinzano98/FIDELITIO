@@ -30,7 +30,7 @@ class UserController extends Controller
         ])->count(); // Contamos el numero de registros(usuarios) en la BBDD
         // Si existe un usuario $user será igual a 1, si no existe será igual a 0
 
-        if ($user == 1){ // * Existe usuario
+        if ($user == 1){ // ? Existe usuario
             // Recuperamos los datos del usuario de la BBDD
             $user = DB::table('tbl_user')->where('email','=',$datos['email'])->where('psswd','=',md5($datos['psswd']))->first();
 

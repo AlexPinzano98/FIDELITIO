@@ -10,31 +10,20 @@
 
     <video id="preview" width="100%" height="100%" style="display: none;"></video>
     <script>
-    function objetoAjax() {
-        var xmlhttp = false;
-        try {
-            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (E) {
-                xmlhttp = false;
-            }
-        }
-        if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-            xmlhttp = new XMLHttpRequest();
-        }
-        return xmlhttp;
-    }
-    let scanner = new Instascan.Scanner(
+        let scanner = new Instascan.Scanner(
             {
                 video: document.getElementById('preview')
             }
         );
         scanner.addListener('scan', function(content) {
-                //alert('Contenido: ' + content);
-                sellar(content);
-            });
+            alert('Contenido: ' + content);
+            nepe(content);
+        });
+        
+        function nepe(content){
+            //alert('chupamela');
+        }
+
         function openCamara(){
             Instascan.Camera.getCameras().then(cameras => 
             {
