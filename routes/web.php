@@ -28,3 +28,6 @@ Route::get('/viewListRestaurant', function (){ return view('viewListRestaurant')
 Route::get('/home', function (){ return view('home');});
 //recoger tarjetas
 Route::get('showCard', [CardController::class, 'showCard']);
+
+
+Route::get('/validarQR', [CardController::class, 'validarQR']);

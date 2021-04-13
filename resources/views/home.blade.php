@@ -17,13 +17,10 @@
         );
         scanner.addListener('scan', function(content) {
             alert('Contenido: ' + content);
-            nepe(content);
+            sellar(content);
         });
         
-        function nepe(content){
-            //alert('chupamela');
-        }
-
+    
         function openCamara(){
             Instascan.Camera.getCameras().then(cameras => 
             {
@@ -49,7 +46,6 @@
             var day=array[4];
             var hour=array[5];
             var minute=array[6];
-
             
             var now = new Date();
             var year_now=now.getFullYear();
@@ -66,26 +62,29 @@
             if(year!=""){
                 if (year < year_now) {
                 alert('QR CADUCADO');
-            } else if (year <= year_now && month < month_now) {
-                alert('QR CADUCADO');
-            } else if (year <= year_now && month <= month_now && day < day_now) {
-                alert('QR CADUCADO');
-            } else if (year <= year_now && month <= month_now && day <= day_now && hour < hour_now) {
-                alert('QR CADUCADO');
-            } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute > minute_now) {
-                alert('QR CADUCADO');
-             } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute < minute_now) {
-                alert('QR valido');
-            }else{
-                alert('Este QR no es valido')
+                } else if (year <= year_now && month < month_now) {
+                    alert('QR CADUCADO');
+                } else if (year <= year_now && month <= month_now && day < day_now) {
+                    alert('QR CADUCADO');
+                } else if (year <= year_now && month <= month_now && day <= day_now && hour < hour_now) {
+                    alert('QR CADUCADO');
+                } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute > minute_now) {
+                    alert('QR CADUCADO');
+                } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute < minute_now) {
+                    alert('QR valido');
+                }else{
+                    alert('Este QR no es valido')
+                }
             }
-            }
+
+
+           
+            // Hacer llamada AJAX al método de validación QR
 
             // if (fecha_actual.getTime() < fecha_qr.getTime()) {
             //     alert('QR CADUCADO');
             //  } 
-
-                            //alert(id_local);
+            //alert(id_local);
             // var token = document.getElementById("token").getAttribute("content");
             // var ajax = new objetoAjax();
             // ajax.open('POST', 'ver_promociones', true);
@@ -93,8 +92,6 @@
             // datasend.append('id_local', id_local);
             // datasend.append('_token', token);
                 //alert('Contenido: ' + content);
-
-
         }
     </script>
 
