@@ -40,6 +40,7 @@
 			<li><a href="#">Cerrar sesión</a></li>
 		</ul>
 	</nav>
+    
     <!-- Swiper -->
     <div class="swiper-container" id="content">
         <div class="swiper-wrapper">
