@@ -29,3 +29,4 @@ Route::get('/home', function (){ return view('home');});
 //recoger tarjetas
 Route::get('showCard', [CardController::class, 'showCard']);
 Route::get('cerrar_sesion', [UserController::class, 'cerrar_sesion']);
+Route::get('/validarQR', [CardController::class, 'validarQR']);
