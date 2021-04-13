@@ -36,7 +36,8 @@ function ver_promociones() {
             tabla += '<div>';
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += respuesta[i].name;
-                tabla += '</br>';  
+                tabla += '</br>';
+
                 tabla +='<button onclick="generar_qr('+respuesta[i].id_promotion+',&#039'+respuesta[i].name+'&#039)">Generar QR</button>';
                 tabla += '</br>';  
             }
@@ -64,10 +65,21 @@ window.onclick = function(event) {
     }
 }
 
-
 function generar_qr(id_promotion,nombre_local){
-    modal_qr.style.display = "block";
-    document.getElementById('content').value=id_promotion;
+    var random= Math.random() * (1 - 100) + 1;
+      //alert(random);
+
+    var now = new Date();
+    var year=now.getFullYear();
+    var month=now.getMonth()+1;
+    var day=now.getDate();
+    var hour=now.getHours();
+    var minute=now.getMinutes();
+
+    document.getElementById('content').value=random+','+id_promotion+','+year+','+month+','+day+','+hour+','+minute;
+    //console.log(document.getElementById('content').value)
+
+    // return false;
     // var ajax = new objetoAjax();
     // ajax.open('POST', '../generate_code.php', true);
     // var datasend = new FormData();
@@ -99,4 +111,5 @@ function generar_qr(id_promotion,nombre_local){
     //     });
     // });
     //alert(nombre_local);
+    modal_qr.style.display = "block";
 }

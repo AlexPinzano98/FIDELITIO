@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{asset('css/cardStyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
-
-
+    <!-- <link rel="stylesheet" href="{{asset('css/cliente.css')}}"> -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-
+    <script src="js/infoCardsAjax.js"></script>
+    <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script type="text/javascript">
 		// A $( document ).ready() block.
@@ -26,8 +26,14 @@
 </head>
 
 <body>
+<div id="wrapper">
+	<section>
 	<header id="#header">
-		<a href="#" id="menu_on">
+        <p class="text-start">nombreUsuario</p>
+        <button class="container">
+            <i class="fas fa-camera"></i>
+        </button>
+		<a id="menu_on">
 			<span></span>
 			<span></span>
 			<span></span>
@@ -40,7 +46,7 @@
 			<li><a href="#">Cerrar sesión</a></li>
 		</ul>
 	</nav>
-    
+    </section>
     <!-- Swiper -->
     <div class="swiper-container" id="content">
         <div class="swiper-wrapper">
@@ -48,12 +54,13 @@
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
+</div>
      <!-- Swiper JS -->
      <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
 
-    <script src="js/infoCardsAjax.js"></script>
+    
 
 </body>
 </html>

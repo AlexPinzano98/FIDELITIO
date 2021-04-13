@@ -13,20 +13,20 @@
 <body>
 <div id="promociones"></div>
 <?php 
-if(isset($_POST) && !empty($_POST)) {
-    //{{'css/app.css')}}
-	include(asset('library/phpqrcode/qrlib.php')); 
-	$codesDir = "public/codes/";
-    //$codesDir = asset('public/codes/');
-	$codeFile = date('d-m-Y-h-i-s').'.png';
-	$formData = $_POST['formData'];
-	// generating QR code
-	QRcode::png($formData, $codesDir.$codeFile, $_POST['ecc'], $_POST['size']); 
-	// display generated QR code
-	echo '<img src="./'.$codesDir.$codeFile.'" />';
-} else {
-	header('location:./');
-}
+// if(isset($_POST) && !empty($_POST)) {
+//     //{{'css/app.css')}}
+// 	include(asset('library/phpqrcode/qrlib.php')); 
+// 	$codesDir = "public/codes/";
+//     //$codesDir = asset('public/codes/');
+// 	$codeFile = date('d-m-Y-h-i-s').'.png';
+// 	$formData = $_POST['formData'];
+// 	// generating QR code
+// 	QRcode::png($formData, $codesDir.$codeFile, $_POST['ecc'], $_POST['size']); 
+// 	// display generated QR code
+// 	echo '<img src="./'.$codesDir.$codeFile.'" />';
+// } else {
+// 	header('location:./');
+// }
 ?>
 
 

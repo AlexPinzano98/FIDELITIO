@@ -3,19 +3,25 @@ header {
     position: fixed;
     width: 100%;
     padding: 15px;
-    z-index: 2
-}
-
-#menu_on {
-    display: inline-block;
-    width: 30px;
-    height: 20px;
-    position: relative;
     z-index: 2;
 }
 
+#menu_on {
+    /* display: inline-block; */
+    width: 30%;
+    height: 20px;
+    position: relative;
+    z-index: 2;
+    float: right;
+    background-color: red;
+}
+
+#menu_on:hover {
+    cursor: pointer;
+}
+
 #menu_on span {
-    width: 100%;
+    width: 35%;
     height: 4px;
     border-radius: 4px;
     display: block;
@@ -23,6 +29,23 @@ header {
     background: #fff;
     transition: all 0.25s ease;
     transform-origin: 0px 100%;
+    margin-left: 65%;
+}
+
+.container {
+    background-color: green;
+    width: 40%;
+    text-align: center;
+}
+
+.fas {
+    background-color: red;
+}
+
+.text-start {
+    background-color: red;
+    width: 30%;
+    float: left;
 }
 
 #menu_on span:nth-child(2) {
@@ -46,18 +69,18 @@ header {
 }
 
 nav {
+    /* margin-left: 100%; */
     position: fixed;
     top: 0;
     bottom: 0;
-    left: -300px;
+    left: 100%;
     width: 100%;
     z-index: 1;
-    padding: 90px 30px 30px;
+    padding: 90px 30px;
     background: #68C5DB;
     opacity: 0;
     transition: all 0.75s ease;
-    font-size: 1.2em;
-    /* overflow-y: auto; */
+    overflow-y: auto;
 }
 
 .visible_menu nav {
@@ -80,9 +103,10 @@ nav a:hover {
 }
 
 #content {
-    text-align: left;
-    position: relative;
-    width: 100%;
+    /* text-align: left; */
+    /* position: relative; */
+    /* width: 100%; */
+    padding-top: 25%;
     transition: all 0.75s ease;
     z-index: 0;
 }
