@@ -33,6 +33,16 @@ class CamareroController extends Controller
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
         }
     }
+
+    // Validación cuando un camarero lee un QR
+    public function validarCamareroQR(){
+        echo "VALIDACIÓN DEL QR <br>";
+        
+        // Recibimos los datos del QR
+
+        // Buscamos el id_card de la tbl_card 
+        // Hacemos un update para cerrar la tarjeta
+    }
      
     /**
      * Show the form for creating a new resource.
