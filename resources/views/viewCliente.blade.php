@@ -29,7 +29,7 @@
 <div id="wrapper">
 	<section>
 	<header id="#header">
-        <p class="text-start">nombreUsuario</p>  
+        <p class="text-start">nombreUsuario</p>
         <button class="container">
             <i class="fas fa-camera"></i>
         </button>
@@ -59,5 +59,8 @@
      <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
+
+    
+
 </body>
 </html>
