@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Instascan</title>
-    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
   </head>
   <body>
     <button id="camara" onclick="openCamara()">CAMARA</button>
@@ -10,6 +11,22 @@
 
     <video id="preview" width="100%" height="100%" style="display: none;"></video>
     <script>
+        function objetoAjax() {
+            var xmlhttp = false;
+            try {
+                xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (E) {
+                    xmlhttp = false;
+                }
+            }
+            if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+                xmlhttp = new XMLHttpRequest();
+            }
+            return xmlhttp;
+        }
         let scanner = new Instascan.Scanner(
             {
                 video: document.getElementById('preview')
@@ -19,10 +36,10 @@
             alert('Contenido: ' + content);
             sellar(content);
         });
-        
-    
+
+
         function openCamara(){
-            Instascan.Camera.getCameras().then(cameras => 
+            Instascan.Camera.getCameras().then(cameras =>
             {
                 if(cameras.length > 0){
                     scanner.start(cameras[0]);
@@ -40,13 +57,13 @@
             //alert(content);
             const array = content.split(',');
             //alert(array[1]);
-            var id_local=array[1];
+            var id_promo=array[1]; // ID promo
             var year=array[2];
             var month=array[3];
             var day=array[4];
             var hour=array[5];
             var minute=array[6];
-            
+
             var now = new Date();
             var year_now=now.getFullYear();
             var month_now=now.getMonth()+1;
@@ -72,18 +89,40 @@
                     alert('QR CADUCADO');
                 } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute < minute_now) {
                     alert('QR valido');
+                    // Ajax
+                    read();
                 }else{
                     alert('Este QR no es valido')
+                    // Msg error
                 }
             }
 
+            function read() {
+                var section = document.getElementById('section-3');
+                var ajax = new objetoAjax();
+                var token = document.getElementById('token').getAttribute('content');
+                // Busca la ruta read y que sea asyncrono
+                ajax.open('POST', 'validarQR', true);
+                var datasend = new FormData();
+                datasend.append('_token', token);
+                datasend.append('id_promo', id_promo);
 
-           
+                ajax.onreadystatechange = function() {
+                    if (ajax.readyState == 4 && ajax.status == 200) {
+                        var respuesta = JSON.parse(ajax.responseText);
+                        // var tabla = '';
+                        console.log(respuesta)
+                       // section.innerHTML = tabla;
+                    }
+                }
+                ajax.send(datasend);
+            }
+
             // Hacer llamada AJAX al método de validación QR
 
             // if (fecha_actual.getTime() < fecha_qr.getTime()) {
             //     alert('QR CADUCADO');
-            //  } 
+            //  }
             //alert(id_local);
             // var token = document.getElementById("token").getAttribute("content");
             // var ajax = new objetoAjax();
