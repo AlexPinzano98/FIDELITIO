@@ -28,8 +28,13 @@ Route::get('/viewListLocal', function (){ return view('viewListLocal');});
 Route::get('/home', function (){ return view('home');});
 //recoger tarjetas
 Route::get('showCard', [CardController::class, 'showCard']);
+<<<<<<< HEAD
 Route::get('verLocales', [CardController::class, 'verLocales']);
 Route::post('verCardLocal', [CardController::class, 'verCardLocal']);
 
 
 Route::get('/validarQR', [CardController::class, 'validarQR']);
+=======
+Route::get('cerrar_sesion', [UserController::class, 'cerrar_sesion']);
+Route::get('/validarQR', [CardController::class, 'validarQR']);
+>>>>>>> b8a72e97116ecf88660e85f8b1ab0eaa2a3530f9

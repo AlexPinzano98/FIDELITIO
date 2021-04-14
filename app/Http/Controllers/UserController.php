@@ -15,6 +15,11 @@ class UserController extends Controller
         return view('login');
     }
 
+    public function cerrar_sesion(){
+        session()->forget(['userlog']);
+        return redirect('/');
+    }
+
     public function vista_camarero(){
         return view('vista_camarero');
     }
