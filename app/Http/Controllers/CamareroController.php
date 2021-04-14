@@ -28,7 +28,8 @@ class CamareroController extends Controller
     
             }
             $promociones=DB::select('select * from tbl_promotion where id_local_fk=?',[$id_local]);
-            return response()->json($promociones,200);
+            $datos=array($promociones, $conseguir_id);
+            return response()->json($datos,200);
         } catch (\Throwable $th) {
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
         }

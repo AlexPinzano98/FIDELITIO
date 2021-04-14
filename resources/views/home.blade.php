@@ -19,11 +19,6 @@
             alert('Contenido: ' + content);
             nepe(content);
         });
-        
-        function nepe(content){
-            //alert('chupamela');
-        }
-
         function openCamara(){
             Instascan.Camera.getCameras().then(cameras => 
             {
@@ -56,7 +51,7 @@
             var month_now=now.getMonth()+1;
             var day_now=now.getDate();
             var hour_now=now.getHours();
-            var minute_now=now.getMinutes()+10;
+            var minute_now=now.getMinutes()+5;
             // console.log(minute)
             // console.log(minute_now)
             // var fecha_qr=new Date(year,month,day,hour,minute)
@@ -85,7 +80,7 @@
             //     alert('QR CADUCADO');
             //  } 
 
-                            //alert(id_local);
+            //alert(id_local);
             // var token = document.getElementById("token").getAttribute("content");
             // var ajax = new objetoAjax();
             // ajax.open('POST', 'ver_promociones', true);
