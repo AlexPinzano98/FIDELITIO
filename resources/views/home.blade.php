@@ -57,6 +57,7 @@
             //alert(content);
             const array = content.split(',');
             //alert(array[1]);
+<<<<<<< HEAD
             var id_promo=array[1]; // ID promo
             var year=array[2];
             var month=array[3];
@@ -64,12 +65,23 @@
             var hour=array[5];
             var minute=array[6];
 
+=======
+            var id_local=array[2];
+            var id_camarero=array[3];
+            //alert(array[2]);
+            var year=array[4];
+            var month=array[5];
+            var day=array[6];
+            var hour=array[7];
+            var minute=array[8];
+            
+>>>>>>> 2ac567d1a52926c2dadde3d86067b46696cf97d7
             var now = new Date();
             var year_now=now.getFullYear();
             var month_now=now.getMonth()+1;
             var day_now=now.getDate();
             var hour_now=now.getHours();
-            var minute_now=now.getMinutes()+10;
+            var minute_now=now.getMinutes()+5;
             // console.log(minute)
             // console.log(minute_now)
             // var fecha_qr=new Date(year,month,day,hour,minute)

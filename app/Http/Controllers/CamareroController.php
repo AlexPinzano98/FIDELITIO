@@ -28,7 +28,8 @@ class CamareroController extends Controller
     
             }
             $promociones=DB::select('select * from tbl_promotion where id_local_fk=?',[$id_local]);
-            return response()->json($promociones,200);
+            $datos=array($promociones, $conseguir_id);
+            return response()->json($datos,200);
         } catch (\Throwable $th) {
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
         }
@@ -43,70 +44,5 @@ class CamareroController extends Controller
         // Buscamos el id_card de la tbl_card 
         // Hacemos un update para cerrar la tarjeta
     }
-     
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Camarero  $camarero
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Camarero $camarero)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Camarero  $camarero
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Camarero $camarero)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Camarero  $camarero
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Camarero $camarero)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Camarero  $camarero
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Camarero $camarero)
-    {
-        //
-    }
+    
 }

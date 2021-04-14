@@ -34,11 +34,14 @@ function ver_promociones() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             tabla += '<div>';
-            for (let i = 0; i < respuesta.length; i++) {
-                tabla += respuesta[i].name;
+            
+            //tabla +='<button style="text-aling:center;" onclick="canjear_promocion()">Canjear Promocion</button>';
+            for (let i = 0; i < respuesta[0].length; i++) {
+                tabla += '<p> Promocion '+respuesta[0][i].name_promo+'</p>';
+                tabla += '<p> Sellos : '+respuesta[0][i].stamp_max+'</p>';
                 tabla += '</br>';
 
-                tabla +='<button onclick="generar_qr('+respuesta[i].id_promotion+',&#039'+respuesta[i].name+'&#039)">Generar QR</button>';
+                tabla +='<button class="btn" onclick="generar_qr('+respuesta[0][i].id_promotion+','+respuesta[1][0].id_user+')">Generar QR</button>';
                 tabla += '</br>';  
             }
             tabla += '</div>';  
@@ -65,8 +68,9 @@ window.onclick = function(event) {
     }
 }
 
-function generar_qr(id_promotion,nombre_local){
-    var random= Math.random() * (1 - 100) + 1;
+function generar_qr(id_promotion,id_camarero){
+    var random= Math.random() * (1 - 1000) + 1;
+    var random2= Math.random() * (1 - 1000) + 1;
       //alert(random);
 
     var now = new Date();
@@ -76,7 +80,7 @@ function generar_qr(id_promotion,nombre_local){
     var hour=now.getHours();
     var minute=now.getMinutes();
 
-    document.getElementById('content').value=random+','+id_promotion+','+year+','+month+','+day+','+hour+','+minute;
+    document.getElementById('content').value=random+','+random2+','+id_promotion+','+id_camarero+','+year+','+month+','+day+','+hour+','+minute;
     //console.log(document.getElementById('content').value)
 
     // return false;
@@ -100,12 +104,11 @@ function generar_qr(id_promotion,nombre_local){
         // formData.append("id_promotion", id_promotion);
             $.ajax({
                 url:'./generate_code.php',
-                //url:ruta,
                 type:'POST',
                 //data: {data:formData, ecc:$("#ecc").val(), size:$("#size").val()},
                 data: {formData:$("#content").val(), ecc:$("#ecc").val(), size:$("#size").val()},
                 success: function(response) {
-                    $(".showQRCode").html(response);  
+                    $(".showQRCode").html(response);
                 },
              });
     //     });

@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <title>cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="css/listRestaurant.css">
+    <link rel="stylesheet" href="css/listLocal.css">
+    <script src="js/infoListLocal.js"></script>
     <!-- <link rel="stylesheet" href="{{asset('css/cliente.css')}}"> -->
-
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script type="text/javascript">
     // A $( document ).ready() block.
     $(document).ready(function() {

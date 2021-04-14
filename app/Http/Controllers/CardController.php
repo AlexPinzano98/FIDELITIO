@@ -128,4 +128,38 @@ class CardController extends Controller
         }
 
     }
+
+    public function verLocales() {
+        try {
+            $id_user = session()->get('id_user');
+            $locales = DB::select('SELECT * FROM tbl_local
+            INNER JOIN tbl_promotion
+            ON tbl_local.id_local = tbl_promotion.id_local_fk
+            INNER JOIN tbl_card
+            ON tbl_promotion.id_promotion = tbl_card.id_promotion_fk
+            GROUP BY tbl_local.id_local
+            HAVING tbl_card.id_user_fk = ?', [$id_user]);
+            return response()->json($locales, 200);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
+        }
+    }
+
+    public function verCardLocal(Request $request) {
+        try {
+            $id_user = session()->get('id_user');
+            $locales = DB::select('SELECT * FROM tbl_card
+            INNER JOIN tbl_promotion
+            ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+            INNER JOIN tbl_local
+            ON tbl_promotion.id_local_fk = tbl_local.id_local
+            GROUP BY tbl_card.id_card
+            HAVING tbl_card.id_user_fk = ? AND tbl_promotion.status = "enable" AND tbl_card.status = "open" AND tbl_local.id_local = ?;', [$id_user, $request->input('id_local')]);
+            return response()->json($locales, 200);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
+        }
+    }
 }
