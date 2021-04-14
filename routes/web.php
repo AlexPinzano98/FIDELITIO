@@ -19,6 +19,7 @@ use App\Http\Controllers\CardController;
 
 Route::get('/', [UserController::class, 'login']);
 Route::post('/validarlogin', [UserController::class, 'validarLogin']);
+Route::get('cerrar_sesion', [UserController::class, 'cerrar_sesion']);
 Route::get('/vista_camarero', [CamareroController::class, 'vista_camarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
 //vista cliente
@@ -28,5 +29,4 @@ Route::get('/viewListRestaurant', function (){ return view('viewListRestaurant')
 Route::get('/home', function (){ return view('home');});
 //recoger tarjetas
 Route::get('showCard', [CardController::class, 'showCard']);
-Route::get('cerrar_sesion', [UserController::class, 'cerrar_sesion']);
 Route::get('/validarQR', [CardController::class, 'validarQR']);
