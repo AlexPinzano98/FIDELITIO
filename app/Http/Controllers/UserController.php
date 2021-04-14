@@ -16,7 +16,7 @@ class UserController extends Controller
     }
 
     public function cerrar_sesion(){
-        session()->forget(['userlog']);
+        session()->forget(['id_user']);
         return redirect('/');
     }
 
@@ -78,6 +78,14 @@ class UserController extends Controller
             // Redirect::to('login?errors='.$errores);
             // return redirect('/')->with('errors','Ha habido un error al intentar entrar en su cuenta, por favor revise que el email y la contraseña esten bien escritos');
             // return redirect('/')->with('errors','Datos mal introducidos. Revisa los campos.');
+        }
+    }
+
+    public function viewCliente(){
+        if (session()->has('id_user')) {
+            return view('viewCliente');
+        } else {
+            return redirect('/');
         }
     }
 }
