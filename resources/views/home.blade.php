@@ -54,16 +54,16 @@
             document.getElementById('preview').style.display = "none";
         }
         function sellar(content){
-            //alert(content);
             const array = content.split(',');
             //alert(array[1]);
-            var id_promo=array[1]; // ID promo
-            
-            var year=array[2];
-            var month=array[3];
-            var day=array[4];
-            var hour=array[5];
-            var minute=array[6];
+            var id_local=array[2];
+            var id_camarero=array[3];
+            //alert(array[2]);
+            var year=array[4];
+            var month=array[5];
+            var day=array[6];
+            var hour=array[7];
+            var minute=array[8];
 
             var now = new Date();
             var year_now=now.getFullYear();
