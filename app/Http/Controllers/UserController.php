@@ -15,6 +15,11 @@ class UserController extends Controller
         return view('login');
     }
 
+    public function cerrar_sesion(){
+        session()->forget(['userlog']);
+        return redirect('/');
+    }
+
     public function vista_camarero(){
         return view('vista_camarero');
     }
@@ -26,22 +31,23 @@ class UserController extends Controller
         // Buscamos si existe un usuario registrado
         $user=DB::table('tbl_user')->where([
             ['email','=',$datos['email']],
-            ['psswd','=',$datos['psswd']]
+            ['psswd','=',md5($datos['psswd'])]
         ])->count(); // Contamos el numero de registros(usuarios) en la BBDD
         // Si existe un usuario $user será igual a 1, si no existe será igual a 0
 
-        if ($user == 1){ // * Existe usuario
+        if ($user == 1){ // ? Existe usuario
             // Recuperamos los datos del usuario de la BBDD
-            $user = DB::table('tbl_user')->where('email','=',$datos['email'])->where('psswd','=',$datos['psswd'])->first();
+            $user = DB::table('tbl_user')->where('email','=',$datos['email'])->where('psswd','=',md5($datos['psswd']))->first();
 
             // echo "Tipo usuario: " . $user->id_typeuser_fk;
             // Iniciamos sesión del usuario (guardamos los datos necesarios: nombre y tipo de usuario)
             $request->session()->put('name', $user->name);
             $request->session()->put('typeuser', $user->id_typeuser_fk);
+            $request->session()->put('id_user', $user->id_user);
 
             switch ($user->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
-                    echo "Cliente";
+                    return redirect('viewCliente');
                     break;
                 case '2':
                     // echo "Camarero";

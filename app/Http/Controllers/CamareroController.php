@@ -21,12 +21,27 @@ class CamareroController extends Controller
     public function ver_promociones(Request $request)
     {
         try {
-            //DB::delete('delete from favorito where id_restaurante=? and id_user=?', [$request->input('id_restaurante'), $request->input('id_user')]);
-            $promociones=DB::select('select * from tbl_promotion where id_local_fk=?',[$request->input('id_local')]);
+            $id_user = session()->get('id_user');
+            $conseguir_id=DB::select('select * from tbl_user where id_user=?',[$id_user]);
+            foreach ($conseguir_id as $id) {
+                $id_local=$id->id_local_fk;
+    
+            }
+            $promociones=DB::select('select * from tbl_promotion where id_local_fk=?',[$id_local]);
             return response()->json($promociones,200);
         } catch (\Throwable $th) {
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
         }
+    }
+
+    // Validación cuando un camarero lee un QR
+    public function validarCamareroQR(){
+        echo "VALIDACIÓN DEL QR <br>";
+        
+        // Recibimos los datos del QR
+
+        // Buscamos el id_card de la tbl_card 
+        // Hacemos un update para cerrar la tarjeta
     }
      
     /**
