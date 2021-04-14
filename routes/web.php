@@ -19,7 +19,7 @@ use App\Http\Controllers\CardController;
 
 Route::get('/', [UserController::class, 'login']);
 Route::post('/validarlogin', [UserController::class, 'validarLogin']);
-Route::get('/vista_camarero', [CamareroController::class, 'vista_camarero']);
+Route::get('/viewCamarero', [CamareroController::class, 'viewCamarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
 //vista cliente
 Route::get('/viewCliente', [UserController::class, 'viewCliente']
@@ -33,6 +33,6 @@ Route::get('verLocales', [CardController::class, 'verLocales']);
 Route::post('verCardLocal', [CardController::class, 'verCardLocal']);
 
 
-Route::get('/validarQR', [CardController::class, 'validarQR']);
+//Route::get('/validarQR', [CardController::class, 'validarQR']);
 Route::get('cerrar_sesion', [UserController::class, 'cerrar_sesion']);
-Route::get('/validarQR', [CardController::class, 'validarQR']);
+Route::post('validarQR', [CardController::class, 'validarQR']);
