@@ -69,7 +69,8 @@ window.onclick = function(event) {
 }
 
 function generar_qr(id_promotion,id_camarero){
-    var random= Math.random() * (1 - 100) + 1;
+    var random= Math.random() * (1 - 1000) + 1;
+    var random2= Math.random() * (1 - 1000) + 1;
       //alert(random);
 
     var now = new Date();
@@ -79,7 +80,7 @@ function generar_qr(id_promotion,id_camarero){
     var hour=now.getHours();
     var minute=now.getMinutes();
 
-    document.getElementById('content').value=random+','+id_promotion+','+id_camarero+','+year+','+month+','+day+','+hour+','+minute;
+    document.getElementById('content').value=random+','+random2+','+id_promotion+','+id_camarero+','+year+','+month+','+day+','+hour+','+minute;
     //console.log(document.getElementById('content').value)
 
     // return false;

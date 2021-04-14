@@ -19,11 +19,8 @@
             alert('Contenido: ' + content);
             sellar(content);
         });
-<<<<<<< HEAD
-=======
         
     
->>>>>>> 6510f0c3020a71eb24b75271b93367fd31d02c58
         function openCamara(){
             Instascan.Camera.getCameras().then(cameras => 
             {
@@ -43,12 +40,14 @@
             //alert(content);
             const array = content.split(',');
             //alert(array[1]);
-            var id_local=array[1];
-            var year=array[2];
-            var month=array[3];
-            var day=array[4];
-            var hour=array[5];
-            var minute=array[6];
+            var id_local=array[2];
+            var id_camarero=array[3];
+            //alert(array[2]);
+            var year=array[4];
+            var month=array[5];
+            var day=array[6];
+            var hour=array[7];
+            var minute=array[8];
             
             var now = new Date();
             var year_now=now.getFullYear();
@@ -87,10 +86,6 @@
             // if (fecha_actual.getTime() < fecha_qr.getTime()) {
             //     alert('QR CADUCADO');
             //  } 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6510f0c3020a71eb24b75271b93367fd31d02c58
             //alert(id_local);
             // var token = document.getElementById("token").getAttribute("content");
             // var ajax = new objetoAjax();
