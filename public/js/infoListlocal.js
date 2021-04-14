@@ -1,5 +1,5 @@
 window.onload = function() {
-    showRestaurant();
+    verLocales();
 };
 
 function objetoAjax() {
@@ -19,11 +19,11 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-function showRestaurant() {
-    var containRestaurant = document.getElementById("list");
+function verLocales() {
+    var containLocal = document.getElementById("list");
     var ajax = new objetoAjax();
 
-    ajax.open("GET", "recogerCard", true);
+    ajax.open("GET", "verLocales", true);
     // var datasend = new FormData();
     // datasend.append('_token', token);
     ajax.onreadystatechange = function() {
@@ -38,21 +38,46 @@ function showRestaurant() {
                     <img src="img/imgPerfilNull.png" alt="perfilRestaurant">
                 </div>
                 <div>
-                    <h5>Restaurante 1</h5>
+                    <h5>${response[i].name}</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto deserunt adipisci natus
                     </p>
                 </div>
                 <div class="play">
-                    <a href="">
+                    <a onclick = "verCardLocal(${response[i].id_local})">
                         <img src="img/caret-right.svg" alt="play">
                     </a>
                 </div>
             </div>
               `;
             }
-            containRestaurant.innerHTML = tabla;
+            containLocal.innerHTML = tabla;
 
         }
-    };
+    }
     ajax.send();
+
+
+
+}
+
+function verCardLocal(id_local) {
+    var ajax = new objetoAjax();
+    var token = document.getElementById('token').getAttribute('content');
+    ajax.open('POST', 'verCardLocal', true);
+    var datos = new FormData();
+    datos.append('id_local', id_local);
+    datos.append('_token', token)
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(ajax.responseText);
+
+            if (respuesta.resultado == 'NOK') {
+                alert('no datos');
+            } else {
+                alert(ajax.responseText)
+            }
+
+        }
+    }
+    ajax.send(datos);
 }
