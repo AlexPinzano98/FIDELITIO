@@ -29,16 +29,16 @@ class CardController extends Controller
 
     // VALIDACIÓN cuando un usuario LEE un QR
     public function validarQR(Request $request) {
-        echo "VALIDACIÓN DEL QR <br>";
+        // echo "VALIDACIÓN DEL QR <br>";
 
 
         $id_promo = $request->input('id_promo');
-        echo $id_promo;
+        //echo $id_promo;
 
         return response()->json($id_promo, 200);
 
 
-        return false;
+        //return false;
         // Comprovamos si la promoción existe en las tarjetas del usuario
         // Es decir si el usuario tiene promoción
         // Si devuelve 1 existe tarjeta, si devuelve 0 no existe

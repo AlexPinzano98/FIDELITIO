@@ -32,6 +32,6 @@ Route::get('verLocales', [CardController::class, 'verLocales']);
 Route::post('verCardLocal', [CardController::class, 'verCardLocal']);
 
 
-Route::get('/validarQR', [CardController::class, 'validarQR']);
+//Route::get('/validarQR', [CardController::class, 'validarQR']);
 Route::get('cerrar_sesion', [UserController::class, 'cerrar_sesion']);
-Route::post('/validarQR', [CardController::class, 'validarQR']);
+Route::post('validarQR', [CardController::class, 'validarQR']);
