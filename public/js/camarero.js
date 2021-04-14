@@ -37,11 +37,13 @@ function ver_promociones() {
             
             //tabla +='<button style="text-aling:center;" onclick="canjear_promocion()">Canjear Promocion</button>';
             for (let i = 0; i < respuesta[0].length; i++) {
+                tabla += '<div class="sketchy">';
                 tabla += '<p> Promocion '+respuesta[0][i].name_promo+'</p>';
                 tabla += '<p> Sellos : '+respuesta[0][i].stamp_max+'</p>';
                 tabla += '</br>';
 
                 tabla +='<button class="btn" onclick="generar_qr('+respuesta[0][i].id_promotion+','+respuesta[1][0].id_user+')">Generar QR</button>';
+                tabla += '</div>';  
                 tabla += '</br>';  
             }
             tabla += '</div>';  

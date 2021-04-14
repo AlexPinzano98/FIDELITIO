@@ -38,3 +38,15 @@
   background-color: #008CBA;
   color: white;
 }
+
+.sketchy {
+  padding: 1.5rem 2.5rem;
+  display: inline-block;
+  border: 3px solid #333333;
+  font-size: 1rem;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  text-transform: uppercase;
+  letter-spacing: 0.3ch;
+  background: #ffffff;
+  position: relative;
+}

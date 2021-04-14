@@ -14,9 +14,9 @@ class CamareroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function vista_camarero()
+    public function viewCamarero()
     {
-        return view('vista_camarero');
+        return view('viewCamarero');
     }
     public function ver_promociones(Request $request)
     {
