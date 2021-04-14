@@ -34,70 +34,15 @@ class CamareroController extends Controller
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
         }
     }
-     
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    // Validación cuando un camarero lee un QR
+    public function validarCamareroQR(){
+        echo "VALIDACIÓN DEL QR <br>";
+        
+        // Recibimos los datos del QR
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Camarero  $camarero
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Camarero $camarero)
-    {
-        //
+        // Buscamos el id_card de la tbl_card 
+        // Hacemos un update para cerrar la tarjeta
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Camarero  $camarero
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Camarero $camarero)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Camarero  $camarero
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Camarero $camarero)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Camarero  $camarero
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Camarero $camarero)
-    {
-        //
-    }
+    
 }
