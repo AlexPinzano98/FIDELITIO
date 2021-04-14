@@ -74,14 +74,6 @@ class UserController extends Controller
     }
 
     public function viewCliente(){
-        if (session()->has('id_user')) {
-            return view('viewCliente');
-        } else {
-            return redirect('/');
-        }
-    }
-
-    public function viewCliente(){
         if (!(session()->has('id_user'))) {
             return redirect('/');
         } else {
