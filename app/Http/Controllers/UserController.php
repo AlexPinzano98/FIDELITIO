@@ -80,4 +80,12 @@ class UserController extends Controller
             // return redirect('/')->with('errors','Datos mal introducidos. Revisa los campos.');
         }
     }
+
+    public function viewCliente(){
+        if (!(session()->has('id_user'))) {
+            return redirect('/');
+        } else {
+            return view('viewCliente');
+        }
+    }
 }

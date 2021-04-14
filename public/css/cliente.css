@@ -33,6 +33,17 @@ header {
     /* margin-left: 50%; */
 }
 
+#home {
+    margin-left: 35%;
+    margin-bottom: 5%;
+    margin-right: 10%;
+    color: #2EB2FF;
+}
+
+#list {
+    color: #2EB2FF;
+}
+
 .fas {
     background-color: transparent;
     border: none;
@@ -40,6 +51,7 @@ header {
     width: 10%;
     text-align: center;
     color: white;
+    cursor: pointer;
     /* background-color: red; */
 }
 
@@ -107,7 +119,7 @@ nav a:hover {
 }
 
 #content {
-    padding-top: 25%;
+    padding-top: 22%;
     transition: all 0.75s ease;
     z-index: 0;
 }
