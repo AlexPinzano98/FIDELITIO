@@ -38,9 +38,12 @@ header {
     margin-bottom: 5%;
     margin-right: 10%;
     color: #2EB2FF;
+    /* position: fixed;
+    z-index: 2; */
 }
 
 #list {
+    position: fixed;
     color: #2EB2FF;
 }
 
@@ -147,7 +150,7 @@ nav a:hover {
 }
 
 #content {
-    padding-top: 15%;
+    padding-top: 22%;
     transition: all 0.75s ease;
     z-index: 0;
 }
@@ -158,7 +161,7 @@ nav a:hover {
 
 @media (min-width: 440px) {
     header {
-        padding: 20px;
+        padding: 10px;
     }
     #menu_on {
         width: 5%;
@@ -170,7 +173,7 @@ nav a:hover {
         height: 8px;
     }
     #home {
-        margin-bottom: 3%;
+        margin-bottom: 1%;
         margin-left: 37.5%;
         margin-right: 5%;
     }
@@ -185,31 +188,27 @@ nav a:hover {
         top: calc(50% - 4px);
     }
     nav {
-        padding: 7% 4%;
-        padding-bottom: 1%;
+        padding: 6% 5%;
+        padding-bottom: 0%;
         width: 50%;
         margin-left: 50%;
     }
     nav a {
-        font-size: 160%;
+        font-size: 140%;
         display: block;
         text-decoration: none;
-        padding-left: 24%;
-        padding-top: 3%;
+        padding-left: 20%;
+        padding-top: 4.5%;
         padding-bottom: 6%;
-        /* padding: 5px; */
-        color: white;
-        border-bottom: 2px solid white;
-        transition: all ease 0.25s;
     }
     .profile {
         padding: 5%;
     }
     nav form {
-        text-align: center;
-        margin-top: 40%;
+        margin-top: 20%;
         border-bottom: 2px solid white;
         transition: all ease 0.25s;
+        cursor: pointer;
     }
     nav button {
         color: white;
@@ -219,16 +218,19 @@ nav a:hover {
         text-align: center;
         font-size: 160%;
         border: none;
-        margin-bottom: 4%;
     }
     nav a:hover {
         color: rgba(255, 255, 255, 1);
         border-bottom-color: rgba(255, 255, 255, 0.4);
     }
+    nav form:hover {
+        color: rgba(255, 255, 255, 1);
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
     #content {
-        padding-top: 22%;
+        margin-bottom: 0%;
+        padding-top: 6.6%;
         transition: all 0.75s ease;
         z-index: 0;
     }
 }
-

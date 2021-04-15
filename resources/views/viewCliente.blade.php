@@ -44,14 +44,12 @@
                     Perfil del usuario
                 </a>
             </div>
-            
             <div class="profile">
             <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
 			<a href="#">
                 Modo noche
             </a>
             </div>
-
             <div class="profile">
             <form method="get" action="{{url('/cerrar_sesion')}}">
                 <button type="submit" style="font-size:130%"><i class="fas fa-sign-out-alt" style="float:left; padding-left: 20%;"></i></button>
@@ -63,10 +61,14 @@
     </section>
     <!-- Swiper -->
     <div class="swiper-container" id="content">
-    <button class="fas fa-home" id="home">
-    </button>
-    <button class="fas fa-list-ul" id="list">
-    </button>
+        <form method="get" action="{{url('/cerrar_sesion')}}">
+            <button class="fas fa-home" id="home">
+            </button>
+        </form>
+        <form method="get" action="{{url('/cerrar_sesion')}}">
+            <button class="fas fa-list-ul" id="list">
+            </button>
+        </form>
         <div class="swiper-wrapper">
         </div>
         <!-- Add Pagination -->
