@@ -40,6 +40,10 @@
         <div id="list">
         </div>
     </div>
+    <div class="swiper-wrapper">
+        </div>
+        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 
 </html>
