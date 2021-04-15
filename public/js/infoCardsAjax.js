@@ -127,10 +127,13 @@ function showCard(recojoData) {
                     tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
                 }
 
-                tabla += `</div>
-                        </div>
-                    </div>
-                </div>`;
+
+                tabla += '</div>';
+                if (response[i].stamp_now == response[i].stamp_max) {
+                    //alert('tomatelaaaa');
+                    tabla += '<button onclick="generar_qr(' + response[i].id_card + ',' + response[i].id_promotion + ')">CANJEAR</button>'
+                }
+                tabla += '</div></div></div>';
                 containCards.innerHTML = tabla;
             }
             var mySwiper = new Swiper(".swiper-container", {
@@ -236,6 +239,30 @@ function verCardLocal(id_local) {
     ajax.send(datos);
 }
 
+function generar_qr(id_card, id_promotion) {
+    var random = Math.random() * (1 - 1000) + 1;
+    var random2 = Math.random() * (1 - 1000) + 1;
+    //alert(random);
+
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+
+    document.getElementById('content').value = random + ',' + random2 + ',' + id_promotion + ',' + id_card + ',' + year + ',' + month + ',' + day + ',' + hour + ',' + minute;
+
+    $.ajax({
+        url: './generate_code.php',
+        type: 'POST',
+        data: { formData: $("#content").val(), ecc: $("#ecc").val(), size: $("#size").val() },
+        success: function(response) {
+            $(".showQRCode").html(response);
+        },
+    });
+    modal_qr.style.display = "block";
+}
 // const showCart = () => {
 //     fetch("showCarts")
 //         .then((order) => order.text())

@@ -33,6 +33,20 @@ header {
     /* margin-left: 50%; */
 }
 
+#home {
+    margin-left: 35%;
+    margin-bottom: 5%;
+    margin-right: 10%;
+    color: #2EB2FF;
+    /* position: fixed;
+    z-index: 2; */
+}
+
+#list {
+    position: fixed;
+    color: #2EB2FF;
+}
+
 .fas {
     background-color: transparent;
     border: none;
@@ -40,6 +54,7 @@ header {
     width: 10%;
     text-align: center;
     color: white;
+    cursor: pointer;
     /* background-color: red; */
 }
 
@@ -80,9 +95,10 @@ nav {
     left: 100%;
     width: 100%;
     z-index: 1;
-    padding: 90px 30px;
+    padding: 25% 8%;
+    padding-bottom: 5%;
     background: #68C5DB;
-    opacity: 0;
+    opacity: 1;
     transition: all 0.75s ease;
     overflow-y: auto;
 }
@@ -93,12 +109,39 @@ nav {
 }
 
 nav a {
+    /* background-color: red; */
+    font-size: 160%;
     display: block;
     text-decoration: none;
-    padding: 30px;
-    color: rgba(255, 255, 255, 0.75);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 24%;
+    padding-top: 3%;
+    padding-bottom: 6%;
+    /* padding: 5px; */
+    color: white;
+    border-bottom: 2px solid white;
     transition: all ease 0.25s;
+}
+
+.profile {
+    padding: 5%;
+}
+
+nav form {
+    text-align: center;
+    margin-top: 40%;
+    border-bottom: 2px solid white;
+    transition: all ease 0.25s;
+}
+
+nav button {
+    color: white;
+    padding: 3%;
+    padding-top: 2.5%;
+    background-color: transparent;
+    text-align: center;
+    font-size: 160%;
+    border: none;
+    margin-bottom: 4%;
 }
 
 nav a:hover {
@@ -107,7 +150,7 @@ nav a:hover {
 }
 
 #content {
-    padding-top: 25%;
+    padding-top: 22%;
     transition: all 0.75s ease;
     z-index: 0;
 }
@@ -116,8 +159,78 @@ nav a:hover {
     transform: translateX(260px);
 }
 
-@media (min-width: 425px) {
+@media (min-width: 440px) {
+    header {
+        padding: 10px;
+    }
+    #menu_on {
+        width: 5%;
+        height: 35px;
+        margin-top: 1%;
+        margin-right: 6%;
+    }
+    #menu_on span {
+        height: 8px;
+    }
+    #home {
+        margin-bottom: 1%;
+        margin-left: 37.5%;
+        margin-right: 5%;
+    }
+    .fas {
+        font-size: 425%;
+    }
+    .text-start {
+        padding: 1%;
+        font-size: 200%;
+    }
+    #menu_on span:nth-child(2) {
+        top: calc(50% - 4px);
+    }
+    nav {
+        padding: 6% 5%;
+        padding-bottom: 0%;
+        width: 50%;
+        margin-left: 50%;
+    }
+    nav a {
+        font-size: 140%;
+        display: block;
+        text-decoration: none;
+        padding-left: 20%;
+        padding-top: 4.5%;
+        padding-bottom: 6%;
+    }
+    .profile {
+        padding: 5%;
+    }
+    nav form {
+        margin-top: 20%;
+        border-bottom: 2px solid white;
+        transition: all ease 0.25s;
+        cursor: pointer;
+    }
+    nav button {
+        color: white;
+        padding: 3%;
+        padding-top: 2.5%;
+        background-color: transparent;
+        text-align: center;
+        font-size: 160%;
+        border: none;
+    }
+    nav a:hover {
+        color: rgba(255, 255, 255, 1);
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
+    nav form:hover {
+        color: rgba(255, 255, 255, 1);
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
     #content {
-        padding-top: 8%;
+        margin-bottom: 0%;
+        padding-top: 6.6%;
+        transition: all 0.75s ease;
+        z-index: 0;
     }
 }

@@ -39,18 +39,37 @@
 	</header>
 	<nav>
 		<ul>
-			<li><a href="#">Perfil del usuario</a></li>
-			<li><a href="#">Modo noche</a></li>
-			<li>
-                <form method="get" action="{{url('/cerrar_sesion')}}">
-                    <button type="submit">Cerrar Sesion</button>
-                </form>
-            </li>
+            <div class="profile">
+                <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
+                <a href="#">
+                    Perfil del usuario
+                </a>
+            </div>
+            <div class="profile">
+            <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
+			<a href="#">
+                Modo noche
+            </a>
+            </div>
+            <div class="profile">
+            <form method="get" action="{{url('/cerrar_sesion')}}">
+                <button type="submit" style="font-size:130%"><i class="fas fa-sign-out-alt" style="float:left; padding-left: 20%;"></i></button>
+                <button type="submit">Cerrar Sesion</button>
+            </form>
+            </div>
 		</ul>
 	</nav>
     </section>
     <!-- Swiper -->
     <div class="swiper-container" id="content">
+        <form method="get" action="{{url('/cerrar_sesion')}}">
+            <button class="fas fa-home" id="home">
+            </button>
+        </form>
+        <form method="get" action="{{url('/cerrar_sesion')}}">
+            <button class="fas fa-list-ul" id="list">
+            </button>
+        </form>
         <div class="swiper-wrapper">
         </div>
         <!-- Add Pagination -->
