@@ -2,7 +2,8 @@ window.onload = function() {
     showCard();
 };
 
-var semaforo = 0;
+var semaforo = 0
+var listado = 0;
 
 function objetoAjax() {
     var xmlhttp = false;
@@ -25,87 +26,19 @@ function showCard(recojoData) {
     cardLocal = recojoData;
     var pagina = document.getElementById('pagina').value;
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
-    if (pagina == "viewCliente" || semaforo != 0) {
-        if (semaforo == 0) {
-            // var section = document.getElementById('cards');
-            var ajax = new objetoAjax();
-            // var token = document.getElementById('token').getAttribute('content');
-            ajax.open("GET", "showCard", true);
-            // var datasend = new FormData();
-            // datasend.append('_token', token);
-            ajax.onreadystatechange = function() {
-                if (ajax.readyState == 4 && ajax.status == 200) {
-                    var response = JSON.parse(ajax.responseText);
-                    console.log(response);
-                    tabla = '';
-                    for (let i = 0; i < response.length; i++) {
-                        tabla += `
-              <div class="swiper-slide">
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="img/cafe.png" class="card-img-top" alt="perfil">
-                        </div>
-                        <div class="card-stamp">
-                            <h5 class="card-title">${response[i].name_promo}</h5>
-                            <h5 class="card-title">${response[i].name}</h5>
-                            <p class="card-text">Premio: ${response[i].reward}</p>
-                            <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
-                            <div class="card-stamp_grid">`;
-
-
-                        for (var x = 0; x < response[i].stamp_now; x++) {
-                            tabla += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
-                        }
-
-                        for (var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++) {
-                            tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
-                        }
-
-                        tabla += `</div>
-                        </div>
-                    </div>
-                </div>`;
-                        containCards.innerHTML = tabla;
-                    }
-                    var mySwiper = new Swiper(".swiper-container", {
-
-                        effect: "coverflow",
-                        grabCursor: true,
-                        centeredSlides: true,
-                        slidesPerView: "auto",
-                        coverflowEffect: {
-                            rotate: 50,
-                            stretch: 0,
-                            depth: 100,
-                            modifier: 1,
-                            slideShadows: true,
-                        },
-                        pagination: {
-                            el: ".swiper-pagination",
-                        },
-                        observer: true,
-                        observeParents: true,
-                        onSlideChangeEnd: function(swiper) {
-                            swiper.update();
-                            mySwiper.startAutoplay();
-                            mySwiper.reLoop();
-                        },
-                    });
-                    // mySwiper.lazy.loadInSlide (index);
-                    mySwiper.on('slideChange', function() {
-                        if (this.activeIndex === 1) {
-                            console.log("IM ON SECOND SLIDE!");
-                        }
-                    });
-                }
-            };
-            ajax.send();
-        } else if (semaforo == 1) {
-            //alert(cardLocal[i].name_promo)
-            window.location.href = "./viewCliente"
-            tabla = '';
-            for (let i = 0; i < cardLocal.length; i++) {
-                tabla += `
+    if (pagina == "viewCliente") {
+        semaforo = 0;
+    } else if (pagina == "viewListLocal") {
+        semaforo = 1;
+    }
+    if (listado == 1) {
+        //mostrar cartas de un restaurante
+        window.location.href = "./viewCliente";
+        var containCards = document.getElementsByClassName("swiper-wrapper")[0];
+        alert(cardLocal);
+        tabla = '';
+        for (let i = 0; i < cardLocal.length; i++) {
+            tabla += `
               <div class="swiper-slide">
                     <div class="card">
                         <div class="card-body">
@@ -119,59 +52,127 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
 
-                for (var x = 0; x < cardLocal[i].stamp_now; x++) {
-                    tabla += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
-                }
-
-                for (var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++) {
-                    tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
-                }
-
-
-                tabla += '</div>';
-                if (response[i].stamp_now == response[i].stamp_max) {
-                    //alert('tomatelaaaa');
-                    tabla += '<button onclick="generar_qr(' + response[i].id_card + ',' + response[i].id_promotion + ')">CANJEAR</button>'
-                }
-                tabla += '</div></div></div>';
-                containCards.innerHTML = tabla;
+            for (var x = 0; x < cardLocal[i].stamp_now; x++) {
+                tabla += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
             }
-            var mySwiper = new Swiper(".swiper-container", {
 
-                effect: "coverflow",
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: "auto",
-                coverflowEffect: {
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                },
-                observer: true,
-                observeParents: true,
-                onSlideChangeEnd: function(swiper) {
-                    swiper.update();
-                    mySwiper.startAutoplay();
-                    mySwiper.reLoop();
-                },
-            });
-            // mySwiper.lazy.loadInSlide (index);
-            mySwiper.on('slideChange', function() {
-                if (this.activeIndex === 1) {
-                    console.log("IM ON SECOND SLIDE!");
-                }
-            });
+            for (var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++) {
+                tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+            }
+
+            tabla += `</div>
+                        </div>
+                    </div>
+                </div>`;
+            containCards.innerHTML = tabla;
         }
+        var mySwiper = new Swiper(".swiper-container", {
 
-    } else if (pagina == "viewListLocal") {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            observer: true,
+            observeParents: true,
+            onSlideChangeEnd: function(swiper) {
+                swiper.update();
+                mySwiper.startAutoplay();
+                mySwiper.reLoop();
+            },
+        });
+        // mySwiper.lazy.loadInSlide (index);
+        mySwiper.on('slideChange', function() {
+            if (this.activeIndex === 1) {
+                console.log("IM ON SECOND SLIDE!");
+            }
+        });
+    } else if (semaforo == 1) {
         verLocales();
-    }
+    } else {
+        // var section = document.getElementById('cards');
+        var ajax = new objetoAjax();
+        // var token = document.getElementById('token').getAttribute('content');
+        ajax.open("GET", "showCard", true);
+        // var datasend = new FormData();
+        // datasend.append('_token', token);
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                var response = JSON.parse(ajax.responseText);
+                console.log(response);
+                tabla = '';
+                for (let i = 0; i < response.length; i++) {
+                    tabla += `
+              <div class="swiper-slide">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="img/cafe.png" class="card-img-top" alt="perfil">
+                        </div>
+                        <div class="card-stamp">
+                            <h5 class="card-title">${response[i].name_promo}</h5>
+                            <h5 class="card-title">${response[i].name}</h5>
+                            <p class="card-text">Premio: ${response[i].reward}</p>
+                            <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
+                            <div class="card-stamp_grid">`;
 
+
+                    for (var x = 0; x < response[i].stamp_now; x++) {
+                        tabla += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                    }
+
+                    for (var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++) {
+                        tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                    }
+
+                    tabla += `</div>
+                        </div>
+                    </div>
+                </div>`;
+                    containCards.innerHTML = tabla;
+                }
+                var mySwiper = new Swiper(".swiper-container", {
+
+                    effect: "coverflow",
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: "auto",
+                    coverflowEffect: {
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true,
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                    },
+                    observer: true,
+                    observeParents: true,
+                    onSlideChangeEnd: function(swiper) {
+                        swiper.update();
+                        mySwiper.startAutoplay();
+                        mySwiper.reLoop();
+                    },
+                });
+                // mySwiper.lazy.loadInSlide (index);
+                mySwiper.on('slideChange', function() {
+                    if (this.activeIndex === 1) {
+                        console.log("IM ON SECOND SLIDE!");
+                    }
+                });
+            }
+        };
+        ajax.send();
+    }
 }
 
 function verLocales() {
@@ -210,9 +211,6 @@ function verLocales() {
         }
     }
     ajax.send();
-
-
-
 }
 
 function verCardLocal(id_local) {
@@ -229,7 +227,7 @@ function verCardLocal(id_local) {
             if (respuesta.resultado == 'NOK') {
                 console.log('no datos');
             } else {
-                semaforo = 1;
+                listado = 1;
                 console.log(respuesta)
                 showCard(respuesta)
             }
