@@ -24,7 +24,7 @@
                 <input name="psswd" type="password" class="form-control" id="contrasenya" placeholder="Contrasenya..."></input>
             </div>
 
-            {{Session::get('message')}}
+            <hr>
 
             <button type="button" class="btn btn-primary">
                 Continuar con Facebook
@@ -38,6 +38,7 @@
 
             <div id="message">
             </div>
+            <p style="color: red; margin: 15px 30px;"> {{Session::get('message')}} </p>
 
         </form>
     </div>

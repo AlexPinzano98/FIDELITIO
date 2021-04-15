@@ -15,8 +15,13 @@ class UserController extends Controller
         return view('login');
     }
 
-    public function vista_camarero(){
-        return view('vista_camarero');
+    public function cerrar_sesion(){
+        session()->forget(['id_user']);
+        return redirect('/');
+    }
+
+    public function viewCamarero(){
+        return view('viewCamarero');
     }
 
     public function validarLogin(Request $request) {;
@@ -47,7 +52,7 @@ class UserController extends Controller
                 case '2':
                     // echo "Camarero";
                     // return view('viewCamarero');
-                    return redirect('vista_camarero');
+                    return redirect('viewCamarero');
                     break;
                 case '3':
                     echo "ADM establecimiento";
@@ -62,17 +67,17 @@ class UserController extends Controller
                     # code...
                     break;
             }
-            // echo var_dump($user->id_typeuser_fk);
-            // print_r($user);
-            // Establecer sesion
-            // return redirect('mostrar');
         } else { // ! No existe usuario
             $message = 'Ha habido un error al intentar entrar en su cuenta, por favor revise que el email y la contraseña esten bien escritos';
-            // return redirect('/',compact('errores'));
             return redirect('/')->with('message',$message);
-            // Redirect::to('login?errors='.$errores);
-            // return redirect('/')->with('errors','Ha habido un error al intentar entrar en su cuenta, por favor revise que el email y la contraseña esten bien escritos');
-            // return redirect('/')->with('errors','Datos mal introducidos. Revisa los campos.');
+        }
+    }
+
+    public function viewCliente(){
+        if (!(session()->has('id_user'))) {
+            return redirect('/');
+        } else {
+            return view('viewCliente');
         }
     }
 }

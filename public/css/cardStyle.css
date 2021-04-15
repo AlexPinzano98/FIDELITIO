@@ -37,6 +37,9 @@
 
 .card-img-top {
     max-width: 100%;
+}
+
+.swiper-slide-active .card-img-top{
     border-radius: 12px 12px 0 0;
 }
 
@@ -57,7 +60,7 @@ p {
 
 body {
     background: #fff;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Mulish', sans-serif;
     font-size: 14px;
     color: #000;
     margin: 0;

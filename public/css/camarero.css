@@ -18,3 +18,35 @@
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
+.btn {
+  color: #0099CC;
+  background: transparent;
+  border: 2px solid #0099CC;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 8px 8px;
+      text-align: center;
+      display: inline-block;
+      font-size: 14px;
+      margin: 1px 2px;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+}
+.btn:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.sketchy {
+  padding: 1.5rem 2.5rem;
+  display: inline-block;
+  border: 3px solid #333333;
+  font-size: 1rem;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  text-transform: uppercase;
+  letter-spacing: 0.3ch;
+  background: #ffffff;
+  position: relative;
+}
