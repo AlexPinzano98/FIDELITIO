@@ -24,6 +24,7 @@
 </head>
 
 <body>
+<input type="hidden" id="pagina" value="viewCliente">
 <div id="wrapper">
 	<section>
 	<header id="#header">
