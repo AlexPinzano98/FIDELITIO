@@ -77,9 +77,10 @@
                 }
             }
 
-
-           
             // Hacer llamada AJAX al método de validación QR
+            // Hemos de pasarle los datos del QR
+
+
 
             // if (fecha_actual.getTime() < fecha_qr.getTime()) {
             //     alert('QR CADUCADO');
@@ -91,7 +92,7 @@
             // var datasend = new FormData();
             // datasend.append('id_local', id_local);
             // datasend.append('_token', token);
-                //alert('Contenido: ' + content);
+            //alert('Contenido: ' + content);
         }
     </script>
 
