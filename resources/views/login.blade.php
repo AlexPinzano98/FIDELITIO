@@ -23,7 +23,9 @@
             <div class="mb-3">
                 <input name="psswd" type="password" class="form-control" id="contrasenya" placeholder="Contrasenya..."></input>
             </div>
-
+            <button type="submit" id="submit" class="btn btn-warning" style="margin-top:15%;">
+                Inicia Sesión
+            </button>
             <hr>
 
             <button type="button" class="btn btn-primary">
@@ -32,9 +34,7 @@
             <button type="button" class="btn btn-info">
                 Continuar con Google
             </button>
-            <button type="submit" id="submit" class="btn btn-warning" style="margin-top:15%;">
-                Inicia Sesión
-            </button>
+
 
             <div id="message">
             </div>
