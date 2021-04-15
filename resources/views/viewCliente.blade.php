@@ -50,22 +50,21 @@
                 Modo noche
             </a>
             </div>
-            <div class="profile">
-            <form method="get" action="{{url('/cerrar_sesion')}}">
-                <button type="submit" style="font-size:130%"><i class="fas fa-sign-out-alt" style="float:left; padding-left: 20%;"></i></button>
-                <button type="submit">Cerrar Sesion</button>
-            </form>
-            </div>
+                <form method="get" action="{{url('/cerrar_sesion')}}">
+                    <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
+                    </button>
+                    <button type="submit" id="sesion">Cerrar Sesion</button>
+                </form>
 		</ul>
 	</nav>
     </section>
     <!-- Swiper -->
     <div class="swiper-container" id="content">
-        <form method="get" action="{{url('/cerrar_sesion')}}">
+        <form method="get" action="{{url('/viewCliente')}}">
             <button class="fas fa-home" id="home">
             </button>
         </form>
-        <form method="get" action="{{url('/cerrar_sesion')}}">
+        <form method="get" action="{{url('/viewListLocal')}}">
             <button class="fas fa-list-ul" id="list">
             </button>
         </form>
