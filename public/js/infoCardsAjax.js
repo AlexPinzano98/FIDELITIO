@@ -2,7 +2,7 @@ window.onload = function() {
     showCard();
 };
 
-var semaforo = 0
+var semaforo = 0;
 
 function objetoAjax() {
     var xmlhttp = false;
