@@ -36,4 +36,4 @@ Route::get('/home', function (){ return view('home');});
 Route::get('showCard', [CardController::class, 'showCard']);
 Route::get('verLocales', [CardController::class, 'verLocales']);
 Route::post('verCardLocal', [CardController::class, 'verCardLocal']);
-Route::get('/validarQR', [CardController::class, 'validarQR']);
+Route::post('validarQR', [CardController::class, 'validarQR']);
