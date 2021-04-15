@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="js/infoCardsAjax.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script type="text/javascript">
@@ -24,6 +25,7 @@
 </head>
 
 <body>
+<input type="hidden" id="pagina" value="viewCliente">
 <div id="wrapper">
 	<section>
 	<header id="#header">
@@ -38,22 +40,37 @@
 	</header>
 	<nav>
 		<ul>
-			<li><a href="#">Perfil del usuario</a></li>
-			<li><a href="#">Modo noche</a></li>
-			<li>
-                <form method="get" action="{{url('/cerrar_sesion')}}">
-                    <button type="submit">Cerrar Sesion</button>
-                </form>
-            </li>
+            <div class="profile">
+                <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
+                <a href="#">
+                    Perfil del usuario
+                </a>
+            </div>
+            <div class="profile">
+            <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
+			<a href="#">
+                Modo noche
+            </a>
+            </div>
+            <div class="profile">
+            <form method="get" action="{{url('/cerrar_sesion')}}">
+                <button type="submit" style="font-size:130%"><i class="fas fa-sign-out-alt" style="float:left; padding-left: 20%;"></i></button>
+                <button type="submit">Cerrar Sesion</button>
+            </form>
+            </div>
 		</ul>
 	</nav>
     </section>
     <!-- Swiper -->
     <div class="swiper-container" id="content">
-    <button class="fas fa-home" id="home">
-    </button>
-    <button class="fas fa-list-ul" id="list">
-    </button>
+        <form method="get" action="{{url('/cerrar_sesion')}}">
+            <button class="fas fa-home" id="home">
+            </button>
+        </form>
+        <form method="get" action="{{url('/cerrar_sesion')}}">
+            <button class="fas fa-list-ul" id="list">
+            </button>
+        </form>
         <div class="swiper-wrapper">
         </div>
         <!-- Add Pagination -->
@@ -65,6 +82,15 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
-
+    <input class="form-control col-xs-1" id="content" type="hidden">
+<input class="form-control col-xs-1" id="ecc" type="hidden" value="M">
+<input class="form-control col-xs-1" id="size" type="hidden" value="5">
+<div id="modal" class="modal">
+<div class="modal-content">
+<button type="button" class="close btn" onclick="closeModal()" data-dismiss="modal">&times;</button>
+<p>Enseña este QR al camarero para canjear tu premio!</p>
+<div class="showQRCode"></div>
+</div>
+</div>
 </body>
 </html>

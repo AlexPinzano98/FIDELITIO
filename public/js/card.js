@@ -57,7 +57,7 @@ function sellar(content){
     var month_now=now.getMonth()+1;
     var day_now=now.getDate();
     var hour_now=now.getHours();
-    var minute_now=now.getMinutes()+5;
+    var minute_now=now.getMinutes()+2;
     // console.log(minute)
     // console.log(minute_now)
     // var fecha_qr=new Date(year,month,day,hour,minute)
@@ -77,6 +77,7 @@ function sellar(content){
             alert('QR CADUCADO');
         } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute < minute_now) {
             alert('QR valido');
+            closeCamara();
             // Ajax
             read();
         }else{
@@ -86,7 +87,7 @@ function sellar(content){
     }
 
     function read() {
-        var section = document.getElementById('section-3');
+        // var section = document.getElementById('section-3');
         var ajax = new objetoAjax();
         var token = document.getElementById('token').getAttribute('content');
         // Busca la ruta read y que sea asyncrono
@@ -94,6 +95,7 @@ function sellar(content){
         var datasend = new FormData();
         datasend.append('_token', token);
         datasend.append('id_promo', id_promo);
+        datasend.append('id_camarero', id_camarero);
 
         ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
