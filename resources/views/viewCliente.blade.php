@@ -50,6 +50,10 @@
     </section>
     <!-- Swiper -->
     <div class="swiper-container" id="content">
+    <button class="fas fa-home" id="home">
+    </button>
+    <button class="fas fa-list-ul" id="list">
+    </button>
         <div class="swiper-wrapper">
         </div>
         <!-- Add Pagination -->

@@ -16,7 +16,7 @@ class UserController extends Controller
     }
 
     public function cerrar_sesion(){
-        session()->forget(['userlog']);
+        session()->forget(['id_user']);
         return redirect('/');
     }
 
@@ -70,6 +70,14 @@ class UserController extends Controller
         } else { // ! No existe usuario
             $message = 'Ha habido un error al intentar entrar en su cuenta, por favor revise que el email y la contraseña esten bien escritos';
             return redirect('/')->with('message',$message);
+        }
+    }
+
+    public function viewCliente(){
+        if (!(session()->has('id_user'))) {
+            return redirect('/');
+        } else {
+            return view('viewCliente');
         }
     }
 }
