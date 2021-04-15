@@ -6,7 +6,7 @@
     <title>cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/listLocal.css">
-    <script src="js/infoListLocal.js"></script>
+    <script src="js/infoCardsAjax.js"></script>
     <!-- <link rel="stylesheet" href="{{asset('css/cliente.css')}}"> -->
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -21,6 +21,7 @@
 </head>
 
 <body>
+<input type="hidden" id="pagina" value="viewListLocal">
     <!-- <header id="#header">
 		<a href="#" id="menu_on">
 			<span></span>
@@ -39,6 +40,10 @@
         <div id="list">
         </div>
     </div>
+    <div class="swiper-wrapper">
+        </div>
+        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 
 </html>

@@ -26,87 +26,76 @@ class CardController extends Controller
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
         }
     }
-
-    // VALIDACIÓN cuando un usuario LEE un QR
-    public function validarQR(Request $request) {
-        // echo "VALIDACIÓN DEL QR <br>";
-
-
+    
+    public function validarQR(Request $request){
         $id_promo = $request->input('id_promo');
-        //echo $id_promo;
+        $id_camarero = $request->input('id_camarero');
+        $id_user = $request->session()->get('id_user');
+        $datos = [$id_promo,$id_camarero,$id_user];
 
-        return response()->json($id_promo, 200);
-
-
-        //return false;
-        // Comprovamos si la promoción existe en las tarjetas del usuario
-        // Es decir si el usuario tiene promoción
-        // Si devuelve 1 existe tarjeta, si devuelve 0 no existe
         $promo = DB::table('tbl_promotion')
         ->join('tbl_card','tbl_promotion.id_promotion','=','tbl_card.id_promotion_fk')
         ->select('*')
         ->where([
-            ['tbl_card.id_user_fk','=','1'],
-            ['tbl_card.id_promotion_fk','=','1']
-        ])
-        ->count(); // Devuelve 1 o 0
-
-        echo "Usuario id: 1 , Promocion id: 1 . <br>";
-        echo $promo;
+            ['tbl_card.id_user_fk','=',$id_user],
+            ['tbl_card.id_promotion_fk','=',$id_promo]
+        ])->count(); // Devuelve 1 o 0
 
         if($promo == 1){ // ? Existe tarjeta
-            echo ". Existe promoción <br>";
-            // Comprovamos el número de sellos de la tarjeta
             $sellos = DB::table('tbl_promotion')
             ->join('tbl_card','tbl_promotion.id_promotion','=','tbl_card.id_promotion_fk')
             ->select('*')
             ->where([
-                ['tbl_card.id_user_fk','=','1'],
-                ['tbl_card.id_promotion_fk','=','1'],
+                ['tbl_card.id_user_fk','=',$id_user],
+                ['tbl_card.id_promotion_fk','=',$id_promo],
                 ['tbl_card.status','=','open']
             ])->first();
 
-            print_r($sellos);
-            echo '<br>';
-            echo "Maximo de sellos: " . $sellos->stamp_max . "<br>";
-            echo "Minimo de sellos: " . $sellos->stamp_now . "<br>";
+            // Total de sellos: $sellos->stamp_max
+            // Sellos actuales: $sellos->stamp_now
 
-            if ($sellos->stamp_now <= $sellos->stamp_max){ // ? Sellos por debajo del máximo
-                echo "Sellos por debajo del máximo <br>";
-                // Comprobar si el número de sellos es 1 menos al máximo
+            if ($sellos->stamp_now < $sellos->stamp_max) {
+                // return response()->json('Sellos por debajo del total', 200);
                 if ($sellos->stamp_now == ($sellos->stamp_max - 1)){ // ? Sellos 1 por debajo del máximo (9/10)
-                    echo "Falta 1 sello para el total (9/10)";
+                    // echo "Falta 1 sello para el total (9/10)";
                     // Mensage de tarjeta completada con exito
-                    // Añadimos un sello (+1)
+                    // Añadimos un sello a la tbl_stam
                     DB::table('tbl_stamp')->insert(
                         ['date' => NOW(),
-                        'id_card_fk' => 3,
-                        'id_user_fk_stamp' => 2]
+                        'id_card_fk' => $sellos->id_card, 
+                        'id_user_fk_stamp' => $id_camarero] // Camarero que pone el sello
                     );
+                    // Añadimos un sello a la tbl_card (stamp_now + 1)
+                    // Hacemos un update y le añadimos un sello (sellos maximos)
+                    DB::select('UPDATE `tbl_card` SET `stamp_now` = ? WHERE `tbl_card`.`id_card` = ?',[$sellos->stamp_max,$sellos->id_card]);
+                    return response()->json('Promoción completada', 200);
                 } else { // ! Sellos sin llegar a los dos últimos (1-8)/10
-                    echo "No falta 1 sello para el total ((1-8)/10)";
+                    // echo "No falta 1 sello para el total ((1-8)/10)";
                     // Mensaje de sello aplicado correctamente
                     // Añadimos un sello (+1)
                     DB::table('tbl_stamp')->insert(
                         ['date' => NOW(),
-                        'id_card_fk' => 3,
-                        'id_user_fk_stamp' => 2]
+                        'id_card_fk' => $sellos->id_card, 
+                        'id_user_fk_stamp' => $id_camarero] // Camarero que pone el sello
                     );
+                    // Añadimos un sello a la tbl_card (stamp_now + 1)
+                    // Hacemos un update y le añadimos un sello
+                    DB::select('UPDATE `tbl_card` SET `stamp_now` = ? WHERE `tbl_card`.`id_card` = ?',[($sellos->stamp_now+1),$sellos->id_card]);
+                    return response()->json('Sello canjeado correctamente', 200);
                 }
-            } else { // ! Máximo de sellos (10/10)
-                // Mensage de tarjeta al máximo de sellos
-                echo "Sellos máximos 10/10";
+            } else {
+                return response()->json('La tarjeta de promoción esta completada', 200);
             }
+
+            //return response()->json($sellos, 200);
         } else { // ! No existe tarjeta
-            echo "No existe tarjeta de la promoción <br>";
-            // Creamos una tarjeta para el usuario
             DB::table('tbl_card')->insert(
                 ['id_card' => NULL,
                 'stamp_now' => 1,
                 'color' => '#C70039',
                 'status' => 'open',
-                'id_promotion_fk' => 1,
-                'id_user_fk' => 6]
+                'id_promotion_fk' => $id_promo,
+                'id_user_fk' => $id_user]
             );
 
             // Ahora recuperamos el ID de la tarjeta que hemos creado (id_card)
@@ -114,19 +103,22 @@ class CardController extends Controller
             ->join('tbl_card','tbl_promotion.id_promotion','=','tbl_card.id_promotion_fk')
             ->select('*')
             ->where([
-                ['tbl_card.id_user_fk','=','1'],
-                ['tbl_card.id_promotion_fk','=','1'],
+                ['tbl_card.id_user_fk','=',$id_user],
+                ['tbl_card.id_promotion_fk','=',$id_promo],
                 ['tbl_card.status','=','open']
             ])->first(); // $promo->id_card;
 
             // Añadimos el primer sello
             DB::table('tbl_stamp')->insert(
                 ['date' => NOW(),
-                'id_card_fk' => 3, // ID de la tarjeta
-                'id_user_fk_stamp' => 2] // Usuario que tendrá la tarjeta
-            );
+                'id_card_fk' => $promo->id_card, // ID de la tarjeta
+                'id_user_fk_stamp' => $id_camarero] // Camarero que pone el sello
+            ); 
+            
+            return response()->json('Targeta creada correctamente', 200);
         }
 
+        
     }
 
     public function verLocales() {
@@ -161,5 +153,27 @@ class CardController extends Controller
             //throw $th;
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
         }
+    }
+
+    public function image(){
+        return view('image');
+    }
+
+    public function imgUp(Request $request){
+
+        $request->validate(
+            [
+                'foto' => 'required'
+            ]
+        );
+
+        $datosform = $request->except('_token','enviar');
+        // return $datosform;
+
+        $datosform['foto']=$request->file('foto')->store('uploads','public');
+
+        DB::select('UPDATE `tbl_promotion` SET `image` = ? WHERE `tbl_promotion`.`id_promotion` = 1;', [ $datosform['foto']]);
+
+        return redirect('image');
     }
 }
