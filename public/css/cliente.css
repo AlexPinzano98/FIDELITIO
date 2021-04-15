@@ -233,4 +233,10 @@ nav a:hover {
         transition: all 0.75s ease;
         z-index: 0;
     }
+    .listCartas {
+        display: none;
+    }
+    .listLocales {
+        display: none;
+    }
 }

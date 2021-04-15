@@ -21,7 +21,7 @@
 </head>
 
 <body>
-<input type="hidden" id="pagina" value="viewListLocal">
+<!-- <input type="hidden" id="pagina" value="viewListLocal"> -->
     <!-- <header id="#header">
 		<a href="#" id="menu_on">
 			<span></span>

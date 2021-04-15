@@ -8,6 +8,7 @@
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{asset('css/listLocal.css')}}">
     <link rel="stylesheet" href="{{asset('css/cardStyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -24,56 +25,65 @@
 </head>
 
 <body>
-<input type="hidden" id="pagina" value="viewCliente">
-<div id="wrapper">
-	<section>
-	<header id="#header">
-        <p class="text-start">Pablo Soriano</p>
-        <button class="fas fa-camera">
-        </button>
-		<a id="menu_on">
-			<span></span>
-			<span></span>
-			<span></span>
-		</a>
-	</header>
-	<nav>
-		<ul>
-            <div class="profile">
-                <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
-                <a href="#">
-                    Perfil del usuario
-                </a>
-            </div>
-            <div class="profile">
-            <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
-			<a href="#">
-                Modo noche
+<!-- <input type="hidden" id="pagina" value="viewCliente"> -->
+<div id="listCartas" class="listCartas">
+    <div id="wrapper">
+        <section>
+        <header id="#header">
+            <p class="text-start">Pablo Soriano</p>
+            <button class="fas fa-camera">
+            </button>
+            <a id="menu_on">
+                <span></span>
+                <span></span>
+                <span></span>
             </a>
-            </div>
-            <div class="profile">
+        </header>
+        <nav>
+            <ul>
+                <div class="profile">
+                    <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
+                    <a href="#">
+                        Perfil del usuario
+                    </a>
+                </div>
+                <div class="profile">
+                <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
+                <a href="#">
+                    Modo noche
+                </a>
+                </div>
+                <div class="profile">
+                <form method="get" action="{{url('/cerrar_sesion')}}">
+                    <button type="submit" style="font-size:130%"><i class="fas fa-sign-out-alt" style="float:left; padding-left: 20%;"></i></button>
+                    <button type="submit">Cerrar Sesion</button>
+                </form>
+                </div>
+            </ul>
+        </nav>
+        </section>
+        <!-- Swiper -->
+        <div class="swiper-container" id="content">
             <form method="get" action="{{url('/cerrar_sesion')}}">
-                <button type="submit" style="font-size:130%"><i class="fas fa-sign-out-alt" style="float:left; padding-left: 20%;"></i></button>
-                <button type="submit">Cerrar Sesion</button>
+                <button class="fas fa-home" id="home">
+                </button>
             </form>
+            <form method="get" action="{{url('/cerrar_sesion')}}">
+                <button class="fas fa-list-ul" id="list">
+                </button>
+            </form>
+            <div class="swiper-wrapper">
             </div>
-		</ul>
-	</nav>
-    </section>
-    <!-- Swiper -->
-    <div class="swiper-container" id="content">
-        <form method="get" action="{{url('/cerrar_sesion')}}">
-            <button class="fas fa-home" id="home">
-            </button>
-        </form>
-        <form method="get" action="{{url('/cerrar_sesion')}}">
-            <button class="fas fa-list-ul" id="list">
-            </button>
-        </form>
-        <div class="swiper-wrapper">
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<div id="listLocales" class="listLocales">
+    <div class="container">
+        <div id="list">
+        </div>
     </div>
 </div>
 
