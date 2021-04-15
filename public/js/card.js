@@ -87,7 +87,7 @@ function sellar(content){
     }
 
     function read() {
-        var section = document.getElementById('section-3');
+        // var section = document.getElementById('section-3');
         var ajax = new objetoAjax();
         var token = document.getElementById('token').getAttribute('content');
         // Busca la ruta read y que sea asyncrono
@@ -95,6 +95,7 @@ function sellar(content){
         var datasend = new FormData();
         datasend.append('_token', token);
         datasend.append('id_promo', id_promo);
+        datasend.append('id_camarero', id_camarero);
 
         ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
