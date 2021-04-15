@@ -162,4 +162,26 @@ class CardController extends Controller
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()), 200);
         }
     }
+
+    public function image(){
+        return view('image');
+    }
+
+    public function imgUp(Request $request){
+
+        $request->validate(
+            [
+                'foto' => 'required'
+            ]
+        );
+
+        $datosform = $request->except('_token','enviar');
+        // return $datosform;
+
+        $datosform['foto']=$request->file('foto')->store('uploads','public');
+
+        DB::select('UPDATE `tbl_promotion` SET `image` = ? WHERE `tbl_promotion`.`id_promotion` = 1;', [ $datosform['foto']]);
+
+        return redirect('image');
+    }
 }

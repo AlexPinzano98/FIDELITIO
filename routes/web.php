@@ -26,9 +26,7 @@ Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
 Route::get('/viewCliente', [UserController::class, 'viewCliente']);
 Route::get('/viewCamarero', [CamareroController::class, 'viewCamarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
-//vista cliente
-Route::get('/viewCliente', [UserController::class, 'viewCliente']
-);
+
 //vista lista restaurante
 Route::get('/viewListLocal', function (){ return view('viewListLocal');});
 Route::get('/home', function (){ return view('home');});
@@ -37,3 +35,8 @@ Route::get('showCard', [CardController::class, 'showCard']);
 Route::get('verLocales', [CardController::class, 'verLocales']);
 Route::post('verCardLocal', [CardController::class, 'verCardLocal']);
 Route::get('/validarQR', [CardController::class, 'validarQR']);
+
+//para subir imagenes
+Route::get('image',  [CardController::class, 'image']);
+Route::post('imgUp', [CardController::class, 'imgUp']);
+
