@@ -32,6 +32,8 @@ class CardController extends Controller
         $id_camarero = $request->input('id_camarero');
         $id_user = $request->session()->get('id_user');
         $datos = [$id_promo,$id_camarero,$id_user];
+        //return response()->json($datos, 200);
+
 
         $promo = DB::table('tbl_promotion')
         ->join('tbl_card','tbl_promotion.id_promotion','=','tbl_card.id_promotion_fk')
