@@ -1,9 +1,10 @@
 window.onload = function() {
     showCard();
+    modal_qr = document.getElementById("modal");
 };
 
-var semaforo = 0
-var listado = 0;
+var semaforo;
+var listado;
 
 function objetoAjax() {
     var xmlhttp = false;
@@ -33,7 +34,7 @@ function showCard(recojoData) {
     }
     if (listado == 1) {
         //mostrar cartas de un restaurante
-        window.location.href = "./viewCliente";
+        //window.location.href = "./viewCliente";
         var containCards = document.getElementsByClassName("swiper-wrapper")[0];
         alert(cardLocal);
         tabla = '';
@@ -60,8 +61,12 @@ function showCard(recojoData) {
                 tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
             }
 
-            tabla += `</div>
-                        </div>
+            tabla += `</div>`;
+            if(cardLocal[i].stamp_max == cardLocal[i].stamp_now){
+                tabla+='<button onclick="generar_qr('+cardLocal[i].id_card+','+cardLocal[i].id_promotion+')"></button>'
+            }
+           
+            tabla += `          </div>
                     </div>
                 </div>`;
             containCards.innerHTML = tabla;
@@ -132,12 +137,13 @@ function showCard(recojoData) {
                     for (var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++) {
                         tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
                     }
-
-                    tabla += `</div>
-                        </div>
-                    </div>
-                </div>`;
-                    containCards.innerHTML = tabla;
+                    tabla += '</div>';
+                if (response[i].stamp_now == response[i].stamp_max) {
+                    //alert('tomatelaaaa');
+                    tabla += '<button onclick="generar_qr(' + response[i].id_card + ',' + response[i].id_promotion + ')">CANJEAR</button>'
+                }
+                tabla += '</div></div></div>';
+                containCards.innerHTML = tabla;
                 }
                 var mySwiper = new Swiper(".swiper-container", {
 
@@ -236,7 +242,14 @@ function verCardLocal(id_local) {
     }
     ajax.send(datos);
 }
-
+function closeModal() {
+    modal_qr.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal_qr) {
+        modal_qr.style.display = "none";
+    }
+}
 function generar_qr(id_card, id_promotion) {
     var random = Math.random() * (1 - 1000) + 1;
     var random2 = Math.random() * (1 - 1000) + 1;

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="js/infoCardsAjax.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script type="text/javascript">
@@ -81,6 +82,15 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
-
+    <input class="form-control col-xs-1" id="content" type="hidden">
+<input class="form-control col-xs-1" id="ecc" type="hidden" value="M">
+<input class="form-control col-xs-1" id="size" type="hidden" value="5">
+<div id="modal" class="modal">
+<div class="modal-content">
+<button type="button" class="close btn" onclick="closeModal()" data-dismiss="modal">&times;</button>
+<p>Enseña este QR al camarero para canjear tu premio!</p>
+<div class="showQRCode"></div>
+</div>
+</div>
 </body>
 </html>
