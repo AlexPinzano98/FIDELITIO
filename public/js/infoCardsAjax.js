@@ -1,8 +1,10 @@
 window.onload = function() {
     showCard();
+    modal_qr = document.getElementById("modal");
 };
 
-listado = 0;
+listado = 1;
+cartas = 0;
 
 function objetoAjax() {
     var xmlhttp = false;
@@ -25,10 +27,12 @@ function showCard(recojoData) {
     cardLocal = recojoData;
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     alert(listado)
-    if (listado == 1) {
+    if (listado == 1 && cartas == 0) {
+        document.getElementById("listCartas").style.display = 'none';
         document.getElementById("listLocales").style.display = 'block';
         verLocales()
     } else if (listado == 0) {
+        document.getElementById("listLocales").style.display = 'none';
         document.getElementById("listCartas").style.display = 'block';
         // var section = document.getElementById('cards');
         var ajax = new objetoAjax();
@@ -40,9 +44,9 @@ function showCard(recojoData) {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var response = JSON.parse(ajax.responseText);
                 console.log(response);
-                tabla = '';
+                tabla0 = '';
                 for (let i = 0; i < response.length; i++) {
-                    tabla += `
+                    tabla0 += `
               <div class="swiper-slide">
                     <div class="card">
                         <div class="card-body">
@@ -57,18 +61,19 @@ function showCard(recojoData) {
 
 
                     for (var x = 0; x < response[i].stamp_now; x++) {
-                        tabla += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                        tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
                     }
 
                     for (var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++) {
-                        tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                        tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
                     }
-
-                    tabla += `</div>
-                        </div>
-                    </div>
-                </div>`;
-                    containCards.innerHTML = tabla;
+                    tabla0 += '</div>';
+                    if (response[i].stamp_now == response[i].stamp_max) {
+                        //alert('tomatelaaaa');
+                        tabla += '<button onclick="generar_qr(' + response[i].id_card + ',' + response[i].id_promotion + ')">CANJEAR</button>'
+                    }
+                    tabla0 += '</div></div></div>';
+                    containCards.innerHTML = tabla0;
                 }
                 var mySwiper = new Swiper(".swiper-container", {
 
@@ -104,9 +109,11 @@ function showCard(recojoData) {
         };
         ajax.send();
     } else if (cartas == 1) {
+        tabla1 = '';
+        document.getElementById("listLocales").style.display = 'none';
         document.getElementById("listCartas").style.display = 'block';
         for (let i = 0; i < cardLocal.length; i++) {
-            tabla += `
+            tabla1 += `
       <div class="swiper-slide">
             <div class="card">
                 <div class="card-body">
@@ -121,18 +128,18 @@ function showCard(recojoData) {
 
 
             for (var x = 0; x < cardLocal[i].stamp_now; x++) {
-                tabla += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
             }
 
             for (var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++) {
-                tabla += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
             }
 
-            tabla += `</div>
+            tabla1 += `</div>
                 </div>
             </div>
         </div>`;
-            containCards.innerHTML = tabla;
+            containCards.innerHTML = tabla1;
         }
         var mySwiper = new Swiper(".swiper-container", {
 
@@ -182,9 +189,9 @@ function verLocales() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var response = JSON.parse(ajax.responseText);
             console.log(response);
-            tabla = '';
+            tabla2 = '';
             for (let i = 0; i < response.length; i++) {
-                tabla += `
+                tabla2 += `
                 <div class="item">
                 <div>
                     <img src="img/imgPerfilNull.png" alt="perfilRestaurant">
@@ -202,7 +209,7 @@ function verLocales() {
             </div>
               `;
             }
-            containLocal.innerHTML = tabla;
+            containLocal.innerHTML = tabla2;
 
         }
     }
@@ -233,6 +240,39 @@ function verCardLocal(id_local) {
     ajax.send(datos);
 }
 
+function closeModal() {
+    modal_qr.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target == modal_qr) {
+        modal_qr.style.display = "none";
+    }
+}
+
+function generar_qr(id_card, id_promotion) {
+    var random = Math.random() * (1 - 1000) + 1;
+    var random2 = Math.random() * (1 - 1000) + 1;
+    //alert(random);
+
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+
+    document.getElementById('content').value = random + ',' + random2 + ',' + id_promotion + ',' + id_card + ',' + year + ',' + month + ',' + day + ',' + hour + ',' + minute;
+
+    $.ajax({
+        url: './generate_code.php',
+        type: 'POST',
+        data: { formData: $("#content").val(), ecc: $("#ecc").val(), size: $("#size").val() },
+        success: function(response) {
+            $(".showQRCode").html(response);
+        },
+    });
+    modal_qr.style.display = "block";
+}
 // const showCart = () => {
 //     fetch("showCarts")
 //         .then((order) => order.text())

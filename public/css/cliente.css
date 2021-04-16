@@ -6,15 +6,44 @@ header {
     z-index: 2;
 }
 
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
 #menu_on {
-    /* display: inline-block; */
     width: 10%;
     height: 20px;
     position: relative;
     z-index: 2;
     float: right;
     margin-top: 2%;
-    /* background-color: green; */
 }
 
 #menu_on:hover {
@@ -30,7 +59,6 @@ header {
     background: #fff;
     transition: all 0.75s ease;
     transform-origin: 0px 100%;
-    /* margin-left: 50%; */
 }
 
 #home {
@@ -38,12 +66,14 @@ header {
     margin-bottom: 5%;
     margin-right: 10%;
     color: #2EB2FF;
-    /* position: fixed;
-    z-index: 2; */
+    font-size: 250%;
+    width: 10%;
+    text-align: center;
+    cursor: pointer;
+    float: left;
 }
 
 #list {
-    position: fixed;
     color: #2EB2FF;
 }
 
@@ -55,7 +85,6 @@ header {
     text-align: center;
     color: white;
     cursor: pointer;
-    /* background-color: red; */
 }
 
 .text-start {
@@ -64,7 +93,6 @@ header {
     float: left;
     color: white;
     font-size: 130%;
-    /* background-color: green; */
 }
 
 #menu_on span:nth-child(2) {
@@ -88,7 +116,6 @@ header {
 }
 
 nav {
-    /* margin-left: 100%; */
     position: fixed;
     top: 0;
     bottom: 0;
@@ -109,14 +136,12 @@ nav {
 }
 
 nav a {
-    /* background-color: red; */
     font-size: 160%;
     display: block;
     text-decoration: none;
     padding-left: 24%;
     padding-top: 3%;
     padding-bottom: 6%;
-    /* padding: 5px; */
     color: white;
     border-bottom: 2px solid white;
     transition: all ease 0.25s;
@@ -127,21 +152,29 @@ nav a {
 }
 
 nav form {
-    text-align: center;
-    margin-top: 40%;
+    margin-top: 50%;
     border-bottom: 2px solid white;
     transition: all ease 0.25s;
 }
 
-nav button {
+#cerrar {
+    background-color: transparent;
     color: white;
     padding: 3%;
-    padding-top: 2.5%;
+    margin-left: 15%;
+    width: 20%;
+}
+
+#sesion {
+    cursor: pointer;
+    position: absolute;
+    margin-top: 4%;
+    width: 40%;
     background-color: transparent;
+    color: white;
     text-align: center;
     font-size: 160%;
     border: none;
-    margin-bottom: 4%;
 }
 
 nav a:hover {
@@ -159,7 +192,7 @@ nav a:hover {
     transform: translateX(260px);
 }
 
-@media (min-width: 440px) {
+@media (min-width: 1024px) {
     header {
         padding: 10px;
     }
@@ -176,6 +209,7 @@ nav a:hover {
         margin-bottom: 1%;
         margin-left: 37.5%;
         margin-right: 5%;
+        font-size: 425%;
     }
     .fas {
         font-size: 425%;
@@ -194,30 +228,21 @@ nav a:hover {
         margin-left: 50%;
     }
     nav a {
-        font-size: 140%;
-        display: block;
-        text-decoration: none;
         padding-left: 20%;
-        padding-top: 4.5%;
-        padding-bottom: 6%;
     }
     .profile {
         padding: 5%;
     }
     nav form {
-        margin-top: 20%;
-        border-bottom: 2px solid white;
-        transition: all ease 0.25s;
-        cursor: pointer;
+        margin-top: 30%;
     }
-    nav button {
-        color: white;
-        padding: 3%;
-        padding-top: 2.5%;
-        background-color: transparent;
-        text-align: center;
-        font-size: 160%;
-        border: none;
+    #cerrar {
+        margin-left: 27.5%;
+        width: 10%;
+    }
+    #sesion {
+        margin-top: 5%;
+        width: 30%;
     }
     nav a:hover {
         color: rgba(255, 255, 255, 1);
@@ -240,3 +265,72 @@ nav a:hover {
         display: none;
     }
 }
+
+.visible_menu #content {
+    transform: translateX(0px);
+}
+
+
+/* @media (min-width: 768px) {
+    header {
+        padding: 20px;
+    }
+    #menu_on {
+        width: 8%;
+        margin-top: 2%;
+    }
+    #home {
+        margin-bottom: 3%;
+        font-size: 350%;
+    }
+    .fas {
+        font-size: 350%;
+    }
+    .text-start {
+        padding-top: 2%;
+    }
+    #menu_on span:nth-child(2) {
+        top: calc(50% - 3.6px);
+    }
+    nav {
+        padding: 15% 6%;
+        width: 50%;
+        margin-left: 50%;
+    }
+    nav a {
+        padding-left: 25%;
+    }
+    .profile {
+        padding: 5%;
+    }
+    nav form {
+        margin-top: 30%;
+    }
+    #cerrar {
+        margin-left: 27.5%;
+        width: 10%;
+    }
+    #sesion {
+        margin-top: 5%;
+        width: 30%;
+    }
+    nav a:hover {
+        color: rgba(255, 255, 255, 1);
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
+    nav form:hover {
+        color: rgba(255, 255, 255, 1);
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
+    #content {
+        margin-bottom: 0%;
+        padding-top: 6.6%;
+        transition: all 0.75s ease;
+        z-index: 0;
+    }
+    .visible_menu #content {
+        transform: translateX(0px);
+    } */
+
+
+/* } */

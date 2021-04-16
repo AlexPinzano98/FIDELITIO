@@ -57,7 +57,7 @@ function sellar(content){
     var month_now=now.getMonth()+1;
     var day_now=now.getDate();
     var hour_now=now.getHours();
-    var minute_now=now.getMinutes()+5;
+    var minute_now=now.getMinutes()+2;
     // console.log(minute)
     // console.log(minute_now)
     // var fecha_qr=new Date(year,month,day,hour,minute)
