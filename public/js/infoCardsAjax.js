@@ -245,11 +245,11 @@ function verCardLocal(id_local) {
 function closeModal() {
     modal_qr.style.display = "none";
 }
-window.onclick = function(event) {
-    if (event.target == modal_qr) {
-        modal_qr.style.display = "none";
-    }
-}
+// window.onclick = function(event) {
+//     if (event.target == modal_qr) {
+//         modal_qr.style.display = "none";
+//     }
+// }
 function generar_qr(id_card, id_promotion) {
     var random = Math.random() * (1 - 1000) + 1;
     var random2 = Math.random() * (1 - 1000) + 1;
@@ -273,6 +273,7 @@ function generar_qr(id_card, id_promotion) {
         },
     });
     modal_qr.style.display = "block";
+    //setTimeout(() => {  alert("World!"); }, 2000);
 }
 // const showCart = () => {
 //     fetch("showCarts")
