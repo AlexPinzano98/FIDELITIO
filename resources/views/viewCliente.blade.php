@@ -80,17 +80,14 @@
     </div>
     </div>
 </div>
-<<<<<<< HEAD
 <video id="preview" width="100%" height="100%" style="display: none;"></video>
     <script src="js/card.js"></script>
-=======
 
     <div class="container" id="listLocales">
         <div id="listLocal">
         </div>
     </div>
 
->>>>>>> fd35e370ed986b090aaa52857af8fc16e180e7c7
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
