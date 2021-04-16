@@ -31,7 +31,7 @@
 	<section>
 	<header id="#header">
         <p class="text-start">Pablo Soriano</p>
-        <button class="fas fa-camera">
+        <button class="fas fa-camera" id="camara">
         </button>
 		<a id="menu_on">
 			<span></span>
