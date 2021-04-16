@@ -72,7 +72,7 @@
             <button class="fas fa-list-ul" id="list">
             </button>
         </form> -->
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" id="swiperStyle">
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -81,7 +81,7 @@
 </div>
 
     <div class="container" id="listLocales">
-        <div id="list">
+        <div id="listLocal">
         </div>
     </div>
 

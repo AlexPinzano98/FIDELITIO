@@ -179,7 +179,7 @@ function showCard(recojoData) {
 
 
 function verLocales() {
-    var containLocal = document.getElementById("list");
+    var containLocal = document.getElementById("listLocal");
     var ajax = new objetoAjax();
 
     ajax.open("GET", "verLocales", true);
