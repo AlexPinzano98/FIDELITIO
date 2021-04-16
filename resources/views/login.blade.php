@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <p class="h1">Inicia Sesión</p>
+    <p class="h1">Fidelitio</p>
     <div class="login">
         <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
             {{csrf_field()}}
@@ -32,10 +32,10 @@
                 <input name="psswd" type="password" class="form-control" id="contrasenya"
                     placeholder="Contrasenya..."></input>
             </div>
-            <button type="submit" id="submit" class="btn btn-warning" style="margin-top:15%;">
+            <button type="submit" id="submit" class="btn btn-warning">
                 Inicia Sesión
             </button>
-            <hr>
+            
 
             <button type="button" class="btn btn-primary">
                 Continuar con Facebook
@@ -43,7 +43,6 @@
             <button type="button" class="btn btn-info">
                 Continuar con Google
             </button>
-
 
             <div id="message">
             </div>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{asset('css/cardStyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
+    <link rel="stylesheet" href="{{asset('css/listLocal.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>
     <script src="js/infoCardsAjax.js"></script>
@@ -62,23 +63,34 @@
 	</nav>
     </section>
     <!-- Swiper -->
+    <div id="listCartas">
     <div class="swiper-container" id="content">
         <form method="get" action="{{url('/viewCliente')}}">
             <button class="fas fa-home" id="home">
             </button>
         </form>
-        <form method="get" action="{{url('/viewListLocal')}}">
+        <!-- <form method="get" action="{{url('/viewListLocal')}}">
             <button class="fas fa-list-ul" id="list">
             </button>
-        </form>
-        <div class="swiper-wrapper">
+        </form> -->
+        <div class="swiper-wrapper" id="swiperStyle">
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
+    </div>
 </div>
+<<<<<<< HEAD
 <video id="preview" width="100%" height="100%" style="display: none;"></video>
     <script src="js/card.js"></script>
+=======
+
+    <div class="container" id="listLocales">
+        <div id="listLocal">
+        </div>
+    </div>
+
+>>>>>>> fd35e370ed986b090aaa52857af8fc16e180e7c7
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
