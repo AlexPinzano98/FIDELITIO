@@ -22,6 +22,15 @@
     max-width: 303px; /* Could be more or less, depending on screen size */
     border-radius: 7px;
 }
+.close{
+    font-size: 2.2em;
+    border-radius: 5px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    /* align-self: flex-end; */
+    float: right;
+}
 .btn {
     color: #0099cc;
     background: transparent;
