@@ -36,6 +36,11 @@
                 Inicia Sesión
             </button>
             
+            <div id="separacion">
+                <div id="hr"></div>
+                <div id="o">O</div>
+                <div id="hr"></div>
+            </div>
 
             <button type="button" class="btn btn-primary">
                 Continuar con Facebook
@@ -51,8 +56,8 @@
         </form>
     </div>
 
-    <div class="container" style="margin-top:5%;">
-        <a href="./registro.php">Crear cuenta</a>
+    <div class="container">
+        ¿No tienes cuenta?<a href="./registro.php"><br>Registrate</a>
     </div>
     </div>
     </div>
