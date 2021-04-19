@@ -14,18 +14,12 @@ class CamareroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
-    public function viewCamarero()
-    {
-        return view('viewCamarero'); 
-=======
     public function viewCamarero(){
         if (!(session()->has('id_user'))) {
             return redirect('/');
         } else {
             return view('viewCamarero');
         }
->>>>>>> efef36aa21b44f10373cd0398fddace525cddece
     }
     public function ver_promociones(Request $request)
     {
@@ -45,7 +39,6 @@ class CamareroController extends Controller
     }
 
     // Validación cuando un camarero lee un QR
-<<<<<<< HEAD
     public function validarQRcamarero(Request $request){
         $id_promo = $request->input('id_promo'); // 4
         $id_usuari = $request->input('id_camarero'); // 6
@@ -55,11 +48,6 @@ class CamareroController extends Controller
 
         //return response()->json($id_usuari, 200);
         
-=======
-    public function validarCamareroQR(){
-        echo "VALIDACIÓN DEL QR <br>";
-
->>>>>>> efef36aa21b44f10373cd0398fddace525cddece
         // Recibimos los datos del QR
 
         // Buscamos el id_card de la tbl_card

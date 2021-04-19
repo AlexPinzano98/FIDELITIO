@@ -245,7 +245,7 @@ function verCardLocal(id_local) {
     ajax.send(datos);
 }
 
-function closeModal() {
+function closeModal2() {
     modal_qr.style.display = "none";
 }
 // window.onclick = function(event) {
