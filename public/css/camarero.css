@@ -7,46 +7,78 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 303px; /* Could be more or less, depending on screen size */
+    border-radius: 7px;
 }
 .btn {
-  color: #0099CC;
-  background: transparent;
-  border: 2px solid #0099CC;
-  border-radius: 6px;
-  cursor: pointer;
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 8px 8px;
-      text-align: center;
-      display: inline-block;
-      font-size: 14px;
-      margin: 1px 2px;
-      -webkit-transition-duration: 0.4s; /* Safari */
-      transition-duration: 0.4s;
+    color: #0099cc;
+    background: transparent;
+    border: 2px solid #0099cc;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    margin: 1px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
 }
+
 .btn:hover {
-  background-color: #008CBA;
-  color: white;
+    background-color: #008cba;
+    color: white;
+}
+
+#promociones div {
+    width: 90%;
+    margin: 2% auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .sketchy {
-  padding: 1.5rem 2.5rem;
-  display: inline-block;
-  border: 3px solid #333333;
-  font-size: 1rem;
-  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
-  text-transform: uppercase;
-  letter-spacing: 0.3ch;
-  background: #ffffff;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 2% 3%;
+    box-shadow: 0px 2px 5px #ccc;
+    font-size: 1em;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    text-transform: uppercase;
+    letter-spacing: 0.3ch;
+    background: #ffffff;
+    /* position: relative; */
+    border-radius: 8px;
+}
+
+.close {
+    font-size: 1.8em;
+    align-self: flex-end;
+}
+
+/* responsive style */
+@media (min-width: 1024px) {
+    #promociones div {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
 }

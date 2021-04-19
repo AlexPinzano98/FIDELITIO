@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{asset('css/cardStyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
+    <link rel="stylesheet" href="{{asset('css/listLocal.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>
     <script src="js/infoCardsAjax.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
@@ -30,7 +32,7 @@
 	<section>
 	<header id="#header">
         <p class="text-start">Pablo Soriano</p>
-        <button class="fas fa-camera" id="camara">
+        <button class="fas fa-camera" onclick="openCamara()" id="camara">
         </button>
 		<a id="menu_on">
 			<span></span>
@@ -61,21 +63,30 @@
 	</nav>
     </section>
     <!-- Swiper -->
+    <div id="listCartas">
     <div class="swiper-container" id="content">
-        <form method="get" action="{{url('/viewCliente')}}">
-            <button class="fas fa-home" id="home">
+        <form method="get">
+            <button class="fas fa-home" id="home" onclick="controladores(0); return false">
             </button>
         </form>
-        <form method="get" action="{{url('/viewListLocal')}}">
-            <button class="fas fa-list-ul" id="list">
+        <form method="get">
+            <button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
             </button>
         </form>
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" id="swiperStyle">
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
+    </div>
 </div>
+<video id="preview" width="100%" height="100%" style="display: none;"></video>
+    <script src="js/card.js"></script>
+
+    <div class="container" id="listLocales">
+        <div id="listLocal">
+        </div>
+    </div>
 
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
@@ -91,5 +102,6 @@
 <div class="showQRCode"></div>
 </div>
 </div>
+
 </body>
 </html>

@@ -339,3 +339,11 @@ nav form {
         border-bottom-color: rgba(255, 255, 255, 0.4);
     }
 }
+
+.listCartas {
+    display: none;
+}
+
+.listLocales {
+    display: none;
+}

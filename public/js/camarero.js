@@ -3,6 +3,7 @@ window.onload = function() {
     modal_qr = document.getElementById("modal");
 }
 
+ 
 function objetoAjax() {
     var xmlhttp = false;
     try {
