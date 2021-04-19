@@ -6,6 +6,11 @@ window.onload = function() {
 listado = 0;
 cartas = 0;
 
+function controladores(num) {
+    listado = num;
+    showCard();
+}
+
 function objetoAjax() {
     var xmlhttp = false;
     try {
@@ -26,7 +31,6 @@ function objetoAjax() {
 function showCard(recojoData) {
     cardLocal = recojoData;
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
-    alert(listado)
     if (listado == 1 && cartas == 0) {
         document.getElementById("listCartas").style.display = 'none';
         document.getElementById("listLocales").style.display = 'block';
@@ -134,12 +138,12 @@ function showCard(recojoData) {
             for (var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++) {
                 tabla1 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
             }
-        tabla1 += '</div>';
-        if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
-            //alert('tomatelaaaa');
-            tabla1 += '<button onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')">CANJEAR</button>'
-        }
-        tabla1 += '</div></div></div>';
+            tabla1 += '</div>';
+            if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
+                //alert('tomatelaaaa');
+                tabla1 += '<button onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')">CANJEAR</button>'
+            }
+            tabla1 += '</div></div></div>';
             containCards.innerHTML = tabla1;
         }
         var mySwiper = new Swiper(".swiper-container", {
