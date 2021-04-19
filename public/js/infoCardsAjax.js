@@ -6,6 +6,11 @@ window.onload = function() {
 listado = 0;
 cartas = 0;
 
+function controladores(num) {
+    listado = num;
+    showCard();
+}
+
 function objetoAjax() {
     var xmlhttp = false;
     try {
@@ -25,8 +30,8 @@ function objetoAjax() {
 
 function showCard(recojoData) {
     cardLocal = recojoData;
-    var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     alert(listado)
+    var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     if (listado == 1 && cartas == 0) {
         document.getElementById("listCartas").style.display = 'none';
         document.getElementById("listLocales").style.display = 'block';

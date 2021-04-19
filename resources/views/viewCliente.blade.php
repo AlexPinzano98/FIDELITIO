@@ -65,14 +65,14 @@
     <!-- Swiper -->
     <div id="listCartas">
     <div class="swiper-container" id="content">
-        <form method="get" action="{{url('/viewCliente')}}">
-            <button class="fas fa-home" id="home">
+        <form method="get">
+            <button class="fas fa-home" id="home" onclick="controladores(0); return false">
             </button>
         </form>
-        <!-- <form method="get" action="{{url('/viewListLocal')}}">
-            <button class="fas fa-list-ul" id="list">
+        <form method="get">
+            <button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
             </button>
-        </form> -->
+        </form>
         <div class="swiper-wrapper" id="swiperStyle">
         </div>
         <!-- Add Pagination -->
@@ -80,17 +80,14 @@
     </div>
     </div>
 </div>
-<<<<<<< HEAD
 <video id="preview" width="100%" height="100%" style="display: none;"></video>
     <script src="js/card.js"></script>
-=======
 
     <div class="container" id="listLocales">
         <div id="listLocal">
         </div>
     </div>
 
->>>>>>> fd35e370ed986b090aaa52857af8fc16e180e7c7
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
