@@ -51,7 +51,7 @@
 
             <div id="message">
             </div>
-            <p style="color: red; margin: 15px 30px;"> {{Session::get('message')}} </p>
+            <p id="error"> {{Session::get('message')}} </p>
 
         </form>
     </div>
