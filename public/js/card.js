@@ -42,6 +42,10 @@ function closeCamara(){
     document.getElementById('modal2').style.display = "none";
     document.getElementById('preview').style.display = "none";
 } 
+function closeModal() {
+    document.getElementById('modal2').style.display = "none";
+    closeCamara();
+}
 function sellar(content){
     const array = content.split(',');
     //alert(array[1]);
@@ -80,6 +84,7 @@ function sellar(content){
         } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute < minute_now) {
             alert('QR valido');
             closeCamara();
+            closeModal();
             // Ajax
             read();
         }else{
