@@ -1,39 +1,77 @@
-header {
-    background: #2EB2FF;
-    position: fixed;
-    width: 100%;
-    padding: 15px;
-    z-index: 2;
-}
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
 .modal-content {
     background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
 }
+
+.fas {
+    background-color: transparent;
+    border: none;
+    font-size: 230%;
+    width: 10%;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+header {
+    background: #2EB2FF;
+    position: fixed;
+    width: 100%;
+    padding: 4%;
+    z-index: 2;
+}
+
+.text-start {
+    padding: 2.5%;
+    width: 45%;
+    float: left;
+    color: white;
+    font-size: 130%;
+}
+
+#camara {
+    background-color: transparent;
+    border: none;
+    font-size: 230%;
+    width: 10%;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
 #menu_on {
-    /* display: inline-block; */
     width: 10%;
     height: 20px;
     position: relative;
     z-index: 2;
     float: right;
     margin-top: 2%;
-    /* background-color: green; */
 }
 
 #menu_on:hover {
@@ -49,41 +87,6 @@ header {
     background: #fff;
     transition: all 0.75s ease;
     transform-origin: 0px 100%;
-    /* margin-left: 50%; */
-}
-
-#home {
-    margin-left: 35%;
-    margin-bottom: 5%;
-    margin-right: 10%;
-    color: #2EB2FF;
-    /* position: fixed;
-    z-index: 2; */
-}
-
-#list {
-    position: fixed;
-    color: #2EB2FF;
-}
-
-.fas {
-    background-color: transparent;
-    border: none;
-    font-size: 250%;
-    width: 10%;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    /* background-color: red; */
-}
-
-.text-start {
-    padding: 2.5%;
-    width: 45%;
-    float: left;
-    color: white;
-    font-size: 130%;
-    /* background-color: green; */
 }
 
 #menu_on span:nth-child(2) {
@@ -106,8 +109,37 @@ header {
     transform: rotate(-45deg) translate(3px, 1px);
 }
 
+#content {
+    padding-top: 22%;
+    transition: all 0.75s ease;
+    z-index: 0;
+}
+
+.visible_menu #content {
+    transform: translateX(260px);
+}
+
+#home {
+    margin-left: 35%;
+    margin-bottom: 5%;
+    margin-right: 10%;
+    color: #2EB2FF;
+    font-size: 250%;
+    width: 10%;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+}
+
+#list {
+    color: #2EB2FF;
+    font-size: 250%;
+    width: 10%;
+    text-align: center;
+    cursor: pointer;
+}
+
 nav {
-    /* margin-left: 100%; */
     position: fixed;
     top: 0;
     bottom: 0;
@@ -127,40 +159,20 @@ nav {
     opacity: 1;
 }
 
+.profile {
+    padding: 5%;
+}
+
 nav a {
-    /* background-color: red; */
     font-size: 160%;
     display: block;
     text-decoration: none;
     padding-left: 24%;
     padding-top: 3%;
     padding-bottom: 6%;
-    /* padding: 5px; */
     color: white;
     border-bottom: 2px solid white;
     transition: all ease 0.25s;
-}
-
-.profile {
-    padding: 5%;
-}
-
-nav form {
-    text-align: center;
-    margin-top: 40%;
-    border-bottom: 2px solid white;
-    transition: all ease 0.25s;
-}
-
-nav button {
-    color: white;
-    padding: 3%;
-    padding-top: 2.5%;
-    background-color: transparent;
-    text-align: center;
-    font-size: 160%;
-    border: none;
-    margin-bottom: 4%;
 }
 
 nav a:hover {
@@ -168,75 +180,155 @@ nav a:hover {
     border-bottom-color: rgba(255, 255, 255, 0.4);
 }
 
-#content {
-    padding-top: 22%;
-    transition: all 0.75s ease;
-    z-index: 0;
+nav form {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 50%;
+    border-bottom: 2px solid white;
+    transition: all ease 0.25s;
 }
 
-.visible_menu #content {
-    transform: translateX(260px);
+#cerrar {
+    background-color: transparent;
+    color: white;
+    padding: 3%;
+    margin-left: 15%;
+    width: 20%;
+}
+
+#sesion {
+    cursor: pointer;
+    position: absolute;
+    margin-top: 4.5%;
+    width: 50%;
+    background-color: transparent;
+    color: white;
+    text-align: left;
+    font-size: 160%;
+    border: none;
 }
 
 @media (min-width: 440px) {
-    header {
-        padding: 10px;
-    }
-    #menu_on {
-        width: 5%;
-        height: 35px;
-        margin-top: 1%;
-        margin-right: 6%;
-    }
-    #menu_on span {
-        height: 8px;
-    }
-    #home {
-        margin-bottom: 1%;
-        margin-left: 37.5%;
-        margin-right: 5%;
-    }
     .fas {
-        font-size: 425%;
+        margin-top: 1%;
+        font-size: 275%;
+    }
+    header {
+        padding: 2%;
     }
     .text-start {
-        padding: 1%;
         font-size: 200%;
+        padding-top: 2%;
+    }
+    #camara {
+        font-size: 375%;
+    }
+    #menu_on {
+        width: 7%;
+        height: 25px;
+        margin-top: 2.75%;
+    }
+    #menu_on span {
+        width: 100%;
+        height: 6px;
     }
     #menu_on span:nth-child(2) {
-        top: calc(50% - 4px);
+        top: calc(50% - 10.5%);
+    }
+    #content {
+        padding-top: 15%;
+    }
+    .visible_menu #content {
+        transform: translateX(0px);
+    }
+    #home {
+        margin-bottom: 3%;
+        font-size: 375%;
+    }
+    #list {
+        font-size: 375%;
     }
     nav {
-        padding: 6% 5%;
-        padding-bottom: 0%;
-        width: 50%;
-        margin-left: 50%;
+        /* position: static; */
+        padding: 12% 5%;
+        width: 75%;
+        margin-left: 25%;
     }
     nav a {
-        font-size: 140%;
-        display: block;
-        text-decoration: none;
         padding-left: 20%;
-        padding-top: 4.5%;
-        padding-bottom: 6%;
-    }
-    .profile {
-        padding: 5%;
     }
     nav form {
         margin-top: 20%;
-        border-bottom: 2px solid white;
-        transition: all ease 0.25s;
-        cursor: pointer;
     }
-    nav button {
-        color: white;
-        padding: 3%;
-        padding-top: 2.5%;
-        background-color: transparent;
-        text-align: center;
-        font-size: 160%;
-        border: none;
+    #cerrar {
+        margin-left: 20%;
+        width: 20%;
+    }
+    #sesion {
+        margin-top: 5%;
+        width: 40%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .fas {
+        margin-top: 1%;
+        font-size: 275%;
+    }
+    header {
+        padding: 0%;
+    }
+    .text-start {
+        font-size: 200%;
+        padding-top: 2%;
+    }
+    #camara {
+        margin-top: 1.5%;
+        font-size: 375%;
+    }
+    #menu_on {
+        width: 5%;
+        height: 25px;
+        margin-top: 2.5%;
+        margin-right: 2.75%;
+    }
+    #menu_on span {
+        width: 100%;
+        height: 6px;
+    }
+    #menu_on span:nth-child(2) {
+        top: calc(50% - 3px);
+    }
+    #content {
+        padding-top: 6.3%;
+    }
+    .visible_menu #content {
+        transform: translateX(0px);
+    }
+    #home {
+        margin-bottom: 0.9%;
+        font-size: 375%;
+    }
+    #list {
+        font-size: 375%;
+    }
+    nav {
+        /* position: static; */
+        padding: 7% 5%;
+        width: 50%;
+        margin-left: 50%;
+    }
+    nav form {
+        margin-top: 30%;
+    }
+    #cerrar {
+        margin-left: 15%;
+        width: 20%;
+    }
+    #sesion {
+        font-size: 200%;
+        margin-top: 5%;
+        width: 40%;
     }
     nav a:hover {
         color: rgba(255, 255, 255, 1);
@@ -246,10 +338,12 @@ nav a:hover {
         color: rgba(255, 255, 255, 1);
         border-bottom-color: rgba(255, 255, 255, 0.4);
     }
-    #content {
-        margin-bottom: 0%;
-        padding-top: 6.6%;
-        transition: all 0.75s ease;
-        z-index: 0;
-    }
+}
+
+.listCartas {
+    display: none;
+}
+
+.listLocales {
+    display: none;
 }
