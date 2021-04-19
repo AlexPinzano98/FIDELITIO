@@ -18,11 +18,17 @@ function openCamara(){
             console.error("No existe cámara en el dispositivo!");
         }
     });
+    document.getElementById('modal2').style.display = "block";
     document.getElementById('preview').style.display = "block";
 }
 function closeCamara(){
     scanner.stop();
+    document.getElementById('modal2').style.display = "none";
     document.getElementById('preview').style.display = "none";
+}
+function closeModal() {
+    document.getElementById('modal2').style.display = "none";
+    closeCamara();
 }
 function sellar(content){
     const array = content.split(',');
