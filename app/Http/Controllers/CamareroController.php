@@ -14,9 +14,12 @@ class CamareroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewCamarero()
-    {
-        return view('viewCamarero');
+    public function viewCamarero(){
+        if (!(session()->has('id_user'))) {
+            return redirect('/');
+        } else {
+            return view('viewCamarero');
+        }
     }
     public function ver_promociones(Request $request)
     {
@@ -25,7 +28,7 @@ class CamareroController extends Controller
             $conseguir_id=DB::select('select * from tbl_user where id_user=?',[$id_user]);
             foreach ($conseguir_id as $id) {
                 $id_local=$id->id_local_fk;
-    
+
             }
             $promociones=DB::select('select * from tbl_promotion where id_local_fk=?',[$id_local]);
             $datos=array($promociones, $conseguir_id);
@@ -38,11 +41,11 @@ class CamareroController extends Controller
     // Validación cuando un camarero lee un QR
     public function validarCamareroQR(){
         echo "VALIDACIÓN DEL QR <br>";
-        
+
         // Recibimos los datos del QR
 
-        // Buscamos el id_card de la tbl_card 
+        // Buscamos el id_card de la tbl_card
         // Hacemos un update para cerrar la tarjeta
     }
-    
+
 }

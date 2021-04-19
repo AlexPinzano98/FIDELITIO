@@ -70,13 +70,6 @@ class UserController extends Controller
         }
     }
 
-    public function viewCamarero(){
-        if (!(session()->has('id_user'))) {
-            return redirect('/');
-        } else {
-            return view('viewCamarero');
-        }
-    }
 
     public function viewCliente(){
         if (!(session()->has('id_user'))) {
