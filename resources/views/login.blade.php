@@ -33,7 +33,7 @@
                     placeholder="Contrasenya..."></input>
             </div>
             <button type="submit" id="submit" class="btn btn-warning">
-                Inicia Sesión
+                Inicia Sesión Pepe
             </button>
             
             <div id="separacion">
