@@ -20,9 +20,6 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function viewCamarero(){
-        return view('viewCamarero');
-    }
 
     public function validarLogin(Request $request) {;
         // Recibimos los datos del formulario
@@ -73,6 +70,14 @@ class UserController extends Controller
         }
     }
 
+    public function viewCamarero(){
+        if (!(session()->has('id_user'))) {
+            return redirect('/');
+        } else {
+            return view('viewCamarero');
+        }
+    }
+
     public function viewCliente(){
         if (!(session()->has('id_user'))) {
             return redirect('/');
@@ -80,4 +85,5 @@ class UserController extends Controller
             return view('viewCliente');
         }
     }
+
 }
