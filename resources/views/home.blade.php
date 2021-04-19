@@ -4,7 +4,7 @@
     <title>Instascan</title>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
-
+ 
   </head>
   <body>
     <button id="camara" onclick="openCamara()">CAMARA</button>
