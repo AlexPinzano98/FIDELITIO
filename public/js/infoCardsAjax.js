@@ -115,6 +115,7 @@ function showCard(recojoData) {
         };
         ajax.send();
     } else if (cartas == 1) {
+        cartas = 0;
         tabla1 = '';
         document.getElementById("listLocales").style.display = 'none';
         document.getElementById("listCartas").style.display = 'block';
@@ -247,7 +248,7 @@ function verCardLocal(id_local) {
     ajax.send(datos);
 }
 
-function closeModal() {
+function closeModal2() {
     modal_qr.style.display = "none";
 }
 // window.onclick = function(event) {
