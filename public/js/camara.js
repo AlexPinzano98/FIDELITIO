@@ -5,7 +5,7 @@ let scanner = new Instascan.Scanner(
 );
 scanner.addListener('scan', function(content) {
     alert('Contenido: ' + content);
-    // sellar(content);
+    // sellar(content); 
 });
 
 function openCamara(){

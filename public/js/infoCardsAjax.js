@@ -74,7 +74,9 @@ function showCard(recojoData) {
                     tabla0 += '</div>';
                     if (response[i].stamp_now == response[i].stamp_max) {
                         //alert('tomatelaaaa');
-                        tabla0 += '<button onclick="generar_qr(' + response[i].id_card + ',' + response[i].id_promotion + ')">CANJEAR</button>'
+                        tabla0 += '<div class="Cbutton">';
+                        tabla0 += '<button class="button" onclick="generar_qr(' + response[i].id_card + ',' + response[i].id_promotion + ')"><span> CANJEAR </span></button>'
+                        tabla0 += '</div>';
                     }
                     tabla0 += '</div></div></div>';
                     containCards.innerHTML = tabla0;
@@ -141,7 +143,7 @@ function showCard(recojoData) {
             tabla1 += '</div>';
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
                 //alert('tomatelaaaa');
-                tabla1 += '<button onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')">CANJEAR</button>'
+                tabla1 += '<button class="button" onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')"><span> CANJEAR </span></button>'
             }
             tabla1 += '</div></div></div>';
             containCards.innerHTML = tabla1;
@@ -245,7 +247,7 @@ function verCardLocal(id_local) {
     ajax.send(datos);
 }
 
-function closeModal() {
+function closeModal2() {
     modal_qr.style.display = "none";
 }
 // window.onclick = function(event) {

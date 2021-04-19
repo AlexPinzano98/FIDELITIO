@@ -85,7 +85,7 @@
 
 
     <script src="js/camarero.js"></script>
-    <script src="js/camara.js"></script>
+    <script src="js/camara_c.js"></script>
 </body>
 
 </html>

@@ -26,7 +26,16 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    /* Could be more or less, depending on screen size */
+    /* display: flex; */
+}
+.close{
+    font-size: 2.2em;
+    border-radius: 5px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    /* align-self: flex-end; */
+    float: right;
 }
 
 .fas {

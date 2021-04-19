@@ -80,9 +80,14 @@
     </div>
     </div>
 </div>
+<div id="modal2" class="modal">
+<div class="modal-content">
+<button class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>
 <video id="preview" width="100%" height="100%" style="display: none;"></video>
+</div>
+</div>
     <script src="js/card.js"></script>
-
+    
     <div class="container" id="listLocales">
         <div id="listLocal">
         </div>
@@ -97,7 +102,7 @@
 <input class="form-control col-xs-1" id="size" type="hidden" value="5">
 <div id="modal" class="modal">
 <div class="modal-content">
-<button type="button" class="close btn" onclick="closeModal()" data-dismiss="modal">&times;</button>
+<button type="button" class="close btn" onclick="closeModal2()" data-dismiss="modal">&times;</button>
 <p>Enseña este QR al camarero para canjear tu premio!</p>
 <div class="showQRCode"></div>
 </div>
