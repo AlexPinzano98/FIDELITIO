@@ -33,7 +33,7 @@
                     placeholder="Contrasenya..."></input>
             </div>
             <button type="submit" id="submit" class="btn btn-warning">
-                Inicia Sesión
+                Inicia Sesión Pepe
             </button>
             
             <div id="separacion">
@@ -51,7 +51,7 @@
 
             <div id="message">
             </div>
-            <p style="color: red; margin: 15px 30px;"> {{Session::get('message')}} </p>
+            <p id="error"> {{Session::get('message')}} </p>
 
         </form>
     </div>
