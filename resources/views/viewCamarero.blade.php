@@ -63,8 +63,10 @@
 
     <div id="content">
         <!-- SCANER QR CAMARERO -->
-        <button id="camara" onclick="openCamara()">CAMARA</button>
-        <button id="camara" onclick="closeCamara()">CLOSE</button>
+        <div class="btnCamarero">
+            <button id="camara" onclick="openCamara()">CAMARA</button>
+            <button id="camara" onclick="closeCamara()">CLOSE</button>
+        </div>
 
         <video id="preview" width="100%" height="100%" style="display: none;"></video>
 
