@@ -36,6 +36,8 @@ Route::get('verLocales', [CardController::class, 'verLocales']);
 Route::post('verCardLocal', [CardController::class, 'verCardLocal']);
 Route::get('/validarQR', [CardController::class, 'validarQR']);
 
+Route::post('/validarQRcamarero', [CamareroController::class, 'validarQRcamarero']); 
+
 //para subir imagenes
 Route::get('image',  [CardController::class, 'image']);
 Route::post('imgUp', [CardController::class, 'imgUp']);

@@ -80,9 +80,14 @@
     </div>
     </div>
 </div>
+<div id="modal2" class="modal">
+<div class="modal-content">
+<button class="close2" onclick="closeModal()" data-dismiss="modal">&times;</button>
 <video id="preview" width="100%" height="100%" style="display: none;"></video>
+</div>
+</div>
     <script src="js/card.js"></script>
-
+    
     <div class="container" id="listLocales">
         <div id="listLocal">
         </div>
