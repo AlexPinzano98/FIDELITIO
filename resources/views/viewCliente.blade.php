@@ -65,14 +65,14 @@
     <!-- Swiper -->
     <div id="listCartas">
     <div class="swiper-container" id="content">
-        <form method="get" action="{{url('/viewCliente')}}">
-            <button class="fas fa-home" id="home">
+        <form method="get">
+            <button class="fas fa-home" id="home" onclick="controladores(0); return false">
             </button>
         </form>
-        <!-- <form method="get" action="{{url('/viewListLocal')}}">
-            <button class="fas fa-list-ul" id="list">
+        <form method="get">
+            <button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
             </button>
-        </form> -->
+        </form>
         <div class="swiper-wrapper" id="swiperStyle">
         </div>
         <!-- Add Pagination -->
