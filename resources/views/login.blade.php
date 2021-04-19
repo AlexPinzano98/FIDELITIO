@@ -33,7 +33,7 @@
                     placeholder="Contrasenya..."></input>
             </div>
             <button type="submit" id="submit" class="btn btn-warning">
-                Inicia Sesión Pepe
+                Inicia Sesión
             </button>
             
             <div id="separacion">
@@ -58,8 +58,6 @@
 
     <div class="container">
         ¿No tienes cuenta?<a href="./registro.php"><br>Registrate</a>
-    </div>
-    </div>
     </div>
 </body>
 
