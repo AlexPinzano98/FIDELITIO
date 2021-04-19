@@ -16,7 +16,7 @@ class CamareroController extends Controller
      */
     public function viewCamarero()
     {
-        return view('viewCamarero');
+        return view('viewCamarero'); 
     }
     public function ver_promociones(Request $request)
     {
@@ -36,13 +36,22 @@ class CamareroController extends Controller
     }
 
     // Validación cuando un camarero lee un QR
-    public function validarCamareroQR(){
-        echo "VALIDACIÓN DEL QR <br>";
+    public function validarQRcamarero(Request $request){
+        $id_promo = $request->input('id_promo'); // 4
+        $id_usuari = $request->input('id_camarero'); // 6
+        $id_user_logged = $request->session()->get('id_user');
+
+        // echo "VALIDACIÓN DEL QR <br>";
+
+        //return response()->json($id_usuari, 200);
         
         // Recibimos los datos del QR
 
         // Buscamos el id_card de la tbl_card 
         // Hacemos un update para cerrar la tarjeta
+
+        DB::select('UPDATE `tbl_card` SET `status` = ? WHERE `tbl_card`.`id_promotion_fk` = ? AND `tbl_card`.`id_user_fk` = ? ',['close',$id_promo,$id_usuari]);
+        return response()->json('Promoción canjeada con éxito', 200);
     }
     
 }

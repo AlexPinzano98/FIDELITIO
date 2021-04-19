@@ -4,7 +4,7 @@ window.onload = function() {
 }
 
  
-function objetoAjax() {
+function objetoAjax() { 
     var xmlhttp = false;
     try {
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");

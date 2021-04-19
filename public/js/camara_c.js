@@ -1,19 +1,3 @@
-function objetoAjax() {
-    var xmlhttp = false;
-    try {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {
-        try {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (E) {
-            xmlhttp = false;
-        }
-    }
-    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-        xmlhttp = new XMLHttpRequest();
-    }
-    return xmlhttp;
-}
 let scanner = new Instascan.Scanner(
     {
         video: document.getElementById('preview')
@@ -21,9 +5,9 @@ let scanner = new Instascan.Scanner(
 );
 scanner.addListener('scan', function(content) {
     alert('Contenido: ' + content);
-    sellar(content);
+    sellar(content); 
+    // user: pablo, id promo (pos 2) + id carta (pos 3)
 });
-
 
 function openCamara(){
     Instascan.Camera.getCameras().then(cameras =>
@@ -39,10 +23,12 @@ function openCamara(){
 function closeCamara(){
     scanner.stop();
     document.getElementById('preview').style.display = "none";
-} 
+}
 function sellar(content){
     const array = content.split(',');
-    //alert(array[1]);
+    console.log(array)
+    //console.log(array[2] + ' - ' + array[3]);
+
     var id_promo=array[2];
     var id_camarero=array[3];
     //alert(array[2]);
@@ -91,7 +77,7 @@ function sellar(content){
         var ajax = new objetoAjax();
         var token = document.getElementById('token').getAttribute('content');
         // Busca la ruta read y que sea asyncrono
-        ajax.open('POST', 'validarQR', true);
+        ajax.open('POST', 'validarQRcamarero', true);
         var datasend = new FormData();
         datasend.append('_token', token);
         datasend.append('id_promo', id_promo);
@@ -107,18 +93,4 @@ function sellar(content){
         }
         ajax.send(datasend);
     }
-
-    // Hacer llamada AJAX al método de validación QR
-
-    // if (fecha_actual.getTime() < fecha_qr.getTime()) {
-    //     alert('QR CADUCADO');
-    //  }
-    //alert(id_local);
-    // var token = document.getElementById("token").getAttribute("content");
-    // var ajax = new objetoAjax();
-    // ajax.open('POST', 'ver_promociones', true);
-    // var datasend = new FormData();
-    // datasend.append('id_local', id_local);
-    // datasend.append('_token', token);
-        //alert('Contenido: ' + content);
 }
