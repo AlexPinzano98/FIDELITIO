@@ -68,7 +68,12 @@
             <button id="camara" onclick="closeCamara()">CLOSE</button>
         </div>
 
+        <div id="modal2" class="modal">
+        <div class="modal-content">
+        <button class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>
         <video id="preview" width="100%" height="100%" style="display: none;"></video>
+        </div>
+        </div>
 
         <!-- PROMOCIONES DEL CAMARERO -->
         <div id="promociones"></div>
@@ -79,7 +84,7 @@
     <input class="form-control col-xs-1" id="size" type="hidden" value="5">
     <div id="modal" class="modal">
         <div class="modal-content">
-            <button type="button" class="close btn" onclick="closeModal()" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" onclick="closeModal2()" data-dismiss="modal">&times;</button>
             <div class="showQRCode"></div>
         </div>
     </div>

@@ -102,7 +102,7 @@
 <input class="form-control col-xs-1" id="size" type="hidden" value="5">
 <div id="modal" class="modal">
 <div class="modal-content">
-<button type="button" class="close btn" onclick="closeModal2()" data-dismiss="modal">&times;</button>
+<button type="button" class="close" onclick="closeModal2()" data-dismiss="modal">&times;</button>
 <p>Enseña este QR al camarero para canjear tu premio!</p>
 <div class="showQRCode"></div>
 </div>

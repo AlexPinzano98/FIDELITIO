@@ -62,7 +62,7 @@ function ver_promociones() {
     ajax.send(datasend);
 }
 
-function closeModal() {
+function closeModal2() {
     modal_qr.style.display = "none";
 }
 window.onclick = function(event) {
