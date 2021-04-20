@@ -45,6 +45,7 @@ function closeCamara(){
 function closeModal() {
     document.getElementById('modal2').style.display = "none";
     closeCamara();
+    read();
 }
 function sellar(content){
     const array = content.split(',');
