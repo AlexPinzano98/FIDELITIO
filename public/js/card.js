@@ -44,7 +44,7 @@ function closeCamara() {
 function closeModal() {
     document.getElementById('modal2').style.display = "none";
     closeCamara();
-    read();
+    showCard();
 }
 
 function sellar(content) {
