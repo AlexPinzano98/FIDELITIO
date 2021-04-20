@@ -64,6 +64,7 @@ function ver_promociones() {
 
 function closeModal2() {
     modal_qr.style.display = "none";
+    closeModal();
 }
 window.onclick = function(event) {
     if (event.target == modal_qr) {

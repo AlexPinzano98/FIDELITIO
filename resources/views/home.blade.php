@@ -11,7 +11,7 @@
     <button id="camara" onclick="closeCamara()">CLOSE</button>
 
     <video id="preview" width="100%" height="100%" style="display: none;"></video>
-    <script src="js/card.js"></script>
+    <script src="js/cam.js"></script>
 
  </body>
 </html>

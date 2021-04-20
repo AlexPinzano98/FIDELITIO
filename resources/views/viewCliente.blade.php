@@ -34,7 +34,7 @@
         <p class="text-start">Pablo Soriano</p>
         <button class="fas fa-camera" onclick="openCamara()" id="camara">
         </button>
-		<a id="menu_on">
+		<a id="menu_on" onclick="closeModal2()">
 			<span></span>
 			<span></span>
 			<span></span>
@@ -103,7 +103,7 @@
 <div id="modal" class="modal">
 <div class="modal-content">
 <button type="button" class="close" onclick="closeModal2()" data-dismiss="modal">&times;</button>
-<p>Enseña este QR al camarero para canjear tu premio!</p>
+<!-- <p>Enseña este QR al camarero para canjear tu premio!</p> -->
 <div class="showQRCode"></div>
 </div>
 </div>
