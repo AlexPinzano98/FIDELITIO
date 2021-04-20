@@ -34,7 +34,7 @@
         <p class="text-start">Pablo Soriano</p>
         <button class="fas fa-camera" onclick="openCamara()" id="camara">
         </button>
-		<a id="menu_on">
+		<a id="menu_on" onclick="closeModal2()">
 			<span></span>
 			<span></span>
 			<span></span>

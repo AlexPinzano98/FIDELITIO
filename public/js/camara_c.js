@@ -4,7 +4,7 @@ let scanner = new Instascan.Scanner(
     }
 );
 scanner.addListener('scan', function(content) {
-    alert('Contenido: ' + content);
+    //alert('Contenido: ' + content);
     sellar(content); 
     // user: pablo, id promo (pos 2) + id carta (pos 3)
 });
@@ -49,33 +49,40 @@ function sellar(content){
     var month_now=now.getMonth()+1;
     var day_now=now.getDate();
     var hour_now=now.getHours();
-    var minute_now=now.getMinutes()+2;
+    var minute_now=now.getMinutes()-2;
     // console.log(minute)
     // console.log(minute_now)
-    // var fecha_qr=new Date(year,month,day,hour,minute)
-    // var fecha_actual=new Date(year_now,month_now,day_now,hour_now,minute_now)
-    // console.log(fecha_actual.getTime())
-    // console.log(fecha_qr.getTime())
-    if(year!=""){
-        if (year < year_now) {
-        alert('QR CADUCADO');
-        } else if (year <= year_now && month < month_now) {
-            alert('QR CADUCADO');
-        } else if (year <= year_now && month <= month_now && day < day_now) {
-            alert('QR CADUCADO');
-        } else if (year <= year_now && month <= month_now && day <= day_now && hour < hour_now) {
-            alert('QR CADUCADO');
-        } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute > minute_now) {
-            alert('QR CADUCADO');
-        } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute < minute_now) {
-            alert('QR valido');
-            closeCamara();
-            // Ajax
-            read();
-        }else{
-            alert('Este QR no es valido')
-            // Msg error
-        }
+    var fecha_qr=new Date(year,month,day,hour,minute)
+    var fecha_actual=new Date(year_now,month_now,day_now,hour_now,minute_now)
+    console.log(fecha_actual)
+    console.log(fecha_qr)
+    if(fecha_actual.getTime()<fecha_qr.getTime()){
+        alert('qr valido')
+        closeCamara();
+        read();
+    }else{
+        alert('qr no valido')
+    }
+    // if(year!=""){
+    //     if (year < year_now) {
+    //     alert('QR CADUCADO');
+    //     } else if (year <= year_now && month < month_now) {
+    //         alert('QR CADUCADO');
+    //     } else if (year <= year_now && month <= month_now && day < day_now) {
+    //         alert('QR CADUCADO');
+    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour < hour_now) {
+    //         alert('QR CADUCADO');
+    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute > minute_now) {
+    //         alert('QR CADUCADO');
+    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute <= minute_now) {
+    //         alert('QR valido');
+    //         closeCamara();
+    //         // Ajax
+    //         read();
+    //     }else{
+    //         alert('Este QR no es valido')
+    //         // Msg error
+    //     }
     }
 
     function read() {
@@ -93,10 +100,10 @@ function sellar(content){
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
-                console.log(respuesta)
+                //console.log(respuesta)
                // section.innerHTML = tabla;
             }
         }
         ajax.send(datasend);
     }
-}
+//}

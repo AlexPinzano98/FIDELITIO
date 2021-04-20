@@ -79,9 +79,9 @@ function sellar(content){
             alert('QR CADUCADO');
         } else if (year <= year_now && month <= month_now && day <= day_now && hour < hour_now) {
             alert('QR CADUCADO');
-        } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute > minute_now) {
+        } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute <= minute_now) {
             alert('QR CADUCADO');
-        } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute < minute_now) {
+        } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute > minute_now) {
             alert('QR valido');
             closeCamara();
             closeModal();
