@@ -63,8 +63,10 @@
 
     <div id="content">
         <!-- SCANER QR CAMARERO -->
-        <button id="camara" onclick="openCamara()">CAMARA</button>
-        <button id="camara" onclick="closeCamara()">CLOSE</button>
+        <div class="btnCamarero">
+            <button id="camara" onclick="openCamara()">CAMARA</button>
+            <button id="camara" onclick="closeCamara()">CLOSE</button>
+        </div>
 
         <div id="modal2" class="modal">
         <div class="modal-content">

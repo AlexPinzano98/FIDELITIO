@@ -59,8 +59,6 @@
     <div class="container">
         ¿No tienes cuenta?<a href="./registro.php"><br>Registrate</a>
     </div>
-    </div>
-    </div>
 </body>
 
 </html>

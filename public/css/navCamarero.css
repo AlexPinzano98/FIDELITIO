@@ -1,7 +1,3 @@
-body {
-    font-family: "Mulish", sans-serif;
-    margin: 0%;
-}
 .modal {
     display: none;
     /* Hidden by default */
@@ -33,8 +29,12 @@ body {
     /* Could be more or less, depending on screen size */
 }
 
+body {
+    font-family: "Mulish", sans-serif;
+    margin: 0%;
+}
+
 .fas {
-    background-color: red;
     border: none;
     font-size: 230%;
     width: 10%;
@@ -53,20 +53,22 @@ header {
 
 .text-start {
     padding: 2.5%;
-    width: 45%;
+    width: 35%;
     float: left;
     color: white;
     font-size: 100%;
 }
 
 #cam {
-    background-color: red;
+    background-color: transparent;
     border: none;
     font-size: 200%;
-    width: 20%;
+    width: 15%;
     text-align: center;
     color: white;
     cursor: pointer;
+    margin-left: 2.5%;
+    margin-top: 4%;
 }
 
 #menu_on {
@@ -75,7 +77,7 @@ header {
     position: relative;
     z-index: 2;
     float: right;
-    margin-top: 2%;
+    margin: 7% 8% 0 0;
 }
 
 #menu_on:hover {
@@ -120,6 +122,21 @@ header {
     z-index: 0;
 }
 
+.btnCamarero {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+#camara {
+    width: 49%;
+    border: none;
+    background-color: #68c5db;
+    border-radius: 5px;
+    font-size: 0.8em;
+    padding: 2%;
+}
+
 .visible_menu #content {
     transform: translateX(260px);
 }
@@ -145,13 +162,11 @@ header {
 }
 
 nav {
-    position: fixed;
-    top: 0;
-    bottom: 0;
+    /* position: fixed; */
     left: 100%;
     width: 100%;
     z-index: 1;
-    padding: 25% 8%;
+    padding: 15% 8%;
     padding-bottom: 5%;
     background: #68c5db;
     opacity: 1;
@@ -215,63 +230,193 @@ nav form {
 
 @media (min-width: 440px) {
     .fas {
-        margin-top: 1%;
-        font-size: 275%;
+        border: none;
+        font-size: 230%;
+        width: 10%;
+        text-align: center;
+        color: white;
+        cursor: pointer;
     }
+
     header {
-        padding: 2%;
+        padding: 0%;
     }
+
     .text-start {
-        font-size: 200%;
-        padding-top: 2%;
+
+        width: 38%;
+        font-size: 140%;
     }
-    #camara {
-        font-size: 375%;
+
+    #cam {
+
+        border: none;
+        font-size: 250%;
+        width: 15%;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        margin-left: 0%;
+        margin-top: 4%;
     }
+
     #menu_on {
-        width: 7%;
-        height: 25px;
-        margin-top: 2.75%;
+        width: 6%;
+        height: 20px;
+        position: relative;
+        z-index: 2;
+        float: right;
+        margin: 6% 8% 0 0;
     }
+
+    #menu_on:hover {
+        cursor: pointer;
+    }
+
     #menu_on span {
         width: 100%;
-        height: 6px;
+        height: 4px;
+        border-radius: 4px;
+        display: block;
+        position: absolute;
+        background: #fff;
+        transition: all 0.75s ease;
+        transform-origin: 0px 100%;
     }
+
     #menu_on span:nth-child(2) {
-        top: calc(50% - 10.5%);
+        top: calc(50% - 2px);
     }
+
+    #menu_on span:nth-child(3) {
+        bottom: 0;
+    }
+
+    .visible_menu span:nth-child(1) {
+        transform: rotate(45deg) translate(-3px, -1px);
+    }
+
+    .visible_menu span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .visible_menu span:nth-child(3) {
+        transform: rotate(-45deg) translate(3px, 1px);
+    }
+
     #content {
-        padding-top: 15%;
+        background-color: lightcoral;
+        padding-top: 18%;
+        transition: all 0.75s ease;
+        z-index: 0;
     }
+
+    .btnCamarero {
+        width: 70%;
+        margin: auto;
+        text-align: center;
+    }
+
+    #camara {
+        width: 49%;
+        border: none;
+        background-color: #68c5db;
+        border-radius: 5px;
+        font-size: 0.8em;
+        padding: 2%;
+    }
+
     .visible_menu #content {
-        transform: translateX(0px);
+        transform: translateX(260px);
     }
+
     #home {
-        margin-bottom: 3%;
-        font-size: 375%;
+        margin-left: 35%;
+        margin-bottom: 5%;
+        margin-right: 10%;
+        color: #2eb2ff;
+        font-size: 250%;
+        width: 10%;
+        text-align: center;
+        cursor: pointer;
+        float: left;
     }
+
     #list {
-        font-size: 375%;
+        color: #2eb2ff;
+        font-size: 250%;
+        width: 10%;
+        text-align: center;
+        cursor: pointer;
     }
+
     nav {
-        /* position: static; */
-        padding: 12% 5%;
-        width: 75%;
-        margin-left: 25%;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        width: 100%;
+        z-index: 1;
+        padding: 25% 8%;
+        padding-bottom: 5%;
+        background: #68c5db;
+        opacity: 1;
+        transition: all 0.75s ease;
+        overflow-y: auto;
     }
+
+    .visible_menu nav {
+        left: 0;
+        opacity: 1;
+    }
+
+    .profile {
+        padding: 5%;
+    }
+
     nav a {
-        padding-left: 20%;
+        font-size: 160%;
+        display: block;
+        text-decoration: none;
+        padding-left: 24%;
+        padding-top: 3%;
+        padding-bottom: 6%;
+        color: white;
+        border-bottom: 2px solid white;
+        transition: all ease 0.25s;
     }
+
+    nav a:hover {
+        color: rgba(255, 255, 255, 1);
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
+
     nav form {
-        margin-top: 20%;
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 50%;
+        border-bottom: 2px solid white;
+        transition: all ease 0.25s;
     }
+
     #cerrar {
-        margin-left: 20%;
+        background-color: transparent;
+        color: white;
+        padding: 3%;
+        margin-left: 15%;
         width: 20%;
     }
+
     #sesion {
-        margin-top: 5%;
-        width: 40%;
+        cursor: pointer;
+        position: absolute;
+        margin-top: 4.5%;
+        width: 50%;
+        background-color: transparent;
+        color: white;
+        text-align: left;
+        font-size: 160%;
+        border: none;
     }
 }
 
