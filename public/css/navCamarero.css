@@ -1,32 +1,15 @@
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
     width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+    margin-top: 15%;
+    background-color: red;
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
+    background-color: gray;
+    width: 60%;
 }
 
 body {
@@ -116,7 +99,7 @@ header {
 }
 
 #content {
-    background-color: lightcoral;
+    background-color: #F8F9F9;
     padding-top: 30%;
     transition: all 0.75s ease;
     z-index: 0;
@@ -129,6 +112,7 @@ header {
 }
 
 #camara {
+    color: white;
     width: 49%;
     border: none;
     background-color: #68c5db;
@@ -138,7 +122,7 @@ header {
 }
 
 .visible_menu #content {
-    transform: translateX(260px);
+    transform: translateX(0%);
 }
 
 #home {
@@ -162,16 +146,17 @@ header {
 }
 
 nav {
-    /* position: fixed; */
+    position: fixed;
     left: 100%;
     width: 100%;
+    margin-top: 20%;
     z-index: 1;
-    padding: 15% 8%;
     padding-bottom: 5%;
     background: #68c5db;
     opacity: 1;
     transition: all 0.75s ease;
     overflow-y: auto;
+    height: 100vh;
 }
 
 .visible_menu nav {
@@ -184,7 +169,8 @@ nav {
 }
 
 nav a {
-    font-size: 160%;
+    width: 60%;
+    font-size: 100%;
     display: block;
     text-decoration: none;
     padding-left: 24%;
@@ -201,7 +187,7 @@ nav a:hover {
 }
 
 nav form {
-    width: 90%;
+    width: 75%;
     margin-left: 5%;
     margin-top: 50%;
     border-bottom: 2px solid white;
@@ -212,7 +198,7 @@ nav form {
     background-color: transparent;
     color: white;
     padding: 3%;
-    margin-left: 15%;
+    margin-left: 13%;
     width: 20%;
 }
 
@@ -224,7 +210,7 @@ nav form {
     background-color: transparent;
     color: white;
     text-align: left;
-    font-size: 160%;
+    font-size: 100%;
     border: none;
 }
 
@@ -237,19 +223,14 @@ nav form {
         color: white;
         cursor: pointer;
     }
-
     header {
         padding: 0%;
     }
-
     .text-start {
-
         width: 38%;
         font-size: 140%;
     }
-
     #cam {
-
         border: none;
         font-size: 250%;
         width: 15%;
@@ -259,7 +240,6 @@ nav form {
         margin-left: 0%;
         margin-top: 4%;
     }
-
     #menu_on {
         width: 6%;
         height: 20px;
@@ -268,11 +248,9 @@ nav form {
         float: right;
         margin: 6% 8% 0 0;
     }
-
     #menu_on:hover {
         cursor: pointer;
     }
-
     #menu_on span {
         width: 100%;
         height: 4px;
@@ -283,40 +261,32 @@ nav form {
         transition: all 0.75s ease;
         transform-origin: 0px 100%;
     }
-
     #menu_on span:nth-child(2) {
         top: calc(50% - 2px);
     }
-
     #menu_on span:nth-child(3) {
         bottom: 0;
     }
-
     .visible_menu span:nth-child(1) {
         transform: rotate(45deg) translate(-3px, -1px);
     }
-
     .visible_menu span:nth-child(2) {
         opacity: 0;
     }
-
     .visible_menu span:nth-child(3) {
         transform: rotate(-45deg) translate(3px, 1px);
     }
-
     #content {
         background-color: lightcoral;
         padding-top: 18%;
         transition: all 0.75s ease;
         z-index: 0;
     }
-
     .btnCamarero {
         width: 70%;
         margin: auto;
         text-align: center;
     }
-
     #camara {
         width: 49%;
         border: none;
@@ -325,11 +295,9 @@ nav form {
         font-size: 0.8em;
         padding: 2%;
     }
-
     .visible_menu #content {
         transform: translateX(260px);
     }
-
     #home {
         margin-left: 35%;
         margin-bottom: 5%;
@@ -341,7 +309,6 @@ nav form {
         cursor: pointer;
         float: left;
     }
-
     #list {
         color: #2eb2ff;
         font-size: 250%;
@@ -349,7 +316,6 @@ nav form {
         text-align: center;
         cursor: pointer;
     }
-
     nav {
         position: fixed;
         top: 0;
@@ -364,16 +330,13 @@ nav form {
         transition: all 0.75s ease;
         overflow-y: auto;
     }
-
     .visible_menu nav {
         left: 0;
         opacity: 1;
     }
-
     .profile {
         padding: 5%;
     }
-
     nav a {
         font-size: 160%;
         display: block;
@@ -385,12 +348,10 @@ nav form {
         border-bottom: 2px solid white;
         transition: all ease 0.25s;
     }
-
     nav a:hover {
         color: rgba(255, 255, 255, 1);
         border-bottom-color: rgba(255, 255, 255, 0.4);
     }
-
     nav form {
         width: 90%;
         margin-left: 5%;
@@ -398,7 +359,6 @@ nav form {
         border-bottom: 2px solid white;
         transition: all ease 0.25s;
     }
-
     #cerrar {
         background-color: transparent;
         color: white;
@@ -406,7 +366,6 @@ nav form {
         margin-left: 15%;
         width: 20%;
     }
-
     #sesion {
         cursor: pointer;
         position: absolute;
