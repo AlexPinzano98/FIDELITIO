@@ -28,10 +28,10 @@
 
     <section>
         <header id="#header">
-            <p class="text-start">Pablo Soriano</p>
+            <p class="text-start">{{ session('name') }}</p>
             <button class="fas fa-camera" onclick="openCamara()" id="cam">
             </button>
-            <a id="menu_on">
+            <a id="menu_on" onclick="closeModal2()">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -40,13 +40,13 @@
         <nav>
             <ul>
                 <div class="profile">
-                    <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
+                    <i class="fas fa-user" style="float: left;"></i>
                     <a href="#">
                         Perfil del usuario
                     </a>
                 </div>
                 <div class="profile">
-                    <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
+                    <i class="fas fa-moon" style="float: left;"></i>
                     <a href="#">
                         Modo noche
                     </a>
