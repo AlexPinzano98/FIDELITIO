@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,7 +57,7 @@
     </div>
 
     <div class="container">
-        ¿No tienes cuenta?<a href="./registro.php"><br>Registrate</a>
+        ¿No tienes cuenta?<a href="./registro.blade.php"><br>Registrate</a>
     </div>
 </body>
 
