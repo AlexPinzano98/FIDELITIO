@@ -58,7 +58,7 @@
     </div>
 
     <div class="container">
-        ¿No tienes cuenta?<a href="./registro.php"><br>Registrate</a>
+        ¿No tienes cuenta?<a href="{{url('/registro')}}"><br>Registrate</a>
     </div>
 </body>
 
