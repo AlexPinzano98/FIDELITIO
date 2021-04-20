@@ -16,7 +16,7 @@ use App\Http\Controllers\CardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::post('/registrar', [UserController::class, 'registrar']);
 Route::get('/', [UserController::class, 'login']);
 Route::post('/validarlogin', [UserController::class, 'validarLogin']);
 Route::get('cerrar_sesion', [UserController::class, 'cerrar_sesion']);
@@ -30,6 +30,7 @@ Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
 //vista lista restaurante
 Route::get('/viewListLocal', function (){ return view('viewListLocal');});
 Route::get('/home', function (){ return view('home');});
+Route::get('/registro', function (){ return view('registro');});
 //recoger tarjetas
 Route::get('showCard', [CardController::class, 'showCard']);
 Route::get('verLocales', [CardController::class, 'verLocales']);

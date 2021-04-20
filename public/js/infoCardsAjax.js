@@ -144,7 +144,9 @@ function showCard(recojoData) {
             tabla1 += '</div>';
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
                 //alert('tomatelaaaa');
+                tabla1 += '<div class="Cbutton">';
                 tabla1 += '<button class="button" onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')"><span> CANJEAR </span></button>'
+                tabla1 += '</div>';
             }
             tabla1 += '</div></div></div>';
             containCards.innerHTML = tabla1;
@@ -250,6 +252,7 @@ function verCardLocal(id_local) {
 
 function closeModal2() {
     modal_qr.style.display = "none";
+    closeModal();
 }
 // window.onclick = function(event) {
 //     if (event.target == modal_qr) {

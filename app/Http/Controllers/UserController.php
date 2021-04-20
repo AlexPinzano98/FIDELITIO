@@ -78,5 +78,21 @@ class UserController extends Controller
             return view('viewCliente');
         }
     }
+    public function registrar(Request $request){
+        $datos = $request->except('_token','enviar');
+        $users=DB::table('tbl_user')->where([['email','=',$datos['email']]])->count();
+
+        if ($users == 0){
+                DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'confidentiality'=>$datos['Consentimiento'],'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
+                       $message = 'Tu cuenta se ha creado correctamente';
+                        return redirect('/')->with('message',$message);
+        }else{
+            $message="El correo introducido ya esta registrado";
+            return redirect('registro')->with('message',$message);
+        }
+
+
+ 
+    }
 
 }

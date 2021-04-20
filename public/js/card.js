@@ -14,21 +14,18 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
-let scanner = new Instascan.Scanner(
-    {
-        video: document.getElementById('preview')
-    }
-);
+let scanner = new Instascan.Scanner({
+    video: document.getElementById('preview')
+});
 scanner.addListener('scan', function(content) {
     //alert('Contenido: ' + content);
     sellar(content);
 });
 
 
-function openCamara(){
-    Instascan.Camera.getCameras().then(cameras =>
-    {
-        if(cameras.length > 0){
+function openCamara() {
+    Instascan.Camera.getCameras().then(cameras => {
+        if (cameras.length > 0) {
             scanner.start(cameras[0]);
         } else {
             console.error("No existe cámara en el dispositivo!");
@@ -37,26 +34,30 @@ function openCamara(){
     document.getElementById('modal2').style.display = "block";
     document.getElementById('preview').style.display = "block";
 }
-function closeCamara(){
+
+function closeCamara() {
     scanner.stop();
     document.getElementById('modal2').style.display = "none";
     document.getElementById('preview').style.display = "none";
-} 
+}
+
 function closeModal() {
     document.getElementById('modal2').style.display = "none";
     closeCamara();
+    read();
 }
-function sellar(content){
+
+function sellar(content) {
     const array = content.split(',');
     //alert(array[1]);
-    var id_promo=array[2];
-    var id_camarero=array[3];
+    var id_promo = array[2];
+    var id_camarero = array[3];
     //alert(array[2]);
-    var year=array[4];
-    var month=array[5];
-    var day=array[6];
-    var hour=array[7];
-    var minute=array[8];
+    var year = array[4];
+    var month = array[5];
+    var day = array[6];
+    var hour = array[7];
+    var minute = array[8];
 
     var now = new Date();
     var year_now=now.getFullYear();
@@ -138,5 +139,5 @@ function sellar(content){
     // var datasend = new FormData();
     // datasend.append('id_local', id_local);
     // datasend.append('_token', token);
-        //alert('Contenido: ' + content);
+    //alert('Contenido: ' + content);
 }

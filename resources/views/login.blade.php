@@ -57,7 +57,11 @@
     </div>
 
     <div class="container">
+<<<<<<< HEAD
         ¿No tienes cuenta?<a href="./registro.blade.php"><br>Registrate</a>
+=======
+        ¿No tienes cuenta?<a href="{{url('/registro')}}"><br>Registrate</a>
+>>>>>>> e0eaf36678ea1dfdbebfb8a7ad89a906676a91b7
     </div>
 </body>
 
