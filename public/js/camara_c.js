@@ -74,6 +74,7 @@ function sellar(content){
             read();
         }else{
             alert('Este QR no es valido')
+            console.log(array)
             // Msg error
         }
     }
