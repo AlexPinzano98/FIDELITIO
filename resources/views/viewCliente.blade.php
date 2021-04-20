@@ -31,7 +31,7 @@
 <div id="wrapper">
 	<section>
 	<header id="#header">
-        <p class="text-start">Pablo Soriano</p>
+        <p class="text-start">{{ session('name') }}</p>
         <button class="fas fa-camera" onclick="openCamara()" id="camara">
         </button>
 		<a id="menu_on" onclick="closeModal2()">
