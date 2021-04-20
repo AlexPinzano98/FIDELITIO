@@ -54,15 +54,21 @@ function sellar(content){
     // console.log(minute_now)
     var fecha_qr=new Date(year,month,day,hour,minute)
     var fecha_actual=new Date(year_now,month_now,day_now,hour_now,minute_now)
-    console.log(fecha_actual)
-    console.log(fecha_qr)
+    // console.log(fecha_actual)
+    // console.log(fecha_qr)
+    if(year!=""){
     if(fecha_actual.getTime()<fecha_qr.getTime()){
         alert('qr valido')
         closeCamara();
         read();
     }else{
-        alert('qr no valido')
+        alert('qr expirado')
     }
+    }else{
+        alert('Este QR no es valido')
+        // Msg error
+        }
+
     // if(year!=""){
     //     if (year < year_now) {
     //     alert('QR CADUCADO');
@@ -83,7 +89,7 @@ function sellar(content){
     //         alert('Este QR no es valido')
     //         // Msg error
     //     }
-    }
+    //}
 
     function read() {
         // var section = document.getElementById('section-3');
@@ -106,4 +112,4 @@ function sellar(content){
         }
         ajax.send(datasend);
     }
-//}
+}
