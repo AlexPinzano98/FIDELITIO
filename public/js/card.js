@@ -120,13 +120,8 @@ function sellar(content) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
                 console.log(respuesta)
-<<<<<<< HEAD
-                showCard();
-                // section.innerHTML = tabla;
-=======
                // section.innerHTML = tabla;
                showCard();
->>>>>>> ac1ce6e66f8e4d481924a79b8f4a7b42b25b0458
             }
         }
         ajax.send(datasend);
