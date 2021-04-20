@@ -40,13 +40,13 @@
         <nav>
             <ul>
                 <div class="profile">
-                    <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
+                    <i class="fas fa-user" style="float: left;"></i>
                     <a href="#">
                         Perfil del usuario
                     </a>
                 </div>
                 <div class="profile">
-                    <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
+                    <i class="fas fa-moon" style="float: left;"></i>
                     <a href="#">
                         Modo noche
                     </a>
