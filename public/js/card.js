@@ -18,7 +18,7 @@ let scanner = new Instascan.Scanner({
     video: document.getElementById('preview')
 });
 scanner.addListener('scan', function(content) {
-    alert('Contenido: ' + content);
+    //alert('Contenido: ' + content);
     sellar(content);
 });
 
@@ -44,6 +44,7 @@ function closeCamara() {
 function closeModal() {
     document.getElementById('modal2').style.display = "none";
     closeCamara();
+    read();
 }
 
 function sellar(content) {
@@ -59,6 +60,7 @@ function sellar(content) {
     var minute = array[8];
 
     var now = new Date();
+<<<<<<< HEAD
     var year_now = now.getFullYear();
     var month_now = now.getMonth() + 1;
     var day_now = now.getDate();
@@ -83,15 +85,59 @@ function sellar(content) {
             alert('QR CADUCADO');
         } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute < minute_now) {
             alert('QR valido');
+=======
+    var year_now=now.getFullYear();
+    var month_now=now.getMonth()+1;
+    var day_now=now.getDate();
+    var hour_now=now.getHours();
+    var minute_now=now.getMinutes()-2;
+    var fecha_qr=new Date(year,month,day,hour,minute)
+    var fecha_actual=new Date(year_now,month_now,day_now,hour_now,minute_now)
+    // console.log(fecha_actual)
+    // console.log(fecha_qr)
+    if(year!=""){
+        if(fecha_actual.getTime()<fecha_qr.getTime()){
+            alert('qr valido')
+>>>>>>> ac1ce6e66f8e4d481924a79b8f4a7b42b25b0458
             closeCamara();
-            closeModal();
-            // Ajax
             read();
+<<<<<<< HEAD
         } else {
             alert('Este QR no es valido')
                 // Msg error
         }
     }
+=======
+        }else{
+            alert('qr expirado')
+        }
+        }else{
+            alert('Este QR no es valido')
+            // Msg error
+            }
+    // if(year!=""){
+    //     if (year < year_now) {
+    //     alert('QR CADUCADO');
+    //     } else if (year <= year_now && month < month_now) {
+    //         alert('QR CADUCADO');
+    //     } else if (year <= year_now && month <= month_now && day < day_now) {
+    //         alert('QR CADUCADO');
+    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour < hour_now) {
+    //         alert('QR CADUCADO');
+    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute <= minute_now) {
+    //         alert('QR CADUCADO');
+    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute > minute_now) {
+    //         alert('QR valido');
+    //         closeCamara();
+    //         closeModal();
+    //         // Ajax
+    //         read();
+    //     }else{
+    //         alert('Este QR no es valido')
+    //         // Msg error
+    //     }
+    //}
+>>>>>>> ac1ce6e66f8e4d481924a79b8f4a7b42b25b0458
 
     function read() {
         // var section = document.getElementById('section-3');
@@ -109,8 +155,13 @@ function sellar(content) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
                 console.log(respuesta)
+<<<<<<< HEAD
                 showCard();
                 // section.innerHTML = tabla;
+=======
+               // section.innerHTML = tabla;
+               showCard();
+>>>>>>> ac1ce6e66f8e4d481924a79b8f4a7b42b25b0458
             }
         }
         ajax.send(datasend);

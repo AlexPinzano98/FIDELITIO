@@ -31,7 +31,7 @@
             <p class="text-start">Pablo Soriano</p>
             <button class="fas fa-camera" onclick="openCamara()" id="cam">
             </button>
-            <a id="menu_on">
+            <a id="menu_on" onclick="closeModal2()">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -63,8 +63,10 @@
 
     <div id="content">
         <!-- SCANER QR CAMARERO -->
-        <button id="camara" onclick="openCamara()">CAMARA</button>
-        <button id="camara" onclick="closeCamara()">CLOSE</button>
+        <div class="btnCamarero">
+            <button id="camara" onclick="openCamara()">CAMARA</button>
+            <button id="camara" onclick="closeCamara()">CLOSE</button>
+        </div>
 
         <div id="modal2" class="modal">
         <div class="modal-content">
