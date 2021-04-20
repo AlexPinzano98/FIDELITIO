@@ -76,7 +76,9 @@
         <div class="swiper-wrapper" id="swiperStyle">
         </div>
         <!-- Add Pagination -->
+
         <div class="swiper-pagination"></div>
+
     </div>
     </div>
 </div>
@@ -87,7 +89,7 @@
 </div>
 </div>
     <script src="js/card.js"></script>
-    
+
     <div class="container" id="listLocales">
         <div id="listLocal">
         </div>

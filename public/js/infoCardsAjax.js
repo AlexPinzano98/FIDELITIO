@@ -1,8 +1,8 @@
-window.onload = function() {
+window.onload = function () {
     showCard();
     modal_qr = document.getElementById("modal");
 };
-
+mySwiper = "";
 listado = 0;
 cartas = 0;
 
@@ -32,23 +32,23 @@ function showCard(recojoData) {
     cardLocal = recojoData;
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     if (listado == 1 && cartas == 0) {
-        document.getElementById("listCartas").style.display = 'none';
-        document.getElementById("listLocales").style.display = 'block';
-        verLocales()
+        document.getElementById("listCartas").style.display = "none";
+        document.getElementById("listLocales").style.display = "block";
+        verLocales();
     } else if (listado == 0) {
-        document.getElementById("listLocales").style.display = 'none';
-        document.getElementById("listCartas").style.display = 'block';
+        document.getElementById("listLocales").style.display = "none";
+        document.getElementById("listCartas").style.display = "block";
         // var section = document.getElementById('cards');
         var ajax = new objetoAjax();
         // var token = document.getElementById('token').getAttribute('content');
         ajax.open("GET", "showCard", true);
         // var datasend = new FormData();
         // datasend.append('_token', token);
-        ajax.onreadystatechange = function() {
+        ajax.onreadystatechange = function () {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var response = JSON.parse(ajax.responseText);
                 console.log(response);
-                tabla0 = '';
+                tabla0 = "";
                 for (let i = 0; i < response.length; i++) {
                     tabla0 += `
               <div class="swiper-slide">
@@ -63,62 +63,40 @@ function showCard(recojoData) {
                             <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
                             <div class="card-stamp_grid">`;
 
-
                     for (var x = 0; x < response[i].stamp_now; x++) {
                         tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
                     }
 
-                    for (var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++) {
+                    for (
+                        var x = 0;
+                        x < response[i].stamp_max - response[i].stamp_now;
+                        x++
+                    ) {
                         tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
                     }
-                    tabla0 += '</div>';
+                    tabla0 += "</div>";
                     if (response[i].stamp_now == response[i].stamp_max) {
                         //alert('tomatelaaaa');
                         tabla0 += '<div class="Cbutton">';
-                        tabla0 += '<button class="button" onclick="generar_qr(' + response[i].id_card + ',' + response[i].id_promotion + ')"><span> CANJEAR </span></button>'
-                        tabla0 += '</div>';
+                        tabla0 +=
+                            '<button class="button" onclick="generar_qr(' +
+                            response[i].id_card +
+                            "," +
+                            response[i].id_promotion +
+                            ')"><span> CANJEAR </span></button>';
+                        tabla0 += "</div>";
                     }
-                    tabla0 += '</div></div></div>';
+                    tabla0 += "</div></div></div>";
                     containCards.innerHTML = tabla0;
                 }
-                var mySwiper = new Swiper(".swiper-container", {
-
-                    effect: "coverflow",
-                    grabCursor: true,
-                    centeredSlides: true,
-                    slidesPerView: "auto",
-                    coverflowEffect: {
-                        rotate: 50,
-                        stretch: 0,
-                        depth: 100,
-                        modifier: 1,
-                        slideShadows: true,
-                    },
-                    pagination: {
-                        el: ".swiper-pagination",
-                    },
-                    observer: true,
-                    observeParents: true,
-                    onSlideChangeEnd: function(swiper) {
-                        swiper.update();
-                        mySwiper.startAutoplay();
-                        mySwiper.reLoop();
-                    },
-                });
-                // mySwiper.lazy.loadInSlide (index);
-                mySwiper.on('slideChange', function() {
-                    if (this.activeIndex === 1) {
-                        console.log("IM ON SECOND SLIDE!");
-                    }
-                });
             }
         };
         ajax.send();
     } else if (cartas == 1) {
         cartas = 0;
-        tabla1 = '';
-        document.getElementById("listLocales").style.display = 'none';
-        document.getElementById("listCartas").style.display = 'block';
+        tabla1 = "";
+        document.getElementById("listLocales").style.display = "none";
+        document.getElementById("listCartas").style.display = "block";
         for (let i = 0; i < cardLocal.length; i++) {
             tabla1 += `
       <div class="swiper-slide">
@@ -133,24 +111,38 @@ function showCard(recojoData) {
                     <h5 class="stamp-title">Sellos de la promoción: ${cardLocal[i].stamp_now} / ${cardLocal[i].stamp_max}</h5>
                     <div class="card-stamp_grid">`;
 
-
             for (var x = 0; x < cardLocal[i].stamp_now; x++) {
                 tabla1 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
             }
 
-            for (var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++) {
+            for (
+                var x = 0;
+                x < cardLocal[i].stamp_max - cardLocal[i].stamp_now;
+                x++
+            ) {
                 tabla1 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
             }
-            tabla1 += '</div>';
+            tabla1 += "</div>";
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
                 //alert('tomatelaaaa');
-                tabla1 += '<button class="button" onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')"><span> CANJEAR </span></button>'
+                tabla1 +=
+                    '<button class="button" onclick="generar_qr(' +
+                    cardLocal[i].id_card +
+                    "," +
+                    cardLocal[i].id_promotion +
+                    ')"><span> CANJEAR </span></button>';
             }
-            tabla1 += '</div></div></div>';
+            tabla1 += "</div></div></div>";
             containCards.innerHTML = tabla1;
         }
-        var mySwiper = new Swiper(".swiper-container", {
+    } else {
+        alert("error");
+    }
 
+    console.log(mySwiper);
+
+    if (mySwiper == "") {
+        mySwiper = new Swiper(".swiper-container", {
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,
@@ -167,24 +159,16 @@ function showCard(recojoData) {
             },
             observer: true,
             observeParents: true,
-            onSlideChangeEnd: function(swiper) {
+            onSlideChangeEnd: function (swiper) {
                 swiper.update();
                 mySwiper.startAutoplay();
                 mySwiper.reLoop();
+                swiper.pagination.init();
+                swiper.pagination.render();
             },
         });
-        // mySwiper.lazy.loadInSlide (index);
-        mySwiper.on('slideChange', function() {
-            if (this.activeIndex === 1) {
-                console.log("IM ON SECOND SLIDE!");
-            }
-        });
-    } else {
-        alert('error');
     }
-
 }
-
 
 function verLocales() {
     var containLocal = document.getElementById("listLocal");
@@ -193,11 +177,11 @@ function verLocales() {
     ajax.open("GET", "verLocales", true);
     // var datasend = new FormData();
     // datasend.append('_token', token);
-    ajax.onreadystatechange = function() {
+    ajax.onreadystatechange = function () {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var response = JSON.parse(ajax.responseText);
             console.log(response);
-            tabla2 = '';
+            tabla2 = "";
             for (let i = 0; i < response.length; i++) {
                 tabla2 += `
                 <div class="item">
@@ -218,33 +202,31 @@ function verLocales() {
               `;
             }
             containLocal.innerHTML = tabla2;
-
         }
-    }
+    };
     ajax.send();
 }
 
 function verCardLocal(id_local) {
     var ajax = new objetoAjax();
-    var token = document.getElementById('token').getAttribute('content');
-    ajax.open('POST', 'verCardLocal', true);
+    var token = document.getElementById("token").getAttribute("content");
+    ajax.open("POST", "verCardLocal", true);
     var datos = new FormData();
-    datos.append('id_local', id_local);
-    datos.append('_token', token)
-    ajax.onreadystatechange = function() {
+    datos.append("id_local", id_local);
+    datos.append("_token", token);
+    ajax.onreadystatechange = function () {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
 
-            if (respuesta.resultado == 'NOK') {
-                console.log('no datos');
+            if (respuesta.resultado == "NOK") {
+                console.log("no datos");
             } else {
-                console.log(respuesta)
+                console.log(respuesta);
                 cartas = 1;
-                showCard(respuesta)
+                showCard(respuesta);
             }
-
         }
-    }
+    };
     ajax.send(datos);
 }
 
@@ -268,13 +250,34 @@ function generar_qr(id_card, id_promotion) {
     var hour = now.getHours();
     var minute = now.getMinutes();
 
-    document.getElementById('content').value = random + ',' + random2 + ',' + id_promotion + ',' + id_card + ',' + year + ',' + month + ',' + day + ',' + hour + ',' + minute;
+    document.getElementById("content").value =
+        random +
+        "," +
+        random2 +
+        "," +
+        id_promotion +
+        "," +
+        id_card +
+        "," +
+        year +
+        "," +
+        month +
+        "," +
+        day +
+        "," +
+        hour +
+        "," +
+        minute;
 
     $.ajax({
-        url: './generate_code.php',
-        type: 'POST',
-        data: { formData: $("#content").val(), ecc: $("#ecc").val(), size: $("#size").val() },
-        success: function(response) {
+        url: "./generate_code.php",
+        type: "POST",
+        data: {
+            formData: $("#content").val(),
+            ecc: $("#ecc").val(),
+            size: $("#size").val(),
+        },
+        success: function (response) {
             $(".showQRCode").html(response);
         },
     });
