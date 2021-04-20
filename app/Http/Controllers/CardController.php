@@ -131,7 +131,7 @@ class CardController extends Controller
             INNER JOIN tbl_card
             ON tbl_promotion.id_promotion = tbl_card.id_promotion_fk
             GROUP BY tbl_local.id_local
-            HAVING tbl_card.id_user_fk = ?', [$id_user]);
+            HAVING tbl_card.id_user_fk = ? AND tbl_card.status = "open"', [$id_user]);
             return response()->json($locales, 200);
         } catch (\Throwable $th) {
             //throw $th;
