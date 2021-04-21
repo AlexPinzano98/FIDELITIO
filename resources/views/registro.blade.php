@@ -21,14 +21,13 @@
 </head>
 
 <body>
-   <!--  <p class="h1">Fidelitio</p> -->
+    <!--  <p class="h1">Fidelitio</p> -->
     <img src="img/stimpa.jpeg" style="width: 80%; margin-left: 10%; margin-top: 20px">
     <div class="login">
         <form action="{{url('/registrar')}}" method="POST" onsubmit="return validarForm()">
             {{csrf_field()}}
             <div class="mb-3">
-                <input name="nombre" type="text" class="form-control" id="nombre"
-                    placeholder="Nombre..."></input>
+                <input name="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre..."></input>
             </div>
             <div class="mb-3">
                 <input name="apellidos" type="text" class="form-control" id="apellidos"
@@ -42,15 +41,16 @@
                     placeholder="Contrasenya..."></input>
             </div>
             <div class="mb-3">
-            <select class="form-control" id="sexo" name="sexo">
-                <option selected disabled value="">Selecciona tu sexo</option>
-                <option value="Hombre">Hombre</option>
-                <option value="Mujer">Mujer</option>
-                <option value="No especificar">No especificar</option>
-            </select>
+                <select class="form-control" id="sexo" name="sexo">
+                    <option selected disabled value="">Selecciona tu sexo</option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="No especificar">No especificar</option>
+                </select>
             </div>
-            <div class="mb-3">
-            <input type="checkbox" id="consentimiento" name="consentimiento" value="1">Consentimiento</input>
+            <div class="mb-3 d-flex justify-content-center align-items-center">
+                <input type="checkbox" id="consentimiento" name="consentimiento" value="1">
+                <label for="consentimiento" class="ms-2">Consentimiento</label>
             </div>
             <button type="submit" id="submit" class="btn btn-warning">
                 Registrate

@@ -12,7 +12,8 @@ body {
 .login {
     margin: 3% 10% 0% 10%;
     border-radius: 20px;
-    padding: 3% 0% 0% 0%;
+    display: flex;
+    justify-content: center;
 }
 
 .h1 {
@@ -27,6 +28,10 @@ body {
     margin-top: 3%;
     border-radius: 20px;
     width: 90%;
+}
+
+form{
+    max-width: 500px;
 }
 
 #submit {
@@ -84,7 +89,6 @@ body {
     .login {
         width: 60%;
         margin: 0% 10% 0% 20%;
-        padding: 1% 0% 0% 0%;
     }
     .stimpa {
         margin-top: 3%;
@@ -136,8 +140,10 @@ body {
     .login {
         width: 60%;
         margin: 0% 15% 15% 20%;
-        padding: 0% 0% 0% 0%;
         /* background-color: gold; */
+    }
+    .stimpa {
+
     }
     .form-control {
         margin-left: 5%;
