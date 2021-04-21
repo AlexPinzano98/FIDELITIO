@@ -49,7 +49,7 @@ function closeModal() {
 }
 
 function sellar(content) {
-    const array = content.split(':');
+    const array = content.split(',');
     //alert(array[1]);
     var id_promo = array[2];
     var id_camarero = array[3];
@@ -59,15 +59,17 @@ function sellar(content) {
     var day = array[6];
     var hour = array[7];
     var minute = array[8];
+    var seconds = array[9];
 
     var now = new Date();
     var year_now = now.getFullYear();
     var month_now = now.getMonth() + 1;
     var day_now = now.getDate();
     var hour_now = now.getHours();
-    var minute_now = now.getMinutes() - 2;
-    var fecha_qr = new Date(year, month, day, hour, minute)
-    var fecha_actual = new Date(year_now, month_now, day_now, hour_now, minute_now)
+    var minute_now = now.getMinutes();
+    var seconds_now = now.getSeconds();
+    var fecha_qr = new Date(year, month, day, hour, minute,seconds)
+    var fecha_actual = new Date(year_now, month_now, day_now, hour_now, minute_now,seconds_now)
         // console.log(fecha_actual)
         // console.log(fecha_qr)
     if (year != "") {
