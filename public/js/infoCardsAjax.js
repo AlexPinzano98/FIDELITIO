@@ -229,6 +229,7 @@ function verCardLocal(id_local) {
 
 function closeModal2() {
     modal_qr.style.display = "none";
+    cartas == 0;
     closeModal();
 }
 // window.onclick = function(event) {
