@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -31,7 +31,7 @@
 <div id="wrapper">
 	<section>
 	<header id="#header">
-        <p class="text-start">Pablo Soriano</p>
+        <p class="text-start">{{ session('name') }}</p>
         <button class="fas fa-camera" onclick="openCamara()" id="camara">
         </button>
 		<a id="menu_on" onclick="closeModal2()">
@@ -76,7 +76,9 @@
         <div class="swiper-wrapper" id="swiperStyle">
         </div>
         <!-- Add Pagination -->
+
         <div class="swiper-pagination"></div>
+
     </div>
     </div>
 </div>
@@ -87,7 +89,7 @@
 </div>
 </div>
     <script src="js/card.js"></script>
-    
+
     <div class="container" id="listLocales">
         <div id="listLocal">
         </div>

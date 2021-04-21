@@ -28,7 +28,7 @@
 
     <section>
         <header id="#header">
-            <p class="text-start">Pablo Soriano</p>
+            <p class="text-start">{{ session('name') }}</p>
             <button class="fas fa-camera" onclick="openCamara()" id="cam">
             </button>
             <a id="menu_on" onclick="closeModal2()">
@@ -69,10 +69,10 @@
         </div>
 
         <div id="modal2" class="modal">
-        <div class="modal-content">
-        <button class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>
-        <video id="preview" width="100%" height="100%" style="display: none;"></video>
-        </div>
+            <div class="modal-content">
+                <button class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>
+                <video id="preview" width="100%" height="100%" style="display: none;"></video>
+            </div>
         </div>
 
         <!-- PROMOCIONES DEL CAMARERO -->

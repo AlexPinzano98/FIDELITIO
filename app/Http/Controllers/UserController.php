@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Mockery\Undefined;
 use Swift;
 
 class UserController extends Controller
@@ -79,11 +80,16 @@ class UserController extends Controller
         }
     }
     public function registrar(Request $request){
-        $datos = $request->except('_token','enviar');
+        $datos = $request->except('_token','submit');
+        if(isset($datos['consentimiento'])){
+            $consentimiento=0;
+        }else{
+            $consentimiento=1;
+        }
         $users=DB::table('tbl_user')->where([['email','=',$datos['email']]])->count();
 
         if ($users == 0){
-                DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'confidentiality'=>$datos['Consentimiento'],'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
+                DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
                        $message = 'Tu cuenta se ha creado correctamente';
                         return redirect('/')->with('message',$message);
         }else{
