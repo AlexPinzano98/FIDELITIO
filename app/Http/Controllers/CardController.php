@@ -125,13 +125,12 @@ class CardController extends Controller
     public function verLocales() {
         try {
             $id_user = session()->get('id_user');
-            $locales = DB::select('SELECT * FROM tbl_local
+            $locales = DB::select('SELECT DISTINCT tbl_local.id_local, tbl_local.name FROM tbl_local
             INNER JOIN tbl_promotion
             ON tbl_local.id_local = tbl_promotion.id_local_fk
             INNER JOIN tbl_card
             ON tbl_promotion.id_promotion = tbl_card.id_promotion_fk
-            GROUP BY tbl_local.id_local
-            HAVING tbl_card.id_user_fk = ? AND tbl_card.status = "open"', [$id_user]);
+            WHERE tbl_card.id_user_fk = ? AND tbl_card.status = "open"', [$id_user]);
             return response()->json($locales, 200);
         } catch (\Throwable $th) {
             //throw $th;

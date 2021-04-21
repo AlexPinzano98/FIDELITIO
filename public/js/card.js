@@ -63,27 +63,27 @@ function sellar(content) {
     var minute = array[8];
 
     var now = new Date();
-    var year_now=now.getFullYear();
-    var month_now=now.getMonth()+1;
-    var day_now=now.getDate();
-    var hour_now=now.getHours();
-    var minute_now=now.getMinutes()-2;
-    var fecha_qr=new Date(year,month,day,hour,minute)
-    var fecha_actual=new Date(year_now,month_now,day_now,hour_now,minute_now)
-    // console.log(fecha_actual)
-    // console.log(fecha_qr)
-    if(year!=""){
-        if(fecha_actual.getTime()<fecha_qr.getTime()){
+    var year_now = now.getFullYear();
+    var month_now = now.getMonth() + 1;
+    var day_now = now.getDate();
+    var hour_now = now.getHours();
+    var minute_now = now.getMinutes() - 2;
+    var fecha_qr = new Date(year, month, day, hour, minute)
+    var fecha_actual = new Date(year_now, month_now, day_now, hour_now, minute_now)
+        // console.log(fecha_actual)
+        // console.log(fecha_qr)
+    if (year != "") {
+        if (fecha_actual.getTime() < fecha_qr.getTime()) {
             alert('qr valido')
             closeCamara();
             read();
-        }else{
+        } else {
             alert('qr expirado')
         }
-        }else{
-            alert('Este QR no es valido')
+    } else {
+        alert('Este QR no es valido')
             // Msg error
-            }
+    }
     // if(year!=""){
     //     if (year < year_now) {
     //     alert('QR CADUCADO');
@@ -123,8 +123,8 @@ function sellar(content) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
                 console.log(respuesta)
-               // section.innerHTML = tabla;
-               showCard();
+                    // section.innerHTML = tabla;
+                showCard();
             }
         }
         ajax.send(datasend);
