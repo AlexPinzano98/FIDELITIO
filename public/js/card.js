@@ -36,15 +36,18 @@ function openCamara() {
 }
 
 function closeCamara() {
+    console.log('neepe')
     scanner.stop();
     document.getElementById('modal2').style.display = "none";
     document.getElementById('preview').style.display = "none";
 }
 
 function closeModal() {
-    document.getElementById('modal2').style.display = "none";
+
     closeCamara();
-    showCard();
+    console.log('neepe')
+    document.getElementById('modal2').style.display = "none";
+    //showCard();
 }
 
 function sellar(content) {

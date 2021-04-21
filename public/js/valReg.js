@@ -31,6 +31,15 @@ function validarForm() {
         errors = errors + "-Sexo- "
         document.getElementById('sexo').style.border = "1px solid red";
     }
+    if (nombre != "") {
+        document.getElementById('nombre').style.border = "2px solid black";
+    }
+    if (apellidos != "") {
+        document.getElementById('apellidos').style.border = "2px solid black";
+    }
+    if (sexo != "") {
+        document.getElementById('sexo').style.border = "2px solid black";
+    }
     if (email != "") {
         document.getElementById('email').style.border = "2px solid black";
     }
