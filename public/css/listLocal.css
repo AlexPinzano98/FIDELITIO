@@ -37,6 +37,10 @@
     padding-right: 1.5%;
 }
 
+#listLocales .play a{
+    cursor: pointer;
+}
+
 #listLocales h5,
 #listLocales p {
     font-size: 0.8em;
