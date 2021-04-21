@@ -30,7 +30,7 @@ body {
     width: 90%;
 }
 
-form{
+form {
     max-width: 500px;
 }
 
@@ -141,9 +141,6 @@ form{
         width: 60%;
         margin: 0% 15% 15% 20%;
         /* background-color: gold; */
-    }
-    .stimpa {
-
     }
     .form-control {
         margin-left: 5%;
