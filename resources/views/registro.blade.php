@@ -50,7 +50,7 @@
             </select>
             </div>
             <div class="mb-3">
-            <input type="checkbox" id="Consentimiento" name="Consentimiento" value="No">Consentimiento</input>
+            <input type="checkbox" id="consentimiento" name="consentimiento" value="1">Consentimiento</input>
             </div>
             <button type="submit" id="submit" class="btn btn-warning">
                 Registrate
