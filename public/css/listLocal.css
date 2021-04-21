@@ -1,3 +1,11 @@
+/* header {
+    background: #2EB2FF;
+    position: fixed;
+    width: 100%;
+    padding: 0%;
+    z-index: 2;
+} */
+
 #listLocales #listLocal {
     width: 92%;
     margin: 5% auto;
@@ -7,6 +15,7 @@
 }
 
 #listLocales .item {
+    /* margin-top: 10%; */
     display: flex;
     align-items: center;
     margin-bottom: 5%;
