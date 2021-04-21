@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
     showCard();
     modal_qr = document.getElementById("modal");
 };
@@ -44,7 +44,7 @@ function showCard(recojoData) {
         ajax.open("GET", "showCard", true);
         // var datasend = new FormData();
         // datasend.append('_token', token);
-        ajax.onreadystatechange = function () {
+        ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var response = JSON.parse(ajax.responseText);
                 console.log(response);
@@ -68,9 +68,7 @@ function showCard(recojoData) {
                     }
 
                     for (
-                        var x = 0;
-                        x < response[i].stamp_max - response[i].stamp_now;
-                        x++
+                        var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                     ) {
                         tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
                     }
@@ -116,9 +114,7 @@ function showCard(recojoData) {
             }
 
             for (
-                var x = 0;
-                x < cardLocal[i].stamp_max - cardLocal[i].stamp_now;
-                x++
+                var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++
             ) {
                 tabla1 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
             }
@@ -156,7 +152,7 @@ function showCard(recojoData) {
             },
             observer: true,
             observeParents: true,
-            onSlideChangeEnd: function (swiper) {
+            onSlideChangeEnd: function(swiper) {
                 swiper.update();
                 mySwiper.startAutoplay();
                 mySwiper.reLoop();
@@ -174,7 +170,7 @@ function verLocales() {
     ajax.open("GET", "verLocales", true);
     // var datasend = new FormData();
     // datasend.append('_token', token);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var response = JSON.parse(ajax.responseText);
             console.log(response);
@@ -211,7 +207,7 @@ function verCardLocal(id_local) {
     var datos = new FormData();
     datos.append("id_local", id_local);
     datos.append("_token", token);
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
 
@@ -276,7 +272,7 @@ function generar_qr(id_card, id_promotion) {
             ecc: $("#ecc").val(),
             size: $("#size").val(),
         },
-        success: function (response) {
+        success: function(response) {
             $(".showQRCode").html(response);
         },
     });

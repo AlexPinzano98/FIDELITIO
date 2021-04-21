@@ -3,6 +3,12 @@ body {
     background-color: #F8F9F9;
 }
 
+.stimpa {
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 7%;
+}
+
 .login {
     margin: 3% 10% 0% 10%;
     border-radius: 20px;
@@ -79,6 +85,9 @@ body {
         width: 60%;
         margin: 0% 10% 0% 20%;
         padding: 1% 0% 0% 0%;
+    }
+    .stimpa {
+        margin-top: 3%;
     }
     .h1 {
         font-size: 350%;
