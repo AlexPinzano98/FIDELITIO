@@ -6,7 +6,7 @@
     z-index: 1;
     /* Sit on top */
     left: 0;
-    top: 0;
+    top: 10%;
     width: 100%;
     /* Full width */
     height: 100%;
@@ -33,14 +33,23 @@
     border-radius: 7px;
 }
 
+#close {
+    font-size: 2.2em;
+    border-radius: 5px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+    float: right !important;
+}
 .close {
     font-size: 2.2em;
     border-radius: 5px 0;
     background: transparent;
     border: none;
     cursor: pointer;
-    /* align-self: flex-end; */
-    float: right;
+    align-self: flex-end;
+    float: right !important;
 }
 
 .fas {
@@ -54,7 +63,7 @@
 }
 
 header {
-    background: #2EB2FF;
+    background: #58D68D;
     position: fixed;
     width: 100%;
     padding: 4%;
@@ -162,7 +171,7 @@ nav {
     z-index: 1;
     padding: 25% 8%;
     padding-bottom: 5%;
-    background: #68C5DB;
+    background: #82E0AA;
     opacity: 1;
     transition: all 0.75s ease;
     overflow-y: auto;
