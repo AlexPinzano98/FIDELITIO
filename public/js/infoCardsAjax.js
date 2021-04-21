@@ -246,6 +246,7 @@ function generar_qr(id_card, id_promotion) {
     var day = now.getDate();
     var hour = now.getHours();
     var minute = now.getMinutes();
+    var seconds=now.getSeconds()+30;
 
     document.getElementById("content").value =
         random +
@@ -264,7 +265,9 @@ function generar_qr(id_card, id_promotion) {
         "," +
         hour +
         "," +
-        minute;
+        minute+
+        ','+
+        seconds;
 
     $.ajax({
         url: "./generate_code.php",
