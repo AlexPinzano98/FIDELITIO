@@ -31,7 +31,7 @@ function closeModal() {
     closeCamara();
 }
 function sellar(content){
-    const array = content.split(',');
+    const array = content.split('.');
     console.log(array)
     //console.log(array[2] + ' - ' + array[3]);
 

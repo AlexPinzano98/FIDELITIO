@@ -4,8 +4,7 @@ function validarForm() {
     var nombre = document.getElementById("nombre").value;
     var apellidos = document.getElementById("apellidos").value;
     var sexo = document.getElementById("sexo").value;
-    var Consentimiento = document.getElementById("Consentimiento").value;
-    
+    //var Consentimiento = document.getElementById("Consentimiento").value;
     var errors = "";
     document.getElementById("message").style.color = "red";
     document.getElementById("message").style.width = "100%";

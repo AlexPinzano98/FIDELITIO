@@ -48,7 +48,7 @@ function closeModal() {
 }
 
 function sellar(content) {
-    const array = content.split(',');
+    const array = content.split('.');
     //alert(array[1]);
     var id_promo = array[2];
     var id_camarero = array[3];
