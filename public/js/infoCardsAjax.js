@@ -3,7 +3,7 @@ window.onload = function() {
     modal_qr = document.getElementById("modal");
 };
 mySwiper = "";
-listado = 0;
+listado = 0; 
 cartas = 0;
 
 function controladores(num) {
@@ -29,7 +29,9 @@ function objetoAjax() {
 }
 
 function showCard(recojoData) {
+    document.getElementById("camara").style.color = "white";
     cardLocal = recojoData;
+    alert(listado)
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     if (listado == 1 && cartas == 0) {
         document.getElementById("listCartas").style.display = "none";
@@ -165,6 +167,7 @@ function showCard(recojoData) {
 
 function verLocales() {
     var containLocal = document.getElementById("listLocal");
+    document.getElementById("camara").style.color = "#58D68D";
     var ajax = new objetoAjax();
 
     ajax.open("GET", "verLocales", true);
@@ -225,8 +228,7 @@ function verCardLocal(id_local) {
 
 function closeModal2() {
     modal_qr.style.display = "none";
-    cartas == 0;
-    closeModal();
+    //closeModal();
 }
 // window.onclick = function(event) {
 //     if (event.target == modal_qr) {
@@ -247,21 +249,21 @@ function generar_qr(id_card, id_promotion) {
 
     document.getElementById("content").value =
         random +
-        "," +
+        ":" +
         random2 +
-        "," +
+        ":" +
         id_promotion +
-        "," +
+        ":" +
         id_card +
-        "," +
+        ":" +
         year +
-        "," +
+        ":" +
         month +
-        "," +
+        ":" +
         day +
-        "," +
+        ":" +
         hour +
-        "," +
+        ":" +
         minute;
 
     $.ajax({

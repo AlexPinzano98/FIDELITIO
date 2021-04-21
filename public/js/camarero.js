@@ -84,7 +84,7 @@ function generar_qr(id_promotion,id_camarero){
     var hour=now.getHours();
     var minute=now.getMinutes();
 
-    document.getElementById('content').value=random+','+random2+','+id_promotion+','+id_camarero+','+year+','+month+','+day+','+hour+','+minute;
+    document.getElementById('content').value=random+':'+random2+':'+id_promotion+':'+id_camarero+':'+year+':'+month+':'+day+':'+hour+':'+minute;
     //console.log(document.getElementById('content').value)
 
     // return false;

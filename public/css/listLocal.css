@@ -1,6 +1,5 @@
-/* header {
-    padding: 0%;
-    margin-top: -5%;
+/* #camara {
+    color: #58D68D;
 } */
 
 #listLocales #listLocal {
@@ -9,10 +8,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-#listLocales #listLocal {
-    padding-top: 25%;
 }
 
 #listLocales .item {
@@ -37,7 +32,7 @@
     padding-right: 1.5%;
 }
 
-#listLocales .play a{
+#listLocales .play a {
     cursor: pointer;
 }
 
@@ -61,9 +56,6 @@
     #listLocales p {
         font-size: 1em;
     }
-    #listLocales #listLocal {
-        padding-top: 15%;
-    }
     #listLocales .play {
         max-width: 4%;
     }
@@ -76,8 +68,5 @@
     #listLocales h5,
     #listLocales p {
         font-size: 1.2em;
-    }
-    #listLocales #listLocal {
-        padding-top: 10%;
     }
 }

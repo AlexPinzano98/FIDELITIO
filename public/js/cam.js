@@ -1,8 +1,6 @@
-let scanner = new Instascan.Scanner(
-    {
-        video: document.getElementById('preview')
-    }
-);
+let scanner = new Instascan.Scanner({
+    video: document.getElementById('preview')
+});
 scanner.addListener('scan', function(content) {
     alert('Contenido: ' + content);
     // sellar(content); 
@@ -22,8 +20,8 @@ function openCamara(){
 }
 */
 
-function openCamara(){
-    Instascan.Camera.getCameras().then(function (cameras) {
+function openCamara() {
+    Instascan.Camera.getCameras().then(function(cameras) {
         //If a camera is detected
         if (cameras.length > 0) {
             //If the user has a rear/back camera
@@ -38,13 +36,13 @@ function openCamara(){
             //if no cameras are detected give error
             console.error('No cameras found.');
         }
-    }).catch(function (e) {
+    }).catch(function(e) {
         console.error(e);
     });
     document.getElementById('preview').style.display = "block";
 }
 
-function closeCamara(){
+function closeCamara() {
     scanner.stop();
     document.getElementById('preview').style.display = "none";
 }
