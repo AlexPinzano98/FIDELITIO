@@ -21,7 +21,7 @@
 
 <body>
    <!--  <p class="h1">Fidelitio</p> -->
-    <img src="img/stimpa.png" style="width: 60%; margin-left: 20%; margin-top: 2%;">
+    <img src="img/stimpa.png" class="stimpa">
     <div class="login">
         <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
             {{csrf_field()}}
