@@ -5,7 +5,7 @@ window.onload = function() {
 mySwiper = "";
 listado = 0; 
 cartas = 0;
-
+//
 function controladores(num) {
     listado = num;
     showCard();
@@ -30,7 +30,7 @@ function objetoAjax() {
 
 function showCard(recojoData) {
     cardLocal = recojoData;
-    alert(listado)
+    //alert(listado)
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     if (listado == 1 && cartas == 0) {
         document.getElementById("listCartas").style.display = "none";
