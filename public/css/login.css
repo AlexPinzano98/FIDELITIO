@@ -77,6 +77,14 @@ form {
     padding: 3% 0% 3% 0%;
 }
 
+#registro {
+    color: green;
+    text-align: center;
+    margin: 8% 0% 0% 5%;
+    font-size: 90%;
+    width: 90%;
+}
+
 #error {
     color: red;
     text-align: center;
