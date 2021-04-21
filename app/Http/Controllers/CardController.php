@@ -123,7 +123,7 @@ class CardController extends Controller
     }
 
     public function verLocales() {
-        try {
+        try { 
             $id_user = session()->get('id_user');
             $locales = DB::select('SELECT * FROM tbl_local
             INNER JOIN tbl_promotion

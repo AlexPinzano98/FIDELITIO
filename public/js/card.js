@@ -79,6 +79,9 @@ function sellar(content) {
             read();
         }else{
             alert('qr expirado')
+            console.log(content)
+            console.log(fecha_qr)
+            console.log(fecha_actual)
         }
         }else{
             alert('Este QR no es valido')
