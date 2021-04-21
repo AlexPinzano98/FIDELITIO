@@ -28,7 +28,7 @@
 
     <section>
         <header id="#header">
-            <p class="text-start">Pablo Soriano</p>
+            <p class="text-start">{{ session('name') }}</p>
             <button class="fas fa-camera" onclick="openCamara()" id="cam">
             </button>
             <a id="menu_on" onclick="closeModal2()">
@@ -40,13 +40,13 @@
         <nav>
             <ul>
                 <div class="profile">
-                    <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
+                    <i class="fas fa-user" style="float: left;"></i>
                     <a href="#">
                         Perfil del usuario
                     </a>
                 </div>
                 <div class="profile">
-                    <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
+                    <i class="fas fa-moon" style="float: left;"></i>
                     <a href="#">
                         Modo noche
                     </a>
@@ -69,10 +69,10 @@
         </div>
 
         <div id="modal2" class="modal">
-        <div class="modal-content">
-        <button class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>
-        <video id="preview" width="100%" height="100%" style="display: none;"></video>
-        </div>
+            <div class="modal-content">
+                <button class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>
+                <video id="preview" width="100%" height="100%" style="display: none;"></video>
+            </div>
         </div>
 
         <!-- PROMOCIONES DEL CAMARERO -->
