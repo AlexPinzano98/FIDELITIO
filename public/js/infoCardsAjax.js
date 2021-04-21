@@ -29,6 +29,7 @@ function objetoAjax() {
 }
 
 function showCard(recojoData) {
+    document.getElementById("camara").style.color = "white";
     cardLocal = recojoData;
     //alert(listado)
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
@@ -166,6 +167,7 @@ function showCard(recojoData) {
 
 function verLocales() {
     var containLocal = document.getElementById("listLocal");
+    document.getElementById("camara").style.color = "#58D68D";
     var ajax = new objetoAjax();
 
     ajax.open("GET", "verLocales", true);

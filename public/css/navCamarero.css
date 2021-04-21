@@ -17,6 +17,7 @@ body {
 }
 
 .fas {
+    margin-left: 4%;
     border: none;
     font-size: 230%;
     width: 10%;
@@ -26,10 +27,9 @@ body {
 }
 
 header {
-    background: #2eb2ff;
+    background: #58D68D;
     position: fixed;
     width: 100%;
-    padding: 1%;
     z-index: 2;
 }
 
@@ -131,7 +131,7 @@ nav {
     margin-top: 18%;
     z-index: 1;
     padding-bottom: 5%;
-    background: #68c5db;
+    background: #82E0AA;
     opacity: 1;
     transition: all 0.75s ease;
     overflow-y: auto;
@@ -154,7 +154,7 @@ nav a {
     text-decoration: none;
     padding-left: 24%;
     padding-top: 3%;
-    padding-bottom: 6%;
+    padding-bottom: 8%;
     color: white;
     border-bottom: 2px solid white;
     transition: all ease 0.25s;
@@ -250,7 +250,7 @@ nav form {
         transform: rotate(-45deg) translate(2px, 2px);
     }
     #content {
-        padding-top: 18%;
+        padding-top: 15%;
         transition: all 0.75s ease;
         z-index: 0;
     }
@@ -356,7 +356,7 @@ nav form {
         transform: rotate(-45deg) translate(3px, 4px);
     }
     #content {
-        padding-top: 12%;
+        padding-top: 8%;
         background-color: #F8F9F9;
     }
     .btnCamarero {

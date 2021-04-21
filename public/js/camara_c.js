@@ -32,7 +32,7 @@ function closeModal() {
 }
 function sellar(content){
     const array = content.split(':');
-    console.log(array)
+    //console.log(array)
     //console.log(array[2] + ' - ' + array[3]);
 
     var id_promo=array[2];
