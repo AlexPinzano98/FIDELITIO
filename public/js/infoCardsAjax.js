@@ -3,7 +3,7 @@ window.onload = function() {
     modal_qr = document.getElementById("modal");
 };
 mySwiper = "";
-listado = 0;
+listado = 0; 
 cartas = 0;
 
 function controladores(num) {
