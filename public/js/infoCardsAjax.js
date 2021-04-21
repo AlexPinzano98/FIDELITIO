@@ -30,6 +30,7 @@ function objetoAjax() {
 
 function showCard(recojoData) {
     cardLocal = recojoData;
+    alert(listado)
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     if (listado == 1 && cartas == 0) {
         document.getElementById("listCartas").style.display = "none";
@@ -225,7 +226,6 @@ function verCardLocal(id_local) {
 
 function closeModal2() {
     modal_qr.style.display = "none";
-    cartas == 0;
     closeModal();
 }
 // window.onclick = function(event) {
