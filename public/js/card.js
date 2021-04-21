@@ -36,19 +36,22 @@ function openCamara() {
 }
 
 function closeCamara() {
+    console.log('neepe')
     scanner.stop();
     document.getElementById('modal2').style.display = "none";
     document.getElementById('preview').style.display = "none";
 }
 
 function closeModal() {
-    document.getElementById('modal2').style.display = "none";
+
     closeCamara();
-    showCard();
+    console.log('neepe')
+    document.getElementById('modal2').style.display = "none";
+    //showCard();
 }
 
 function sellar(content) {
-    const array = content.split(',');
+    const array = content.split('.');
     //alert(array[1]);
     var id_promo = array[2];
     var id_camarero = array[3];
