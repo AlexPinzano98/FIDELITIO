@@ -249,21 +249,21 @@ function generar_qr(id_card, id_promotion) {
 
     document.getElementById("content").value =
         random +
-        ":" +
+        "," +
         random2 +
-        ":" +
+        "," +
         id_promotion +
-        ":" +
+        "," +
         id_card +
-        ":" +
+        "," +
         year +
-        ":" +
+        "," +
         month +
-        ":" +
+        "," +
         day +
-        ":" +
+        "," +
         hour +
-        ":" +
+        "," +
         minute;
 
     $.ajax({
