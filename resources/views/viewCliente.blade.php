@@ -62,21 +62,20 @@
                 </ul>
             </nav>
         </section>
+        <form method="get">
+            <button class="fas fa-home" id="home" onclick="controladores(0); return false">
+            </button>
+        </form>
+        <form method="get">
+            <button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+            </button>
+        </form>
         <!-- Swiper -->
         <div id="listCartas">
             <div class="swiper-container" id="content">
-                <form method="get">
-                    <button class="fas fa-home" id="home" onclick="controladores(0); return false">
-                    </button>
-                </form>
-                <form method="get">
-                    <button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
-                    </button>
-                </form>
                 <div class="swiper-wrapper" id="swiperStyle">
                 </div>
                 <!-- Add Pagination -->
-
                 <div class="swiper-pagination"></div>
 
             </div>
