@@ -11,8 +11,8 @@
     align-items: center;
 }
 
-#listLocales {
-    margin-top: 25%;
+#listLocales #listLocal {
+    padding-top: 25%;
 }
 
 #listLocales .item {
@@ -57,6 +57,9 @@
     #listLocales p {
         font-size: 1em;
     }
+    #listLocales #listLocal {
+        padding-top: 15%;
+    }
     #listLocales .play {
         max-width: 4%;
     }
@@ -69,5 +72,8 @@
     #listLocales h5,
     #listLocales p {
         font-size: 1.2em;
+    }
+    #listLocales #listLocal {
+        padding-top: 10%;
     }
 }
