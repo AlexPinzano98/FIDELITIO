@@ -83,7 +83,7 @@ function generar_qr(id_promotion,id_camarero){
     var day=now.getDate();
     var hour=now.getHours();
     var minute=now.getMinutes();
-    var seconds=now.getSeconds()+30;
+    var seconds=now.getSeconds()+45;
 
     document.getElementById('content').value=random+','+random2+','+id_promotion+','+id_camarero+','+year+','+month+','+day+','+hour+','+minute+','+seconds;
     //console.log(document.getElementById('content').value)

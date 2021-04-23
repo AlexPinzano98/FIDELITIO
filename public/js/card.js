@@ -74,14 +74,11 @@ function sellar(content) {
         // console.log(fecha_qr)
     if (year != "") {
         if (fecha_actual.getTime() < fecha_qr.getTime()) {
-            alert('qr valido')
+            //alert('qr valido')
             closeCamara();
             read();
         } else {
             alert('qr expirado')
-            console.log(content)
-            console.log(fecha_qr)
-            console.log(fecha_actual)
         }
     } else {
         alert('Este QR no es valido')
@@ -125,7 +122,7 @@ function sellar(content) {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
-                console.log(respuesta)
+                alert(respuesta);
                     // section.innerHTML = tabla;
                 showCard();
             }

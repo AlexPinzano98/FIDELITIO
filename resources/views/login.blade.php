@@ -52,7 +52,7 @@
             <div id="message">
             </div>
             <p id="error"> {{Session::get('message')}} </p>
-
+            <p id="registro"> {{Session::get('mensaje')}} </p>
         </form>
     </div>
 

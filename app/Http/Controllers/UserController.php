@@ -90,8 +90,8 @@ class UserController extends Controller
 
         if ($users == 0){
                 DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
-                       $message = 'Tu cuenta se ha creado correctamente';
-                        return redirect('/')->with('message',$message);
+                       $mensaje = 'Tu cuenta se ha creado correctamente';
+                        return redirect('/')->with('mensaje',$mensaje);
         }else{
             $message="El correo introducido ya esta registrado";
             return redirect('registro')->with('message',$message);
