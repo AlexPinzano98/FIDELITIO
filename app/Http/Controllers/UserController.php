@@ -93,12 +93,8 @@ class UserController extends Controller
                        $mensaje = 'Tu cuenta se ha creado correctamente';
                         return redirect('/')->with('mensaje',$mensaje);
         }else{
-            $message="El correo introducido ya esta registrado";
-            return redirect('registro')->with('message',$message);
+            $mensaje="El correo introducido ya esta registrado";
+            return redirect('registro')->with('mensaje',$mensaje);
         }
-
-
- 
     }
-
 }
