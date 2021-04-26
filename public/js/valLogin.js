@@ -25,7 +25,7 @@ function validarForm() {
         return true;
     } else {
         document.getElementById("submit").style.color = "red";
-        document.getElementById("submit").style.border = "1px solid red";
+        document.getElementById("submit").style.border = "red";
         document.getElementById("submit").style.backgroundColor = "#FFB0AE";
         errors = "Campos obligatorios: <br>" + errors;
         document.getElementById("message").innerHTML = (errors);

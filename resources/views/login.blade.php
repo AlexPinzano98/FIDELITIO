@@ -48,10 +48,10 @@
             <button type="button" class="btn btn-info">
                 Continuar con Google
             </button>
-
             <div id="message">
             </div>
             <p id="error"> {{Session::get('message')}} </p>
+            <p id="registro"> {{Session::get('mensaje')}} </p>
 
         </form>
     </div>

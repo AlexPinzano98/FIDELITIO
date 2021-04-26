@@ -36,31 +36,35 @@ function sellar(content) {
     //console.log(array[2] + ' - ' + array[3]);
 
     var id_promo = array[2];
-    var id_camarero = array[3];
+    var id_card = array[3];
+    // alert(id_promo)
+    // alert(id_camarero)
     //alert(array[2]);
     var year = array[4];
     var month = array[5];
     var day = array[6];
     var hour = array[7];
     var minute = array[8];
+    var seconds = array[9];
 
     var now = new Date();
     var year_now = now.getFullYear();
     var month_now = now.getMonth() + 1;
     var day_now = now.getDate();
     var hour_now = now.getHours();
-    var minute_now = now.getMinutes() - 2;
+    var minute_now = now.getMinutes();
+    var seconds_now = now.getSeconds();
     // console.log(minute)
     // console.log(minute_now)
-    var fecha_qr = new Date(year, month, day, hour, minute)
-    var fecha_actual = new Date(year_now, month_now, day_now, hour_now, minute_now)
+    var fecha_qr = new Date(year, month, day, hour, minute, seconds)
+    var fecha_actual = new Date(year_now, month_now, day_now, hour_now, minute_now, seconds_now)
         // console.log(fecha_actual)
         // console.log(fecha_qr)
     if (year != "") {
         if (fecha_actual.getTime() < fecha_qr.getTime()) {
-            alert('qr valido')
-            closeCamara();
             read();
+            closeCamara();
+            alert('qr valido');
         } else {
             alert('qr expirado')
         }
@@ -99,15 +103,15 @@ function sellar(content) {
         ajax.open('POST', 'validarQRcamarero', true);
         var datasend = new FormData();
         datasend.append('_token', token);
-        datasend.append('id_promo', id_promo);
-        datasend.append('id_camarero', id_camarero);
+        datasend.append('id_card', id_card);
+        //datasend.append('id_camarero', id_camarero);
 
         ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
-                alert(respuesta);
-                // section.innerHTML = tabla;
+                alert(respuesta)
+                    // section.innerHTML = tabla;
             }
         }
         ajax.send(datasend);
