@@ -64,7 +64,7 @@ function sellar(content) {
         if (fecha_actual.getTime() < fecha_qr.getTime()) {
             read();
             closeCamara();
-            alert('qr valido');
+            //alert('qr valido');
         } else {
             alert('qr expirado')
         }

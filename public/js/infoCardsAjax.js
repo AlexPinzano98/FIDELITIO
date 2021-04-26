@@ -51,6 +51,15 @@ function showCard(recojoData) {
                 var response = JSON.parse(ajax.responseText);
                 console.log(response);
                 tabla0 = "";
+                // if(response==""){
+                //     alert('vacio')
+                //     tabla0+="<div>";
+                //     tabla0+="<div>";
+                //     tabla0+="<div>";
+                //     tabla0 += "<h1>Aun no tienes tarjetas, escanea un QR para empezar a sellar</h1>"
+                //     //tabla0+="</div>";
+                // }
+                
                 for (let i = 0; i < response.length; i++) {
                     tabla0 += `
               <div class="swiper-slide">
@@ -246,7 +255,7 @@ function generar_qr(id_card, id_promotion) {
     var day = now.getDate();
     var hour = now.getHours();
     var minute = now.getMinutes();
-    var seconds=now.getSeconds()+30;
+    var seconds=now.getSeconds()+45;
 
     document.getElementById("content").value =
         random +

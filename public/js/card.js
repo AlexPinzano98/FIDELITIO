@@ -68,8 +68,8 @@ function sellar(content) {
     var hour_now = now.getHours();
     var minute_now = now.getMinutes();
     var seconds_now = now.getSeconds();
-    var fecha_qr = new Date(year, month, day, hour, minute,seconds)
-    var fecha_actual = new Date(year_now, month_now, day_now, hour_now, minute_now,seconds_now)
+    var fecha_qr = new Date(year, month, day, hour, minute, seconds)
+    var fecha_actual = new Date(year_now, month_now, day_now, hour_now, minute_now, seconds_now)
         // console.log(fecha_actual)
         // console.log(fecha_qr)
     if (year != "") {
@@ -79,9 +79,6 @@ function sellar(content) {
             read();
         } else {
             alert('qr expirado')
-                // console.log(content)
-                // console.log(fecha_qr)
-                // console.log(fecha_actual)
         }
     } else {
         alert('Este QR no es valido')
@@ -125,8 +122,8 @@ function sellar(content) {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
-                alert(respuesta)
-                    // section.innerHTML = tabla;
+                alert(respuesta);
+                // section.innerHTML = tabla;
                 showCard();
             }
         }
