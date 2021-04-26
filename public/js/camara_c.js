@@ -64,7 +64,7 @@ function sellar(content){
     if(fecha_actual.getTime()<fecha_qr.getTime()){
         read();
         closeCamara();
-        alert('qr valido');
+        //alert('qr valido');
     }else{
         alert('qr expirado')
     }
@@ -110,7 +110,7 @@ function sellar(content){
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
-                console.log(respuesta)
+                alert(respuesta)
                // section.innerHTML = tabla;
             }
         }
