@@ -59,7 +59,8 @@ class UserController extends Controller
                     echo "ADM grupo";
                     break;
                 case '5':
-                    echo "ADM master";
+                    //echo "ADM master";
+                    return redirect('viewMaster');
                     break;
                 default:
                     # code...
@@ -79,6 +80,7 @@ class UserController extends Controller
             return view('viewCliente');
         }
     }
+
     public function registrar(Request $request){
         $datos = $request->except('_token','submit');
         if(isset($datos['consentimiento'])){
@@ -95,6 +97,14 @@ class UserController extends Controller
         }else{
             $mensaje="El correo introducido ya esta registrado";
             return redirect('registro')->with('mensaje',$mensaje);
+        }
+    }
+
+    public function viewMaster(){
+        if (!(session()->has('id_user'))) {
+            return redirect('/');
+        } else {
+            return view('viewAdm_master');
         }
     }
 }
