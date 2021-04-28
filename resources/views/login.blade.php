@@ -45,15 +45,21 @@
             <button type="button" class="btn btn-primary">
                 Continuar con Facebook
             </button>
-            <button type="button" class="btn btn-info">
+            <!-- <form action="{{ url('/auth/google') }}" method="post"> -->
+            <!-- <button type="submit" class="btn btn-info">
                 Continuar con Google
-            </button>
+            </button> -->
+            
+            <!-- </form> -->
             <div id="message">
             </div>
             <p id="error"> {{Session::get('message')}} </p>
             <p id="registro"> {{Session::get('mensaje')}} </p>
 
         </form>
+        <a href="{{ url('/google') }}"><button class="btn btn-info">
+                Continuar con Google
+            </button></a>
     </div>
 
     <div class="container">

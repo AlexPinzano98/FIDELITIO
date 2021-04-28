@@ -16,6 +16,12 @@ use App\Http\Controllers\CardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::group(['prefix' => 'auth'], function () {
+//     Route::get('/{provider}', 'UserController@redirectToProvider');
+//     Route::get('/{provider}/callback', 'UserController@handleProviderCallback');
+// });
+Route::get('/google', [UserController::class, 'redirectToProvider']);
+Route::get('/google/callback', [UserController::class, 'handleProviderCallback']);
 Route::post('/registrar', [UserController::class, 'registrar']);
 Route::get('/', [UserController::class, 'login']);
 Route::post('/validarlogin', [UserController::class, 'validarLogin']);
