@@ -49,3 +49,11 @@ Route::post('/validarQRcamarero', [CamareroController::class, 'validarQRcamarero
 Route::get('image',  [CardController::class, 'image']);
 Route::post('imgUp', [CardController::class, 'imgUp']);
 
+//Vista admin master
+Route::get('/viewMaster', [UserController::class, 'viewMaster']);
+Route::get('/cruds', function() {
+    return view('viewAdm_homeCruds');
+});
+Route::get('/crudUsuarios', function() {
+    return view('crudUsers');
+});
