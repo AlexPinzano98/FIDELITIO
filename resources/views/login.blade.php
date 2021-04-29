@@ -42,9 +42,6 @@
                 <div id="hr"></div>
             </div>
 
-            <button type="button" class="btn btn-primary">
-                Continuar con Facebook
-            </button>
             <!-- <form action="{{ url('/auth/google') }}" method="post"> -->
             <!-- <button type="submit" class="btn btn-info">
                 Continuar con Google
@@ -57,9 +54,13 @@
             <p id="registro"> {{Session::get('mensaje')}} </p>
 
         </form>
+        <a href="{{ url('/facebook') }}">
+            <button type="button" class="btn btn-primary">
+                Continuar con Facebook
+            </button></a>
         <a href="{{ url('/google') }}"><button class="btn btn-info">
                 Continuar con Google
-            </button></a>
+        </button></a>
     </div>
 
     <div class="container">
