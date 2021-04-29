@@ -7,10 +7,11 @@
     <title>TIPOS DE CRUD</title>
 </head>
 <body>
+    <a href="{{ url('/crudCompany') }}">COMPAÑIAS</a>
+    <a href="{{ url('/crudLocales') }}">LOCALES</a>
+    <a href="{{ url('/crudPromociones') }}">PROMOCIONES</a>
+    <a href="{{ url('/crudTarjetas') }}">TARJETAS</a>
     <a href="{{ url('/crudUsuarios') }}">USUARIOS</a>
-    <a href="{{ url('/crud/{2}') }}">LOCALES</a>
-    <a href="{{ url('/crud/{3}') }}">COMPAÑIAS</a>
-    <a href="{{ url('/crud/{4}') }}">PROMOCIONES</a>
-    <a href="{{ url('/crud/{5}') }}">TARJETAS</a>
+    
 </body>
 </html>
