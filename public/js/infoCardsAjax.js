@@ -3,7 +3,7 @@ window.onload = function() {
     modal_qr = document.getElementById("modal");
 };
 mySwiper = "";
-listado = 0; 
+listado = 0;
 cartas = 0;
 //
 function controladores(num) {
@@ -51,16 +51,11 @@ function showCard(recojoData) {
                 var response = JSON.parse(ajax.responseText);
                 console.log(response);
                 tabla0 = "";
-                // if(response==""){
-                //     alert('vacio')
-                //     tabla0+="<div>";
-                //     tabla0+="<div>";
-                //     tabla0+="<div>";
-                //     tabla0 += "<h1>Aun no tienes tarjetas, escanea un QR para empezar a sellar</h1>"
-                //     //tabla0+="</div>";
-                // }
-                
                 for (let i = 0; i < response.length; i++) {
+                    alert(response[i].status)
+                    if (response[i].status == "close") {
+                        alert("entro")
+                    }
                     tabla0 += `
               <div class="swiper-slide">
                     <div class="card">
@@ -85,7 +80,6 @@ function showCard(recojoData) {
                     }
                     tabla0 += "</div>";
                     if (response[i].stamp_now == response[i].stamp_max) {
-                        //alert('tomatelaaaa');
                         tabla0 += '<div class="Cbutton">';
                         tabla0 +=
                             '<button class="button" onclick="generar_qr(' +
@@ -255,7 +249,7 @@ function generar_qr(id_card, id_promotion) {
     var day = now.getDate();
     var hour = now.getHours();
     var minute = now.getMinutes();
-    var seconds=now.getSeconds()+45;
+    var seconds = now.getSeconds() + 45;
 
     document.getElementById("content").value =
         random +
@@ -274,8 +268,8 @@ function generar_qr(id_card, id_promotion) {
         "," +
         hour +
         "," +
-        minute+
-        ','+
+        minute +
+        ',' +
         seconds;
 
     $.ajax({
