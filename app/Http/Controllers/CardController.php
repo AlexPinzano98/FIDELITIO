@@ -19,7 +19,8 @@ class CardController extends Controller
             ON tbl_promotion.id_local_fk = tbl_local.id_local
             GROUP BY tbl_card.id_card
             HAVING tbl_card.id_user_fk = ?
-            AND tbl_promotion.status = "enable" AND tbl_card.status = "open";', [$id_user]);
+            AND tbl_promotion.status_promo = "enable"
+            ORDER BY tbl_card.status ASC;', [$id_user]);
             return response()->json($tarjetas, 200);
         } catch (\Throwable $th) {
             //throw $th;
@@ -147,7 +148,7 @@ class CardController extends Controller
             INNER JOIN tbl_local
             ON tbl_promotion.id_local_fk = tbl_local.id_local
             GROUP BY tbl_card.id_card
-            HAVING tbl_card.id_user_fk = ? AND tbl_promotion.status = "enable" AND tbl_card.status = "open" AND tbl_local.id_local = ?;', [$id_user, $request->input('id_local')]);
+            HAVING tbl_card.id_user_fk = ? AND tbl_promotion.status_promo = "enable" AND tbl_card.status = "open" AND tbl_local.id_local = ?;', [$id_user, $request->input('id_local')]);
             return response()->json($locales, 200);
         } catch (\Throwable $th) {
             //throw $th;
