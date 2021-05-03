@@ -94,6 +94,11 @@
         </div>
     </div>
 
+    <div class="checkbox" id="checkboxFiltro">
+        <input type="checkbox" id="soloactivas" onchange="showCard()">
+        <label for="soloactivas"> Solo activas</label><br>
+    </div>
+
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
