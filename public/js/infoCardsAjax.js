@@ -231,7 +231,7 @@ function verCardLocal(id_local) {
 
 function closeModal2() {
     modal_qr.style.display = "none";
-    //closeModal();
+    closeModal();
 }
 // window.onclick = function(event) {
 //     if (event.target == modal_qr) {
