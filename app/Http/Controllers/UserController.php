@@ -23,7 +23,7 @@ class UserController extends Controller
     public function handleProviderCallback2()
     {
         $user = Socialite::driver('facebook')->user();
-        return $user->getEmail();
+        return $user->getName();
     }
     public function redirectToProvider()
     {
