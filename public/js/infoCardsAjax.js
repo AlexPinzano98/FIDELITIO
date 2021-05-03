@@ -52,10 +52,6 @@ function showCard(recojoData) {
                 console.log(response);
                 tabla0 = "";
                 for (let i = 0; i < response.length; i++) {
-                    alert(response[i].status)
-                    if (response[i].status == "close") {
-                        alert("entro")
-                    }
                     tabla0 += `
               <div class="swiper-slide">
                     <div class="card">
