@@ -16,6 +16,15 @@ class UserController extends Controller
         //redirige a la vista login si no has iniciado sesion.
         return view('login');
     }
+    public function redirectToProvider2()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+    public function handleProviderCallback2()
+    {
+        $user = Socialite::driver('facebook')->user();
+        return $user->getEmail();
+    }
     public function redirectToProvider()
     {
         return Socialite::driver('google')->redirect();

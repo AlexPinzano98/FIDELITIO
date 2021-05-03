@@ -22,6 +22,8 @@ use App\Http\Controllers\CardController;
 // });
 Route::get('/google', [UserController::class, 'redirectToProvider']);
 Route::get('/google/callback', [UserController::class, 'handleProviderCallback']);
+Route::get('/facebook', [UserController::class, 'redirectToProvider2']);
+Route::get('/facebook/callback', [UserController::class, 'handleProviderCallback2']);
 Route::post('/registrar', [UserController::class, 'registrar']);
 Route::get('/', [UserController::class, 'login']);
 Route::post('/validarlogin', [UserController::class, 'validarLogin']);
