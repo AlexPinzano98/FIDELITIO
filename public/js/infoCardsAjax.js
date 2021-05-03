@@ -53,8 +53,9 @@ function showCard(recojoData) {
                 tabla0 = "";
                 for (let i = 0; i < response.length; i++) {
                     tabla0 += `
-              <div class="swiper-slide">
-                    <div class="card">
+              <div class="swiper-slide">`;
+                    if (response[i].status == "open") {
+                        tabla0 += `<div class="card">
                         <div class="card-body">
                             <img src="img/cafe.png" class="card-img-top" alt="perfil">
                         </div>
@@ -65,27 +66,56 @@ function showCard(recojoData) {
                             <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
                             <div class="card-stamp_grid">`;
 
-                    for (var x = 0; x < response[i].stamp_now; x++) {
-                        tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                        for (var x = 0; x < response[i].stamp_now; x++) {
+                            tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                        }
+
+                        for (
+                            var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
+                        ) {
+                            tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                        }
+                        tabla0 += "</div>";
+                        if (response[i].stamp_now == response[i].stamp_max) {
+                            tabla0 += '<div class="Cbutton">';
+                            tabla0 +=
+                                '<button class="button" onclick="generar_qr(' +
+                                response[i].id_card +
+                                "," +
+                                response[i].id_promotion +
+                                ')"><span> CANJEAR </span></button>';
+                            tabla0 += "</div>";
+                        }
+                        tabla0 += "</div></div>";
+                    } else if (response[i].status == "close") {
+                        tabla0 += `<div class="cardclose">
+                        <div class="card-body">
+                            <img src="img/cafe.png" class="card-img-top" alt="perfil">
+                        </div>
+                        <div class="card-stamp">
+                            <h5 class="card-title">${response[i].name_promo}</h5>
+                            <h5 class="card-title">${response[i].name}</h5>
+                            <p class="card-text">Premio: ${response[i].reward}</p>
+                            <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
+                            <div class="card-stamp_grid">`;
+
+                        for (var x = 0; x < response[i].stamp_now; x++) {
+                            tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                        }
+
+                        for (
+                            var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
+                        ) {
+                            tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                        }
+                        tabla0 += "</div>";
+                        tabla0 += "</div></div>";
+                    } else {
+                        console.log("error");
                     }
 
-                    for (
-                        var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
-                    ) {
-                        tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
-                    }
+                    //DIV QUE CIERRA EL SWIPER
                     tabla0 += "</div>";
-                    if (response[i].stamp_now == response[i].stamp_max) {
-                        tabla0 += '<div class="Cbutton">';
-                        tabla0 +=
-                            '<button class="button" onclick="generar_qr(' +
-                            response[i].id_card +
-                            "," +
-                            response[i].id_promotion +
-                            ')"><span> CANJEAR </span></button>';
-                        tabla0 += "</div>";
-                    }
-                    tabla0 += "</div></div></div>";
                     containCards.innerHTML = tabla0;
                 }
             }
