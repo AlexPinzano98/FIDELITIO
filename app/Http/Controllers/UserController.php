@@ -16,15 +16,12 @@ class UserController extends Controller
         //redirige a la vista login si no has iniciado sesion.
         return view('login');
     }
-    public function redirectToProvider()
-    {
+    public function redirectToProvider(){
         return Socialite::driver('google')->redirect();
     }
-    public function handleProviderCallback()
-    {
+    public function handleProviderCallback(){
         //return Socialite::driver('google')->redirect();
         $user = Socialite::driver('google')->user();
-
         $email= $user->getEmail();
         $name= $user->getName();
         $consentimiento=1;
@@ -56,39 +53,34 @@ class UserController extends Controller
             session()->put('name', $name);
             session()->put('typeuser', '1');
             session()->put('id_user', $user->id_user);
-
-        return redirect('viewCliente');
+            return redirect('viewCliente');
         }
         //return $user->getEmail();
-       
     }
+
     public function cerrar_sesion(){
         session()->forget(['id_user']);
         return redirect('/');
     }
 
 
-    public function validarLogin(Request $request) {;
+    public function validarLogin(Request $request){
         // Recibimos los datos del formulario
         $datos = $request->except('_token','enviar');
-
         // Buscamos si existe un usuario registrado
         $user=DB::table('tbl_user')->where([
             ['email','=',$datos['email']],
             ['psswd','=',md5($datos['psswd'])]
         ])->count(); // Contamos el numero de registros(usuarios) en la BBDD
         // Si existe un usuario $user será igual a 1, si no existe será igual a 0
-
         if ($user == 1){ // ? Existe usuario
             // Recuperamos los datos del usuario de la BBDD
             $user = DB::table('tbl_user')->where('email','=',$datos['email'])->where('psswd','=',md5($datos['psswd']))->first();
-
             // echo "Tipo usuario: " . $user->id_typeuser_fk;
             // Iniciamos sesión del usuario (guardamos los datos necesarios: nombre y tipo de usuario)
             $request->session()->put('name', $user->name);
             $request->session()->put('typeuser', $user->id_typeuser_fk);
             $request->session()->put('id_user', $user->id_user);
-
             switch ($user->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
                     return redirect('viewCliente');
@@ -113,7 +105,7 @@ class UserController extends Controller
                     break;
             }
         } else { // ! No existe usuario
-            $message = 'Ha habido un error al intentar entrar en su cuenta, por favor revise que el email y la contraseña esten bien escritos';
+            $message = 'Ha habido un error, por favor revise que el email y la contraseña estén bien escritos';
             return redirect('/')->with('message',$message);
         }
     }
@@ -135,11 +127,10 @@ class UserController extends Controller
             $consentimiento=1;
         }
         $users=DB::table('tbl_user')->where([['email','=',$datos['email']]])->count();
-
         if ($users == 0){
-                DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
-                       $mensaje = 'Tu cuenta se ha creado correctamente';
-                        return redirect('/')->with('mensaje',$mensaje);
+            DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
+            $mensaje = 'Tu cuenta se ha creado correctamente';
+            return redirect('/')->with('mensaje',$mensaje);
         }else{
             $mensaje="El correo introducido ya esta registrado";
             return redirect('registro')->with('mensaje',$mensaje);

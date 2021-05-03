@@ -20,7 +20,6 @@
 </head>
 
 <body>
-   <!--  <p class="h1">Fidelitio</p> -->
     <img src="img/stimpa.png" class="stimpa">
     <div class="login">
         <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
@@ -37,30 +36,27 @@
             </button>
             
             <div id="separacion">
-                <div id="hr"></div>
+                <div id="hr" style="margin-left:5%"></div>
                 <div id="o">O</div>
                 <div id="hr"></div>
             </div>
 
-            <!-- <form action="{{ url('/auth/google') }}" method="post"> -->
-            <!-- <button type="submit" class="btn btn-info">
-                Continuar con Google
-            </button> -->
-            
-            <!-- </form> -->
             <div id="message">
             </div>
             <p id="error"> {{Session::get('message')}} </p>
-            <p id="registro"> {{Session::get('mensaje')}} </p>
+            <p id="registro">{{Session::get('mensaje')}}</p>
 
         </form>
         <a href="{{ url('/facebook') }}">
             <button type="button" class="btn btn-primary">
                 Continuar con Facebook
-            </button></a>
-        <a href="{{ url('/google') }}"><button class="btn btn-info">
+            </button>
+        </a>
+        <a href="{{ url('/google') }}">
+            <button class="btn btn-info" style="margin-top: 5%;">
                 Continuar con Google
-        </button></a>
+            </button>
+        </a>
     </div>
 
     <div class="container">
