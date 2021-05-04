@@ -123,6 +123,7 @@ function showCard(recojoData) {
                             tabla0 += "</div></div>";
                         } else if (response[i].status == "close") {
                             tabla0 += `<div class="cardclose">
+                            <img src="img/complete.png" class="completeIMG">
                         <div class="card-body">
                             <img src="img/cafe.png" class="card-img-top" alt="perfil">
                         </div>
