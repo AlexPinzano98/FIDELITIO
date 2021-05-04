@@ -21,6 +21,9 @@
 </head>
 
 <body>
+    <!-- <div class="portada">
+        <img src="img/portada.png">
+    </div> -->
     <img src="img/stimpa.png" class="stimpa">
     <div class="login">
         <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
