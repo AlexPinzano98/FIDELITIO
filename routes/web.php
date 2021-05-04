@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CamareroController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\PruebaController;
 
 
 /*
@@ -45,7 +46,7 @@ Route::get('verLocales', [CardController::class, 'verLocales']);
 Route::post('verCardLocal', [CardController::class, 'verCardLocal']);
 Route::post('/validarQR', [CardController::class, 'validarQR']);
 
-Route::post('/validarQRcamarero', [CamareroController::class, 'validarQRcamarero']); 
+Route::post('/validarQRcamarero', [CamareroController::class, 'validarQRcamarero']);
 
 //para subir imagenes
 Route::get('image',  [CardController::class, 'image']);
@@ -59,3 +60,7 @@ Route::get('/cruds', function() {
 Route::get('/crudUsuarios', function() {
     return view('crudUsers');
 });
+
+//Prueba envio datos graficas
+
+Route::get('sendData', [PruebaController::class, 'sendData']);
