@@ -1,50 +1,51 @@
 body {
+    margin: 0;
     font-family: 'Mulish', sans-serif;
     background-color: #F8F9F9;
 }
 
+
+/* .portada {
+    display: none;
+} */
+
 .stimpa {
-    width: 60%;
-    margin-left: 20%;
-    margin-top: 7%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 15%;
 }
 
 .login {
-    margin: 3% 10% 0% 10%;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.h1 {
-    font-size: 300%;
-    font-family: 'Bree Serif', serif;
-    text-align: center;
     margin-top: 8%;
-}
-
-.form-control {
-    margin-left: 5%;
-    margin-top: 3%;
     border-radius: 20px;
-    width: 90%;
+    text-align: center;
+    width: 100%;
 }
 
 form {
-    max-width: 500px;
+    margin-left: 5%;
+    width: 90%;
+}
+
+.form-control {
+    margin-left: 10%;
+    margin-top: 3%;
+    border-radius: 20px;
+    width: 80%;
 }
 
 #submit {
-    margin-left: 5%;
     border-radius: 20px;
-    width: 90%;
-    margin-top: 0%;
+    width: 80%;
+    margin-top: 1%;
+    font-size: 120%;
+    color: white;
 }
 
 #separacion {
-    width: 80%;
+    width: 100%;
     margin-top: 5%;
-    margin-left: 15%;
+    margin-bottom: 10%;
 }
 
 #o {
@@ -54,18 +55,28 @@ form {
 }
 
 #hr {
-    margin-top: 4%;
+    margin-top: 3%;
     width: 40%;
     float: left;
     border-top: 3px solid grey;
 }
 
-.btn {
-    margin-left: 5%;
+#facebook,
+#google {
     border-radius: 20px;
-    width: 90%;
-    margin-top: 5%;
+    width: 70%;
     color: white;
+}
+
+.fab {
+    font-size: 120%;
+    margin-right: 2%;
+}
+
+#google {
+    background-color: rgb(65, 180, 55);
+    border: 1px solid rgb(65, 180, 55);
+    margin-top: 5%;
 }
 
 .container {
@@ -78,109 +89,194 @@ form {
 }
 
 #registro {
+    background-color: #8bebbc;
+    border-radius: 10px;
     color: green;
+    margin-left: 10%;
     text-align: center;
-    margin: 8% 0% 0% 5%;
-    font-size: 90%;
-    width: 90%;
+    font-size: 100%;
+    width: 80%;
 }
+
 #error {
-    color: red;
-    text-align: center;
-    margin: 8% 0% 0% 5%;
-    font-size: 90%;
+    margin-top: 18%;
+    background-color: rgb(248, 161, 161);
+    border-radius: 10px;
+    color: rgb(238, 25, 25);
+    margin-left: 5%;
+    font-size: 100%;
     width: 90%;
+    text-align: center;
 }
 
 @media (min-width: 440px) {
     .login {
         width: 60%;
-        margin: 0% 10% 0% 20%;
+        margin: 3% 0% 0% 20%;
     }
     .stimpa {
-        margin-top: 3%;
+        width: 70%;
+        margin-left: 15%;
+        margin-top: 12.5%;
     }
     .h1 {
         font-size: 350%;
         margin-top: 3%;
     }
     .form-control {
-        margin-left: 15%;
-        width: 70%;
-    }
-    #submit {
-        margin-left: 15%;
-        border-radius: 20px;
-        width: 70%;
-        margin-top: 2%;
-    }
-    #separacion {
-        width: 70%;
-        margin-top: 3.5%;
-        margin-left: 22.5%;
-    }
-    #o {
-        width: 8%;
-    }
-    #hr {
-        margin-top: 2.5%;
-        width: 35%;
-    }
-    .btn {
-        margin-left: 15%;
-        width: 70%;
-        margin-top: 3%;
-    }
-    .container {
-        width: 40%;
-        margin: 4% 0% 3% 30%;
-        border-radius: 20px;
-        padding: 1% 0% 1% 0%;
-    }
-}
-
-@media (min-width: 1024px) {
-    .h1 {
-        font-size: 400%;
-        margin-top: 2%;
-    }
-    .login {
-        width: 60%;
-        margin: 0% 15% 15% 20%;
-        /* background-color: gold; */
-    }
-    .form-control {
-        margin-left: 5%;
-        margin-top: 3%;
-        width: 90%;
-    }
-    #submit {
         margin-left: 5%;
         width: 90%;
-        margin-top: 1%;
+        font-size: 140%;
+    }
+    #submit {
+        margin-left: 0%;
+        border-radius: 20px;
+        width: 90%;
+        margin-top: 0%;
+        font-size: 140%;
     }
     #separacion {
-        margin-top: 3%;
-        margin-left: 15%;
-        margin-bottom: 0%;
+        width: 90%;
+        margin-top: 5%;
+        margin-left: 5%;
     }
     #o {
         width: 10%;
     }
     #hr {
         margin-top: 2%;
-        width: 45%;
+        width: 40%;
     }
-    .btn {
-        margin-left: 5%;
-        width: 90%;
-        margin-top: 3%;
-        color: white;
+    #facebook,
+    #google {
+        width: 80%;
+    }
+    #facebook {
+        font-size: 140%;
+        margin-top: 2.5%;
+    }
+    #google {
+        font-size: 140%;
     }
     .container {
-        width: 50%;
-        margin: -12% 0% 3% 25%;
+        width: 40%;
+        margin: 4% 0% 3% 30%;
         border-radius: 20px;
         padding: 1% 0% 1% 0%;
+        font-size: 140%;
     }
+    #registro {
+        margin-top: 5%;
+        margin-left: 5%;
+        width: 90%;
+        margin-bottom: 0%;
+    }
+    #error {
+        margin-top: 14%;
+        margin-left: 5%;
+        width: 90%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .stimpa {
+        width: 30%;
+        margin-left: 35%;
+        margin-top: 3%;
+        /* float: left; */
+    }
+    /* .portada {
+        background-color: red;
+        width: 50%;
+        display: block;
+        float: left;
+        filter: blur(2px);
+    }
+    .portada img {
+        width: 100%;
+        height: 100vh;
+    } */
+    .login {
+        width: 100%;
+        margin-left: 0%;
+        margin-top: 0%;
+        /* float: left; */
+    }
+    form {
+        font-size: 90%;
+        /* float: left; */
+        margin-left: 25%;
+        width: 50%;
+    }
+    .form-control {
+        margin-left: 10%;
+        margin-top: 2%;
+        width: 80%;
+    }
+    #submit {
+        width: 80%;
+        margin-top: 1%;
+        font-size: 130%;
+    }
+    #separacion {
+        margin-left: 5%;
+        margin-top: 3%;
+        margin-bottom: 5%;
+    }
+    #o {
+        text-align: center;
+        width: 10%;
+        float: left;
+        font-size: 130%;
+    }
+    #hr {
+        margin-top: 1.75%;
+        width: 40%;
+        float: left;
+        border-top: 3px solid grey;
+    }
+    .fab {
+        font-size: 160%;
+        margin-right: 2%;
+    }
+    #facebook,
+    #google {
+        font-size: 130%;
+        width: 40%;
+    }
+    #facebook {
+        margin-left: 30%;
+        margin-top: 0%;
+        float: left;
+    }
+    #google {
+        margin-top: 1%;
+    }
+    .container {
+        width: 30%;
+        text-align: center;
+        border: 1px solid grey;
+        margin: 2% 0% 2% 35%;
+        border-radius: 20px;
+        padding: 1% 0% 1% 0%;
+        font-size: 120%;
+    }
+    #registro {
+        background-color: #8bebbc;
+        border-radius: 10px;
+        color: green;
+        margin-left: 10%;
+        text-align: center;
+        font-size: 100%;
+        width: 80%;
+    }
+    #error {
+        margin-top: 10%;
+        margin-left: 25%;
+        font-size: 100%;
+        width: 50%;
+    }
+    /* #message {
+        margin-top: 5%;
+    } */
 }
