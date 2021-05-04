@@ -28,7 +28,6 @@ class CamareroController extends Controller
             $conseguir_id=DB::select('select * from tbl_user where id_user=?',[$id_user]);
             foreach ($conseguir_id as $id) {
                 $id_local=$id->id_local_fk;
-
             }
             $promociones=DB::select('select * from tbl_promotion where id_local_fk=?',[$id_local]);
             $datos=array($promociones, $conseguir_id);

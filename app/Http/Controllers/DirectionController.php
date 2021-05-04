@@ -5,82 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\Direction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DirectionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function cruds(){
+        return view('viewAdm_homeCruds');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function crudCompany(){
+        return view('crudCompany');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function crudLocales(){
+        return view('crudLocales');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Direction  $direction
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Direction $direction)
-    {
-        //
+    public function crudPromociones(){
+        return view('crudPromociones');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Direction  $direction
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Direction $direction)
-    {
-        //
+    public function crudTarjetas(){
+        return view('crudTarjetas');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Direction  $direction
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Direction $direction)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Direction  $direction
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Direction $direction)
-    {
-        //
+    public function crudUsuarios(){
+        return view('crudUsuarios');
     }
 }
