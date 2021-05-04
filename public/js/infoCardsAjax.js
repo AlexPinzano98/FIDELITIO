@@ -3,7 +3,7 @@ window.onload = function() {
     modal_qr = document.getElementById("modal");
 };
 mySwiper = "";
-listado = 0; 
+listado = 0;
 cartas = 0;
 //
 function controladores(num) {
@@ -29,16 +29,19 @@ function objetoAjax() {
 }
 
 function showCard(recojoData) {
+    filtroActivo = document.getElementById("soloactivas").checked;
     document.getElementById("camara").style.color = "white";
     cardLocal = recojoData;
     //alert(listado)
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     if (listado == 1 && cartas == 0) {
         document.getElementById("listCartas").style.display = "none";
+        document.getElementById("checkboxFiltro").style.display = "none";
         document.getElementById("listLocales").style.display = "block";
         verLocales();
     } else if (listado == 0) {
         document.getElementById("listLocales").style.display = "none";
+        document.getElementById("checkboxFiltro").style.display = "block";
         document.getElementById("listCartas").style.display = "block";
         // var section = document.getElementById('cards');
         var ajax = new objetoAjax();
@@ -51,19 +54,42 @@ function showCard(recojoData) {
                 var response = JSON.parse(ajax.responseText);
                 console.log(response);
                 tabla0 = "";
-                // if(response==""){
-                //     alert('vacio')
-                //     tabla0+="<div>";
-                //     tabla0+="<div>";
-                //     tabla0+="<div>";
-                //     tabla0 += "<h1>Aun no tienes tarjetas, escanea un QR para empezar a sellar</h1>"
-                //     //tabla0+="</div>";
-                // }
-                
-                for (let i = 0; i < response.length; i++) {
-                    tabla0 += `
-              <div class="swiper-slide">
-                    <div class="card">
+                if (filtroActivo == true) {
+                    for (let i = 0; i < response.length; i++) {
+                        if (response[i].status == "open") {
+                            tabla0 += `
+                            <div class="swiper-slide">
+                            <div class="card">
+                            <div class="card-body">
+                                <img src="img/cafe.png" class="card-img-top" alt="perfil">
+                            </div>
+                            <div class="card-stamp">
+                            <h5 class="card-title">${response[i].name_promo}</h5>
+                            <h5 class="card-title">${response[i].name}</h5>
+                            <p class="card-text">Premio: ${response[i].reward}</p>
+                            <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
+                            <div class="card-stamp_grid">`;
+
+                            for (var x = 0; x < response[i].stamp_now; x++) {
+                                tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                            }
+
+                            for (
+                                var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
+                            ) {
+                                tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                            }
+                            tabla0 += "</div>";
+                            tabla0 += "</div></div></div>"
+                            containCards.innerHTML = tabla0;
+                        }
+                    }
+                } else {
+                    for (let i = 0; i < response.length; i++) {
+                        tabla0 += `
+                    <div class="swiper-slide">`;
+                        if (response[i].status == "open") {
+                            tabla0 += `<div class="card">
                         <div class="card-body">
                             <img src="img/cafe.png" class="card-img-top" alt="perfil">
                         </div>
@@ -74,29 +100,58 @@ function showCard(recojoData) {
                             <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
                             <div class="card-stamp_grid">`;
 
-                    for (var x = 0; x < response[i].stamp_now; x++) {
-                        tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
-                    }
+                            for (var x = 0; x < response[i].stamp_now; x++) {
+                                tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                            }
 
-                    for (
-                        var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
-                    ) {
-                        tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
-                    }
-                    tabla0 += "</div>";
-                    if (response[i].stamp_now == response[i].stamp_max) {
-                        //alert('tomatelaaaa');
-                        tabla0 += '<div class="Cbutton">';
-                        tabla0 +=
-                            '<button class="button" onclick="generar_qr(' +
-                            response[i].id_card +
-                            "," +
-                            response[i].id_promotion +
-                            ')"><span> CANJEAR </span></button>';
+                            for (
+                                var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
+                            ) {
+                                tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                            }
+                            tabla0 += "</div>";
+                            if (response[i].stamp_now == response[i].stamp_max) {
+                                tabla0 += '<div class="Cbutton">';
+                                tabla0 +=
+                                    '<button class="button" onclick="generar_qr(' +
+                                    response[i].id_card +
+                                    "," +
+                                    response[i].id_promotion +
+                                    ')"><span> CANJEAR </span></button>';
+                                tabla0 += "</div>";
+                            }
+                            tabla0 += "</div></div>";
+                        } else if (response[i].status == "close") {
+                            tabla0 += `<div class="cardclose">
+                        <div class="card-body">
+                            <img src="img/cafe.png" class="card-img-top" alt="perfil">
+                        </div>
+                        <div class="card-stamp">
+                            <h5 class="card-title">${response[i].name_promo}</h5>
+                            <h5 class="card-title">${response[i].name}</h5>
+                            <p class="card-text">Premio: ${response[i].reward}</p>
+                            <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
+                            <div class="card-stamp_grid">`;
+
+                            for (var x = 0; x < response[i].stamp_now; x++) {
+                                tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                            }
+
+                            for (
+                                var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
+                            ) {
+                                tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                            }
+                            tabla0 += "</div>";
+                            tabla0 += "</div></div>";
+                        } else {
+                            console.log("error");
+                        }
+
+                        //DIV QUE CIERRA EL SWIPER
                         tabla0 += "</div>";
+                        containCards.innerHTML = tabla0;
                     }
-                    tabla0 += "</div></div></div>";
-                    containCards.innerHTML = tabla0;
                 }
             }
         };
@@ -105,6 +160,7 @@ function showCard(recojoData) {
         cartas = 0;
         tabla1 = "";
         document.getElementById("listLocales").style.display = "none";
+        document.getElementById("checkboxFiltro").style.display = "none";
         document.getElementById("listCartas").style.display = "block";
         for (let i = 0; i < cardLocal.length; i++) {
             tabla1 += `
@@ -255,7 +311,7 @@ function generar_qr(id_card, id_promotion) {
     var day = now.getDate();
     var hour = now.getHours();
     var minute = now.getMinutes();
-    var seconds=now.getSeconds()+45;
+    var seconds = now.getSeconds() + 45;
 
     document.getElementById("content").value =
         random +
@@ -274,8 +330,8 @@ function generar_qr(id_card, id_promotion) {
         "," +
         hour +
         "," +
-        minute+
-        ','+
+        minute +
+        ',' +
         seconds;
 
     $.ajax({
