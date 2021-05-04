@@ -59,3 +59,11 @@ Route::get('/crudLocales', [DirectionController::class, 'crudLocales']);
 Route::get('/crudPromociones', [DirectionController::class, 'crudPromociones']);
 Route::get('/crudTarjetas', [DirectionController::class, 'crudTarjetas']);
 Route::get('/crudUsuarios', [DirectionController::class, 'crudUsuarios']);
+
+//CRUD USUARIOS
+Route::post('/ver_usuarios', [UserController::class, 'ver_usuarios']);
+Route::post('/ver_usuario', [UserController::class, 'ver_usuario']);
+Route::post('/eliminar_usuario', [UserController::class, 'eliminar_usuario']);
+Route::post('/registrar_usuario', [UserController::class, 'registrar_usuario']);
+Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']);
+Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);
