@@ -29,7 +29,6 @@ class CamareroController extends Controller
             $conseguir_id=DB::select('SELECT * FROM tbl_user WHERE id_user=?',[$id_user]);
             foreach ($conseguir_id as $id) {
                 $id_local=$id->id_local_fk;
-
             }
             //Buscamos las promociones del restaurante que sean ilimitadas o con fecha de caducidad inferior a la fecha actual
             $promociones=DB::select('SELECT * FROM tbl_promotion WHERE id_local_fk = ? AND status_promo = "enable" AND (tbl_promotion.unlimited = "Si" OR tbl_promotion.expiration > NOW())',[$id_local]);

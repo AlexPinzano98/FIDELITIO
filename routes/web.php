@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CamareroController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\DirectionController;
 
 
 /*
@@ -53,9 +54,18 @@ Route::post('imgUp', [CardController::class, 'imgUp']);
 
 //Vista admin master
 Route::get('/viewMaster', [UserController::class, 'viewMaster']);
-Route::get('/cruds', function() {
-    return view('viewAdm_homeCruds');
-});
-Route::get('/crudUsuarios', function() {
-    return view('crudUsers');
-});
+Route::get('/cruds', [DirectionController::class, 'cruds']);
+//Redirecciones a los diferentes tipos de CRUD (admin master)
+Route::get('/crudCompany', [DirectionController::class, 'crudCompany']);
+Route::get('/crudLocales', [DirectionController::class, 'crudLocales']);
+Route::get('/crudPromociones', [DirectionController::class, 'crudPromociones']);
+Route::get('/crudTarjetas', [DirectionController::class, 'crudTarjetas']);
+Route::get('/crudUsuarios', [DirectionController::class, 'crudUsuarios']);
+
+//CRUD USUARIOS
+Route::post('/ver_usuarios', [UserController::class, 'ver_usuarios']);
+Route::post('/ver_usuario', [UserController::class, 'ver_usuario']);
+Route::post('/eliminar_usuario', [UserController::class, 'eliminar_usuario']);
+Route::post('/registrar_usuario', [UserController::class, 'registrar_usuario']);
+Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']);
+Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);

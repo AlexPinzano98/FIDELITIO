@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -20,6 +21,9 @@
 </head>
 
 <body>
+    <!-- <div class="portada">
+        <img src="img/portada.png">
+    </div> -->
     <img src="img/stimpa.png" class="stimpa">
     <div class="login">
         <form action="{{url('/validarlogin')}}" method="POST" onsubmit="return validarForm()">
@@ -43,18 +47,18 @@
 
             <div id="message">
             </div>
-            <p id="error"> {{Session::get('message')}} </p>
+            <p id="error">{{Session::get('message')}}</p>
             <p id="registro">{{Session::get('mensaje')}}</p>
 
         </form>
         <a href="{{ url('/facebook') }}">
-            <button type="button" class="btn btn-primary">
-                Continuar con Facebook
+            <button type="button" class="btn btn-primary" id="facebook">
+                <i class="fab fa-facebook"></i>Continuar con Facebook
             </button>
         </a>
         <a href="{{ url('/google') }}">
-            <button class="btn btn-info" style="margin-top: 5%;">
-                Continuar con Google
+            <button class="btn btn-info" id="google">
+                <i class="fab fa-google-plus-g"></i>Continuar con Google
             </button>
         </a>
     </div>
