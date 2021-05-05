@@ -62,6 +62,7 @@ Route::get('/crudUsuarios', function() {
     return view('crudUsers');
 });
 
+// URL::forceScheme('https');
 //Prueba envio datos graficas
 
 Route::post('sendData', [PruebaController::class, 'sendData']);
