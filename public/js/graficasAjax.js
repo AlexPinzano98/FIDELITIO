@@ -36,7 +36,7 @@ function callData() {
                                 data: response[1], // Specify the data values array
                                 fill: false,
                                 borderColor: '#2196f3', // Add custom color border (Line)
-                                // backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+                                backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
                                 tension: 0.1 // Specify bar border width
                             }, {
                                 label: 'Series 2', // Name the series
@@ -45,7 +45,7 @@ function callData() {
                                 ], // Specify the data values array
                                 fill: false,
                                 borderColor: '#4CAF50', // Add custom color border (Line)
-                                // backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
+                                backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
                                 tension: 0.1 // Specify bar border width
                             }]
                         },
@@ -100,25 +100,26 @@ function callData() {
                     });
 
                     myChart3 = new Chart(ctx3, {
-                        type: 'line',
+                        type: 'pie',
                         data: {
                             labels: response[0],
                             datasets: [{
                                 label: 'Series 1', // Name the series
                                 data: response[1], // Specify the data values array
                                 fill: false,
-                                borderColor: '#2196f3', // Add custom color border (Line)
-                                // backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-                                tension: 0.1 // Specify bar border width
-                            }, {
-                                label: 'Series 2', // Name the series
-                                data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-                                    457
-                                ], // Specify the data values array
-                                fill: false,
-                                borderColor: '#4CAF50', // Add custom color border (Line)
-                                // backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
-                                tension: 0.1 // Specify bar border width
+                                borderColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgb(255,255,0,0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                ], // Add custom color border (Line)
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgb(255,255,0,0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                ], // Add custom color background (Points and Fill)
+                                borderWidth: 1 // Specify bar border width
                             }]
                         },
 
@@ -136,24 +137,25 @@ function callData() {
                     });
 
                     myChart4 = new Chart(ctx4, {
-                        type: 'line',
+                        type: 'polarArea',
                         data: {
                             labels: response[0],
                             datasets: [{
                                 label: 'Series 1', // Name the series
                                 data: response[1], // Specify the data values array
                                 fill: false,
-                                borderColor: '#2196f3', // Add custom color border (Line)
-                                // backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-                                tension: 0.1 // Specify bar border width
-                            }, {
-                                label: 'Series 2', // Name the series
-                                data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-                                    457
-                                ], // Specify the data values array
-                                fill: false,
-                                borderColor: '#4CAF50', // Add custom color border (Line)
-                                // backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
+                                borderColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgb(255,255,0,0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                ], // Add custom color border (Line)
+                                backgroundColor:  [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgb(255,255,0,0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                ], // Add custom color background (Points and Fill)
                                 tension: 0.1 // Specify bar border width
                             }]
                         },
