@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -65,7 +66,7 @@
                 <option value=0>No canjeado</option>
                 <option value=1>Canjeado</option>
             </select>
-            <canvas id="myChart2" width="100" height="90"></canvas>
+            <canvas id="myChart2" width="100" height="80"></canvas>
 
             <!-- Button trigger modal -->
             <img src="img/info-circle.svg" alt="informacion" data-bs-toggle="modal" data-bs-target="#exampleModal2">
