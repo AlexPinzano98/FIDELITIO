@@ -19,7 +19,7 @@
     <div id="gr">
         <div class="gr__item">
             <h5>Clientes/alta</h5>
-            <select name="filter" id="filter" class="form-select">
+            <select name="filter" id="filter" class="form-select my-2">
 
                 <option value="">Tiempo</option>
                 <option value="dias">dias</option>
@@ -53,14 +53,14 @@
         </div>
         <div class="gr__item">
             <h5>Clientes/Promoción/canjeado</h5>
-            <select name="filter2" id="filter2" class="form-select">
+            <select name="filter2" id="filter2" class="form-select my-2">
 
                 <option value="">Tiempo</option>
                 <option value="dias">Dias</option>
                 <option value="mes">Mes</option>
                 <option value="ano">Año</option>
             </select>
-            <select name="filter3" id="filter3" class="form-select">
+            <select name="filter3" id="filter3" class="form-select my-2">
 
                 <option value="">Promoción</option>
                 <option value=0>No canjeado</option>
@@ -93,7 +93,7 @@
         </div>
         <div class="gr__item">
             <h5>Clientes/promoción canjeada</h5>
-            <select name="filter4" id="filter4" class="form-select">
+            <select name="filter4" id="filter4" class="form-select my-2">
                 <option value="">Tiempo</option>
                 <option value="dias">Dias</option>
                 <option value="mes">Mes</option>

@@ -66,11 +66,16 @@ function callData() {
                         },
 
                         options: {
-                            borderAlign: 'center',
                             scales: {
                                 yAxes: [{
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        fontSize: 16
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontSize: 16
                                     }
                                 }]
                             },
@@ -102,11 +107,16 @@ function callData() {
                         },
 
                         options: {
-                            borderAlign: 'center',
                             scales: {
                                 yAxes: [{
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        fontSize: 16
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontSize: 16
                                     }
                                 }]
                             },
@@ -139,11 +149,16 @@ function callData() {
                         },
 
                         options: {
-                            borderAlign: 'center',
                             scales: {
                                 yAxes: [{
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        fontSize: 16
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontSize: 16
                                     }
                                 }]
                             },
@@ -180,7 +195,13 @@ function callData() {
                             scales: {
                                 yAxes: [{
                                     ticks: {
-                                        beginAtZero: true
+                                        beginAtZero: true,
+                                        fontSize: 16
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontSize: 16
                                     }
                                 }]
                             },
