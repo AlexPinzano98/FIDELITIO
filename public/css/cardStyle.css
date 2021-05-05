@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*carta habilitada*/
+
+#swiperStyle .card {
+    border-radius: 12px;
+    box-shadow: 0px 0px 18px #888888;
+}
+
+#swiperStyle .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#swiperStyle .card-stamp {
+    padding: 8%;
+}
+
+#swiperStyle .card-stamp_grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-gap: 7px;
+    align-items: center;
+}
+
+#swiperStyle .stamp-title {
+    align-self: flex-start;
+    padding-bottom: 10px;
+}
+
+#swiperStyle .img-thumbnail {
+    max-width: 100%;
+}
+
+#swiperStyle .card-img-top {
+    max-width: 100%;
+}
+
+#swiperStyle .swiper-slide-active .card-img-top {
+    border-radius: 12px 12px 0 0;
+}
+
+
+/*carta deshabilitada*/
+
+#swiperStyle .cardclose {
+    border-radius: 12px;
+    box-shadow: 0px 0px 18px #888888;
+    filter: grayscale(100%) opacity(95%);
+}
+
+#swiperStyle h5,
+#swiperStyle p {
+    align-self: flex-start;
+    padding-bottom: 10px;
+}
+
+#swiperStyle h5,
+#swiperStyle p {
+    font-size: 15px;
+}
+
+body {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    color: #000;
+}
+
+.swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#swiperStyle .swiper-slide {
+    width: 300px;
+}
+
+@media (min-width: 1024px) {
+    #swiperStyle small {
+        font-size: 1em;
+    }
+    #swiperStyle h5 {
+        font-size: 1.5em;
+    }
+    #swiperStyle p {
+        font-size: 1.2em;
+    }
+}
+
+
+/* BOTON VALIDAR QR*/
+
+.button {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    align-self: center;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.Cbutton {
+    text-align: center;
+    margin-top: 4%;
+}
+
+.completeIMG {
+    z-index: 5;
+    filter: grayscale(0%) opacity(95%);
+    position: absolute;
+    /* se usa en caso de este div, donde tiene la altura y el ancho definido, sin esto top, right y left no funcionarían */
+    width: 150px;
+    top: 30%;
+    /* sirve en caso de un div como este, donde tiene una altura definida, en caso de que la altura no este definida esta edición no se pone ; */
+    right: 0;
+    /* se debe usar para que margin 0 auto funcione */
+    left: 0;
+    /* se debe usar para que margin 0 auto funcione */
+    margin: 0 auto;
+    /* Esto lo centra */
+}
