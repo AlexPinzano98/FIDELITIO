@@ -115,7 +115,7 @@ class UserController extends Controller
                     break;
             }
         } else { // ! No existe usuario
-            $message = 'Ha habido un error, por favor revise que el email y la contraseña estén bien escritos';
+            $message = 'Por favor, revise que el email y la contraseña estén bien escritos';
             return redirect('/')->with('message',$message);
         }
     }
