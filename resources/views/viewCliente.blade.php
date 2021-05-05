@@ -15,6 +15,7 @@
     <script src="js/instascan.js"></script>
     <script src="js/instascan.min.js"></script>
     <script src="js/infoCardsAjax.js"></script>
+    <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
@@ -86,7 +87,7 @@
     <div id="modal2" class="modal">
         <div class="modal-content">
             <button id="close" class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>
-            <video id="preview" width="100%" height="100%" style="display: none;"></video>
+            <video id="preview" class="video-back" width="100%" height="100%" playsinline style="display: none;"></video>
         </div>
     </div>
     <script src="js/card.js"></script>
