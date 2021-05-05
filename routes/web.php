@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CamareroController;
 use App\Http\Controllers\CardController;
+// use Illuminate\Support\Facades\URL;
 
 
 /*
@@ -59,3 +60,5 @@ Route::get('/cruds', function() {
 Route::get('/crudUsuarios', function() {
     return view('crudUsers');
 });
+
+// URL::forceScheme('https');
