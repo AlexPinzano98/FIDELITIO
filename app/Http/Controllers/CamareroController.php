@@ -25,12 +25,13 @@ class CamareroController extends Controller
     {
         try {
             $id_user = session()->get('id_user');
-            $conseguir_id=DB::select('select * from tbl_user where id_user=?',[$id_user]);
+            //Conseguir id del local al que pertenece el camarero
+            $conseguir_id=DB::select('SELECT * FROM tbl_user WHERE id_user=?',[$id_user]);
             foreach ($conseguir_id as $id) {
                 $id_local=$id->id_local_fk;
-
             }
-            $promociones=DB::select('select * from tbl_promotion where id_local_fk=?',[$id_local]);
+            //Buscamos las promociones del restaurante que sean ilimitadas o con fecha de caducidad inferior a la fecha actual
+            $promociones=DB::select('SELECT * FROM tbl_promotion WHERE id_local_fk = ? AND status_promo = "enable" AND (tbl_promotion.unlimited = "Si" OR tbl_promotion.expiration > NOW())',[$id_local]);
             $datos=array($promociones, $conseguir_id);
             return response()->json($datos,200);
         } catch (\Throwable $th) {

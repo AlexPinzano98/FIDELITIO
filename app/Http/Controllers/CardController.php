@@ -20,6 +20,7 @@ class CardController extends Controller
             GROUP BY tbl_card.id_card
             HAVING tbl_card.id_user_fk = ?
             AND tbl_promotion.status_promo = "enable"
+            AND (tbl_promotion.unlimited = "Si" OR tbl_promotion.expiration > NOW())
             ORDER BY tbl_card.status ASC;', [$id_user]);
             return response()->json($tarjetas, 200);
         } catch (\Throwable $th) {
@@ -131,6 +132,7 @@ class CardController extends Controller
             ON tbl_local.id_local = tbl_promotion.id_local_fk
             INNER JOIN tbl_card
             ON tbl_promotion.id_promotion = tbl_card.id_promotion_fk
+            AND (tbl_promotion.unlimited = "Si" OR tbl_promotion.expiration > NOW())
             WHERE tbl_card.id_user_fk = ? AND tbl_card.status = "open"', [$id_user]);
             return response()->json($locales, 200);
         } catch (\Throwable $th) {
@@ -148,7 +150,11 @@ class CardController extends Controller
             INNER JOIN tbl_local
             ON tbl_promotion.id_local_fk = tbl_local.id_local
             GROUP BY tbl_card.id_card
-            HAVING tbl_card.id_user_fk = ? AND tbl_promotion.status_promo = "enable" AND tbl_card.status = "open" AND tbl_local.id_local = ?;', [$id_user, $request->input('id_local')]);
+            HAVING tbl_card.id_user_fk = ? 
+            AND tbl_promotion.status_promo = "enable" 
+            AND (tbl_promotion.unlimited = "Si" OR tbl_promotion.expiration > NOW())
+            AND tbl_card.status = "open" 
+            AND tbl_local.id_local = ?;', [$id_user, $request->input('id_local')]);
             return response()->json($locales, 200);
         } catch (\Throwable $th) {
             //throw $th;

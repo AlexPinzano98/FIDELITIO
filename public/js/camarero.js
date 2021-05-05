@@ -3,8 +3,8 @@ window.onload = function() {
     modal_qr = document.getElementById("modal");
 }
 
- 
-function objetoAjax() { 
+
+function objetoAjax() {
     var xmlhttp = false;
     try {
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -35,25 +35,30 @@ function ver_promociones() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             tabla += '<div>';
-            
+
             //tabla +='<button style="text-aling:center;" onclick="canjear_promocion()">Canjear Promocion</button>';
             for (let i = 0; i < respuesta[0].length; i++) {
                 tabla += '<div class="sketchy">';
-                tabla += '<p> Promocion '+respuesta[0][i].name_promo+'</p>';
-                tabla += '<p> Sellos : '+respuesta[0][i].stamp_max+'</p>';
+                tabla += '<p> Promocion ' + respuesta[0][i].name_promo + '</p>';
+                tabla += '<p> Sellos : ' + respuesta[0][i].stamp_max + '</p>';
+                if (respuesta[0][i].unlimited == "Si") {
+                    tabla += '<p style="color: blue;"> Ilimitada </p>';
+                } else {
+                    tabla += '<p style="color: green;"> Valido hasta : ' + respuesta[0][i].expiration + '</p>';
+                }
                 tabla += '</br>';
 
-                tabla +='<button class="btn" onclick="generar_qr('+respuesta[0][i].id_promotion+','+respuesta[1][0].id_user+')">Generar QR</button>';
-                tabla += '</div>';  
-                tabla += '</br>';  
+                tabla += '<button class="btn" onclick="generar_qr(' + respuesta[0][i].id_promotion + ',' + respuesta[1][0].id_user + ')">Generar QR</button>';
+                tabla += '</div>';
+                tabla += '</br>';
             }
-            tabla += '</div>';  
-            
-        }else{  
-            var cont=1
+            tabla += '</div>';
+
+        } else {
+            var cont = 1
         }
-        if(tabla=='<div></div>'){
-            tabla = '<h1>Tu restaurante no tiene promociones activas, habla con el gerente para que las cree!</h1>';  
+        if (tabla == '<div></div>') {
+            tabla = '<h1>Tu restaurante no tiene promociones activas, habla con el gerente para que las cree!</h1>';
 
         }
 
@@ -72,20 +77,20 @@ window.onclick = function(event) {
     }
 }
 
-function generar_qr(id_promotion,id_camarero){
-    var random= Math.random() * (1 - 1000) + 1;
-    var random2= Math.random() * (1 - 1000) + 1;
-      //alert(random);
+function generar_qr(id_promotion, id_camarero) {
+    var random = Math.random() * (1 - 1000) + 1;
+    var random2 = Math.random() * (1 - 1000) + 1;
+    //alert(random);
 
     var now = new Date();
-    var year=now.getFullYear();
-    var month=now.getMonth()+1;
-    var day=now.getDate();
-    var hour=now.getHours();
-    var minute=now.getMinutes();
-    var seconds=now.getSeconds()+45;
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var seconds = now.getSeconds() + 45;
 
-    document.getElementById('content').value=random+','+random2+','+id_promotion+','+id_camarero+','+year+','+month+','+day+','+hour+','+minute+','+seconds;
+    document.getElementById('content').value = random + ',' + random2 + ',' + id_promotion + ',' + id_camarero + ',' + year + ',' + month + ',' + day + ',' + hour + ',' + minute + ',' + seconds;
     //console.log(document.getElementById('content').value)
 
     // return false;
@@ -104,18 +109,18 @@ function generar_qr(id_promotion,id_camarero){
     // ajax.send(datasend);
     // $(document).ready(function() {
     //     $("#codeForm").submit(function(){
-        //var ruta= "asset('camarero.php')";
-        // var formData = new FormData();
-        // formData.append("id_promotion", id_promotion);
-            $.ajax({
-                url:'./generate_code.php',
-                type:'POST',
-                //data: {data:formData, ecc:$("#ecc").val(), size:$("#size").val()},
-                data: {formData:$("#content").val(), ecc:$("#ecc").val(), size:$("#size").val()},
-                success: function(response) {
-                    $(".showQRCode").html(response);
-                },
-             });
+    //var ruta= "asset('camarero.php')";
+    // var formData = new FormData();
+    // formData.append("id_promotion", id_promotion);
+    $.ajax({
+        url: './generate_code.php',
+        type: 'POST',
+        //data: {data:formData, ecc:$("#ecc").val(), size:$("#size").val()},
+        data: { formData: $("#content").val(), ecc: $("#ecc").val(), size: $("#size").val() },
+        success: function(response) {
+            $(".showQRCode").html(response);
+        },
+    });
     //     });
     // });
     //alert(nombre_local);
