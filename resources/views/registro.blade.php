@@ -66,5 +66,4 @@
         ¿Ya tienes cuenta?<a href="{{url('/')}}"><br>Inicia Sesión</a>
     </div>
 </body>
-
 </html>
