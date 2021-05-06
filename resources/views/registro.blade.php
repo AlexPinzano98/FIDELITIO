@@ -57,7 +57,7 @@
             </button>
             <div id="message">
             </div>
-            <p id="error"> {{Session::get('message')}} </p>
+            <p id="errorR">{{Session::get('mensaje')}}</p>
 
         </form>
     </div>

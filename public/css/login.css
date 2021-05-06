@@ -111,6 +111,15 @@ form {
     text-align: center;
 }
 
+#errorR {
+    margin-top: 5%;
+    color: rgb(255, 0, 0);
+    margin-left: 5%;
+    font-size: 120%;
+    width: 90%;
+    text-align: center;
+}
+
 
 /* .portada {
     display: none;

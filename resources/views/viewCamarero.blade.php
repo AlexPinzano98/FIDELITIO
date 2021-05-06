@@ -84,7 +84,7 @@
         </div>
     </div>
 
-
+    <div id="expirado"></div>
 
     <script src="js/camarero.js"></script>
     <script src="js/camara_c.js"></script>

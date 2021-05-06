@@ -32,6 +32,7 @@ Route::post('/validarlogin', [UserController::class, 'validarLogin']);
 Route::get('cerrar_sesion', [UserController::class, 'cerrar_sesion']);
 Route::get('/vista_camarero', [CamareroController::class, 'vista_camarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
+Route::get('/perfil', [UserController::class, 'perfil']);
 //vista cliente
 Route::get('/viewCliente', [UserController::class, 'viewCliente']);
 Route::get('/viewCamarero', [CamareroController::class, 'viewCamarero']);
