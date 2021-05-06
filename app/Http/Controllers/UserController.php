@@ -6,6 +6,7 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Mockery\Undefined;
 use Swift;
@@ -23,40 +24,116 @@ class UserController extends Controller
     public function handleProviderCallback2()
     {
         $user = Socialite::driver('facebook')->user();
-        //return $user->getEmail();
-        $email= $user->getEmail();
-        $name= $user->getName();
-        $consentimiento=1;
-        $contador1=DB::table('tbl_user')->where([
-            ['email','=',$email],
-            ['google/facebook','=','1']
-        ])->count();
-        $contador2=DB::table('tbl_user')->where([
-            ['email','=',$email],
-            ['google/facebook','=','0']
-        ])->count();
-        if($contador1==1){
-            //hare login ya que tengo cuenta con google o facebook
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $user->name);
-            session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
-        }elseif($contador2==1){
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $user->name);
-            session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
-        }else{
-            //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $name);
-            session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
-        }
+            //return Socialite::driver('google')->redirect();
+            $email= $user->getEmail();
+            $name= $user->getName();
+            $cadena = $name;
+            $separador = " ";
+            $separada = explode($separador, $cadena);
+            $name=$separada[0];
+            if(empty($separada[2])){
+                $lastname=$separada[1];
+            }else{
+                $lastname=$separada[1].' '.$separada[2];
+            }
+            $consentimiento=1;
+            $contador1=DB::table('tbl_user')->where([
+                ['email','=',$email],
+                ['google/facebook','=','1']
+            ])->count();
+            $contador2=DB::table('tbl_user')->where([
+                ['email','=',$email],
+                ['google/facebook','=','0']
+            ])->count();
+            if($contador1==1){
+                //hare login ya que tengo cuenta con google o facebook
+                $usuario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+                session()->put('name', $usuario->name);
+                session()->put('typeuser', $usuario->id_typeuser_fk);
+                session()->put('id_user', $usuario->id_user);
+                switch ($usuario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                    case '1':
+                        return redirect('viewCliente');
+                        break;
+                    case '2':
+                        // echo "Camarero";
+                        // return view('viewCamarero');
+                        return redirect('viewCamarero');
+                        break;
+                    case '3':
+                        echo "ADM establecimiento";
+                        break;
+                    case '4':
+                        echo "ADM grupo";
+                        break;
+                    case '5':
+                        //echo "ADM master";
+                        return redirect('viewMaster');
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }elseif($contador2==1){
+                $usuario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+                session()->put('name', $usuario->name);
+                session()->put('typeuser', $usuario->id_typeuser_fk);
+                session()->put('id_user', $usuario->id_user);
+                switch ($usuario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                    case '1':
+                        return redirect('viewCliente');
+                        break;
+                    case '2':
+                        // echo "Camarero";
+                        // return view('viewCamarero');
+                        return redirect('viewCamarero');
+                        break;
+                    case '3':
+                        echo "ADM establecimiento";
+                        break;
+                    case '4':
+                        echo "ADM grupo";
+                        break;
+                    case '5':
+                        //echo "ADM master";
+                        return redirect('viewMaster');
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }else{
+                //registrarse con la cuenta y hacer login
+             DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=> $lastname,'confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>Str::random(32),'id_typeuser_fk'=>'1','google/facebook'=>'1','gender'=>'No especificar']);
+             $usuario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+             session()->put('name', $usuario->name);
+                session()->put('typeuser', $usuario->id_typeuser_fk);
+                session()->put('id_user', $usuario->id_user);
+                switch ($usuario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                    case '1':
+                        return redirect('viewCliente');
+                        break;
+                    case '2':
+                        // echo "Camarero";
+                        // return view('viewCamarero');
+                        return redirect('viewCamarero');
+                        break;
+                    case '3':
+                        echo "ADM establecimiento";
+                        break;
+                    case '4':
+                        echo "ADM grupo";
+                        break;
+                    case '5':
+                        //echo "ADM master";
+                        return redirect('viewMaster');
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
+            }
+            //return $user->getEmail();
     }
     public function redirectToProvider()
     {
@@ -67,6 +144,15 @@ class UserController extends Controller
         $user = Socialite::driver('google')->user();
         $email= $user->getEmail();
         $name= $user->getName();
+        $cadena = $name;
+        $separador = " ";
+        $separada = explode($separador, $cadena);
+        $name=$separada[0];
+        if(empty($separada[2])){
+            $lastname=$separada[1];
+        }else{
+            $lastname=$separada[1].' '.$separada[2];
+        }
         $consentimiento=1;
         $contador1=DB::table('tbl_user')->where([
             ['email','=',$email],
@@ -78,25 +164,91 @@ class UserController extends Controller
         ])->count();
         if($contador1==1){
             //hare login ya que tengo cuenta con google o facebook
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $user->name);
-            session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
+            $usuario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+            session()->put('name', $usuario->name);
+                session()->put('typeuser', $usuario->id_typeuser_fk);
+                session()->put('id_user', $usuario->id_user);
+                switch ($usuario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                    case '1':
+                        return redirect('viewCliente');
+                        break;
+                    case '2':
+                        // echo "Camarero";
+                        // return view('viewCamarero');
+                        return redirect('viewCamarero');
+                        break;
+                    case '3':
+                        echo "ADM establecimiento";
+                        break;
+                    case '4':
+                        echo "ADM grupo";
+                        break;
+                    case '5':
+                        //echo "ADM master";
+                        return redirect('viewMaster');
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
         }elseif($contador2==1){
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $user->name);
-            session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
+            $usuario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+            session()->put('name', $usuario->name);
+                session()->put('typeuser', $usuario->id_typeuser_fk);
+                session()->put('id_user', $usuario->id_user);
+                switch ($usuario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                    case '1':
+                        return redirect('viewCliente');
+                        break;
+                    case '2':
+                        // echo "Camarero";
+                        // return view('viewCamarero');
+                        return redirect('viewCamarero');
+                        break;
+                    case '3':
+                        echo "ADM establecimiento";
+                        break;
+                    case '4':
+                        echo "ADM grupo";
+                        break;
+                    case '5':
+                        //echo "ADM master";
+                        return redirect('viewMaster');
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
         }else{
-            //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $name);
-            session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
+             //registrarse con la cuenta y hacer login
+             DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=> $lastname,'confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>Str::random(32),'id_typeuser_fk'=>'1','google/facebook'=>'1','gender'=>'No especificar']);
+             $usuario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+             session()->put('name', $usuario->name);
+                session()->put('typeuser', $usuario->id_typeuser_fk);
+                session()->put('id_user', $usuario->id_user);
+                switch ($usuario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                    case '1':
+                        return redirect('viewCliente');
+                        break;
+                    case '2':
+                        // echo "Camarero";
+                        // return view('viewCamarero');
+                        return redirect('viewCamarero');
+                        break;
+                    case '3':
+                        echo "ADM establecimiento";
+                        break;
+                    case '4':
+                        echo "ADM grupo";
+                        break;
+                    case '5':
+                        //echo "ADM master";
+                        return redirect('viewMaster');
+                        break;
+                    default:
+                        # code...
+                        break;
+                }
         }
         //return $user->getEmail();
     }
