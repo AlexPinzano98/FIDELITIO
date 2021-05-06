@@ -1,12 +1,24 @@
 let scanner = new Instascan.Scanner({
-    video: document.getElementById('preview'),
-    scanPeriod: 4,
-    mirror: false
+    video: document.getElementById('preview')
 });
 scanner.addListener('scan', function(content) {
     alert('Contenido: ' + content);
     // sellar(content); 
 });
+
+/*
+function openCamara(){
+    Instascan.Camera.getCameras().then(cameras =>
+    {
+        if(cameras.length > 0){
+            scanner.start(cameras[0]);
+        } else {
+            console.error("No existe cámara en el dispositivo!");
+        }
+    });
+    document.getElementById('preview').style.display = "block";
+}
+*/
 
 function openCamara() {
     Instascan.Camera.getCameras().then(function(cameras) {
