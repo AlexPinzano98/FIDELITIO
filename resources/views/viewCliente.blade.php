@@ -47,17 +47,17 @@
                 <ul>
                     <div class="profile">
                         <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
-                        <a href="#">
-                            Perfil del usuario
-                        </a>
+                        <form method="get" class="perfil" action="{{url('/perfil')}}">
+                            <button type="submit">Perfil</button>
+                        </form>
                     </div>
                     <div class="profile">
                         <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
-                        <a href="#">
+                        <form method="get" class="noche" action="{{url('/cerrar_sesion')}}">
                             Modo noche
-                        </a>
+                        </form>
                     </div>
-                    <form method="get" action="{{url('/cerrar_sesion')}}">
+                    <form method="get" class="cerrar" action="{{url('/cerrar_sesion')}}">
                         <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
                         </button>
                         <button type="submit" id="sesion">Cerrar Sesion</button>

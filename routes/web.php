@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CamareroController;
 use App\Http\Controllers\CardController;
-use App\Http\Controllers\PruebaController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DirectionController;
-
+use App\Http\Controllers\LocalController;
+use App\Http\Controllers\PromotionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ use App\Http\Controllers\DirectionController;
 //     Route::get('/{provider}', 'UserController@redirectToProvider');
 //     Route::get('/{provider}/callback', 'UserController@handleProviderCallback');
 // });
+
 Route::get('/google', [UserController::class, 'redirectToProvider']);
 Route::get('/google/callback', [UserController::class, 'handleProviderCallback']);
 Route::get('/facebook', [UserController::class, 'redirectToProvider2']);
@@ -32,11 +34,11 @@ Route::post('/validarlogin', [UserController::class, 'validarLogin']);
 Route::get('cerrar_sesion', [UserController::class, 'cerrar_sesion']);
 Route::get('/vista_camarero', [CamareroController::class, 'vista_camarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
+Route::get('/perfil', [UserController::class, 'perfil']);
 //vista cliente
 Route::get('/viewCliente', [UserController::class, 'viewCliente']);
 Route::get('/viewCamarero', [CamareroController::class, 'viewCamarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
-
 //vista lista restaurante
 Route::get('/viewListLocal', function (){ return view('viewListLocal');});
 Route::get('/home', function (){ return view('home');});
@@ -52,7 +54,6 @@ Route::post('/validarQRcamarero', [CamareroController::class, 'validarQRcamarero
 //para subir imagenes
 Route::get('image',  [CardController::class, 'image']);
 Route::post('imgUp', [CardController::class, 'imgUp']);
-
 //Vista admin master
 Route::get('/viewMaster', [UserController::class, 'viewMaster']);
 Route::get('/cruds', function() {
@@ -74,10 +75,18 @@ Route::get('/crudPromociones', [DirectionController::class, 'crudPromociones']);
 Route::get('/crudTarjetas', [DirectionController::class, 'crudTarjetas']);
 Route::get('/crudUsuarios', [DirectionController::class, 'crudUsuarios']);
 
-//CRUD USUARIOS
+// CRUD USUARIOS
 Route::post('/ver_usuarios', [UserController::class, 'ver_usuarios']);
 Route::post('/ver_usuario', [UserController::class, 'ver_usuario']);
 Route::post('/eliminar_usuario', [UserController::class, 'eliminar_usuario']);
 Route::post('/registrar_usuario', [UserController::class, 'registrar_usuario']);
 Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']);
 Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);
+// CRUD TARJETAS
+Route::post('/ver_tarjetas', [CardController::class, 'ver_tarjetas']);
+// CRUD PROMOCIONES
+Route::post('/ver_promociones', [PromotionController::class, 'ver_promociones']);
+// CRUD LOCALES
+Route::post('/ver_locales', [LocalController::class, 'ver_locales']);
+// CRUD COMPAÑIA
+Route::post('/ver_companyias', [CompanyController::class, 'ver_companyias']);

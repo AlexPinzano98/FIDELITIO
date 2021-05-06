@@ -190,7 +190,8 @@ nav {
     cursor: pointer;
 }
 
-nav a {
+.perfil,
+.noche {
     font-size: 160%;
     display: block;
     text-decoration: none;
@@ -202,12 +203,12 @@ nav a {
     transition: all ease 0.25s;
 }
 
-nav a:hover {
+nav form:hover {
     color: rgba(255, 255, 255, 1);
     border-bottom-color: rgba(255, 255, 255, 0.4);
 }
 
-nav form {
+.cerrar {
     width: 90%;
     margin-left: 5%;
     margin-top: 50%;
@@ -237,22 +238,19 @@ nav form {
 
 #checkboxFiltro {
     padding: 2%;
-    margin-left: 20%;
-    margin-bottom: 2%;
-    margin-top: 10%;
+    margin: 5% 0% 5% 20%;
     border: 2px solid #58D68D;
     border-radius: 20px;
-    font-size: 160%;
+    font-size: 130%;
     width: 60%;
-    padding-left: 10%;
+    padding-left: 12%;
 }
 
 #soloactivas {
     margin-top: 1%;
-    margin-right: 3%;
-    width: 20px;
-    height: 20px;
-    background-color: red;
+    margin-right: 2%;
+    width: 15px;
+    height: px;
 }
 
 @media (min-width: 440px) {
@@ -322,6 +320,19 @@ nav form {
     #sesion {
         margin-top: 4.4%;
         width: 40%;
+    }
+    #checkboxFiltro {
+        padding: 1%;
+        margin: 2% 0% 0% 35%;
+        font-size: 150%;
+        width: 30%;
+        padding-left: 6%;
+    }
+    #soloactivas {
+        margin-top: 1%;
+        margin-right: 2%;
+        width: 15px;
+        height: px;
     }
 }
 
@@ -394,6 +405,19 @@ nav form {
     nav form:hover {
         color: rgba(255, 255, 255, 1);
         border-bottom-color: rgba(255, 255, 255, 0.4);
+    }
+    #checkboxFiltro {
+        padding: 0.5%;
+        margin: 1% 0% 3% 41%;
+        font-size: 150%;
+        width: 18%;
+        padding-left: 3.5%;
+    }
+    #soloactivas {
+        margin-top: 1%;
+        margin-right: 2%;
+        width: 15px;
+        height: px;
     }
 }
 

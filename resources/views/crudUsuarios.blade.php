@@ -170,6 +170,6 @@
         </table>
     </div>
 
-    <script src="js/crud_master_users.js"></script>
+    <script src="js/crud_master_usuarios.js"></script>
 </body>
 </html>

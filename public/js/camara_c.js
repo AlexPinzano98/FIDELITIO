@@ -77,11 +77,13 @@ function sellar(content) {
             closeCamara();
             //alert('qr valido');
         } else {
-            alert('qr expirado')
+            document.getElementById("expirado").innerHTML = 'QR expirado.';
+            // alert('qr expirado')
         }
     } else {
-        alert('Este QR no es valido')
-            // Msg error
+        document.getElementById("expirado").innerHTML = 'Este QR no es valido.';
+        // alert('Este QR no es valido')
+        // Msg error
     }
 
     // if(year!=""){
