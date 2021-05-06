@@ -8,20 +8,6 @@ scanner.addListener('scan', function(content) {
     // sellar(content); 
 });
 
-/*
-function openCamara(){
-    Instascan.Camera.getCameras().then(cameras =>
-    {
-        if(cameras.length > 0){
-            scanner.start(cameras[0]);
-        } else {
-            console.error("No existe cámara en el dispositivo!");
-        }
-    });
-    document.getElementById('preview').style.display = "block";
-}
-*/
-
 function openCamara() {
     Instascan.Camera.getCameras().then(function(cameras) {
         //If a camera is detected
