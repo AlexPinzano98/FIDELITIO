@@ -62,9 +62,10 @@ Route::get('/crudUsuarios', function() {
     return view('crudUsers');
 });
 
+// URL::forceScheme('https');
 //Prueba envio datos graficas
 
-Route::get('sendData', [PruebaController::class, 'sendData']);
+Route::post('sendData', [PruebaController::class, 'sendData']);
 Route::get('/cruds', [DirectionController::class, 'cruds']);
 //Redirecciones a los diferentes tipos de CRUD (admin master)
 Route::get('/crudCompany', [DirectionController::class, 'crudCompany']);

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -18,7 +19,7 @@
     <div id="gr">
         <div class="gr__item">
             <h5>Clientes/alta</h5>
-            <select name="filter" id="filter" class="form-select">
+            <select name="filter" id="filter" class="form-select my-2">
 
                 <option value="">Tiempo</option>
                 <option value="dias">dias</option>
@@ -52,20 +53,20 @@
         </div>
         <div class="gr__item">
             <h5>Clientes/Promoción/canjeado</h5>
-            <select name="filter2" id="filter2" class="form-select">
+            <select name="filter2" id="filter2" class="form-select my-2">
 
                 <option value="">Tiempo</option>
                 <option value="dias">Dias</option>
                 <option value="mes">Mes</option>
                 <option value="ano">Año</option>
             </select>
-            <select name="filter3" id="filter3" class="form-select">
+            <select name="filter3" id="filter3" class="form-select my-2">
 
                 <option value="">Promoción</option>
                 <option value=0>No canjeado</option>
                 <option value=1>Canjeado</option>
             </select>
-            <canvas id="myChart2" width="100" height="90"></canvas>
+            <canvas id="myChart2" width="100" height="80"></canvas>
 
             <!-- Button trigger modal -->
             <img src="img/info-circle.svg" alt="informacion" data-bs-toggle="modal" data-bs-target="#exampleModal2">
@@ -92,7 +93,7 @@
         </div>
         <div class="gr__item">
             <h5>Clientes/promoción canjeada</h5>
-            <select name="filter4" id="filter4" class="form-select">
+            <select name="filter4" id="filter4" class="form-select my-2">
                 <option value="">Tiempo</option>
                 <option value="dias">Dias</option>
                 <option value="mes">Mes</option>

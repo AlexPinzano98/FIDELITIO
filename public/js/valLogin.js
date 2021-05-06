@@ -4,8 +4,7 @@ function validarForm() {
     var errors = "";
     document.getElementById("message").style.color = "red";
     document.getElementById("message").style.width = "100%";
-    document.getElementById("message").style.marginTop = "13.5%";
-    document.getElementById("message").style.marginBottom = "-7%";
+    document.getElementById("message").style.marginBottom = "5%";
     document.getElementById("message").style.fontSize = "120%";
 
     if (email === "") {
