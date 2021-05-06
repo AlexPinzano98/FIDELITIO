@@ -73,12 +73,8 @@ class UserController extends Controller
         return redirect('/');
     }
 
-<<<<<<< HEAD
-    public function validarLogin(Request $request) {;
-=======
 
     public function validarLogin(Request $request){
->>>>>>> ebad71c7acc51e6f84ae9d9252b6f8cd5cc3796b
         // Recibimos los datos del formulario
         $datos = $request->except('_token','enviar');
         // Buscamos si existe un usuario registrado
