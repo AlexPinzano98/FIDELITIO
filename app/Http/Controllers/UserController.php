@@ -23,7 +23,40 @@ class UserController extends Controller
     public function handleProviderCallback2()
     {
         $user = Socialite::driver('facebook')->user();
-        return $user->getName();
+        //return $user->getEmail();
+        $email= $user->getEmail();
+        $name= $user->getName();
+        $consentimiento=1;
+        $contador1=DB::table('tbl_user')->where([
+            ['email','=',$email],
+            ['google/facebook','=','1']
+        ])->count();
+        $contador2=DB::table('tbl_user')->where([
+            ['email','=',$email],
+            ['google/facebook','=','0']
+        ])->count();
+        if($contador1==1){
+            //hare login ya que tengo cuenta con google o facebook
+            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+            session()->put('name', $user->name);
+            session()->put('typeuser', '1');
+            session()->put('id_user', $user->id_user);
+            return redirect('viewCliente');
+        }elseif($contador2==1){
+            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+            session()->put('name', $user->name);
+            session()->put('typeuser', '1');
+            session()->put('id_user', $user->id_user);
+            return redirect('viewCliente');
+        }else{
+            //registrarse con la cuenta y hacer login
+            DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+            session()->put('name', $name);
+            session()->put('typeuser', '1');
+            session()->put('id_user', $user->id_user);
+            return redirect('viewCliente');
+        }
     }
     public function redirectToProvider()
     {
@@ -115,7 +148,7 @@ class UserController extends Controller
                     break;
             }
         } else { // ! No existe usuario
-            $message = 'Ha habido un error, por favor revise que el email y la contraseña estén bien escritos';
+            $message = 'Por favor, revise que el email y la contraseña estén bien escritos';
             return redirect('/')->with('message',$message);
         }
     }

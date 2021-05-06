@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#gr{
+    margin: 0 10%;
+
+}
+
+.gr__item{
+    margin-bottom: 10%;
+}
+
+img{
+    max-width: 100%;
+    width: 10%;
+    margin: 5% 45%;
+    cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+    .gr__item{
+        width: 80%;
+    }
+    #gr{
+        display: grid;
+        grid-template-columns: 55% 55%;
+    }
+}

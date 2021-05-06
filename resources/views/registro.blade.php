@@ -21,8 +21,8 @@
 </head>
 
 <body>
-    <!--  <p class="h1">Fidelitio</p> -->
-    <img src="img/stimpa.jpeg" style="width: 80%; margin-left: 10%; margin-top: 20px">
+    <img src="img/stimpa.png" class="stimpa" style="margin-top: 2.9%;">
+    <h1>¡Registrate!</h1>
     <div class="login">
         <form action="{{url('/registrar')}}" method="POST" onsubmit="return validarForm()">
             {{csrf_field()}}
@@ -63,8 +63,7 @@
     </div>
 
     <div class="container">
-        ¿Ya tienes cuenta?<a href="{{url('/')}}"><br>Inicia Sesion</a>
+        ¿Ya tienes cuenta?<a href="{{url('/')}}"><br>Inicia Sesión</a>
     </div>
 </body>
-
 </html>

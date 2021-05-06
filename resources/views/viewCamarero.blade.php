@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="{{asset('css/navCamarero.css')}}">
     <script src="js/camarero.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="js/instascan.js"></script>
+    <script src="js/instascan.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="{{asset('css/camarero.css')}}">
     <script type="text/javascript">
     $(document).ready(function() {
@@ -66,7 +69,7 @@
         <div id="modal2" class="modal">
             <div class="modal-content">
                 <button class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>
-                <video id="preview" width="100%" height="100%" style="display: none;"></video>
+                <video id="preview" class="video-back" width="100%" height="100%" playsinline style="display: none;"></video>
             </div>
         </div>
 

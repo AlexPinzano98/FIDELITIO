@@ -47,12 +47,25 @@ Route::get('showCard', [CardController::class, 'showCard']);
 Route::get('verLocales', [CardController::class, 'verLocales']);
 Route::post('verCardLocal', [CardController::class, 'verCardLocal']);
 Route::post('/validarQR', [CardController::class, 'validarQR']);
-Route::post('/validarQRcamarero', [CamareroController::class, 'validarQRcamarero']); 
+
+Route::post('/validarQRcamarero', [CamareroController::class, 'validarQRcamarero']);
+
 //para subir imagenes
 Route::get('image',  [CardController::class, 'image']);
 Route::post('imgUp', [CardController::class, 'imgUp']);
 //Vista admin master
 Route::get('/viewMaster', [UserController::class, 'viewMaster']);
+Route::get('/cruds', function() {
+    return view('viewAdm_homeCruds');
+});
+Route::get('/crudUsuarios', function() {
+    return view('crudUsers');
+});
+
+// URL::forceScheme('https');
+//Prueba envio datos graficas
+
+Route::post('sendData', [PruebaController::class, 'sendData']);
 Route::get('/cruds', [DirectionController::class, 'cruds']);
 //Redirecciones a los diferentes tipos de CRUD (admin master)
 Route::get('/crudCompany', [DirectionController::class, 'crudCompany']);
