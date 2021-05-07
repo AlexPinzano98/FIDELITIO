@@ -123,7 +123,7 @@ class CardController extends Controller
 
         
     }
- 
+
     public function verLocales() {
         try { 
             $id_user = session()->get('id_user');

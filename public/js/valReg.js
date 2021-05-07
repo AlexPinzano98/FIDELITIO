@@ -11,21 +11,21 @@ function validarForm() {
     document.getElementById("message").style.marginTop = "5%";
     document.getElementById("message").style.textAlign = "center";
 
-    if (email === "") {
-        errors = "-Usuario- "
-        document.getElementById('email').style.border = "1px solid red";
-    }
-    if (pswd === "") {
-        errors = errors + "-Contraseña-"
-        document.getElementById('contrasenya').style.border = "1px solid red";
-    }
     if (nombre === "") {
-        errors = errors +"-Nombre- "
+        errors = "-Nombre- "
         document.getElementById('nombre').style.border = "1px solid red";
     }
     if (apellidos === "") {
         errors = errors + "-Apellidos- "
         document.getElementById('apellidos').style.border = "1px solid red";
+    }
+    if (email === "") {
+        errors = errors + "-Correo electrónico- "
+        document.getElementById('email').style.border = "1px solid red";
+    }
+    if (pswd === "") {
+        errors = errors + "-Contraseña- "
+        document.getElementById('contrasenya').style.border = "1px solid red";
     }
     if (sexo === "") {
         errors = errors + "-Sexo- "

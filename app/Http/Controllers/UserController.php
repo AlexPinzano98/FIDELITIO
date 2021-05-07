@@ -175,7 +175,7 @@ class UserController extends Controller
             $mensaje = 'Tu cuenta se ha creado correctamente';
             return redirect('/')->with('mensaje',$mensaje);
         }else{
-            $mensaje="El correo introducido ya esta registrado";
+            $mensaje="El correo introducido ya está registrado";
             return redirect('registro')->with('mensaje',$mensaje);
         }
     }
@@ -277,5 +277,10 @@ class UserController extends Controller
         }
 
         return response()->json('OK',200);
+    }
+
+    public function perfil() {
+        //redirige a la vista login si no has iniciado sesion.
+        return view('perfilU');
     }
 }
