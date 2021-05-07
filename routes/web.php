@@ -82,3 +82,15 @@ Route::post('/eliminar_usuario', [UserController::class, 'eliminar_usuario']);
 Route::post('/registrar_usuario', [UserController::class, 'registrar_usuario']);
 Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']);
 Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);
+
+// CRUD TARJETAS
+Route::post('/ver_tarjetas', [CardController::class, 'ver_tarjetas']);
+Route::post('/ver_locales_t', [CardController::class, 'ver_locales_t']);
+Route::post('/ver_promos_t', [CardController::class, 'ver_promos_t']);
+Route::post('/registrar_tarjeta', [CardController::class, 'registrar_tarjeta']);
+// CRUD PROMOCIONES
+//Route::post('/ver_promociones', [PromotionController::class, 'ver_promociones']);
+// CRUD LOCALES
+Route::post('/ver_locales', [LocalController::class, 'ver_locales']);
+// CRUD COMPAÑIA
+Route::post('/ver_companyias', [CompanyController::class, 'ver_companyias']);
