@@ -123,7 +123,7 @@ class CardController extends Controller
 
         
     }
- 
+
     public function verLocales() {
         try { 
             $id_user = session()->get('id_user');
@@ -182,23 +182,5 @@ class CardController extends Controller
         DB::select('UPDATE `tbl_promotion` SET `image` = ? WHERE `tbl_promotion`.`id_promotion` = 1;', [ $datosform['foto']]);
 
         return redirect('image');
-    }
-
-    public function ver_tarjetas(Request $request){
-        $usuarios = DB::select('SELECT tbl_card.*,tbl_promotion.name_promo,tbl_user.name,tbl_user.lastname FROM tbl_card
-        INNER JOIN tbl_promotion
-        ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
-        INNER JOIN tbl_user
-        ON tbl_card.id_user_fk = tbl_user.id_user
-        WHERE `stamp_now` LIKE ? AND tbl_card.`status` LIKE ? AND name_promo LIKE ? AND `name`LIKE ?
-        GROUP BY tbl_card.id_card',
-        ['%'.$request['sellos'],
-        '%'.$request['status'].'%',
-        '%'.$request['promo'].'%',
-        '%'.$request['nombre'].'%'
-        ]); // Buscamos los que acaben con el numero filtrado
-        // Esto nos permite si por ejemplo buscamos 1 que salgan los sellos que terminan en 1
-        // Y no todos los sellos que contienen un 1
-        return response()->json($usuarios,200);
     }
 }
