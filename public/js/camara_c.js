@@ -1,5 +1,7 @@
 let scanner = new Instascan.Scanner({
-    video: document.getElementById('preview')
+    video: document.getElementById('preview'),
+    scanPeriod: 4,
+    mirror: false
 });
 scanner.addListener('scan', function(content) {
     //alert('Contenido: ' + content);
@@ -9,10 +11,19 @@ scanner.addListener('scan', function(content) {
 
 function openCamara() {
     Instascan.Camera.getCameras().then(cameras => {
+        //If a camera is detected
         if (cameras.length > 0) {
-            scanner.start(cameras[0]);
+            //If the user has a rear/back camera
+            if (cameras[1]) {
+                //use that by default
+                scanner.start(cameras[1]);
+            } else {
+                //else use front camera
+                scanner.start(cameras[0]);
+            }
         } else {
-            console.error("No existe cámara en el dispositivo!");
+            //if no cameras are detected give error
+            console.error('No cameras found.');
         }
     });
     document.getElementById('modal2').style.display = "block";
@@ -66,13 +77,11 @@ function sellar(content) {
             closeCamara();
             //alert('qr valido');
         } else {
-            document.getElementById("expirado").innerHTML = 'QR expirado.';
-            // alert('qr expirado')
+            alert('qr expirado')
         }
     } else {
-        document.getElementById("expirado").innerHTML = 'Este QR no es valido.';
-        // alert('Este QR no es valido')
-        // Msg error
+        alert('Este QR no es valido')
+            // Msg error
     }
 
     // if(year!=""){

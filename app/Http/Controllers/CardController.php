@@ -183,4 +183,56 @@ class CardController extends Controller
 
         return redirect('image');
     }
+
+    public function ver_tarjetas(Request $request){
+        $usuarios = DB::select('SELECT tbl_card.*,tbl_promotion.name_promo,tbl_user.name,tbl_user.lastname FROM tbl_card
+        INNER JOIN tbl_promotion
+        ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+        INNER JOIN tbl_user
+        ON tbl_card.id_user_fk = tbl_user.id_user
+        WHERE `stamp_now` LIKE ? AND tbl_card.`status` LIKE ? AND name_promo LIKE ? AND `name`LIKE ?
+        GROUP BY tbl_card.id_card',
+        ['%'.$request['sellos'],
+        '%'.$request['status'].'%',
+        '%'.$request['promo'].'%',
+        '%'.$request['nombre'].'%'
+        ]); // Buscamos los que acaben con el numero filtrado
+        // Esto nos permite si por ejemplo buscamos 1 que salgan los sellos que terminan en 1
+        // Y no todos los sellos que contienen un 1
+        return response()->json($usuarios,200);
+    }
+
+    public function ver_locales_t(){
+        $locales = DB::select('SELECT * FROM `tbl_local`');
+        return response()->json($locales,200);
+    }
+    public function ver_promos_t(Request $request){
+        // $promos = DB::select('SELECT * FROM `tbl_promotion`');
+        $promos = DB::select('SELECT * FROM `tbl_promotion` WHERE `id_local_fk`=?',[$request['id_local']]);
+        return response()->json($promos,200);
+    }
+    public function registrar_tarjeta(Request $request){
+        $id_user = session()->get('id_user');
+        $user = DB::select('SELECT * FROM `tbl_user` WHERE `email`=?',[$request['email']]);
+        if (empty($user)){
+            return response()->json('El email no existe',200);
+        } else {
+            DB::select('INSERT INTO tbl_card (stamp_now,color,`status`,id_promotion_fk,id_user_fk) VALUES (?,?,?,?,?)',[
+                1, '#C70039', 'open', $request['promo'], $user[0]->id_user
+            ]);
+            $id = DB::select('SELECT MAX(id_card) AS id_card FROM tbl_card'); // $id[0]->id_card
+            DB::table('tbl_stamp')->insert(
+                ['date' => NOW(),
+                'id_card_fk' => $id[0]->id_card, 
+                'id_user_fk_stamp' => $id_user] // Camarero que pone el sello
+            );
+
+            return response()->json('Tarjeta creada',200);
+        }
+        //$alex = $user['num'];
+        //print_r($user);
+        // return response()->json($user,200);
+
+        
+    }
 }

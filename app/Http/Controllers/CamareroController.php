@@ -27,6 +27,7 @@ class CamareroController extends Controller
             $id_user = session()->get('id_user');
             //Conseguir id del local al que pertenece el camarero
             $conseguir_id=DB::select('SELECT * FROM tbl_user WHERE id_user=?',[$id_user]);
+
             foreach ($conseguir_id as $id) {
                 $id_local=$id->id_local_fk;
             }
