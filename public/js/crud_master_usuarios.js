@@ -1,7 +1,7 @@
 window.onload = function() {
     ver_usuarios();
 }
-function objetoAjax() { 
+function objetoAjax() {
     var xmlhttp = false;
     try {
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -17,6 +17,13 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
+
+var flag = false;
+var index = 0;
+var count = 1;
+var count2 = 0;
+var longItems = 2;
+
 function ver_usuarios(){
     var datos = document.getElementById("datos");
     //console.log('hola')
@@ -44,14 +51,18 @@ function ver_usuarios(){
         var tabla = '';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            for (let i = 0; i < respuesta.length; i++) {
+            console.log(respuesta);
+            var pagination = document.getElementsByClassName('pagination')[0];
+
+            console.log(index);
+            for (let i = index; i < longItems; i++) {
                 //console.log(respuesta[i])
                 tabla += '<tr>'+'<td>'+respuesta[i].id_user+'</td>';
                 tabla += '<td>'+respuesta[i].name+'</td>';
                 tabla += '<td>'+respuesta[i].lastname+'</td>';
                 tabla += '<td>'+respuesta[i].email+'</td>';
                 tabla += '<td>'+respuesta[i].gender+'</td>';
-                if (respuesta[i].confidentiality == 1) { 
+                if (respuesta[i].confidentiality == 1) {
                     tabla += '<td>'+ 'Si' +'</td>';
                 } else {
                     tabla += '<td>'+ 'No' +'</td>';
@@ -74,7 +85,7 @@ function ver_usuarios(){
                         tabla += '<td>'+ 'Adm master' +'</td>';
                         break;
                 }
-                
+
                 if (respuesta[i].status=='Activo'){ // Usuario activo
                     tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 1 +')">Activo</a>'+'</td>';
                 } else { // Usuario inactivo
@@ -82,13 +93,54 @@ function ver_usuarios(){
                 }
                 tabla += '<td> <button onclick="openUpdate('+respuesta[i].id_user+')">UPDATE</button>'+ '</td>';
                 tabla += '<td>'+'<button onclick="eliminar_usuario('+respuesta[i].id_user+')">DELETE</button>' +'</td>'+'</tr>';
+
+
             }
+            //pagination
+            if(flag === false){
+                count = 1;
+                count2 = 0;
+                index = 0;
+            }
+            console.log(flag);
+            pagination.innerHTML = ` <li class="page-item">
+                <a class="page-link" href="#">Atras</a>
+             </li>`;
+            console.log(count);
+            for (let i = 1; i < respuesta.length; i+=2) {
+                count2 +=2;
+                pagination.innerHTML += ` <li class="page-link" onclick="changePag(${count2})">${count++}</li>`;
+            }
+
+            var itemPagination = document.getElementsByClassName('page-link');
+            for (let i = 3; i < itemPagination.length; i++) {
+                itemPagination[i].style.display += `none`;
+            }
+
+            pagination.innerHTML += `<li class="page-link" onclick="changeNumPage()">Delante</li>`;
+
+            flag = false;
             //console.log(respuesta)
         }
         datos.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
+
+const changePag = (items)=>{
+    console.log(items);
+    longItems = items;
+    index = items-2;
+    ver_usuarios();
+}
+
+const changeNumPage = ()=>{
+    count--;
+    flag = true;
+    ver_usuarios();
+}
+
+
 function registrar_usuario(){
     var token = document.getElementById("token").getAttribute("content");
     var nombre = document.getElementById('nombre').value;

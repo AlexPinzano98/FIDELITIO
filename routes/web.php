@@ -8,6 +8,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\PruebaController;
 
 /*
 |--------------------------------------------------------------------------
