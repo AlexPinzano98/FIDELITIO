@@ -1,5 +1,6 @@
 window.onload = function() {
     ver_tarjetas();
+    start_registro();
 } 
 function objetoAjax() { 
     var xmlhttp = false;
@@ -37,7 +38,7 @@ function ver_tarjetas(){
         var tabla = '';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            console.log(respuesta)
+            //console.log(respuesta)
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += '<tr>'+'<td>'+respuesta[i].id_card+'</td>';
                 tabla += '<td>'+respuesta[i].stamp_now+'</td>';
@@ -48,6 +49,83 @@ function ver_tarjetas(){
             
         }
         datos.innerHTML = tabla;
+    }
+    ajax.send(datasend);
+}
+function start_registro(){
+    var local = document.getElementById("local");
+    //console.log('hola')
+    var token = document.getElementById("token").getAttribute("content");
+    var ajax = new objetoAjax();
+    ajax.open('POST', 'ver_locales_t', true);
+    var datasend = new FormData();
+    datasend.append('_token', token);
+    ajax.onreadystatechange = function() {
+        var tabla = '<option selected disabled value="">Seleccione el establecimiento</option>';
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(ajax.responseText);
+            //console.log(respuesta)
+            for (let i = 0; i < respuesta.length; i++) {
+                //console.log(respuesta[i].name)
+                tabla += '<option value="'+ respuesta[i].id_local + '">' + respuesta[i].name + '</option>';
+            }
+            
+        }
+        local.innerHTML = tabla;
+    }
+    ajax.send(datasend);
+}
+function start_promocion(){
+    var id_local = document.getElementById("local").value;
+    console.log(id_local)
+    //var promo = document.getElementById("promo");
+    //console.log('hola')
+    var token = document.getElementById("token").getAttribute("content");
+    var ajax = new objetoAjax();
+    ajax.open('POST', 'ver_promos_t', true);
+    var datasend = new FormData();
+    datasend.append('_token', token);
+    datasend.append('id_local', id_local);
+    ajax.onreadystatechange = function() {
+        var tabla = '';
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(ajax.responseText);
+            console.log(respuesta)
+            if (respuesta.length == 0) {
+                var tabla = '<option selected disabled value="0">No existen promociones</option>';
+            } else {
+                var tabla = '<option selected disabled value="0">Seleccione la promocion</option>';
+                for (let i = 0; i < respuesta.length; i++) {
+                    //console.log(respuesta[i].name)
+                    tabla += '<option value="'+ respuesta[i].id_promotion + '">' + respuesta[i].name_promo + '</option>';
+                }
+            }
+            
+        }
+        promo.innerHTML = tabla;
+    }
+    ajax.send(datasend);
+}
+function registrar_tarjeta(){
+    var token = document.getElementById("token").getAttribute("content");
+    var promo = document.getElementById('promo').value;
+    var email = document.getElementById('email').value;
+    console.log(promo)
+    console.log(email)
+
+    var ajax = new objetoAjax();
+    ajax.open('POST', 'registrar_tarjeta', true);
+    var datasend = new FormData();
+    datasend.append('_token', token);
+    datasend.append('promo', promo);
+    datasend.append('email', email);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(ajax.responseText);
+            console.log(respuesta);
+            ver_tarjetas();
+        }
     }
     ajax.send(datasend);
 }

@@ -10,7 +10,7 @@
 <body>
     <h1>LOCALES</h1>
 
-    <select id="resultados" name="resultados" onclick="paginado()">
+    <select id="resultados" name="resultados" onchange="paginado()">
         <option value="2" selected>2</option>
         <option value="4">4</option>
         <option value="5">5</option>

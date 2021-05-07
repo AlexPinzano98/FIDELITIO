@@ -201,4 +201,38 @@ class CardController extends Controller
         // Y no todos los sellos que contienen un 1
         return response()->json($usuarios,200);
     }
+
+    public function ver_locales_t(){
+        $locales = DB::select('SELECT * FROM `tbl_local`');
+        return response()->json($locales,200);
+    }
+    public function ver_promos_t(Request $request){
+        // $promos = DB::select('SELECT * FROM `tbl_promotion`');
+        $promos = DB::select('SELECT * FROM `tbl_promotion` WHERE `id_local_fk`=?',[$request['id_local']]);
+        return response()->json($promos,200);
+    }
+    public function registrar_tarjeta(Request $request){
+        $id_user = session()->get('id_user');
+        $user = DB::select('SELECT * FROM `tbl_user` WHERE `email`=?',[$request['email']]);
+        if (empty($user)){
+            return response()->json('El email no existe',200);
+        } else {
+            DB::select('INSERT INTO tbl_card (stamp_now,color,`status`,id_promotion_fk,id_user_fk) VALUES (?,?,?,?,?)',[
+                1, '#C70039', 'open', $request['promo'], $user[0]->id_user
+            ]);
+            $id = DB::select('SELECT MAX(id_card) AS id_card FROM tbl_card'); // $id[0]->id_card
+            DB::table('tbl_stamp')->insert(
+                ['date' => NOW(),
+                'id_card_fk' => $id[0]->id_card, 
+                'id_user_fk_stamp' => $id_user] // Camarero que pone el sello
+            );
+
+            return response()->json('Tarjeta creada',200);
+        }
+        //$alex = $user['num'];
+        //print_r($user);
+        // return response()->json($user,200);
+
+        
+    }
 }
