@@ -35,7 +35,6 @@ function ver_promociones() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             tabla += '<div>';
-
             //tabla +='<button style="text-aling:center;" onclick="canjear_promocion()">Canjear Promocion</button>';
             for (let i = 0; i < respuesta[0].length; i++) {
                 tabla += '<div class="sketchy">';
