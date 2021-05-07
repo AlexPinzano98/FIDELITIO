@@ -34,6 +34,7 @@ function ver_promociones() {
         var tabla = '';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
+            console.log(respuesta);
             tabla += '<div>';
 
             //tabla +='<button style="text-aling:center;" onclick="canjear_promocion()">Canjear Promocion</button>';
@@ -59,7 +60,6 @@ function ver_promociones() {
         }
         if (tabla == '<div></div>') {
             tabla = '<h1>Tu restaurante no tiene promociones activas, habla con el gerente para que las cree!</h1>';
-
         }
 
         promociones.innerHTML = tabla;

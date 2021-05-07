@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD - LOCALES</title>
-    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
 <body>
     <h1>LOCALES</h1>
 
-    <select id="resultados" name="resultados" onclick="paginado()">
+    <select id="resultados" name="resultados" onchange="paginado()">
         <option value="2" selected>2</option>
         <option value="4">4</option>
         <option value="5">5</option>

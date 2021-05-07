@@ -4,6 +4,22 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    color: #000;
+}
+
+.swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 10%;
+}
+
+#swiperStyle .swiper-slide {
+    width: 300px;
+}
+
 
 /*carta habilitada*/
 
@@ -66,20 +82,12 @@
     font-size: 15px;
 }
 
-body {
-    font-family: 'Mulish', sans-serif;
-    font-size: 14px;
-    color: #000;
-}
-
-.swiper-container {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-#swiperStyle .swiper-slide {
-    width: 300px;
+@media (min-width: 440px) {
+    .swiper-container {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 5%;
+    }
 }
 
 @media (min-width: 1024px) {
