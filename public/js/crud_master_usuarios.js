@@ -1,7 +1,7 @@
 window.onload = function() {
     ver_usuarios();
 }
-function objetoAjax() { 
+function objetoAjax() {
     var xmlhttp = false;
     try {
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -17,6 +17,14 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
+
+// var itemPagination = document.getElementsByClassName('page-link');
+// var index = 0;
+// var index2 = 3;
+// var count = 1;
+// var count2 = 2;
+// var longItems = 2;
+
 function ver_usuarios(){
     var datos = document.getElementById("datos");
     //console.log('hola')
@@ -44,6 +52,11 @@ function ver_usuarios(){
         var tabla = '';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
+            console.log(respuesta);
+            // var pagination = document.getElementsByClassName('pagination')[0];
+
+            // console.log(index);
+            // console.log(longItems);
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i])
                 tabla += '<tr>'+'<td>'+respuesta[i].id_user+'</td>';
@@ -51,7 +64,7 @@ function ver_usuarios(){
                 tabla += '<td>'+respuesta[i].lastname+'</td>';
                 tabla += '<td>'+respuesta[i].email+'</td>';
                 tabla += '<td>'+respuesta[i].gender+'</td>';
-                if (respuesta[i].confidentiality == 1) { 
+                if (respuesta[i].confidentiality == 1) {
                     tabla += '<td>'+ 'Si' +'</td>';
                 } else {
                     tabla += '<td>'+ 'No' +'</td>';
@@ -74,7 +87,7 @@ function ver_usuarios(){
                         tabla += '<td>'+ 'Adm master' +'</td>';
                         break;
                 }
-                
+
                 if (respuesta[i].status=='Activo'){ // Usuario activo
                     tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 1 +')">Activo</a>'+'</td>';
                 } else { // Usuario inactivo
@@ -82,13 +95,88 @@ function ver_usuarios(){
                 }
                 tabla += '<td> <button onclick="openUpdate('+respuesta[i].id_user+')">UPDATE</button>'+ '</td>';
                 tabla += '<td>'+'<button onclick="eliminar_usuario('+respuesta[i].id_user+')">DELETE</button>' +'</td>'+'</tr>';
+
+
             }
+
+            //pagination
+
+            $(document).ready(function() {
+                    $('#tablax').DataTable({
+                        retrieve: true,
+                        language: {
+                            processing: "Tratamiento en curso...",
+                            search: "Buscar&nbsp;:",
+                            lengthMenu: "Agrupar de _MENU_ items",
+                            info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                            infoEmpty: "No existen datos.",
+                            infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                            infoPostFix: "",
+                            loadingRecords: "Cargando...",
+                            zeroRecords: "No se encontraron datos con tu busqueda",
+                            emptyTable: "No hay datos disponibles en la tabla.",
+                            paginate: {
+                                first: "Primero",
+                                previous: "Anterior",
+                                next: "Siguiente",
+                                last: "Ultimo"
+                            },
+                            aria: {
+                                sortAscending: ": active para ordenar la columna en orden ascendente",
+                                sortDescending: ": active para ordenar la columna en orden descendente"
+                            }
+                        },
+                        // scrollY: 400,
+                        lengthMenu: [ [10, 25, 50, 100 -1], [10, 25, 50, 100, "Todo"] ],
+
+                    });
+            });
+
+            // pagination.innerHTML = ` <li class="page-item">
+            //     <a class="page-link" href="#">Atras</a>
+            //  </li>`;
+
+            // console.log(count);
+
+            //     count2 +=2;
+
+            // pagination.innerHTML += ` <li class="page-link" onclick="changePag(${count2})">Delante</li>`;
+
+            // console.log(itemPagination.length);
+            // console.log(index2);
+
+            // for (let i = index2; i > itemPagination.length; i++) {
+            //     itemPagination[i].style.display = `none`;
+            // }
+
+            // pagination.innerHTML += `<li class="page-link" onclick="changeNumPage()">Delante</li>`;
+
             //console.log(respuesta)
         }
         datos.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
+
+// const changePag = (items)=>{
+//     console.log(items);
+//     longItems = items;
+//     index = items-2;
+//     ver_usuarios();
+// }
+
+// const changeNumPage = ()=>{
+//     // count--;
+//     index2 += 2;
+
+//     for (let i = 1; i < itemPagination.length-1; i++) {
+//         itemPagination[i].style.display = `none`;
+//     }
+//     // flag = true;
+//     ver_usuarios();
+// }
+
+
 function registrar_usuario(){
     var token = document.getElementById("token").getAttribute("content");
     var nombre = document.getElementById('nombre').value;
@@ -117,6 +205,7 @@ function registrar_usuario(){
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
         }
+
         ver_usuarios();
         borrar_registro();
     }
@@ -135,6 +224,7 @@ function cambiar_estado(id,act){
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
+
             ver_usuarios();
         }
     }
@@ -197,6 +287,7 @@ function actualizar_usuario(){
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
+
             ver_usuarios();
         }
     }
@@ -215,6 +306,7 @@ function eliminar_usuario(id_usuario){
         if (ajax.readyState == 4 && ajax.status == 200) {
             // var respuesta = JSON.parse(ajax.responseText);
             // console.log(respuesta);
+
             ver_usuarios();
         }
     }
