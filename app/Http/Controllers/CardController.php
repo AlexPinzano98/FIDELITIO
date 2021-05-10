@@ -41,7 +41,8 @@ class CardController extends Controller
         ->select('*')
         ->where([
             ['tbl_card.id_user_fk','=',$id_user],
-            ['tbl_card.id_promotion_fk','=',$id_promo]
+            ['tbl_card.id_promotion_fk','=',$id_promo],
+            ['tbl_card.status','=','open']
         ])->count(); // Devuelve 1 o 0
 
         if($promo == 1){ // ? Existe tarjeta
@@ -92,34 +93,44 @@ class CardController extends Controller
 
             //return response()->json($sellos, 200);
         } else { // ! No existe tarjeta
-            DB::table('tbl_card')->insert(
-                ['id_card' => NULL,
-                'stamp_now' => 1,
-                'color' => '#C70039',
-                'status' => 'open',
-                'id_promotion_fk' => $id_promo,
-                'id_user_fk' => $id_user]
-            );
-
-            // Ahora recuperamos el ID de la tarjeta que hemos creado (id_card)
-            $promo = DB::table('tbl_promotion')
-            ->join('tbl_card','tbl_promotion.id_promotion','=','tbl_card.id_promotion_fk')
-            ->select('*')
-            ->where([
-                ['tbl_card.id_user_fk','=',$id_user],
-                ['tbl_card.id_promotion_fk','=',$id_promo],
-                ['tbl_card.status','=','open']
-            ])->first(); // $promo->id_card;
-
-            // Añadimos el primer sello
-            DB::table('tbl_stamp')->insert(
-                ['date' => NOW(),
-                'id_card_fk' => $promo->id_card, // ID de la tarjeta
-                'id_user_fk_stamp' => $id_camarero] // Camarero que pone el sello
-            ); 
+            //Comprobamos si la promo es ilimitada o ha caducado
             
-            return response()->json('Targeta creada correctamente', 200);
+            $promo1 = DB::select('SELECT * FROM tbl_promotion
+            WHERE id_promotion = ?;', [$id_promo]);
+            
+            if ($promo1[0]->unlimited == 'Si') {
+                DB::table('tbl_card')->insert(
+                    ['id_card' => NULL,
+                    'stamp_now' => 1,
+                    'color' => '#C70039',
+                    'status' => 'open',
+                    'id_promotion_fk' => $id_promo,
+                    'id_user_fk' => $id_user]
+                );
+    
+                // Ahora recuperamos el ID de la tarjeta que hemos creado (id_card)
+                $promo = DB::table('tbl_promotion')
+                ->join('tbl_card','tbl_promotion.id_promotion','=','tbl_card.id_promotion_fk')
+                ->select('*')
+                ->where([
+                    ['tbl_card.id_user_fk','=',$id_user],
+                    ['tbl_card.id_promotion_fk','=',$id_promo],
+                    ['tbl_card.status','=','open']
+                ])->first(); // $promo->id_card;
+    
+                // Añadimos el primer sello
+                DB::table('tbl_stamp')->insert(
+                    ['date' => NOW(),
+                    'id_card_fk' => $promo->id_card, // ID de la tarjeta
+                    'id_user_fk_stamp' => $id_camarero] // Camarero que pone el sello
+                ); 
+                
+                return response()->json('Targeta creada correctamente', 200);
+            } else {
+                return response()->json('La promocion esta canjeada ya', 200);
+            }
         }
+            
 
         
     }
