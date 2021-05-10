@@ -12,11 +12,14 @@
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
     <link rel="stylesheet" href="{{asset('css/listLocal.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="js/instascan.js"></script>
+    <script src="js/instascan.min.js"></script>
     <script src="js/infoCardsAjax.js"></script>
+    <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <script type="text/javascript">
     $(document).ready(function() {
         $('#menu_on').click(function() {
@@ -44,17 +47,17 @@
                 <ul>
                     <div class="profile">
                         <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
-                        <form method="get" class="perfil" action="{{url('/perfil')}}">
-                            <button type="submit">Perfil</button>
-                        </form>
+                        <a href="#">
+                            Perfil del usuario
+                        </a>
                     </div>
                     <div class="profile">
                         <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
-                        <form method="get" class="noche" action="{{url('/cerrar_sesion')}}">
+                        <a href="#">
                             Modo noche
-                        </form>
+                        </a>
                     </div>
-                    <form method="get" class="cerrar" action="{{url('/cerrar_sesion')}}">
+                    <form method="get" action="{{url('/cerrar_sesion')}}">
                         <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
                         </button>
                         <button type="submit" id="sesion">Cerrar Sesion</button>
@@ -84,7 +87,7 @@
     <div id="modal2" class="modal">
         <div class="modal-content">
             <button id="close" class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>
-            <video id="preview" width="100%" height="100%" style="display: none;"></video>
+            <video id="preview" class="video-back" width="100%" height="100%" playsinline style="display: none;"></video>
         </div>
     </div>
     <script src="js/card.js"></script>
