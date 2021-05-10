@@ -18,11 +18,12 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-var flag = false;
-var index = 0;
-var count = 1;
-var count2 = 0;
-var longItems = 2;
+// var itemPagination = document.getElementsByClassName('page-link');
+// var index = 0;
+// var index2 = 3;
+// var count = 1;
+// var count2 = 2;
+// var longItems = 2;
 
 function ver_usuarios(){
     var datos = document.getElementById("datos");
@@ -52,10 +53,11 @@ function ver_usuarios(){
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
-            var pagination = document.getElementsByClassName('pagination')[0];
+            // var pagination = document.getElementsByClassName('pagination')[0];
 
-            console.log(index);
-            for (let i = index; i < longItems; i++) {
+            // console.log(index);
+            // console.log(longItems);
+            for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i])
                 tabla += '<tr>'+'<td>'+respuesta[i].id_user+'</td>';
                 tabla += '<td>'+respuesta[i].name+'</td>';
@@ -96,30 +98,59 @@ function ver_usuarios(){
 
 
             }
+
             //pagination
-            if(flag === false){
-                count = 1;
-                count2 = 0;
-                index = 0;
-            }
-            console.log(flag);
-            pagination.innerHTML = ` <li class="page-item">
-                <a class="page-link" href="#">Atras</a>
-             </li>`;
-            console.log(count);
-            for (let i = 1; i < respuesta.length; i+=2) {
-                count2 +=2;
-                pagination.innerHTML += ` <li class="page-link" onclick="changePag(${count2})">${count++}</li>`;
-            }
 
-            var itemPagination = document.getElementsByClassName('page-link');
-            for (let i = 3; i < itemPagination.length; i++) {
-                itemPagination[i].style.display += `none`;
-            }
+            $(document).ready(function() {
+                    $('#tablax').DataTable({
+                        retrieve: true,
+                        language: {
+                            processing: "Tratamiento en curso...",
+                            search: "Buscar&nbsp;:",
+                            lengthMenu: "Agrupar de _MENU_ items",
+                            info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                            infoEmpty: "No existen datos.",
+                            infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                            infoPostFix: "",
+                            loadingRecords: "Cargando...",
+                            zeroRecords: "No se encontraron datos con tu busqueda",
+                            emptyTable: "No hay datos disponibles en la tabla.",
+                            paginate: {
+                                first: "Primero",
+                                previous: "Anterior",
+                                next: "Siguiente",
+                                last: "Ultimo"
+                            },
+                            aria: {
+                                sortAscending: ": active para ordenar la columna en orden ascendente",
+                                sortDescending: ": active para ordenar la columna en orden descendente"
+                            }
+                        },
+                        // scrollY: 400,
+                        lengthMenu: [ [10, 25, 50, 100 -1], [10, 25, 50, 100, "Todo"] ],
 
-            pagination.innerHTML += `<li class="page-link" onclick="changeNumPage()">Delante</li>`;
+                    });
+            });
 
-            flag = false;
+            // pagination.innerHTML = ` <li class="page-item">
+            //     <a class="page-link" href="#">Atras</a>
+            //  </li>`;
+
+            // console.log(count);
+
+            //     count2 +=2;
+
+            // pagination.innerHTML += ` <li class="page-link" onclick="changePag(${count2})">Delante</li>`;
+
+            // console.log(itemPagination.length);
+            // console.log(index2);
+
+            // for (let i = index2; i > itemPagination.length; i++) {
+            //     itemPagination[i].style.display = `none`;
+            // }
+
+            // pagination.innerHTML += `<li class="page-link" onclick="changeNumPage()">Delante</li>`;
+
             //console.log(respuesta)
         }
         datos.innerHTML = tabla;
@@ -127,18 +158,23 @@ function ver_usuarios(){
     ajax.send(datasend);
 }
 
-const changePag = (items)=>{
-    console.log(items);
-    longItems = items;
-    index = items-2;
-    ver_usuarios();
-}
+// const changePag = (items)=>{
+//     console.log(items);
+//     longItems = items;
+//     index = items-2;
+//     ver_usuarios();
+// }
 
-const changeNumPage = ()=>{
-    count--;
-    flag = true;
-    ver_usuarios();
-}
+// const changeNumPage = ()=>{
+//     // count--;
+//     index2 += 2;
+
+//     for (let i = 1; i < itemPagination.length-1; i++) {
+//         itemPagination[i].style.display = `none`;
+//     }
+//     // flag = true;
+//     ver_usuarios();
+// }
 
 
 function registrar_usuario(){
@@ -169,6 +205,7 @@ function registrar_usuario(){
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
         }
+
         ver_usuarios();
         borrar_registro();
     }
@@ -187,6 +224,7 @@ function cambiar_estado(id,act){
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
+
             ver_usuarios();
         }
     }
@@ -249,6 +287,7 @@ function actualizar_usuario(){
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
+
             ver_usuarios();
         }
     }
@@ -267,6 +306,7 @@ function eliminar_usuario(id_usuario){
         if (ajax.readyState == 4 && ajax.status == 200) {
             // var respuesta = JSON.parse(ajax.responseText);
             // console.log(respuesta);
+
             ver_usuarios();
         }
     }

@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <!-- Data table -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap5.min.css">
+
     <title>CRUD - USUARIOS</title>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
+
 </head>
 
 <body style="text-align: center;">
@@ -117,7 +123,7 @@
 
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
     <div class="datos">
-        <table>
+        <table id="tablax">
             <thead>
                 <tr>
                     <th>#</th>
@@ -167,10 +173,11 @@
                 </tr>
             </thead>
             <tbody id="datos">
+
             </tbody>
         </table>
     </div>
-    <nav aria-label="...">
+    <!-- <nav aria-label="...">
         <ul class="pagination">
             <li class="page-item">
                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -184,8 +191,21 @@
                 <a class="page-link" href="#">Next</a>
             </li>
         </ul>
-    </nav>
+    </nav> -->
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+        </script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+    </script>
+
     <script src="js/crud_master_usuarios.js"></script>
+
 </body>
 
 </html>
