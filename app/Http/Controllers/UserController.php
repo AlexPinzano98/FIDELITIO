@@ -50,7 +50,7 @@ class UserController extends Controller
             return redirect('viewCliente');
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             session()->put('typeuser', '1');
@@ -91,7 +91,7 @@ class UserController extends Controller
             return redirect('viewCliente');
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             session()->put('typeuser', '1');
