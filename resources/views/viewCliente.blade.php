@@ -88,6 +88,10 @@
         </div>
     </div>
     <script src="js/card.js"></script>
+    <div id="expirado">
+    </div>
+    <div id="nValido">
+    </div>
 
     <div class="container" id="listLocales">
         <div id="listLocal">

@@ -78,7 +78,8 @@ function sellar(content) {
             closeCamara();
             read();
         } else {
-            alert('qr expirado')
+            closeCamara();
+            document.getElementById('expirado').innerHTML = "Holaaa";
         }
     } else {
         alert('Este QR no es valido')

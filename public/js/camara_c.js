@@ -66,6 +66,8 @@ function sellar(content) {
             closeCamara();
             //alert('qr valido');
         } else {
+            closeCamara();
+            document.getElementById("expirado").style.display = 'block';
             document.getElementById("expirado").innerHTML = 'QR expirado.';
             // alert('qr expirado')
         }
@@ -112,8 +114,8 @@ function sellar(content) {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
-                alert(respuesta)
-                    // section.innerHTML = tabla;
+                alert(respuesta);
+                // section.innerHTML = tabla;
             }
         }
         ajax.send(datasend);

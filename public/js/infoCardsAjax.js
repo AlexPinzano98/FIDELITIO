@@ -117,7 +117,7 @@ function showCard(recojoData) {
                                     response[i].id_card +
                                     "," +
                                     response[i].id_promotion +
-                                    ')"><span> CANJEAR </span></button>';
+                                    ')">CANJEAR</button>';
                                 tabla0 += "</div>";
                             }
                             tabla0 += "</div></div>";
@@ -190,7 +190,7 @@ function showCard(recojoData) {
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
                 //alert('tomatelaaaa');
                 tabla1 += '<div class="Cbutton">';
-                tabla1 += '<button class="button" onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')"><span> CANJEAR </span></button>'
+                tabla1 += '<button class="button" onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')"> CANJEAR </button>'
                 tabla1 += '</div>';
             }
             tabla1 += "</div></div></div>";

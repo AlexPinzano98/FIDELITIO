@@ -6,7 +6,7 @@
     z-index: 1;
     /* Sit on top */
     left: 0;
-    top: 10%;
+    top: 8%;
     width: 100%;
     /* Full width */
     height: 100%;
@@ -24,11 +24,11 @@
     flex-direction: column;
     align-items: center;
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 22% auto;
     /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    max-width: 303px;
+    width: 80%;
     /* Could be more or less, depending on screen size */
     border-radius: 7px;
 }
@@ -254,6 +254,13 @@ nav form:hover {
 }
 
 @media (min-width: 440px) {
+    .modal {
+        top: 8%;
+    }
+    .modal-content {
+        margin: 15% auto;
+        width: 65%;
+    }
     .fas {
         margin-top: 1%;
         font-size: 275%;

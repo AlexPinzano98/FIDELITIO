@@ -138,11 +138,16 @@ body {
 
 .button:hover span {
     padding-right: 25px;
+    background-color: rgb(223, 122, 122);
 }
 
 .button:hover span:after {
     opacity: 1;
     right: 0;
+}
+
+.button span:nth-child(1) {
+    transform: rotate(0deg);
 }
 
 .Cbutton {
