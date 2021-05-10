@@ -6,7 +6,8 @@ use App\Http\Controllers\CamareroController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\DirectionController;
-
+use App\Http\Controllers\LocalController;
+use App\Http\Controllers\PromotionController;
 
 /*
 |--------------------------------------------------------------------------
