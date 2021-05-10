@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Mockery\Undefined;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmergencyCallReceived;
 use Swift;
 
 class UserController extends Controller
@@ -37,17 +39,61 @@ class UserController extends Controller
         ])->count();
         if($contador1==1){
             //hare login ya que tengo cuenta con google o facebook
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $user->name);
+            $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+            session()->put('name', $usario->name);
             session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
+            session()->put('id_user', $usario->id_user);
+            switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                case '1':
+                    return redirect('viewCliente');
+                    break;
+                case '2':
+                    // echo "Camarero";
+                    // return view('viewCamarero');
+                    return redirect('viewCamarero');
+                    break;
+                case '3':
+                    echo "ADM establecimiento";
+                    break;
+                case '4':
+                    echo "ADM grupo";
+                    break;
+                case '5':
+                    //echo "ADM master";
+                    return redirect('viewMaster');
+                    break;
+                default:
+                    # code...
+                    break;
+            }
         }elseif($contador2==1){
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $user->name);
+            $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+            session()->put('name', $usario->name);
             session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
+            session()->put('id_user', $usario->id_user);
+            switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                case '1':
+                    return redirect('viewCliente');
+                    break;
+                case '2':
+                    // echo "Camarero";
+                    // return view('viewCamarero');
+                    return redirect('viewCamarero');
+                    break;
+                case '3':
+                    echo "ADM establecimiento";
+                    break;
+                case '4':
+                    echo "ADM grupo";
+                    break;
+                case '5':
+                    //echo "ADM master";
+                    return redirect('viewMaster');
+                    break;
+                default:
+                    # code...
+                    break;
+            }
         }else{
             //registrarse con la cuenta y hacer login
             DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
@@ -78,17 +124,61 @@ class UserController extends Controller
         ])->count();
         if($contador1==1){
             //hare login ya que tengo cuenta con google o facebook
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $user->name);
+            $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+            session()->put('name', $usario->name);
             session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
+            session()->put('id_user', $usario->id_user);
+            switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                case '1':
+                    return redirect('viewCliente');
+                    break;
+                case '2':
+                    // echo "Camarero";
+                    // return view('viewCamarero');
+                    return redirect('viewCamarero');
+                    break;
+                case '3':
+                    echo "ADM establecimiento";
+                    break;
+                case '4':
+                    echo "ADM grupo";
+                    break;
+                case '5':
+                    //echo "ADM master";
+                    return redirect('viewMaster');
+                    break;
+                default:
+                    # code...
+                    break;
+            }
         }elseif($contador2==1){
-            $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
-            session()->put('name', $user->name);
+            $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
+            session()->put('name', $usario->name);
             session()->put('typeuser', '1');
-            session()->put('id_user', $user->id_user);
-            return redirect('viewCliente');
+            session()->put('id_user', $usario->id_user);
+            switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
+                case '1':
+                    return redirect('viewCliente');
+                    break;
+                case '2':
+                    // echo "Camarero";
+                    // return view('viewCamarero');
+                    return redirect('viewCamarero');
+                    break;
+                case '3':
+                    echo "ADM establecimiento";
+                    break;
+                case '4':
+                    echo "ADM grupo";
+                    break;
+                case '5':
+                    //echo "ADM master";
+                    return redirect('viewMaster');
+                    break;
+                default:
+                    # code...
+                    break;
+            }
         }else{
             //registrarse con la cuenta y hacer login
             DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
@@ -96,6 +186,7 @@ class UserController extends Controller
             session()->put('name', $name);
             session()->put('typeuser', '1');
             session()->put('id_user', $user->id_user);
+            Mail::to($email)->send(new EmergencyCallReceived($user));
             return redirect('viewCliente');
         }
         //return $user->getEmail();
