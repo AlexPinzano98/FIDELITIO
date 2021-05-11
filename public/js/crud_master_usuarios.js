@@ -18,13 +18,6 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-// var itemPagination = document.getElementsByClassName('page-link');
-// var index = 0;
-// var index2 = 3;
-// var count = 1;
-// var count2 = 2;
-// var longItems = 2;
-
 function ver_usuarios(){
     var datos = document.getElementById("datos");
     //console.log('hola')
@@ -38,7 +31,7 @@ function ver_usuarios(){
     var f_status = document.getElementById("f_status").value;
     console.log(f_sexo)
     var ajax = new objetoAjax();
-    ajax.open('POST', 'ver_usuarios', true);
+    ajax.open('GET', 'ver_usuarios', true);
     var datasend = new FormData();
     datasend.append('_token', token);
     datasend.append('nombre', f_nombre);
@@ -55,8 +48,6 @@ function ver_usuarios(){
             console.log(respuesta);
             // var pagination = document.getElementsByClassName('pagination')[0];
 
-            // console.log(index);
-            // console.log(longItems);
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i])
                 tabla += '<tr>'+'<td>'+respuesta[i].id_user+'</td>';
@@ -104,11 +95,14 @@ function ver_usuarios(){
             $(document).ready(function() {
                     $('#tablax').DataTable({
                         retrieve: true,
+                        responsive: true,
+                        searchPanes: true,
+                        info: false,
                         language: {
                             processing: "Tratamiento en curso...",
                             search: "Buscar&nbsp;:",
                             lengthMenu: "Agrupar de _MENU_ items",
-                            info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                            // info: "",
                             infoEmpty: "No existen datos.",
                             infoFiltered: "(filtrado de _MAX_ elementos en total)",
                             infoPostFix: "",
@@ -130,51 +124,14 @@ function ver_usuarios(){
                         lengthMenu: [ [10, 25, 50, 100 -1], [10, 25, 50, 100, "Todo"] ],
 
                     });
+
             });
 
-            // pagination.innerHTML = ` <li class="page-item">
-            //     <a class="page-link" href="#">Atras</a>
-            //  </li>`;
-
-            // console.log(count);
-
-            //     count2 +=2;
-
-            // pagination.innerHTML += ` <li class="page-link" onclick="changePag(${count2})">Delante</li>`;
-
-            // console.log(itemPagination.length);
-            // console.log(index2);
-
-            // for (let i = index2; i > itemPagination.length; i++) {
-            //     itemPagination[i].style.display = `none`;
-            // }
-
-            // pagination.innerHTML += `<li class="page-link" onclick="changeNumPage()">Delante</li>`;
-
-            //console.log(respuesta)
         }
         datos.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
-
-// const changePag = (items)=>{
-//     console.log(items);
-//     longItems = items;
-//     index = items-2;
-//     ver_usuarios();
-// }
-
-// const changeNumPage = ()=>{
-//     // count--;
-//     index2 += 2;
-
-//     for (let i = 1; i < itemPagination.length-1; i++) {
-//         itemPagination[i].style.display = `none`;
-//     }
-//     // flag = true;
-//     ver_usuarios();
-// }
 
 
 function registrar_usuario(){

@@ -12,6 +12,6 @@
     <a href="{{ url('/crudPromociones') }}">PROMOCIONES</a>
     <a href="{{ url('/crudTarjetas') }}">TARJETAS</a>
     <a href="{{ url('/crudUsuarios') }}">USUARIOS</a>
-    
+    <script src="js/permissionsAjax.js"></script>
 </body>
 </html>
