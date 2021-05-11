@@ -397,4 +397,12 @@ class UserController extends Controller
     public function password_reset(Request $request){
         return view('password_reset',compact('request'));
     }
+    
+    public function cambiar_password(Request $request){
+        $datos = $request->except('_token');
+        DB::select('UPDATE tbl_user SET `psswd`=? WHERE `id_user`=?',
+        [md5($datos['psswd1']),
+        $datos['id_user']]);
+        return view('password_changed');
+    }
 }
