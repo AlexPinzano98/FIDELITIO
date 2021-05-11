@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prueba;
+use App\Models\graficas;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class PruebaController extends Controller
+class GraficasController extends Controller
 {
     public function sendData(Request $request) {
         try {

@@ -281,7 +281,7 @@ class UserController extends Controller
         }
         $users=DB::table('tbl_user')->where([['email','=',$datos['email']]])->count();
         if ($users == 0){
-            DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'create_date'=>NOW(),'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
+            DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'create_date'=>Now(),'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
             $mensaje = 'Tu cuenta se ha creado correctamente';
             return redirect('/')->with('mensaje',$mensaje);
         }else{
