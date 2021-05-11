@@ -229,17 +229,16 @@ nav form {
     } */
     .modal {
         width: 100%;
-        margin-top: 8%;
+        margin-top: 2%;
     }
     .modal-content {
-        background-color: gray;
         width: 30%;
     }
     header {
         padding: 0%;
     }
     .text-start {
-        width: 38%;
+        width: 35%;
         font-size: 140%;
     }
     #cam {
@@ -352,17 +351,17 @@ nav form {
 @media (min-width: 1024px) {
     .modal {
         width: 100%;
-        margin-top: 2%;
+        margin-top: 0%;
     }
     .modal-content {
-        background-color: gray;
-        width: 60%;
+        margin-top: 3.75%;
+        width: 50%;
     }
     header {
         padding: 0%;
     }
     .text-start {
-        padding: 1% 2.5% 0% 2.5%;
+        padding: 0% 2.5% 0% 1.5%;
         font-size: 200%;
     }
     #cam {

@@ -18,7 +18,6 @@ let scanner = new Instascan.Scanner({
     video: document.getElementById('preview')
 });
 scanner.addListener('scan', function(content) {
-    //alert('Contenido: ' + content);
     sellar(content);
 });
 
@@ -48,12 +47,36 @@ function closeModal() {
     //showCard();
 }
 
+function mostrarToast() {
+    var toast = document.getElementById("expirado");
+    toast.className = "mostrar";
+    setTimeout(function() { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+}
+
+function cerrarToast() {
+    var toast = document.getElementById("expirado");
+    toast.className = "cerrar";
+    toast.className = toast.className.replace("cerrar", "");
+}
+
+function mostrarValido(respuesta) {
+    $mensaje = respuesta;
+    var toast = document.getElementById("valido");
+    toast.className = "mostrar";
+    document.getElementById('val').innerHTML = $mensaje;
+    setTimeout(function() { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+}
+
+function cerrarValido() {
+    var toast = document.getElementById("valido");
+    toast.className = "cerrar";
+    toast.className = toast.className.replace("cerrar", "");
+}
+
 function sellar(content) {
     const array = content.split(',');
-    //alert(array[1]);
     var id_promo = array[2];
     var id_camarero = array[3];
-    //alert(array[2]);
     var year = array[4];
     var month = array[5];
     var day = array[6];
@@ -74,39 +97,16 @@ function sellar(content) {
         // console.log(fecha_qr)
     if (year != "") {
         if (fecha_actual.getTime() < fecha_qr.getTime()) {
-            //alert('qr valido')
             closeCamara();
             read();
         } else {
             closeCamara();
-            document.getElementById('expirado').innerHTML = "Holaaa";
+            mostrarToast();
         }
     } else {
-        alert('Este QR no es valido')
-            // Msg error
+        closeCamara();
+        mostrarToast();
     }
-    // if(year!=""){
-    //     if (year < year_now) {
-    //     alert('QR CADUCADO');
-    //     } else if (year <= year_now && month < month_now) {
-    //         alert('QR CADUCADO');
-    //     } else if (year <= year_now && month <= month_now && day < day_now) {
-    //         alert('QR CADUCADO');
-    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour < hour_now) {
-    //         alert('QR CADUCADO');
-    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute <= minute_now) {
-    //         alert('QR CADUCADO');
-    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute > minute_now) {
-    //         alert('QR valido');
-    //         closeCamara();
-    //         closeModal();
-    //         // Ajax
-    //         read();
-    //     }else{
-    //         alert('Este QR no es valido')
-    //         // Msg error
-    //     }
-    //}
 
     function read() {
         // var section = document.getElementById('section-3');
@@ -123,25 +123,11 @@ function sellar(content) {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(ajax.responseText);
                 // var tabla = '';
-                alert(respuesta);
+                mostrarValido(respuesta);
                 // section.innerHTML = tabla;
                 showCard();
             }
         }
         ajax.send(datasend);
     }
-
-    // Hacer llamada AJAX al método de validación QR
-
-    // if (fecha_actual.getTime() < fecha_qr.getTime()) {
-    //     alert('QR CADUCADO');
-    //  }
-    //alert(id_local);
-    // var token = document.getElementById("token").getAttribute("content");
-    // var ajax = new objetoAjax();
-    // ajax.open('POST', 'ver_promociones', true);
-    // var datasend = new FormData();
-    // datasend.append('id_local', id_local);
-    // datasend.append('_token', token);
-    //alert('Contenido: ' + content);
 }

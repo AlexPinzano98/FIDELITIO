@@ -88,7 +88,7 @@ class CardController extends Controller
                     return response()->json('Sello canjeado correctamente', 200);
                 }
             } else {
-                return response()->json('La tarjeta de promoción esta completada', 200);
+                return response()->json('La tarjeta de promoción ya está completada', 200);
             }
 
             //return response()->json($sellos, 200);
@@ -123,11 +123,10 @@ class CardController extends Controller
                     ['date' => NOW(),
                     'id_card_fk' => $promo->id_card, // ID de la tarjeta
                     'id_user_fk_stamp' => $id_camarero] // Camarero que pone el sello
-                ); 
-                
+                );
                 return response()->json('Targeta creada correctamente', 200);
             } else {
-                return response()->json('La promocion esta canjeada ya', 200);
+                return response()->json('La promoción ya está canjeada', 200);
             }
         }
             

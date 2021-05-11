@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/navCamarero.css')}}">
-    <script src="js/camarero.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/instascan.js"></script>
     <script src="js/instascan.min.js"></script>
@@ -64,11 +63,38 @@
     </section>
 
     <div id="content">
-        <!-- <div id="expirado">
-        </div> -->
-        <div role="alert" id="mitoast" aria-live="assertive" aria-atomic="true" class="toast">
-   <!-- Acá colocaré los elementos de mi Toast -->
-</div>
+        <!-- MENSAJE DE ERROR -->
+        <div role="alert" id="expirado" aria-live="assertive" aria-atomic="true" class="toast">
+                <!-- Botón para Cerrar el Toast -->
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar" onclick="cerrarToast()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <!-- Icono / Logo de la Aplicación -->
+                <img src="img/lStimpa.png" class="rounded mr-2">
+                <!-- Nombre de la Aplicación -->
+                <strong class="mr-auto">¡QR no válido!</strong><br>
+                <!-- Tiempo del Evento realizado -->
+                <!-- <?php 
+                    $fecha = date('d-m-Y');   
+                    echo "<small>".$fecha."</small>";             
+                ?> -->
+        </div>
+        <!-- MENSAJE VALIDO -->
+        <div role="alert" id="valido" aria-live="assertive" aria-atomic="true" class="toast">
+                <!-- Botón para Cerrar el Toast -->
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar" onclick="cerrarValido()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <!-- Icono / Logo de la Aplicación -->
+                <img src="img/lStimpa.png" class="rounded mr-2">
+                <!-- Nombre de la Aplicación -->
+                <strong class="mr-auto">¡QR válido!</strong><br>
+                <!-- Tiempo del Evento realizado -->
+                <!-- <?php 
+                    $fecha = date('d-m-Y');   
+                    echo "<small>".$fecha."</small>";             
+                ?> -->
+        </div>
         <div id="modal2" class="modal">
             <div class="modal-content">
                 <button class="close" onclick="closeModal()" data-dismiss="modal">&times;</button>

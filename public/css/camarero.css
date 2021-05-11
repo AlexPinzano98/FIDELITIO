@@ -65,16 +65,136 @@
     align-self: flex-end;
 }
 
+
+/* mensajes */
+
 #expirado {
     display: none;
-    padding: 1.5% 0% 1.5% 0%;
-    text-align: center;
-    width: 40%;
-    margin-left: 30%;
-    border: 2px solid black;
+    position: fixed;
+    z-index: 3;
+    padding: 1%;
+    padding-bottom: 0%;
+    margin-left: 20%;
+    margin-top: 10%;
+    border: 3px solid red;
     border-radius: 10px;
-    z-index: 10;
-    margin-top: 2%;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .1);
+    width: 60%;
+    background-color: rgb(206, 91, 91);
+}
+
+#valido {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    padding: 1%;
+    padding-bottom: 0%;
+    margin-left: 20%;
+    margin-top: 10%;
+    border: 3px solid #58D68D;
+    border-radius: 10px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .1);
+    width: 60%;
+    background-color: #b1ebc9;
+}
+
+.rounded {
+    width: 20%;
+    height: 20%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    float: left;
+    margin-left: 2%;
+}
+
+.mr-auto {
+    float: left;
+    margin-top: 8%;
+    margin-left: 5%;
+}
+
+.ml-2 {
+    float: right;
+}
+
+#expirado.mostrar,
+#valido.mostrar {
+    display: block;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 4.6s;
+    animation: fadein 0.5s, fadeout 0.5s 4.6s;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        right: 0;
+        opacity: 0;
+    }
+    to {
+        right: 2.5%;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        right: 0;
+        opacity: 0;
+    }
+    to {
+        right: 2.5%;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        right: 2.5%;
+        opacity: 1;
+    }
+    to {
+        right: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        right: 2.5%;
+        opacity: 1;
+    }
+    to {
+        right: 0;
+        opacity: 0;
+    }
+}
+
+#expirado.cerrar,
+#valido.cerrar {
+    display: block;
+    -webkit-animation: fadeout 0.5s 4.8s;
+    animation: fadeout 0.5s 4.8s;
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        right: 2.5%;
+        opacity: 1;
+    }
+    to {
+        right: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        right: 2.5%;
+        opacity: 1;
+    }
+    to {
+        right: 0;
+        opacity: 0;
+    }
 }
 
 
