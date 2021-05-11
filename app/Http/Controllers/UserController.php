@@ -393,4 +393,8 @@ class UserController extends Controller
         //redirige a la vista login si no has iniciado sesion.
         return view('perfilU');
     }
+
+    public function password_reset(Request $request){
+        return view('password_reset',compact('request'));
+    }
 }
