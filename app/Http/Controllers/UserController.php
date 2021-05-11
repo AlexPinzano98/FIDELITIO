@@ -10,6 +10,7 @@ use Illuminate\View\View;
 use Mockery\Undefined;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmergencyCallReceived;
+use Illuminate\Support\Str;
 use Swift;
 
 class UserController extends Controller
@@ -28,6 +29,15 @@ class UserController extends Controller
         //return $user->getEmail();
         $email= $user->getEmail();
         $name= $user->getName();
+        $cadena = $name;
+        $separador = " ";
+        $separada = explode($separador, $cadena);
+        $name=$separada[0];
+        if(empty($separada[2])){
+            $lastname=$separada[1];
+        }else{
+            $lastname=$separada[1].' '.$separada[2];
+        }
         $consentimiento=1;
         $contador1=DB::table('tbl_user')->where([
             ['email','=',$email],
@@ -96,7 +106,7 @@ class UserController extends Controller
             }
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             session()->put('typeuser', '1');
@@ -113,6 +123,15 @@ class UserController extends Controller
         $user = Socialite::driver('google')->user();
         $email= $user->getEmail();
         $name= $user->getName();
+        $cadena = $name;
+            $separador = " ";
+            $separada = explode($separador, $cadena);
+            $name=$separada[0];
+            if(empty($separada[2])){
+                $lastname=$separada[1];
+            }else{
+                $lastname=$separada[1].' '.$separada[2];
+            }
         $consentimiento=1;
         $contador1=DB::table('tbl_user')->where([
             ['email','=',$email],
@@ -181,7 +200,7 @@ class UserController extends Controller
             }
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$user->getName(),'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5('1234'),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             session()->put('typeuser', '1');
@@ -262,7 +281,7 @@ class UserController extends Controller
         }
         $users=DB::table('tbl_user')->where([['email','=',$datos['email']]])->count();
         if ($users == 0){
-            DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
+            DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'create_date'=>Now(),'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
             $mensaje = 'Tu cuenta se ha creado correctamente';
             return redirect('/')->with('mensaje',$mensaje);
         }else{
@@ -373,5 +392,17 @@ class UserController extends Controller
     public function perfil() {
         //redirige a la vista login si no has iniciado sesion.
         return view('perfilU');
+    }
+
+    public function password_reset(Request $request){
+        return view('password_reset',compact('request'));
+    }
+    
+    public function cambiar_password(Request $request){
+        $datos = $request->except('_token');
+        DB::select('UPDATE tbl_user SET `psswd`=? WHERE `id_user`=?',
+        [md5($datos['psswd1']),
+        $datos['id_user']]);
+        return view('password_changed');
     }
 }

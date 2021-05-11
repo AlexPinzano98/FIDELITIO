@@ -20,6 +20,6 @@ class EmergencyCallReceived extends Mailable
 
     public function build()
     {
-        return $this->view('emergency_call')->subject('Registro Completado');
+        return $this->view('mail_registro')->subject('Registro Completado');
     }
 }
