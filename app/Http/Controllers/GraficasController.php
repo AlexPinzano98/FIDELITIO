@@ -20,8 +20,16 @@ class GraficasController extends Controller
             WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
             GROUP BY status_card', [$request['valueFilter2']]);
 
+            $etiquetas3 = DB::select('SELECT DATE(tbl_stamp.date) AS fecha, COUNT(id_stamp) AS Tcafes FROM tbl_stamp
+            INNER JOIN	tbl_card
+            ON tbl_stamp.id_card_fk = tbl_card.id_card
+            INNER JOIN tbl_promotion
+            ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+                    WHERE tbl_stamp.date BETWEEN NOW() - INTERVAL 30 DAY AND NOW()
+                    GROUP BY DATE(tbl_stamp.date)', [$request['valueFilter3']]);
+
             // $datosClientesAlta = [500, 50, 242, 1404, 222 ,555, 566, 777, 999, 122, 111];
-            return response()->json(array($etiquetas, $etiquetas2));
+            return response()->json(array($etiquetas, $etiquetas2, $etiquetas3));
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()));

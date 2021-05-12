@@ -4,6 +4,7 @@ var myChart3 = null;
 
 var valueFilter = document.getElementById('filter');
 var valueFilter2 = document.getElementById('filter2');
+var valueFilter3 = document.getElementById('filter3');
 
 function objetoAjax() {
     var xmlhttp = false;
@@ -43,9 +44,8 @@ function callData() {
             var cantidad = [];
             var date2 = [];
             var cantidad2 = [];
-
-            console.log(date);
-            console.log(cantidad);
+            var date3 = [];
+            var cantidad3 = [];
 
             for (let i = 0; i < response[0].length; i++) {
                 date.push(response[0][i].fecha) ;
@@ -55,6 +55,11 @@ function callData() {
             for (let i = 0; i < response[1].length; i++) {
                 date2.push(response[1][i].estado) ;
                 cantidad2.push(response[1][i].tarjetas) ;
+            }
+
+            for (let i = 0; i < response[2].length; i++) {
+                date2.push(response[2][i].fecha1);
+                cantidad2.push(response[2][i].Tcafes);
             }
 
             var ctx = document.getElementById('myChart').getContext('2d');
@@ -133,25 +138,15 @@ function callData() {
             });
 
             myChart3 = new Chart(ctx3, {
-                type: 'pie',
+                type: 'bar',
                 data: {
-                    labels: response[0],
+                    labels: date3,
                     datasets: [{
-                        label: 'Series 1', // Name the series
-                        data: response[1], // Specify the data values array
+                        label: 'dias', // Name the series
+                        data: cantidad3, // Specify the data values array
                         fill: false,
-                        borderColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgb(255,255,0,0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                        ], // Add custom color border (Line)
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgb(255,255,0,0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                        ], // Add custom color background (Points and Fill)
+                        borderColor: '#2196f3', // Add custom color border (Line)
+                        backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
                         borderWidth: 1 // Specify bar border width
                     }]
                 },
@@ -161,12 +156,12 @@ function callData() {
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true,
-                                fontSize: 16
+                                fontSize: 14.5
                             }
                         }],
                         xAxes: [{
                             ticks: {
-                                fontSize: 16
+                                fontSize: 14.5
                             }
                         }]
                     },
