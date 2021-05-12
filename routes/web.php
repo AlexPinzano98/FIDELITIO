@@ -96,3 +96,8 @@ Route::post('/registrar_tarjeta', [CardController::class, 'registrar_tarjeta']);
 Route::post('/ver_locales', [LocalController::class, 'ver_locales']);
 // CRUD COMPAÑIA
 Route::post('/ver_companyias', [CompanyController::class, 'ver_companyias']);
+
+//recuperar contraseña
+Route::post('/password_reset', [UserController::class, 'password_reset']);
+Route::post('/cambiar_password', [UserController::class, 'cambiar_password']);
+// Route::post('/password_reset', function (){ return view('password_reset');});
