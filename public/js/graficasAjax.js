@@ -140,36 +140,34 @@ function callData() {
             });
 
             myChart3 = new Chart(ctx3, {
-                type: 'bar',
-                data: {
-                    labels: date3,
-                    datasets: [{
-                        label: 'dias', // Name the series
-                        data: cantidad3, // Specify the data values array
-                        fill: false,
-                        borderColor: '#2196f3', // Add custom color border (Line)
-                        backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-                        borderWidth: 1 // Specify bar border width
-                    }]
-                },
-
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                fontSize: 14.5
-                            }
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                fontSize: 14.5
-                            }
+                    type: 'bar',
+                    data: {
+                        labels: date3,
+                        datasets: [{
+                            label: 'dias', // Name the series
+                            data: cantidad3, // Specify the data values array
+                            backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
                         }]
                     },
-                    responsive: true,
-                }
+
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    fontSize: 14.5
+                                }
+                            }],
+                            xAxes: [{
+                                ticks: {
+                                    fontSize: 14.5
+                                }
+                            }]
+                        },
+                    }
             });
+
 
             console.log(response.datos);
 
@@ -179,14 +177,17 @@ function callData() {
 }
 
 valueFilter.addEventListener('change', ()=>{
+    myChart.destroy();
     callData();
 });
 
 valueFilter2.addEventListener('change', ()=>{
+    myChart2.destroy();
     callData();
 });
 
 valueFilter3.addEventListener('change', ()=>{
+    myChart3.destroy();
     callData();
 });
 
