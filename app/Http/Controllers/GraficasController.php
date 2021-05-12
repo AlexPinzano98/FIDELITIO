@@ -25,7 +25,7 @@ class GraficasController extends Controller
             ON tbl_stamp.id_card_fk = tbl_card.id_card
             INNER JOIN tbl_promotion
             ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
-                    WHERE tbl_stamp.date BETWEEN NOW() - INTERVAL 30 DAY AND NOW()
+                    WHERE tbl_stamp.date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
                     GROUP BY DATE(tbl_stamp.date)', [$request['valueFilter3']]);
 
             // $datosClientesAlta = [500, 50, 242, 1404, 222 ,555, 566, 777, 999, 122, 111];

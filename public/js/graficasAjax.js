@@ -34,6 +34,8 @@ function callData() {
     datasend.append('_token', token);
     datasend.append('valueFilter', valueFilter.value);
     datasend.append('valueFilter2', valueFilter2.value);
+    console.log(valueFilter3.value);
+    datasend.append('valueFilter3', valueFilter3.value);
 
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
@@ -58,8 +60,8 @@ function callData() {
             }
 
             for (let i = 0; i < response[2].length; i++) {
-                date2.push(response[2][i].fecha1);
-                cantidad2.push(response[2][i].Tcafes);
+                date3.push(response[2][i].fecha);
+                cantidad3.push(response[2][i].Tcafes);
             }
 
             var ctx = document.getElementById('myChart').getContext('2d');
@@ -181,6 +183,10 @@ valueFilter.addEventListener('change', ()=>{
 });
 
 valueFilter2.addEventListener('change', ()=>{
+    callData();
+});
+
+valueFilter3.addEventListener('change', ()=>{
     callData();
 });
 
