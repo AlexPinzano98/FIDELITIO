@@ -1,0 +1,62 @@
+.header {
+    background: #58D68D;
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+}
+
+.text-start {
+    float: left;
+    color: white;
+    font-size: 150%;
+    margin: 1% 0% 0% 5%;
+}
+
+#est,
+#admi {
+    margin-top: 1%;
+    background-color: transparent;
+    border: none;
+    font-size: 200%;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+#menu_on {
+    width: 5%;
+    height: 20px;
+    position: relative;
+    z-index: 2;
+    float: right;
+    margin-top: 2%;
+    margin-right: 3%;
+}
+
+#menu_on:hover {
+    cursor: pointer;
+}
+
+#menu_on span {
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    display: block;
+    position: absolute;
+    background: #fff;
+    transition: all 0.75s ease;
+    transform-origin: 0px 100%;
+}
+
+#menu_on span:nth-child(2) {
+    top: calc(50% - 2px);
+}
+
+#menu_on span:nth-child(3) {
+    bottom: 0;
+}
+
+#crud {
+    width: 100%;
+    background-color: red;
+}

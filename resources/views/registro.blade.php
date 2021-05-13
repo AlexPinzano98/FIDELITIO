@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -18,11 +19,32 @@
     </script>
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
     <script src="js/valReg.js"></script>
+    <style>
+        #facebook,
+            #google{
+                width: 80%;
+            }
+        @media (min-width: 440px) {
+            #facebook,
+            #google{
+                width: 90%;
+            }
+        }
+        @media (min-width: 1024px) {
+            #facebook{
+                width: 80%;
+                margin-left: 10%;
+            }
+            #google{
+                width: 80%;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <img src="img/stimpa.png" class="stimpa" style="margin-top: 2.9%;">
-    <h1>¡Registrate!</h1>
+    <h1>¡Regístrate!</h1>
     <div class="login">
         <form action="{{url('/registrar')}}" method="POST" onsubmit="return validarForm()">
             {{csrf_field()}}
@@ -53,12 +75,26 @@
                 <label for="consentimiento" class="ms-2">Consentimiento</label>
             </div>
             <button type="submit" id="submit" class="btn btn-warning">
-                Registrate
+                Regístrate
             </button>
+            <div id="separacion">
+                <div id="hr" style="margin-left:5%"></div>
+                <div id="o">O</div>
+                <div id="hr"></div>
+            </div>
             <div id="message">
             </div>
             <p id="errorR">{{Session::get('mensaje')}}</p>
-
+            <a href="{{ url('/facebook') }}">
+                <button type="button" class="btn btn-primary" id="facebook">
+                <i class="fab fa-facebook"></i>Continuar con Facebook
+                </button>
+            </a>
+            <a href="{{ url('/google') }}">
+                <button type="button" class="btn btn-info" id="google">
+                <i class="fab fa-google-plus-g"></i>Continuar con Google
+                </button>
+            </a>
         </form>
     </div>
 
