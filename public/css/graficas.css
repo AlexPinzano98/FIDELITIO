@@ -4,35 +4,44 @@
     box-sizing: border-box;
 }
 
-#gr{
+#gr {
     margin: 0 10%;
-
 }
 
-.gr__item{
+.gr__item {
     margin-bottom: 10%;
 }
 
-img{
+img {
     max-width: 100%;
     width: 10%;
     margin: 5% 45%;
     cursor: pointer;
 }
 
+.gr__item {
+    justify-self: center;
+}
+
+option[value="365"] {
+    display: none;
+}
+
+/* .scroll {
+    overflow-x: scroll;
+} */
+
 @media (min-width: 1024px) {
-    .gr__item{
+    .gr__item {
         width: 80%;
     }
-    #gr{
+    #gr {
         display: grid;
         justify-content: center;
-        grid-template-columns: 55% 55%;
+        grid-template-columns: 80%;
     }
 
-    /* .item3{
-        justify-self: center;
-        grid-column: 1 / span 2;
-        grid-row: 2;
-    } */
+    option[value="365"] {
+        display: block;
+    }
 }

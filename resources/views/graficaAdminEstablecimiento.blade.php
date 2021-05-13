@@ -10,7 +10,7 @@
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <link rel="stylesheet" href="css/graficas.css">
-    <title>ADMIN MASTER</title>
+    <title>ADMIN ESTABLECIMIENTO</title>
 </head>
 
 <body>
@@ -132,7 +132,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
     </script>
-    <script src="js/graficasAjax.js"></script>
+    <script src="js/graficasAjaxAdminEstablecimineto.js"></script>
 
 </body>
 

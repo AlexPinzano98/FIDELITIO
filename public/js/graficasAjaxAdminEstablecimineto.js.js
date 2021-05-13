@@ -28,7 +28,7 @@ function callData() {
     var ajax = new objetoAjax();
     var token = document.getElementById('token').getAttribute('content');
     // Obtener la instancia del objeto XMLHttpRequest
-    ajax.open('POST', 'sendData', true);
+    ajax.open('POST', 'sendDataEstablecimiento', true);
 
     var datasend = new FormData();
     datasend.append('_token', token);
