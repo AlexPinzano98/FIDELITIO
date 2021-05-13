@@ -5,22 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
     <!-- bootstrap -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"> -->
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Data table -->
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"> -->
-
     <title>CRUD - USUARIOS</title>
+    <link rel="stylesheet" href="{{asset('css/crudUsuarios.css')}}">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 
 </head>
 
 <body style="text-align: center;">
+    <header class="header">
+        <p class="text-start">{{ session('name') }}</p>
+        <button class="fas fa-chart-bar" onclick="openCamara()" id="est"></button>
+        <button class="fas fa-users-cog" onclick="openCamara()" id="admi"></button>
+        <a id="menu_on" onclick="closeModal2()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+    </header>
 
-
+    <div id="crud">
         <h1>USUARIOS</h1>
 
         <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
@@ -33,20 +44,17 @@
         <div id="registrar" class="registrar" style="display: none;">
             <h1> REGISTRA UN USUARIO</h1>
             <button onclick="closeRegister()">CANCELAR</button>
-
             <div class="mb-3">
                 <input name="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre..."></input>
             </div>
             <div class="mb-3">
-                <input name="apellidos" type="text" class="form-control" id="apellidos"
-                    placeholder="Apellidos..."></input>
+                <input name="apellidos" type="text" class="form-control" id="apellidos" placeholder="Apellidos..."></input>
             </div>
             <div class="mb-3">
                 <input name="email" type="email" class="form-control" id="email" placeholder="Correo electrónico...">
             </div>
             <div class="mb-3">
-                <input name="psswd" type="password" class="form-control" id="psswd"
-                    placeholder="Contrasenya..."></input>
+                <input name="psswd" type="password" class="form-control" id="psswd" placeholder="Contrasenya..."></input>
             </div>
             <div class="mb-3">
                 <select class="form-control" id="sexo" name="sexo">
@@ -87,15 +95,13 @@
                 <input name="nombre" type="text" class="form-control" id="nombrea" placeholder="Nombre..."></input>
             </div>
             <div class="mb-3">
-                <input name="apellidos" type="text" class="form-control" id="apellidosa"
-                    placeholder="Apellidos..."></input>
+                <input name="apellidos" type="text" class="form-control" id="apellidosa" placeholder="Apellidos..."></input>
             </div>
             <div class="mb-3">
                 <input name="email" type="email" class="form-control" id="emaila" placeholder="Correo electrónico...">
             </div>
             <div class="mb-3">
-                <input name="psswd" type="password" class="form-control" id="contrasenyaa"
-                    placeholder="Contrasenya..."></input>
+                <input name="psswd" type="password" class="form-control" id="contrasenyaa" placeholder="Contrasenya..."></input>
             </div>
             <div class="mb-3">
                 <select class="form-control" id="sexoa" name="sexo">
@@ -141,7 +147,7 @@
                         <th>Rol</th>
                         <th>Status</th>
                         <th colspan="2">Acciones</th>
-                    </tr>
+                        </tr>
                     <tr>
                         <th></th>
                         <th> <input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"> </th>
@@ -179,15 +185,13 @@
                     </tr>
                 </thead>
                 <tbody id="datos">
-
                 </tbody>
             </table>
         </div>
-
+    </div>
 
     <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>
     <!-- DATATABLES -->
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
@@ -195,9 +199,6 @@
     <!-- BOOTSTRAP -->
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>
-
     <script src="js/crud_master_usuarios.js"></script>
-
 </body>
-
 </html>

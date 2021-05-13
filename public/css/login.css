@@ -76,6 +76,7 @@ form {
 }
 
 #google {
+    margin-bottom: 5%;
     margin-top: 4%;
     background-color: rgb(65, 180, 55);
     border: 1px solid rgb(65, 180, 55);
@@ -120,6 +121,11 @@ form {
     text-align: center;
 }
 
+#remember {
+    display: flex;
+    justify-content: center;
+}
+
 
 /* .portada {
     display: none;
@@ -133,7 +139,7 @@ form {
     .stimpa {
         width: 70%;
         margin-left: 15%;
-        margin-top: 10%;
+        margin-top: 8%;
     }
     .h1 {
         font-size: 350%;
@@ -184,6 +190,9 @@ form {
     #error {
         margin-left: 5%;
         width: 90%;
+        font-size: 140%;
+    }
+    #remember {
         font-size: 140%;
     }
 }
@@ -245,6 +254,7 @@ form {
     }
     #google {
         margin-top: 2%;
+        margin-bottom: 1%;
     }
     .container {
         width: 30%;

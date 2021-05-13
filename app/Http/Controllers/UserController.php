@@ -415,7 +415,7 @@ class UserController extends Controller
         return response()->json('OK',200);
     }
 
-    public function perfil() {
+    public function perfilU() {
         //redirige a la vista login si no has iniciado sesion.
         return view('perfilU');
     }
