@@ -4,9 +4,7 @@ let scanner = new Instascan.Scanner({
     mirror: false
 });
 scanner.addListener('scan', function(content) {
-    //alert('Contenido: ' + content);
     sellar(content);
-    // user: pablo, id promo (pos 2) + id carta (pos 3)
 });
 
 function openCamara() {
@@ -41,23 +39,41 @@ function closeModal() {
     closeCamara();
 }
 
+function mostrarToast() {
+    var toast = document.getElementById("expirado");
+    toast.className = "mostrar";
+    setTimeout(function() { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+}
+
+function cerrarToast() {
+    var toast = document.getElementById("expirado");
+    toast.className = "cerrar";
+    toast.className = toast.className.replace("cerrar", "");
+}
+
+function mostrarValido() {
+    var toast = document.getElementById("valido");
+    toast.className = "mostrar";
+    setTimeout(function() { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+}
+
+function cerrarValido() {
+    var toast = document.getElementById("valido");
+    toast.className = "cerrar";
+    toast.className = toast.className.replace("cerrar", "");
+}
+
 function sellar(content) {
     const array = content.split(',');
-    //console.log(array)
-    //console.log(array[2] + ' - ' + array[3]);
-
+    // no se usa
     var id_promo = array[2];
     var id_card = array[3];
-    // alert(id_promo)
-    // alert(id_camarero)
-    //alert(array[2]);
     var year = array[4];
     var month = array[5];
     var day = array[6];
     var hour = array[7];
     var minute = array[8];
     var seconds = array[9];
-
     var now = new Date();
     var year_now = now.getFullYear();
     var month_now = now.getMonth() + 1;
@@ -65,49 +81,22 @@ function sellar(content) {
     var hour_now = now.getHours();
     var minute_now = now.getMinutes();
     var seconds_now = now.getSeconds();
-    // console.log(minute)
-    // console.log(minute_now)
     var fecha_qr = new Date(year, month, day, hour, minute, seconds)
     var fecha_actual = new Date(year_now, month_now, day_now, hour_now, minute_now, seconds_now)
-        // console.log(fecha_actual)
-        // console.log(fecha_qr)
     if (year != "") {
         if (fecha_actual.getTime() < fecha_qr.getTime()) {
             read();
             closeCamara();
-            //alert('qr valido');
         } else {
-            alert('qr expirado')
+            closeCamara();
+            mostrarToast();
         }
     } else {
-        alert('Este QR no es valido')
-            // Msg error
+        closeCamara();
+        mostrarToast();
     }
 
-    // if(year!=""){
-    //     if (year < year_now) {
-    //     alert('QR CADUCADO');
-    //     } else if (year <= year_now && month < month_now) {
-    //         alert('QR CADUCADO');
-    //     } else if (year <= year_now && month <= month_now && day < day_now) {
-    //         alert('QR CADUCADO');
-    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour < hour_now) {
-    //         alert('QR CADUCADO');
-    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute > minute_now) {
-    //         alert('QR CADUCADO');
-    //     } else if (year <= year_now && month <= month_now && day <= day_now && hour == hour_now && minute <= minute_now) {
-    //         alert('QR valido');
-    //         closeCamara();
-    //         // Ajax
-    //         read();
-    //     }else{
-    //         alert('Este QR no es valido')
-    //         // Msg error
-    //     }
-    //}
-
     function read() {
-        // var section = document.getElementById('section-3');
         var ajax = new objetoAjax();
         var token = document.getElementById('token').getAttribute('content');
         // Busca la ruta read y que sea asyncrono
@@ -115,14 +104,10 @@ function sellar(content) {
         var datasend = new FormData();
         datasend.append('_token', token);
         datasend.append('id_card', id_card);
-        //datasend.append('id_camarero', id_camarero);
-
         ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(ajax.responseText);
-                // var tabla = '';
-                alert(respuesta)
-                    // section.innerHTML = tabla;
+                mostrarValido();
             }
         }
         ajax.send(datasend);

@@ -79,7 +79,6 @@ window.onclick = function(event) {
 function generar_qr(id_promotion, id_camarero) {
     var random = Math.random() * (1 - 1000) + 1;
     var random2 = Math.random() * (1 - 1000) + 1;
-    //alert(random);
 
     var now = new Date();
     var year = now.getFullYear();
@@ -120,8 +119,6 @@ function generar_qr(id_promotion, id_camarero) {
             $(".showQRCode").html(response);
         },
     });
-    //     });
-    // });
-    //alert(nombre_local);
+
     modal_qr.style.display = "block";
 }

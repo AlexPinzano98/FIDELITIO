@@ -76,6 +76,38 @@
         <!-- Swiper -->
         <div id="listCartas">
             <div class="swiper-container" id="content">
+                <!-- MENSAJE DE ERROR -->
+                <div role="alert" id="expirado" aria-live="assertive" aria-atomic="true" class="toast">
+                    <!-- Botón para Cerrar el Toast -->
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar" onclick="cerrarToast()">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <!-- Icono / Logo de la Aplicación -->
+                    <img src="img/lStimpa.png" class="rounded mr-2">
+                    <!-- Nombre de la Aplicación -->
+                    <strong class="mr-auto">¡QR no válido!</strong><br>
+                    <!-- Tiempo del Evento realizado -->
+                    <!-- <?php 
+                        $fecha = date('d-m-Y');   
+                        echo "<small>".$fecha."</small>";             
+                    ?> -->
+                </div>
+                <!-- MENSAJE VALIDO -->
+                <div role="alert" id="valido" aria-live="assertive" aria-atomic="true" class="toast">
+                        <!-- Botón para Cerrar el Toast -->
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Cerrar" onclick="cerrarValido()">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <!-- Icono / Logo de la Aplicación -->
+                        <img src="img/lStimpa.png" class="rounded mr-2">
+                        <!-- Nombre de la Aplicación -->
+                        <strong class="mr-auto" id="val"></strong><br>
+                        <!-- Tiempo del Evento realizado -->
+                        <!-- <?php 
+                            $fecha = date('d-m-Y');   
+                            echo "<small>".$fecha."</small>";             
+                        ?> -->
+                </div>
                 <div class="swiper-wrapper" id="swiperStyle">
                 </div>
                 <!-- Add Pagination -->

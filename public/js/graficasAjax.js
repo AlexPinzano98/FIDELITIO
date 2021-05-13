@@ -1,7 +1,10 @@
 var myChart = null;
 var myChart2 = null;
 var myChart3 = null;
-var myChart4 = null;
+
+var valueFilter = document.getElementById('filter');
+var valueFilter2 = document.getElementById('filter2');
+var valueFilter3 = document.getElementById('filter3');
 
 function objetoAjax() {
     var xmlhttp = false;
@@ -21,85 +24,99 @@ function objetoAjax() {
 }
 
 function callData() {
+
     var ajax = new objetoAjax();
     var token = document.getElementById('token').getAttribute('content');
     // Obtener la instancia del objeto XMLHttpRequest
     ajax.open('POST', 'sendData', true);
+
     var datasend = new FormData();
     datasend.append('_token', token);
-    // datasend.append('id_promo', id_promo);
-    // datasend.append('id_camarero', id_camarero);
+    datasend.append('valueFilter', valueFilter.value);
+    datasend.append('valueFilter2', valueFilter2.value);
+    console.log(valueFilter3.value);
+    datasend.append('valueFilter3', valueFilter3.value);
 
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             let response = JSON.parse(ajax.responseText);
             console.log(response);
 
-            var ctx = document.getElementById('myChart');
-            var ctx2 = document.getElementById('myChart2');
-            var ctx3 = document.getElementById('myChart3');
-            var ctx4 = document.getElementById('myChart4');
+            var date = [];
+            var cantidad = [];
+            var date2 = [];
+            var cantidad2 = [];
+            var date3 = [];
+            var cantidad3 = [];
+
+            for (let i = 0; i < response[0].length; i++) {
+                date.push(response[0][i].fecha) ;
+                cantidad.push(response[0][i].cantidad) ;
+            }
+
+            for (let i = 0; i < response[1].length; i++) {
+                date2.push(response[1][i].estado) ;
+                cantidad2.push(response[1][i].tarjetas) ;
+            }
+
+            for (let i = 0; i < response[2].length; i++) {
+                date3.push(response[2][i].fecha);
+                cantidad3.push(response[2][i].Tcafes);
+            }
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var ctx2 = document.getElementById('myChart2').getContext('2d');
+            var ctx3 = document.getElementById('myChart3').getContext('2d');
 
             myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: response[0],
+                    labels: date,
                     datasets: [{
-                        label: 'Series 1', // Name the series
-                        data: response[1], // Specify the data values array
+                        label: 'dias', // Name the series
+                        data: cantidad, // Specify the data values array
                         fill: false,
                         borderColor: '#2196f3', // Add custom color border (Line)
                         backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-                        tension: 0.1 // Specify bar border width
-                    }, {
-                        label: 'Series 2', // Name the series
-                        data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-                            457
-                        ], // Specify the data values array
-                        fill: false,
-                        borderColor: '#4CAF50', // Add custom color border (Line)
-                        backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
                         tension: 0.1 // Specify bar border width
                     }]
                 },
 
                 options: {
+                    responsive: true,
                     scales: {
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true,
-                                fontSize: 16
+                                fontSize: 14.5
                             }
                         }],
                         xAxes: [{
                             ticks: {
-                                fontSize: 16
+                                fontSize: 14.5
                             }
                         }]
-                    },
-                    responsive: true,
+                    }
                 }
             });
 
             myChart2 = new Chart(ctx2, {
-                type: 'bar',
+                type: 'pie',
                 data: {
-                    labels: response[0],
+                    labels: date2,
                     datasets: [{
-                        label: 'Series 1', // Name the series
-                        data: response[1], // Specify the data values array
+                        data: cantidad2, // Specify the data values array
                         fill: false,
-                        borderColor: '#2196f3', // Add custom color border (Line)
-                        backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-                        borderWidth: 1 // Specify bar border width
-                    }, {
-                        label: 'Series 2', // Name the series
-                        data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-                            457
-                        ], // Specify the data values array
-                        fill: false,
-                        borderColor: '#4CAF50', // Add custom color border (Line)
-                        backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
+                        borderColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgb(255,255,0,0.2)',
+                        ], // Add custom color border (Line)
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgb(255,255,0,0.2)',
+                        ], // Add custom color background (Points and Fill)
                         borderWidth: 1 // Specify bar border width
                     }]
                 },
@@ -109,12 +126,12 @@ function callData() {
                         yAxes: [{
                             ticks: {
                                 beginAtZero: true,
-                                fontSize: 16
+                                fontSize: 14.5
                             }
                         }],
                         xAxes: [{
                             ticks: {
-                                fontSize: 16
+                                fontSize: 14.5
                             }
                         }]
                     },
@@ -123,89 +140,35 @@ function callData() {
             });
 
             myChart3 = new Chart(ctx3, {
-                type: 'pie',
-                data: {
-                    labels: response[0],
-                    datasets: [{
-                        label: 'Series 1', // Name the series
-                        data: response[1], // Specify the data values array
-                        fill: false,
-                        borderColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgb(255,255,0,0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                        ], // Add custom color border (Line)
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgb(255,255,0,0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                        ], // Add custom color background (Points and Fill)
-                        borderWidth: 1 // Specify bar border width
-                    }]
-                },
-
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                fontSize: 16
-                            }
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                fontSize: 16
-                            }
+                    type: 'bar',
+                    data: {
+                        labels: date3,
+                        datasets: [{
+                            label: 'dias', // Name the series
+                            data: cantidad3, // Specify the data values array
+                            backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
                         }]
                     },
-                    responsive: true,
-                }
+
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    fontSize: 14.5
+                                }
+                            }],
+                            xAxes: [{
+                                ticks: {
+                                    fontSize: 14.5
+                                }
+                            }]
+                        },
+                    }
             });
 
-            myChart4 = new Chart(ctx4, {
-                type: 'polarArea',
-                data: {
-                    labels: response[0],
-                    datasets: [{
-                        label: 'Series 1', // Name the series
-                        data: response[1], // Specify the data values array
-                        fill: false,
-                        borderColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgb(255,255,0,0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                        ], // Add custom color border (Line)
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgb(255,255,0,0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                        ], // Add custom color background (Points and Fill)
-                        tension: 0.1 // Specify bar border width
-                    }]
-                },
 
-                options: {
-                    borderAlign: 'center',
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                fontSize: 16
-                            }
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                fontSize: 16
-                            }
-                        }]
-                    },
-                    responsive: true,
-                }
-            });
             console.log(response.datos);
 
         }
@@ -213,330 +176,20 @@ function callData() {
     ajax.send(datasend);
 }
 
+valueFilter.addEventListener('change', ()=>{
+    myChart.destroy();
+    callData();
+});
+
+valueFilter2.addEventListener('change', ()=>{
+    myChart2.destroy();
+    callData();
+});
+
+valueFilter3.addEventListener('change', ()=>{
+    myChart3.destroy();
+    callData();
+});
 
 callData();
-// 	function muestraContenido() {
-// 		if (peticion_http.readyState == 4) {
-// 			if (peticion_http.status == 200) {
-// 				let response = JSON.parse(peticion_http.responseText);
-//                 console.log(response);
 
-//                 var ctx = document.getElementById('myChart');
-//                 var ctx2 = document.getElementById('myChart2');
-//                 var ctx3 = document.getElementById('myChart3');
-//                 var ctx4 = document.getElementById('myChart4');
-
-//                     myChart = new Chart(ctx, {
-//                         type: 'line',
-//                         data: {
-//                             labels: response[0],
-//                             datasets: [{
-//                                 label: 'Series 1', // Name the series
-//                                 data: response[1], // Specify the data values array
-//                                 fill: false,
-//                                 borderColor: '#2196f3', // Add custom color border (Line)
-//                                 backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-//                                 tension: 0.1 // Specify bar border width
-//                             }, {
-//                                 label: 'Series 2', // Name the series
-//                                 data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-//                                     457
-//                                 ], // Specify the data values array
-//                                 fill: false,
-//                                 borderColor: '#4CAF50', // Add custom color border (Line)
-//                                 backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
-//                                 tension: 0.1 // Specify bar border width
-//                             }]
-//                         },
-
-//                         options: {
-//                             borderAlign: 'center',
-//                             scales: {
-//                                 yAxes: [{
-//                                     ticks: {
-//                                         beginAtZero: true
-//                                     }
-//                                 }]
-//                             },
-//                             responsive: true,
-//                         }
-//                     });
-
-//                     myChart2 = new Chart(ctx2, {
-//                         type: 'bar',
-//                         data: {
-//                             labels: response[0],
-//                             datasets: [{
-//                                 label: 'Series 1', // Name the series
-//                                 data: response[1], // Specify the data values array
-//                                 fill: false,
-//                                 borderColor: '#2196f3', // Add custom color border (Line)
-//                                 backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-//                                 borderWidth: 1 // Specify bar border width
-//                             }, {
-//                                 label: 'Series 2', // Name the series
-//                                 data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-//                                     457
-//                                 ], // Specify the data values array
-//                                 fill: false,
-//                                 borderColor: '#4CAF50', // Add custom color border (Line)
-//                                 backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
-//                                 borderWidth: 1 // Specify bar border width
-//                             }]
-//                         },
-
-//                         options: {
-//                             borderAlign: 'center',
-//                             scales: {
-//                                 yAxes: [{
-//                                     ticks: {
-//                                         beginAtZero: true
-//                                     }
-//                                 }]
-//                             },
-//                             responsive: true,
-//                         }
-//                     });
-
-//                     myChart3 = new Chart(ctx3, {
-//                         type: 'pie',
-//                         data: {
-//                             labels: response[0],
-//                             datasets: [{
-//                                 label: 'Series 1', // Name the series
-//                                 data: response[1], // Specify the data values array
-//                                 fill: false,
-//                                 borderColor: [
-//                                     'rgba(255, 99, 132, 0.2)',
-//                                     'rgba(54, 162, 235, 0.2)',
-//                                     'rgb(255,255,0,0.2)',
-//                                     'rgba(75, 192, 192, 0.2)',
-//                                 ], // Add custom color border (Line)
-//                                 backgroundColor: [
-//                                     'rgba(255, 99, 132, 0.2)',
-//                                     'rgba(54, 162, 235, 0.2)',
-//                                     'rgb(255,255,0,0.2)',
-//                                     'rgba(75, 192, 192, 0.2)',
-//                                 ], // Add custom color background (Points and Fill)
-//                                 borderWidth: 1 // Specify bar border width
-//                             }]
-//                         },
-
-//                         options: {
-//                             borderAlign: 'center',
-//                             scales: {
-//                                 yAxes: [{
-//                                     ticks: {
-//                                         beginAtZero: true
-//                                     }
-//                                 }]
-//                             },
-//                             responsive: true,
-//                         }
-//                     });
-
-//                     myChart4 = new Chart(ctx4, {
-//                         type: 'polarArea',
-//                         data: {
-//                             labels: response[0],
-//                             datasets: [{
-//                                 label: 'Series 1', // Name the series
-//                                 data: response[1], // Specify the data values array
-//                                 fill: false,
-//                                 borderColor: [
-//                                     'rgba(255, 99, 132, 0.2)',
-//                                     'rgba(54, 162, 235, 0.2)',
-//                                     'rgb(255,255,0,0.2)',
-//                                     'rgba(75, 192, 192, 0.2)',
-//                                 ], // Add custom color border (Line)
-//                                 backgroundColor:  [
-//                                     'rgba(255, 99, 132, 0.2)',
-//                                     'rgba(54, 162, 235, 0.2)',
-//                                     'rgb(255,255,0,0.2)',
-//                                     'rgba(75, 192, 192, 0.2)',
-//                                 ], // Add custom color background (Points and Fill)
-//                                 tension: 0.1 // Specify bar border width
-//                             }]
-//                         },
-
-//                         options: {
-//                             borderAlign: 'center',
-//                             scales: {
-//                                 yAxes: [{
-//                                     ticks: {
-//                                         beginAtZero: true
-//                                     }
-//                                 }]
-//                             },
-//                             responsive: true,
-//                         }
-//                     });
-//                      console.log(response.datos);
-
-// 			}
-
-// 		}
-// 	}
-// }
-
-
-
-// var scatterChart = new Chart(ctx, {
-//     type: 'line',
-//     data: {
-//         labels: ["Tokyo", "Mumbai", "Mexico City", "Shanghai", "Sao Paulo", "New York", "Karachi",
-//             "Buenos Aires", "Delhi", "Moscow"
-//         ],
-//         datasets: [{
-//             label: 'Series 1', // Name the series
-//             data: [500, 50, 242, 1404, 1414, 411, 454, 47, 555,
-//                 681
-//             ], // Specify the data values array
-//             fill: false,
-//             borderColor: '#2196f3', // Add custom color border (Line)
-//             // backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-//             tension: 0.1 // Specify bar border width
-//         }, {
-//             label: 'Series 2', // Name the series
-//             data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-//                 457
-//             ], // Specify the data values array
-//             fill: false,
-//             borderColor: '#4CAF50', // Add custom color border (Line)
-//             // backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
-//             tension: 0.1 // Specify bar border width
-//         }]
-//     },
-
-//     options: {
-//         borderAlign: 'center',
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         },
-//         responsive: true,
-//     }
-// });
-
-// var scatterChart = new Chart(ctx2, {
-//     type: 'line',
-//     data: {
-//         labels: ["Tokyo", "Mumbai", "Mexico City", "Shanghai", "Sao Paulo", "New York", "Karachi",
-//             "Buenos Aires", "Delhi", "Moscow"
-//         ],
-//         datasets: [{
-//             label: 'Series 1', // Name the series
-//             data: [500, 50, 242, 1404, 1414, 411, 454, 47, 555,
-//                 681
-//             ], // Specify the data values array
-//             fill: false,
-//             borderColor: '#2196f3', // Add custom color border (Line)
-//             // backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-//             tension: 0.1 // Specify bar border width
-//         }, {
-//             label: 'Series 2', // Name the series
-//             data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-//                 457
-//             ], // Specify the data values array
-//             fill: false,
-//             borderColor: '#4CAF50', // Add custom color border (Line)
-//             // backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
-//             tension: 0.1 // Specify bar border width
-//         }]
-//     },
-
-//     options: {
-//         borderAlign: 'center',
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         },
-//         responsive: true,
-//     }
-// });
-
-// var scatterChart = new Chart(ctx3, {
-//     type: 'line',
-//     data: {
-//         labels: ["Tokyo", "Mumbai", "Mexico City", "Shanghai", "Sao Paulo", "New York", "Karachi",
-//             "Buenos Aires", "Delhi", "Moscow"
-//         ],
-//         datasets: [{
-//             label: 'Series 1', // Name the series
-//             data: [500, 50, 242, 1404, 1414, 411, 454, 47, 555,
-//                 681
-//             ], // Specify the data values array
-//             fill: false,
-//             borderColor: '#2196f3', // Add custom color border (Line)
-//             // backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-//             tension: 0.1 // Specify bar border width
-//         }, {
-//             label: 'Series 2', // Name the series
-//             data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-//                 457
-//             ], // Specify the data values array
-//             fill: false,
-//             borderColor: '#4CAF50', // Add custom color border (Line)
-//             // backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
-//             tension: 0.1 // Specify bar border width
-//         }]
-//     },
-
-//     options: {
-//         borderAlign: 'center',
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         },
-//         responsive: true,
-//     }
-// });
-
-// var scatterChart = new Chart(ctx4, {
-//     type: 'line',
-//     data: {
-//         labels: ["Tokyo", "Mumbai", "Mexico City", "Shanghai", "Sao Paulo", "New York", "Karachi",
-//             "Buenos Aires", "Delhi", "Moscow"
-//         ],
-//         datasets: [{
-//             label: 'Series 1', // Name the series
-//             data: [500, 50, 242, 1404, 1414, 411, 454, 47, 555,
-//                 681
-//             ], // Specify the data values array
-//             fill: false,
-//             borderColor: '#2196f3', // Add custom color border (Line)
-//             // backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-//             tension: 0.1 // Specify bar border width
-//         }, {
-//             label: 'Series 2', // Name the series
-//             data: [128, 889, 445, 7588, 99, 242, 1417, 550, 75,
-//                 457
-//             ], // Specify the data values array
-//             fill: false,
-//             borderColor: '#4CAF50', // Add custom color border (Line)
-//             // backgroundColor: '#4CAF50', // Add custom color background (Points and Fill)
-//             tension: 0.1 // Specify bar border width
-//         }]
-//     },
-
-//     options: {
-//         borderAlign: 'center',
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero: true
-//                 }
-//             }]
-//         },
-//         responsive: true,
-//     }
-// });
