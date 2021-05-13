@@ -11,11 +11,25 @@ class GraficasController extends Controller
 {
     public function sendData(Request $request) {
         try {
-            $etiquetas = DB::select('SELECT DATE_FORMAT(create_date, "%m/%d/%Y") AS registros
-            FROM tbl_user 
-            WHERE create_date BETWEEN NOW() - INTERVAL 30 DAY AND NOW()');;
-            $datosClientesAlta = [500, 50, 242, 1404];
-            return response()->json( array($etiquetas, $datosClientesAlta));
+            $etiquetas = DB::select('SELECT DATE(create_date) AS fecha, COUNT(id_user) AS cantidad
+            FROM tbl_user
+            WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
+            GROUP BY DATE(create_date)',[$request['valueFilter']]);
+
+            $etiquetas2 = DB::select('SELECT status_card AS estado, COUNT(id_card) AS tarjetas FROM tbl_card
+            WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
+            GROUP BY status_card', [$request['valueFilter2']]);
+
+            $etiquetas3 = DB::select('SELECT DATE(tbl_stamp.date) AS fecha, COUNT(id_stamp) AS Tcafes FROM tbl_stamp
+            INNER JOIN	tbl_card
+            ON tbl_stamp.id_card_fk = tbl_card.id_card
+            INNER JOIN tbl_promotion
+            ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+                    WHERE tbl_stamp.date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
+                    GROUP BY DATE(tbl_stamp.date)', [$request['valueFilter3']]);
+
+            // $datosClientesAlta = [500, 50, 242, 1404, 222 ,555, 566, 777, 999, 122, 111];
+            return response()->json(array($etiquetas, $etiquetas2, $etiquetas3));
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()));
@@ -24,6 +38,6 @@ class GraficasController extends Controller
 }
 
 
-$registros = DB::select('SELECT DATE_FORMAT(create_date, "%m/%d/%Y") AS registros
-            FROM tbl_user 
-            WHERE create_date BETWEEN NOW() - INTERVAL 30 DAY AND NOW()');
+// $registros = DB::select('SELECT DATE_FORMAT(create_date, "%m/%d/%Y") AS registros
+//             FROM tbl_user
+//             WHERE create_date BETWEEN NOW() - INTERVAL 30 DAY AND NOW()');

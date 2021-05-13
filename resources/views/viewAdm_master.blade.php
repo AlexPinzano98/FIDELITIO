@@ -20,12 +20,11 @@
         <div class="gr__item">
             <h5>Clientes/alta</h5>
             <select name="filter" id="filter" class="form-select my-2">
-
-                <option value="">Tiempo</option>
-                <option value="dias">dias</option>
-                <option value="mes">mes</option>
-                <option value="ano">año</option>
+                <option value=7>semana</option>
+                <option value=30>mes</option>
+                <option value=365>año</option>
             </select>
+
             <canvas id="myChart" width="100" height="90"></canvas>
 
             <!-- Button trigger modal -->
@@ -54,18 +53,11 @@
         <div class="gr__item">
             <h5>Clientes/Promoción/canjeado</h5>
             <select name="filter2" id="filter2" class="form-select my-2">
-
-                <option value="">Tiempo</option>
-                <option value="dias">Dias</option>
-                <option value="mes">Mes</option>
-                <option value="ano">Año</option>
+                <option value=7>semana</option>
+                <option value=30>mes</option>
+                <option value=365>año</option>
             </select>
-            <select name="filter3" id="filter3" class="form-select my-2">
 
-                <option value="">Promoción</option>
-                <option value=0>No canjeado</option>
-                <option value=1>Canjeado</option>
-            </select>
             <canvas id="myChart2" width="100" height="80"></canvas>
 
             <!-- Button trigger modal -->
@@ -91,13 +83,12 @@
                 </div>
             </div>
         </div>
-        <div class="gr__item">
+        <div class="gr__item item3">
             <h5>Clientes/promoción canjeada</h5>
-            <select name="filter4" id="filter4" class="form-select my-2">
-                <option value="">Tiempo</option>
-                <option value="dias">Dias</option>
-                <option value="mes">Mes</option>
-                <option value="ano">Año</option>
+            <select name="filter3" id="filter3" class="form-select my-2">
+                <option value=7>semana</option>
+                <option value=30>mes</option>
+                <option value=365>año</option>
             </select>
             <canvas id="myChart3" width="100" height="90"></canvas>
 
@@ -124,33 +115,7 @@
                 </div>
             </div>
         </div>
-        <div class="gr__item">
-            <h5>Cafes consumidos</h5>
-            <canvas id="myChart4" width="100" height="90"></canvas>
 
-            <!-- Button trigger modal -->
-            <img src="img/info-circle.svg" alt="informacion" data-bs-toggle="modal" data-bs-target="#exampleModal4">
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
