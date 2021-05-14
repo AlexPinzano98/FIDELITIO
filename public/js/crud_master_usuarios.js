@@ -1,6 +1,7 @@
 window.onload = function() {
     ver_usuarios();
 }
+
 function objetoAjax() {
     var xmlhttp = false;
     try {
@@ -18,7 +19,7 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-function ver_usuarios(){
+function ver_usuarios() {
     var datos = document.getElementById("datos");
     //console.log('hola')
     var token = document.getElementById("token").getAttribute("content");
@@ -50,42 +51,42 @@ function ver_usuarios(){
 
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i])
-                tabla += '<tr>'+'<td>'+respuesta[i].id_user+'</td>';
-                tabla += '<td>'+respuesta[i].name+'</td>';
-                tabla += '<td>'+respuesta[i].lastname+'</td>';
-                tabla += '<td>'+respuesta[i].email+'</td>';
-                tabla += '<td>'+respuesta[i].gender+'</td>';
+                tabla += '<tr>' + '<td>' + respuesta[i].id_user + '</td>';
+                tabla += '<td>' + respuesta[i].name + '</td>';
+                tabla += '<td>' + respuesta[i].lastname + '</td>';
+                tabla += '<td>' + respuesta[i].email + '</td>';
+                tabla += '<td>' + respuesta[i].gender + '</td>';
                 if (respuesta[i].confidentiality == 1) {
-                    tabla += '<td>'+ 'Si' +'</td>';
+                    tabla += '<td>' + 'Si' + '</td>';
                 } else {
-                    tabla += '<td>'+ 'No' +'</td>';
+                    tabla += '<td>' + 'No' + '</td>';
                 }
 
                 switch (respuesta[i].id_typeuser_fk) {
                     case 1:
-                        tabla += '<td>'+ 'Cliente' +'</td>';
+                        tabla += '<td>' + 'Cliente' + '</td>';
                         break;
                     case 2:
-                        tabla += '<td>'+ 'Camarero' +'</td>';
+                        tabla += '<td>' + 'Camarero' + '</td>';
                         break;
                     case 3:
-                        tabla += '<td>'+ 'Adm establecimiento' +'</td>';
+                        tabla += '<td>' + 'Adm establecimiento' + '</td>';
                         break;
                     case 4:
-                        tabla += '<td>'+ 'Adm grupo' +'</td>';
+                        tabla += '<td>' + 'Adm grupo' + '</td>';
                         break;
                     case 5:
-                        tabla += '<td>'+ 'Adm master' +'</td>';
+                        tabla += '<td>' + 'Adm master' + '</td>';
                         break;
                 }
 
-                if (respuesta[i].status=='Activo'){ // Usuario activo
-                    tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 1 +')">Activo</a>'+'</td>';
+                if (respuesta[i].status == 'Activo') { // Usuario activo
+                    tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 1 + ')">Activo</a>' + '</td>';
                 } else { // Usuario inactivo
-                    tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 0 +')">Inhabilitado</a>'+'</td>';
+                    tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 0 + ')">Inhabilitado</a>' + '</td>';
                 }
-                tabla += '<td> <button onclick="openUpdate('+respuesta[i].id_user+')">UPDATE</button>'+ '</td>';
-                tabla += '<td>'+'<button onclick="eliminar_usuario('+respuesta[i].id_user+')">DELETE</button>' +'</td>'+'</tr>';
+                tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_user + ')">UPDATE</button>' + '</td>';
+                tabla += '<td>' + '<button onclick="eliminar_usuario(' + respuesta[i].id_user + ')">DELETE</button>' + '</td>' + '</tr>';
 
 
             }
@@ -93,37 +94,40 @@ function ver_usuarios(){
             //pagination
 
             $(document).ready(function() {
-                    $('#tablax').DataTable({
-                        retrieve: true,
-                        responsive: true,
-                        searchPanes: true,
-                        info: false,
-                        language: {
-                            processing: "Tratamiento en curso...",
-                            search: "Buscar&nbsp;:",
-                            lengthMenu: "Agrupar de _MENU_ items",
-                            // info: "",
-                            infoEmpty: "No existen datos.",
-                            infoFiltered: "(filtrado de _MAX_ elementos en total)",
-                            infoPostFix: "",
-                            loadingRecords: "Cargando...",
-                            zeroRecords: "No se encontraron datos con tu busqueda",
-                            emptyTable: "No hay datos disponibles en la tabla.",
-                            paginate: {
-                                first: "Primero",
-                                previous: "Anterior",
-                                next: "Siguiente",
-                                last: "Ultimo"
-                            },
-                            aria: {
-                                sortAscending: ": active para ordenar la columna en orden ascendente",
-                                sortDescending: ": active para ordenar la columna en orden descendente"
-                            }
+                $('#tablax').DataTable({
+                    retrieve: true,
+                    responsive: true,
+                    searchPanes: true,
+                    info: false,
+                    language: {
+                        processing: "Tratamiento en curso...",
+                        search: "Buscar:",
+                        lengthMenu: "Agrupar por _MENU_ usuarios",
+                        // info: "",
+                        infoEmpty: "No existen datos.",
+                        infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                        infoPostFix: "",
+                        loadingRecords: "Cargando...",
+                        zeroRecords: "No se encontraron datos con tu busqueda",
+                        emptyTable: "No hay datos disponibles en la tabla.",
+                        paginate: {
+                            first: "Primero",
+                            previous: "Anterior",
+                            next: "Siguiente",
+                            last: "Ultimo"
                         },
-                        // scrollY: 400,
-                        lengthMenu: [ [10, 25, 50, 100 -1], [10, 25, 50, 100, "Todo"] ],
+                        aria: {
+                            sortAscending: ": active para ordenar la columna en orden ascendente",
+                            sortDescending: ": active para ordenar la columna en orden descendente"
+                        }
+                    },
+                    // scrollY: 400,
+                    lengthMenu: [
+                        [10, 25, 50, 100 - 1],
+                        [10, 25, 50, 100, "Todo"]
+                    ],
 
-                    });
+                });
 
             });
 
@@ -134,7 +138,7 @@ function ver_usuarios(){
 }
 
 
-function registrar_usuario(){
+function registrar_usuario() {
     var token = document.getElementById("token").getAttribute("content");
     var nombre = document.getElementById('nombre').value;
     var apellidos = document.getElementById('apellidos').value;
@@ -168,7 +172,8 @@ function registrar_usuario(){
     }
     ajax.send(datasend);
 }
-function cambiar_estado(id,act){
+
+function cambiar_estado(id, act) {
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'cambiar_estado', true);
@@ -187,7 +192,8 @@ function cambiar_estado(id,act){
     }
     ajax.send(datasend);
 }
-function ver_usuario(id_user){
+
+function ver_usuario(id_user) {
     //console.log(id_user);
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
@@ -206,7 +212,7 @@ function ver_usuario(id_user){
             document.getElementById('contrasenyaa').value = respuesta[0].psswd;
             document.getElementById('sexoa').value = respuesta[0].gender;
             document.getElementById('rola').value = respuesta[0].id_typeuser_fk;
-            if (respuesta[0].confidentiality == 1){
+            if (respuesta[0].confidentiality == 1) {
                 document.getElementById('consentimientoa').checked = true;
             } else {
                 document.getElementById('consentimientoa').checked = false;
@@ -215,7 +221,8 @@ function ver_usuario(id_user){
     }
     ajax.send(datasend);
 }
-function actualizar_usuario(){
+
+function actualizar_usuario() {
     var token = document.getElementById("token").getAttribute("content");
     var id = document.getElementById('id_user').value;
     var nombre = document.getElementById('nombrea').value;
@@ -250,9 +257,10 @@ function actualizar_usuario(){
     }
     ajax.send(datasend);
 }
-function eliminar_usuario(id_usuario){
+
+function eliminar_usuario(id_usuario) {
     console.log(id_usuario)
-    // var datos = document.getElementById("datos");
+        // var datos = document.getElementById("datos");
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'eliminar_usuario', true);
@@ -269,31 +277,36 @@ function eliminar_usuario(id_usuario){
     }
     ajax.send(datasend)
 }
-function openRegister(){
+
+function openRegister() {
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
     var btn = document.getElementById("btn-register");
     btn.style.display = "none";
 }
-function closeRegister(){
+
+function closeRegister() {
     var x = document.getElementById("registrar");
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
     btn.style.display = "block";
 }
-function openUpdate(id_user){
+
+function openUpdate(id_user) {
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();
     ver_usuario(id_user);
     //console.log(id_user)
 }
-function closeUpdate(){
+
+function closeUpdate() {
     var x = document.getElementById("actualizar");
     x.style.display = "none";
 }
-function borrar_registro(){
+
+function borrar_registro() {
     document.getElementById('nombre').value = '';
     document.getElementById('apellidos').value = '';
     document.getElementById('email').value = '';

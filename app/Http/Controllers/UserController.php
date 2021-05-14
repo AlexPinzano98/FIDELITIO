@@ -64,10 +64,12 @@ class UserController extends Controller
                     return redirect('viewCamarero');
                     break;
                 case '3':
-                    echo "ADM establecimiento";
+                    // echo "ADM establecimiento";
+                    return redirect('viewEstablecimiento');
                     break;
                 case '4':
-                    echo "ADM grupo";
+                    // echo "ADM grupo";
+                    return redirect('viewGrupo');
                     break;
                 case '5':
                     //echo "ADM master";
@@ -92,10 +94,12 @@ class UserController extends Controller
                     return redirect('viewCamarero');
                     break;
                 case '3':
-                    echo "ADM establecimiento";
+                    // echo "ADM establecimiento";
+                    return redirect('viewEstablecimiento');
                     break;
                 case '4':
-                    echo "ADM grupo";
+                    // echo "ADM grupo";
+                    return redirect('viewGrupo');
                     break;
                 case '5':
                     //echo "ADM master";
@@ -158,10 +162,12 @@ class UserController extends Controller
                     return redirect('viewCamarero');
                     break;
                 case '3':
-                    echo "ADM establecimiento";
+                    // echo "ADM establecimiento";
+                    return redirect('viewEstablecimiento');
                     break;
                 case '4':
-                    echo "ADM grupo";
+                    // echo "ADM grupo";
+                    return redirect('viewGrupo');
                     break;
                 case '5':
                     //echo "ADM master";
@@ -186,10 +192,12 @@ class UserController extends Controller
                     return redirect('viewCamarero');
                     break;
                 case '3':
-                    echo "ADM establecimiento";
+                    // echo "ADM establecimiento";
+                    return redirect('viewEstablecimiento');
                     break;
                 case '4':
-                    echo "ADM grupo";
+                    // echo "ADM grupo";
+                    return redirect('viewGrupo');
                     break;
                 case '5':
                     //echo "ADM master";
@@ -245,10 +253,12 @@ class UserController extends Controller
                     return redirect('viewCamarero');
                     break;
                 case '3':
-                    echo "ADM establecimiento";
+                    // echo "ADM establecimiento";
+                    return redirect('viewEstablecimiento');
                     break;
                 case '4':
-                    echo "ADM grupo";
+                    // echo "ADM grupo";
+                    return redirect('viewGrupo');
                     break;
                 case '5':
                     //echo "ADM master";
@@ -291,11 +301,27 @@ class UserController extends Controller
         }
     }
 
+    public function viewEstablecimiento(){
+        if (!(session()->has('id_user'))) {
+            return redirect('/');
+        } else {
+            return view('graficaAdminEstablecimiento');
+        }
+    }
+
+    public function viewGrupo(){
+        if (!(session()->has('id_user'))) {
+            return redirect('/');
+        } else {
+            return view('graficaAdminGrupo');
+        }
+    }
+
     public function viewMaster(){
         if (!(session()->has('id_user'))) {
             return redirect('/');
         } else {
-            return view('viewAdm_master');
+            return  view('viewAdm_master');
         }
     }
 
@@ -398,7 +424,7 @@ class UserController extends Controller
     public function password_reset(Request $request){
         return view('password_reset',compact('request'));
     }
-    
+
     public function cambiar_password(Request $request){
         $datos = $request->except('_token');
         DB::select('UPDATE tbl_user SET `psswd`=? WHERE `id_user`=?',

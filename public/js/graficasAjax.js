@@ -73,7 +73,7 @@ function callData() {
                 data: {
                     labels: date,
                     datasets: [{
-                        label: 'dias', // Name the series
+                        label: 'clientes dados de alta', // Name the series
                         data: cantidad, // Specify the data values array
                         fill: false,
                         borderColor: '#2196f3', // Add custom color border (Line)
@@ -144,7 +144,7 @@ function callData() {
                     data: {
                         labels: date3,
                         datasets: [{
-                            label: 'dias', // Name the series
+                            label: "cafes consumidos", // Name the series
                             data: cantidad3, // Specify the data values array
                             backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
                         }]
@@ -165,6 +165,7 @@ function callData() {
                                 }
                             }]
                         },
+
                     }
             });
 
