@@ -45,9 +45,9 @@ class GraficasController extends Controller
            INNER JOIN tbl_local
            ON tbl_promotion.id_local_fk = tbl_local.id_local
            WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW() AND tbl_local.id_user_fk = ?
-           GROUP BY status_card',[$request['valueFilter'] , $id_user]);
+           GROUP BY status_card',[$request['valueFilter'],$id_user]);
 
-            return response()->json($etiquetas);
+            return response()->json(array($etiquetas,$id_user));
 
         } catch (\Throwable $th) {
             //throw $th;
