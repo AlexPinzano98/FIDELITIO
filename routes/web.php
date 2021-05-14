@@ -73,6 +73,8 @@ Route::get('/crudUsuarios', function() {
 //Prueba envio datos graficas
 
 Route::post('sendData', [GraficasController::class, 'sendData']);
+Route::post('sendDataEstablecimiento', [GraficasController::class, 'sendDataEstablecimiento']);
+Route::post('sendData', [GraficasController::class, 'sendData']);
 Route::get('/cruds', [DirectionController::class, 'cruds']);
 //Redirecciones a los diferentes tipos de CRUD (admin master)
 Route::get('/crudCompany', [DirectionController::class, 'crudCompany']);

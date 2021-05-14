@@ -44,7 +44,6 @@ class GraficasController extends Controller
             WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
             GROUP BY DATE(create_date)',[$request['valueFilter']]);
 
-
             return response()->json($etiquetas);
 
         } catch (\Throwable $th) {
