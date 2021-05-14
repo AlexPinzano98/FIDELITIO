@@ -11,6 +11,7 @@ class GraficasController extends Controller
 {
     public function sendData(Request $request) {
         try {
+
             $etiquetas = DB::select('SELECT DATE(create_date) AS fecha, COUNT(id_user) AS cantidad
             FROM tbl_user
             WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
@@ -28,8 +29,23 @@ class GraficasController extends Controller
                     WHERE tbl_stamp.date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
                     GROUP BY DATE(tbl_stamp.date)', [$request['valueFilter3']]);
 
-            // $datosClientesAlta = [500, 50, 242, 1404, 222 ,555, 566, 777, 999, 122, 111];
             return response()->json(array($etiquetas, $etiquetas2, $etiquetas3));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json(array('resultado'=>'NOK'.$th->getMessage()));
+        }
+    }
+    public function sendDataEstablecimiento(Request $request) {
+        try {
+
+            $etiquetas = DB::select('SELECT DATE(create_date) AS fecha, COUNT(id_user) AS cantidad
+            FROM tbl_user
+            WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
+            GROUP BY DATE(create_date)',[$request['valueFilter']]);
+
+            return response()->json($etiquetas);
+
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json(array('resultado'=>'NOK'.$th->getMessage()));

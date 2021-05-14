@@ -55,8 +55,13 @@ Route::post('/validarQRcamarero', [CamareroController::class, 'validarQRcamarero
 Route::get('image',  [CardController::class, 'image']);
 Route::post('imgUp', [CardController::class, 'imgUp']);
 
+//Vista admin establecimiento
+Route::get('/viewEstablecimiento', [UserController::class, 'viewEstablecimiento']);
+//Vista admin establecimiento
+Route::get('/viewGrupo', [UserController::class, 'viewGrupo']);
 //Vista admin master
 Route::get('/viewMaster', [UserController::class, 'viewMaster']);
+
 Route::get('/cruds', function() {
     return view('viewAdm_homeCruds');
 });
@@ -67,6 +72,8 @@ Route::get('/crudUsuarios', function() {
 // URL::forceScheme('https');
 //Prueba envio datos graficas
 
+Route::post('sendData', [GraficasController::class, 'sendData']);
+Route::post('sendDataEstablecimiento', [GraficasController::class, 'sendDataEstablecimiento']);
 Route::post('sendData', [GraficasController::class, 'sendData']);
 Route::get('/cruds', [DirectionController::class, 'cruds']);
 //Redirecciones a los diferentes tipos de CRUD (admin master)
@@ -100,4 +107,4 @@ Route::post('/ver_companyias', [CompanyController::class, 'ver_companyias']);
 //recuperar contraseña
 Route::post('/password_reset', [UserController::class, 'password_reset']);
 Route::post('/cambiar_password', [UserController::class, 'cambiar_password']);
-// Route::post('/password_reset', function (){ return view('password_reset');});
+//Route::get('/mail_registro', function (){ return view('mail_registro');});
