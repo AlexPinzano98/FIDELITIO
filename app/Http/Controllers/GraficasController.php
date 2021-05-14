@@ -45,9 +45,53 @@ class GraficasController extends Controller
            INNER JOIN tbl_local
            ON tbl_promotion.id_local_fk = tbl_local.id_local
            WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW() AND tbl_local.id_user_fk = ?
-           GROUP BY status_card',[$request['valueFilter'],$id_user]);
+           GROUP BY status_card',[$request['valueFilter2'],$id_user]);
 
-            return response()->json(array($etiquetas,$id_user));
+           $etiquetas2 = DB::select('SELECT DATE(tbl_stamp.date) AS fecha, COUNT(id_stamp) AS Tcafes FROM tbl_stamp
+           INNER JOIN	tbl_card
+           ON tbl_stamp.id_card_fk = tbl_card.id_card
+           INNER JOIN tbl_promotion
+           ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+           INNER JOIN tbl_local
+           ON tbl_promotion.id_local_fk = tbl_local.id_local
+                   WHERE tbl_stamp.date BETWEEN NOW() - INTERVAL ? DAY AND NOW() AND tbl_local.id_user_fk = ?
+                   GROUP BY DATE(tbl_stamp.date)',[$request['valueFilter3'],$id_user]);
+
+            return response()->json(array($etiquetas,$etiquetas2));
+
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json(array('resultado'=>'NOK'.$th->getMessage()));
+        }
+    }
+    public function sendDataGrupo(Request $request) {
+        try {
+           $id_user = session()->get('id_user');
+
+           $etiquetas = DB::select('SELECT status_card AS estado, COUNT(id_card) AS tarjetas FROM tbl_card
+           INNER JOIN tbl_promotion
+           ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+           INNER JOIN tbl_local
+           ON tbl_promotion.id_local_fk = tbl_local.id_local
+           INNER JOIN tbl_group
+               ON tbl_local.id_group_fk = tbl_group.id_group
+           WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW() AND tbl_group.id_user_fk_AdmG = ?
+           GROUP BY status_card',[$request['valueFilter2'],$id_user]);
+
+           $etiquetas2 = DB::select('SELECT DATE(tbl_stamp.date) AS fecha, COUNT(id_stamp) AS Tcafes FROM tbl_stamp
+           INNER JOIN	tbl_card
+           ON tbl_stamp.id_card_fk = tbl_card.id_card
+           INNER JOIN tbl_promotion
+           ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+           INNER JOIN tbl_local
+           ON tbl_promotion.id_local_fk = tbl_local.id_local
+           INNER JOIN tbl_group
+           ON tbl_local.id_group_fk = tbl_group.id_group
+                   WHERE tbl_stamp.date BETWEEN NOW() - INTERVAL ? DAY AND NOW() AND tbl_group.id_user_fk_AdmG = ?
+                   GROUP BY DATE(tbl_stamp.date)',[$request['valueFilter3'],$id_user]);
+
+
+            return response()->json(array($etiquetas,$etiquetas2));
 
         } catch (\Throwable $th) {
             //throw $th;

@@ -74,7 +74,7 @@ Route::get('/crudUsuarios', function() {
 
 Route::post('sendData', [GraficasController::class, 'sendData']);
 Route::post('sendDataEstablecimiento', [GraficasController::class, 'sendDataEstablecimiento']);
-Route::post('sendData', [GraficasController::class, 'sendData']);
+Route::post('sendDataGrupo', [GraficasController::class, 'sendDataGrupo']);
 Route::get('/cruds', [DirectionController::class, 'cruds']);
 //Redirecciones a los diferentes tipos de CRUD (admin master)
 Route::get('/crudCompany', [DirectionController::class, 'crudCompany']);
