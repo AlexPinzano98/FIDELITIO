@@ -312,7 +312,7 @@ class UserController extends Controller
         if (!(session()->has('id_user'))) {
             return redirect('/');
         } else {
-            return view('viewAdm_master');
+            return view('graficaAdminGrupo');
         }
     }
 
@@ -320,7 +320,7 @@ class UserController extends Controller
         if (!(session()->has('id_user'))) {
             return redirect('/');
         } else {
-            return view('graficaAdminGrupo');
+            return  view('viewAdm_master');
         }
     }
 
