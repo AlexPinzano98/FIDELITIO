@@ -10,6 +10,7 @@ use Illuminate\View\View;
 use Mockery\Undefined;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmergencyCallReceived;
+use App\Mail\MailBienvenida;
 use App\Mail\RestaurarContra;
 use Illuminate\Support\Str;
 use Swift;
@@ -294,6 +295,9 @@ class UserController extends Controller
         if ($users == 0){
             DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'create_date'=>Now(),'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
             $mensaje = 'Tu cuenta se ha creado correctamente';
+            $email=$datos['email'];
+            $user = DB::table('tbl_user')->where('email','=',$email)->first();
+            Mail::to($email)->send(new MailBienvenida($user));
             return redirect('/')->with('mensaje',$mensaje);
         }else{
             $mensaje="El correo introducido ya está registrado";

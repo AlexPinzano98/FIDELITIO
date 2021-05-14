@@ -85,8 +85,8 @@ function ver_usuarios() {
                 } else { // Usuario inactivo
                     tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 0 + ')">Inhabilitado</a>' + '</td>';
                 }
-                tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_user + ')">UPDATE</button>' + '</td>';
-                tabla += '<td>' + '<button onclick="eliminar_usuario(' + respuesta[i].id_user + ')">DELETE</button>' + '</td>' + '</tr>';
+                tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_user + ')"><i class="fas fa-user-edit"></i></button>' + '</td>';
+                tabla += '<td>' + '<button onclick="eliminar_usuario(' + respuesta[i].id_user + ')"><i class="fas fa-user-slash"></i></button>' + '</td>' + '</tr>';
 
 
             }
@@ -101,8 +101,8 @@ function ver_usuarios() {
                     info: false,
                     language: {
                         processing: "Tratamiento en curso...",
-                        search: "Buscar:",
                         lengthMenu: "Agrupar por _MENU_ usuarios",
+                        search: "Buscar :",
                         // info: "",
                         infoEmpty: "No existen datos.",
                         infoFiltered: "(filtrado de _MAX_ elementos en total)",

@@ -16,19 +16,19 @@ body {
     float: left;
     color: white;
     font-size: 150%;
-    margin: 1% 0% 0% 5%;
-    background-color: green;
+    margin: 1.5% 0% 0% 5%;
+    /* background-color: green; */
 }
 
 #est,
 #admi {
-    margin-top: 1%;
+    margin-top: 1.5%;
     background-color: transparent;
     border: none;
-    font-size: 200%;
+    font-size: 210%;
     color: white;
     cursor: pointer;
-    /* background-color: red; */
+    text-decoration: none;
     margin-right: 2%;
     margin-left: 2%;
 }
@@ -69,20 +69,67 @@ body {
 h1 {
     padding-top: 1%;
     text-align: center;
+    margin-bottom: 1.5%;
 }
 
 #crud {
+    padding-top: 1%;
+    border: 2px solid #58D68D;
     text-align: center;
     display: flex;
+    border-radius: 10px;
     justify-content: center;
-    width: 100%;
-    background-color: red;
+    margin-bottom: 2%;
+}
+
+.fa-user-plus {
+    font-size: 120%;
 }
 
 .col-sm-12 {
     padding: 0%;
 }
 
-#btn-register {
-    background-color: green;
+label {
+    margin: -2.5% 0% 4% 51%;
+    width: 50%;
+}
+
+input[type=search] {
+    margin-left: 2.5%;
+    width: 90%;
+}
+
+.form-control {
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 95%;
+}
+
+input[type=text] {
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 95%;
+}
+
+.custom-select {
+    width: 20%;
+}
+
+td {
+    padding-top: 1%;
+}
+
+.pagination {
+    margin-top: 2.5%;
+}
+
+#btn-register,
+button {
+    height: 4vh;
+    display: flex;
+    justify-content: left;
+    border: 2px solid black;
+    border-radius: 5px;
+    /* padding: 1%; */
 }

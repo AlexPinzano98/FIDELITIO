@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-<p>Hola {{ $UserController->name }}, ha solicitado su cambio de contraseña, clique en el boton y le llevara a una pagina para poder hacerlo</p>
+<p>Hola {{ $UserController->name }}, ha solicitado su cambio de contraseña, clique en el botón y le llevara a una página para poder hacerlo</p>
 <form  method="POST" action="https://localhost/FIDELITIO/public/password_reset">
     @csrf
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
