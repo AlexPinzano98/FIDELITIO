@@ -22,8 +22,8 @@
 <body>
     <header class="header">
         <p class="text-start">{{ session('name') }}</p>
-        <button class="fas fa-chart-bar" action="{{url('/viewAdm_master')}}" id="est"></button>
-        <button class="fas fa-users-cog" onclick="openCamara()" id="admi"></button>
+        <a class="fas fa-chart-bar" href="{{url('/viewMaster')}}" id="est"></a>
+        <a class="fas fa-users-cog" href="{{url('/cruds')}}" id="admi"></a>
         <a id="menu_on" onclick="closeModal2()">
             <span></span>
             <span></span>
@@ -131,14 +131,14 @@
             <p id="error"> {{Session::get('message')}} </p>
         </div>
 
-        <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
-    <div id="crud">
-        <div class="datos">
+    <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
+    <div id="crud" style="width: 90%; margin-left: 5%;">
+        <div class="datos" style="width:90%;">
+        <button id="btn-register" onclick="openRegister()"><i class="fas fa-user-plus"></i> Añadir usuario </button>
             <table id="tablax">
-            <button id="btn-register" onclick="openRegister()">REGISTRAR</button>
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th></th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Email</th>
@@ -152,7 +152,7 @@
                         <th></th>
                         <th><input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"></th>
                         <th><input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"> </th>
-                        <th><input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"></th>
+                        <th><input type="text" style="width: 70%;" name="f_email" id="f_email" onkeyup="ver_usuarios()"></th>
                         <th><select class="form-control" id="f_sexo" name="f_sexo" onclick="ver_usuarios()">
                                 <option selected value="">-</option>
                                 <option value="Hombre">Hombre</option>
