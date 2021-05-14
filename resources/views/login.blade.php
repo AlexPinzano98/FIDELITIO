@@ -63,7 +63,7 @@
         </a>
     </div>
 
-    <a href="{{url('/lodedani')}}" id="remember">¿Has olvidado tu contraseña?</a>
+    <a href="{{url('/contra_olvidada')}}" id="remember">¿Has olvidado tu contraseña?</a>
 
     <div class="container">
         ¿No tienes cuenta?<a href="{{url('/registro')}}"><br>Registrate</a>

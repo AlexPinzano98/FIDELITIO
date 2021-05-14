@@ -100,4 +100,5 @@ Route::post('/ver_companyias', [CompanyController::class, 'ver_companyias']);
 //recuperar contraseña
 Route::post('/password_reset', [UserController::class, 'password_reset']);
 Route::post('/cambiar_password', [UserController::class, 'cambiar_password']);
-//Route::get('/mail_registro', function (){ return view('mail_registro');});
+Route::get('/contra_olvidada', function (){ return view('contra_olvidada');});
+Route::post('/restaurar_pass', [UserController::class, 'restaurar_pass']);
