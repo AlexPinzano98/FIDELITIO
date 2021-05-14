@@ -19,10 +19,10 @@
 
 </head>
 
-<body style="text-align: center;">
+<body>
     <header class="header">
         <p class="text-start">{{ session('name') }}</p>
-        <button class="fas fa-chart-bar" onclick="openCamara()" id="est"></button>
+        <button class="fas fa-chart-bar" action="{{url('/viewAdm_master')}}" id="est"></button>
         <button class="fas fa-users-cog" onclick="openCamara()" id="admi"></button>
         <a id="menu_on" onclick="closeModal2()">
             <span></span>
@@ -31,13 +31,11 @@
         </a>
     </header>
 
-    <div id="crud">
         <h1>USUARIOS</h1>
 
         <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
         <div>
-            <h1>Registra un nuevo usuario</h1>
-            <button id="btn-register" onclick="openRegister()">REGISTRAR!</button>
+            <h1>Administración de usuarios</h1>
         </div>
 
         <!-- FORMULARIO PARA REGISTRAR UN USUARIO -->
@@ -134,8 +132,10 @@
         </div>
 
         <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
+    <div id="crud">
         <div class="datos">
             <table id="tablax">
+            <button id="btn-register" onclick="openRegister()">REGISTRAR</button>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -150,10 +150,10 @@
                         </tr>
                     <tr>
                         <th></th>
-                        <th> <input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"> </th>
-                        <th> <input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"> </th>
-                        <th> <input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"> </th>
-                        <th> <select class="form-control" id="f_sexo" name="f_sexo" onclick="ver_usuarios()">
+                        <th><input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"></th>
+                        <th><input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"> </th>
+                        <th><input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"></th>
+                        <th><select class="form-control" id="f_sexo" name="f_sexo" onclick="ver_usuarios()">
                                 <option selected value="">-</option>
                                 <option value="Hombre">Hombre</option>
                                 <option value="Mujer">Mujer</option>
