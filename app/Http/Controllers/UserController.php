@@ -10,6 +10,8 @@ use Illuminate\View\View;
 use Mockery\Undefined;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmergencyCallReceived;
+use App\Mail\MailBienvenida;
+use App\Mail\RestaurarContra;
 use Illuminate\Support\Str;
 use Swift;
 
@@ -293,6 +295,9 @@ class UserController extends Controller
         if ($users == 0){
             DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'create_date'=>Now(),'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
             $mensaje = 'Tu cuenta se ha creado correctamente';
+            $email=$datos['email'];
+            $user = DB::table('tbl_user')->where('email','=',$email)->first();
+            Mail::to($email)->send(new MailBienvenida($user));
             return redirect('/')->with('mensaje',$mensaje);
         }else{
             $mensaje="El correo introducido ya está registrado";
@@ -430,5 +435,23 @@ class UserController extends Controller
         [md5($datos['psswd1']),
         $datos['id_user']]);
         return view('password_changed');
+    }
+
+    public function restaurar_pass(Request $request){
+        $datos = $request->except('_token');
+        $contar=DB::table('tbl_user')->where([
+            ['email','=',$datos['email']]])->count();
+            if($contar==1){
+                //eviar correo para restaurar
+                $email=$datos['email'];
+                $user = DB::table('tbl_user')->where('email','=',$email)->first();
+                Mail::to($email)->send(new RestaurarContra($user));
+                $correcto = 'Email correcto, revise su bandeja';
+                return redirect('/contra_olvidada')->with('correcto',$correcto);
+            }else{
+                //devolver diciendo que el correo no existe
+                $message = 'El correo introducido no pertenece a ninguna cuenta';
+                return redirect('/contra_olvidada')->with('message',$message);
+            }
     }
 }
