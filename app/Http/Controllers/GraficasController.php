@@ -38,11 +38,14 @@ class GraficasController extends Controller
     }
     public function sendDataEstablecimiento(Request $request) {
         try {
-
-            $etiquetas = DB::select('SELECT DATE(create_date) AS fecha, COUNT(id_user) AS cantidad
-            FROM tbl_user
-            WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW()
-            GROUP BY DATE(create_date)',[$request['valueFilter']]);
+           $id_user = session()->get('id_user');
+           $etiquetas = DB::select('SELECT status_card AS estado, COUNT(id_card) AS tarjetas FROM tbl_card
+           INNER JOIN tbl_promotion
+           ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+           INNER JOIN tbl_local
+           ON tbl_promotion.id_local_fk = tbl_local.id_local
+           WHERE create_date BETWEEN NOW() - INTERVAL ? DAY AND NOW() AND tbl_local.id_user_fk = ?
+           GROUP BY status_card',[$request['valueFilter'] , $id_user]);
 
             return response()->json($etiquetas);
 
