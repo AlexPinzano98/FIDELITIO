@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-<p>Bienvenido {{ $UserController->name }}, su cuenta se ha creado exitosamente, le hemos asignado una contraseña aleatoria, si desea cambiarla, hagalo desde este correo</p>
+<p>Bienvenido {{ $UserController->name }}, su cuenta se ha creado exitosamente, le hemos asignado una contraseña aleatoria, si desea cambiarla, hágalo desde este correo</p>
 <form  method="POST" action="https://localhost/FIDELITIO/public/password_reset">
     @csrf
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
