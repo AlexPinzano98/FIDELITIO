@@ -105,7 +105,7 @@ function ver_usuarios() {
                         search: "Buscar :",
                         // info: "",
                         infoEmpty: "No existen datos.",
-                        infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                        // infoFiltered: "(filtrado de _MAX_ elementos en total)",
                         infoPostFix: "",
                         loadingRecords: "Cargando...",
                         zeroRecords: "No se encontraron datos con tu busqueda",
@@ -123,8 +123,8 @@ function ver_usuarios() {
                     },
                     // scrollY: 400,
                     lengthMenu: [
-                        [10, 25, 50, 100 - 1],
-                        [10, 25, 50, 100, "Todo"]
+                        [5, 10, 25, 50, 100, -1],
+                        [5, 10, 25, 50, 100, "Todo"]
                     ],
 
                 });
