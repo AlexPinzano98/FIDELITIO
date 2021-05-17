@@ -76,7 +76,7 @@ function mostrar_datos() {
             break;
         }
         //console.log(respuesta[i])
-        tabla += '<tr>' + '<td>' + respuesta[i].id_user + '</td>';
+        tabla += '<tr>' + '<input type="hidden" value=' + respuesta[i].name + '>';
         var dia = respuesta[i].create_date.split(' ');
         tabla += '<td>' + dia[0] + '</td>';
         //console.log(pepe[0])

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,9 @@
     <title>CRUD - USUARIOS</title>
     <link rel="stylesheet" href="{{asset('css/crudUsuarios.css')}}">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
+
 </head>
+
 <body>
     <header class="header">
         <p class="text-start">{{ session('name') }}</p>
@@ -130,81 +133,6 @@
         <div id="message">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
-</div>
-
-<!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
-<p>Num de resultados</p>
-<select id="results" name="results" onchange="mostrar_datos()">
-    <option selected value="5">5</option>
-    <option value="10">10</option>
-    <option value="20">20</option>
-</select>
-<div class="datos">
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Creado</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Email</th>
-                <th>Género</th>
-                <th>Confidencialidad</th>
-                <th>Rol</th>
-                <th>Status</th>
-                <th colspan="2">Acciones</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th></th>
-                <th> <input type="date" name="f_fecha" id="f_fecha" onchange="ver_usuarios()"> </th>
-                <th> <input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"> </th>
-                <th> <input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"> </th>
-                <th> <input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"> </th>
-                <th> 
-                    <select class="form-control" id="f_sexo" name="f_sexo" onchange="ver_usuarios()">
-                        <option selected value="">-</option>
-                        <option value="Hombre">Hombre</option>
-                        <option value="Mujer">Mujer</option>
-                        <option value="No especificar">No especificar</option>
-                     </select> 
-                </th>
-                <th> 
-                    <select class="form-control" id="f_conf" name="f_conf" onchange="ver_usuarios()">
-                        <option selected value="">-</option>
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
-                     </select> 
-                </th>
-                <th>
-                    <select class="form-control" id="f_rol" name="f_rol" onchange="ver_usuarios()">
-                        <option selected value="">-</option>
-                        <option value="1">Cliente</option>
-                        <option value="2">Camarero</option>
-                        <option value="3">Adm establecimiento</option>
-                        <option value="4">Adm grupo</option>
-                        <option value="5">Adm master</option>
-                     </select> 
-                </th>
-                <th>
-                    <select class="form-control" id="f_status" name="f_status" onchange="ver_usuarios()">
-                        <option selected value="">-</option>
-                        <option value="Activo">Activo</option>
-                        <option value="Inhabilitado">Inhabilitado</option>
-                     </select> 
-                </th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody id="datos">
-        </tbody>
-    </table>
-    <div>
-        <p id="total_datos"></p>
-        <p id="listado"></p>
-        <button onclick="prev()">Anterior</button>
-        <button onclick="next()">Siguiente</button>
     </div>
 
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
@@ -221,7 +149,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Fecha</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Email</th>
