@@ -454,4 +454,9 @@ class UserController extends Controller
                 return redirect('/contra_olvidada')->with('message',$message);
             }
     }
+
+    public function sendSessionId(){
+        $id_user = session()->get('id_user');
+        return response()->json($id_user);
+    }
 }

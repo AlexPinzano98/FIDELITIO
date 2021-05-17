@@ -22,8 +22,8 @@
 <body>
     <header class="header">
         <p class="text-start">{{ session('name') }}</p>
-        <a class="fas fa-chart-bar" href="{{url('/viewMaster')}}" id="est"></a>
-        <a class="fas fa-users-cog" href="{{url('/cruds')}}" id="admi"></a>
+        <button class="fas fa-chart-bar" action="{{url('/viewAdm_master')}}" id="est"></button>
+        <button class="fas fa-users-cog" onclick="openCamara()" id="admi"></button>
         <a id="menu_on" onclick="closeModal2()">
             <span></span>
             <span></span>
@@ -131,14 +131,14 @@
             <p id="error"> {{Session::get('message')}} </p>
         </div>
 
-    <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
-    <div id="crud" style="width: 90%; margin-left: 5%;">
-        <div class="datos" style="width:90%;">
-        <button id="btn-register" onclick="openRegister()"><i class="fas fa-user-plus"></i> Añadir usuario </button>
+        <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
+    <div id="crud">
+        <div class="datos">
             <table id="tablax">
+            <button id="btn-register" onclick="openRegister()">REGISTRAR</button>
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>#</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Email</th>
@@ -152,20 +152,20 @@
                         <th></th>
                         <th><input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"></th>
                         <th><input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"> </th>
-                        <th><input type="text" style="width: 70%;" name="f_email" id="f_email" onkeyup="ver_usuarios()"></th>
-                        <th><select class="form-control" id="f_sexo" name="f_sexo" onclick="ver_usuarios()">
+                        <th><input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"></th>
+                        <th><select class="form-control" id="f_sexo" name="f_sexo" onchange="ver_usuarios()">
                                 <option selected value="">-</option>
                                 <option value="Hombre">Hombre</option>
                                 <option value="Mujer">Mujer</option>
                             </select>
                         </th>
-                        <th> <select class="form-control" id="f_conf" name="f_conf" onclick="ver_usuarios()">
+                        <th> <select class="form-control" id="f_conf" name="f_conf" onchange="ver_usuarios()">
                                 <option selected value="">-</option>
                                 <option value="1">Si</option>
                                 <option value="0">No</option>
                             </select>
                         </th>
-                        <th><select class="form-control" id="f_rol" name="f_rol" onclick="ver_usuarios()">
+                        <th><select class="form-control" id="f_rol" name="f_rol" onchange="ver_usuarios()">
                                 <option selected value="">-</option>
                                 <option value="1">Cliente</option>
                                 <option value="2">Camarero</option>
@@ -174,7 +174,7 @@
                                 <option value="5">Adm master</option>
                             </select>
                         </th>
-                        <th><select class="form-control" id="f_status" name="f_status" onclick="ver_usuarios()">
+                        <th><select class="form-control" id="f_status" name="f_status" onchange="ver_usuarios()">
                                 <option selected value="">-</option>
                                 <option value="Activo">Activo</option>
                                 <option value="Inhabilitado">Inhabilitado</option>
@@ -194,8 +194,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>
     <!-- DATATABLES -->
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
-    </script>
+    <!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script> -->
     <!-- BOOTSTRAP -->
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>

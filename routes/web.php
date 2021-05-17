@@ -91,6 +91,7 @@ Route::post('/eliminar_usuario', [UserController::class, 'eliminar_usuario']);
 Route::post('/registrar_usuario', [UserController::class, 'registrar_usuario']);
 Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']);
 Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);
+Route::get('/sendSessionId', [UserController::class, 'sendSessionId']);
 
 // CRUD TARJETAS
 Route::post('/ver_tarjetas', [CardController::class, 'ver_tarjetas']);
