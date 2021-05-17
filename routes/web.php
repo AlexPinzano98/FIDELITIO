@@ -74,14 +74,14 @@ Route::get('/crudUsuarios', function() {
 
 Route::post('sendData', [GraficasController::class, 'sendData']);
 Route::post('sendDataEstablecimiento', [GraficasController::class, 'sendDataEstablecimiento']);
-Route::post('sendData', [GraficasController::class, 'sendData']);
+Route::post('sendDataGrupo', [GraficasController::class, 'sendDataGrupo']);
 Route::get('/cruds', [DirectionController::class, 'cruds']);
 //Redirecciones a los diferentes tipos de CRUD (admin master)
 Route::get('/crudCompany', [DirectionController::class, 'crudCompany']);
 Route::get('/crudLocales', [DirectionController::class, 'crudLocales']);
 Route::get('/crudPromociones', [DirectionController::class, 'crudPromociones']);
 Route::get('/crudTarjetas', [DirectionController::class, 'crudTarjetas']);
-Route::get('/crudUsuarios', [DirectionController::class, 'crudUsuarios']); 
+Route::get('/crudUsuarios', [DirectionController::class, 'crudUsuarios']);
 
 //CRUD USUARIOS
 Route::post('/ver_usuarios', [UserController::class, 'ver_usuarios']);
@@ -90,6 +90,7 @@ Route::post('/eliminar_usuario', [UserController::class, 'eliminar_usuario']);
 Route::post('/registrar_usuario', [UserController::class, 'registrar_usuario']);
 Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']);
 Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);
+Route::get('/sendSessionId', [UserController::class, 'sendSessionId']);
 Route::post('/ver_locales_u', [UserController::class, 'ver_locales_u']);
 
 // CRUD TARJETAS

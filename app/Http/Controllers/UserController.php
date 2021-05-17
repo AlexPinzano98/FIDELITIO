@@ -365,7 +365,10 @@ class UserController extends Controller
     }
 
     public function ver_usuarios(Request $request){
-        $usuarios = DB::select('SELECT * FROM tbl_user WHERE `name` LIKE ? AND `lastname` LIKE ? AND `email` LIKE ? AND `gender` LIKE ? AND `confidentiality` LIKE ? AND `id_typeuser_fk` LIKE ? AND `status` LIKE ?',
+        $usuarios = DB::select('SELECT * FROM tbl_user
+        WHERE `name` LIKE ? AND `lastname` LIKE ? AND `email` LIKE ?
+        AND `gender` LIKE ? AND `confidentiality` LIKE ?
+        AND `id_typeuser_fk` LIKE ? AND `status` LIKE ?',
         ['%'.$request['nombre'].'%' ,
         '%'.$request['apellidos'].'%',
         '%'.$request['email'].'%',
@@ -387,7 +390,7 @@ class UserController extends Controller
         // TODO: HEMOS DE COMPROBAR EL TIPO DE USUARIO
         // * en función del usuario se eliminara al usuario de unas tablas u otras
         // ? Cliente -> Eliminar sellos, tarjetas y al usuario
-        // ? Camarero -> 
+        // ? Camarero ->
         // ? Adm establecimiento ->
         // ? Adm grupo ->
         // ? Adm master ->
@@ -410,8 +413,8 @@ class UserController extends Controller
         $consentimiento = 0;
         if($request['confidentiality'] == 'true'){
             $consentimiento = 1;
-        } 
-        
+        }
+
         DB::table('tbl_user')->insertGetId(['name'=>$request['nombre'],
         'lastname'=>$request['apellidos'],
         'gender'=>$request['sexo'],
@@ -427,9 +430,9 @@ class UserController extends Controller
         $consentimiento = 0;
         if($request['confidentiality'] == 'true'){
             $consentimiento = 1;
-        } 
+        }
 
-        DB::select('UPDATE tbl_user SET `name`=?,`lastname`=?,`email`=?,`gender`=?,`confidentiality`=?,`id_typeuser_fk`=? WHERE `id_user`=?', 
+        DB::select('UPDATE tbl_user SET `name`=?,`lastname`=?,`email`=?,`gender`=?,`confidentiality`=?,`id_typeuser_fk`=? WHERE `id_user`=?',
         [$request['nombre'],
         $request['apellidos'],
         $request['email'],
@@ -437,15 +440,15 @@ class UserController extends Controller
         $consentimiento,
         $request['rol'],
         $request['id_user']]);
-        
+
         return response()->json($request['id_user'],200);
     }
     public function cambiar_estado(Request $request){
         if ($request['status']==1){
-            DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?', 
+            DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?',
             ['Inhabilitado',$request['id_user']]);
         } else {
-            DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?', 
+            DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?',
             ['Activo',$request['id_user']]);
         }
 
@@ -454,5 +457,11 @@ class UserController extends Controller
     public function ver_locales_u(){
         $locales = DB::select('SELECT * FROM `tbl_local`');
         return response()->json($locales,200);
+    }
+
+    public function sendSessionId(){
+        $id_user = session()->get('id_user');
+        $id_type = DB::select('SELECT tbl_user.id_typeuser_fk FROM tbl_user WHERE tbl_user.id_user= ?',[$id_user]);
+        return response()->json($id_type);
     }
 }

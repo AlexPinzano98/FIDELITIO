@@ -1,5 +1,5 @@
 window.onload = function() {
-    ver_usuarios();
+    ver_permisos();
 }
 function objetoAjax() {
     var xmlhttp = false;
@@ -18,67 +18,45 @@ function objetoAjax() {
     return xmlhttp;
 }
 
-function ver_usuarios(){
-
+function ver_permisos(){
+    var permissionsTag = document.getElementById("permissions");
     var ajax = new objetoAjax();
-    ajax.open('POST', 'ver_usuarios', true);
+    ajax.open('GET', 'sendSessionId', true);
 
     ajax.onreadystatechange = function() {
-        // var tags = '';
+
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            console.log(respuesta);
-            // var pagination = document.getElementsByClassName('pagination')[0];
+            console.log(respuesta[0].id_typeuser_fk);
 
-            // for (let i = 0; i < respuesta.length; i++) {
-            //     //console.log(respuesta[i])
-            //     tabla += '<tr>'+'<td>'+respuesta[i].id_user+'</td>';
-            //     tabla += '<td>'+respuesta[i].name+'</td>';
-            //     tabla += '<td>'+respuesta[i].lastname+'</td>';
-            //     tabla += '<td>'+respuesta[i].email+'</td>';
-            //     tabla += '<td>'+respuesta[i].gender+'</td>';
-            //     if (respuesta[i].confidentiality == 1) {
-            //         tabla += '<td>'+ 'Si' +'</td>';
-            //     } else {
-            //         tabla += '<td>'+ 'No' +'</td>';
-            //     }
-
-            //     switch (respuesta[i].id_typeuser_fk) {
-            //         case 1:
-            //             tabla += '<td>'+ 'Cliente' +'</td>';
-            //             break;
-            //         case 2:
-            //             tabla += '<td>'+ 'Camarero' +'</td>';
-            //             break;
-            //         case 3:
-            //             tabla += '<td>'+ 'Adm establecimiento' +'</td>';
-            //             break;
-            //         case 4:
-            //             tabla += '<td>'+ 'Adm grupo' +'</td>';
-            //             break;
-            //         case 5:
-            //             tabla += '<td>'+ 'Adm master' +'</td>';
-            //             break;
-            //     }
-
-            //     if (respuesta[i].status=='Activo'){ // Usuario activo
-            //         tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 1 +')">Activo</a>'+'</td>';
-            //     } else { // Usuario inactivo
-            //         tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 0 +')">Inhabilitado</a>'+'</td>';
-            //     }
-            //     tabla += '<td> <button onclick="openUpdate('+respuesta[i].id_user+')">UPDATE</button>'+ '</td>';
-            //     tabla += '<td>'+'<button onclick="eliminar_usuario('+respuesta[i].id_user+')">DELETE</button>' +'</td>'+'</tr>';
-
-
-            // }
-
-            //pagination
-
+            switch(respuesta[0].id_typeuser_fk) {
+                case 3:
+                    permissionsTag.innerHTML = `
+                    <a href="crudPromociones">PROMOCIONES</a>
+                    <a href="crudTarjetas">TARJETAS</a>
+                    <a href="crudUsuarios">USUARIOS</a>`
+                  break;
+                case 4:
+                    permissionsTag.innerHTML = `
+                    <a href="crudLocales">LOCALES</a>
+                    <a href="crudPromociones">PROMOCIONES</a>
+                    <a href="crudTarjetas">TARJETAS</a>
+                    <a href="crudUsuarios">USUARIOS</a>`
+                  break;
+                default:
+                    permissionsTag.innerHTML = ` <a href="crudCompany">COMPAÑIAS</a>
+                    <a href="crudLocales">LOCALES</a>
+                    <a href="crudPromociones">PROMOCIONES</a>
+                    <a href="crudTarjetas">TARJETAS</a>
+                    <a href="crudUsuarios">USUARIOS</a>`;
+              }
 
         }
-        // datos.innerHTML = tabla;
+
     }
-    // ajax.send(datasend);
+
+    ajax.send();
+
 }
 
 
