@@ -365,7 +365,10 @@ class UserController extends Controller
     }
 
     public function ver_usuarios(Request $request){
-        $usuarios = DB::select('SELECT * FROM tbl_user WHERE `name` LIKE ? AND `lastname` LIKE ? AND `email` LIKE ? AND `gender` LIKE ? AND `confidentiality` LIKE ? AND `id_typeuser_fk` LIKE ? AND `status` LIKE ?',
+        $usuarios = DB::select('SELECT * FROM tbl_user
+        WHERE `name` LIKE ? AND `lastname` LIKE ? AND `email` LIKE ?
+        AND `gender` LIKE ? AND `confidentiality` LIKE ?
+        AND `id_typeuser_fk` LIKE ? AND `status` LIKE ?',
         ['%'.$request['nombre'].'%' ,
         '%'.$request['apellidos'].'%',
         '%'.$request['email'].'%',
