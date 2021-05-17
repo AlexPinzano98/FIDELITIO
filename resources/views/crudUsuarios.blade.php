@@ -33,10 +33,10 @@
 
     <h1>USUARIOS</h1>
 
-        <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
-        <div>
-            <h1>Administración de usuarios</h1>
-        </div>
+    <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
+    <div>
+        <h1>Administración de usuarios</h1>
+    </div>
  
     <!-- FORMULARIO PARA REGISTRAR UN USUARIO -->
     <div id="registrar" class="registrar" style="display: none;">
