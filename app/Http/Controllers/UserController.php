@@ -329,97 +329,6 @@ class UserController extends Controller
         }
     }
 
-    public function ver_usuarios(Request $request){
-        $usuarios = DB::select('SELECT * FROM tbl_user WHERE `name` LIKE ? AND `lastname` LIKE ? AND `email` LIKE ? AND `gender` LIKE ? AND `confidentiality` LIKE ? AND `id_typeuser_fk` LIKE ? AND `status` LIKE ?',
-        ['%'.$request['nombre'].'%' ,
-        '%'.$request['apellidos'].'%',
-        '%'.$request['email'].'%',
-        '%'.$request['sexo'].'%',
-        '%'.$request['conf'].'%',
-        '%'.$request['rol'].'%',
-        '%'.$request['status'].'%']);
-        return response()->json($usuarios,200);
-    }
-
-    public function ver_usuario(Request $request){
-        $id_user = $request['id_user'];
-        $usuarios = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
-        return response()->json($usuarios,200);
-    }
-
-    public function eliminar_usuario(Request $request){
-        $id_user = $request['id_usuario'];
-
-        // TODO: HEMOS DE COMPROBAR EL TIPO DE USUARIO
-        // * en función del usuario se eliminara al usuario de unas tablas u otras
-        // ? Cliente -> Eliminar sellos, tarjetas y al usuario
-        // ? Camarero ->
-        // ? Adm establecimiento ->
-        // ? Adm grupo ->
-        // ? Adm master ->
-
-        // Si el usuario es de tipo cliente, hemos de elimar sus cartas y sellos
-        // Comprobamos si el usuario tiene o ha tenido cartas
-        $cards =  DB::select('SELECT * FROM tbl_card WHERE id_user_fk = ?',[$id_user]);
-        foreach ($cards as $card){
-            DB::select('DELETE FROM tbl_stamp WHERE id_card_fk = ?',[$card->id_card]);
-            DB::select('DELETE FROM tbl_card WHERE id_user_fk = ?',[$id_user]);
-            // Eliminamos cada una de las cartas
-        }
-
-        DB::select('DELETE FROM tbl_user WHERE id_user = ?',[$id_user]);
-        // return response()->json('OK',200);
-
-        return response()->json('OK',200);
-    }
-
-    public function registrar_usuario(Request $request){
-        $consentimiento = 0;
-        if($request['confidentiality'] == 'true'){
-            $consentimiento = 1;
-        }
-
-        DB::table('tbl_user')->insertGetId(['name'=>$request['nombre'],
-        'lastname'=>$request['apellidos'],
-        'gender'=>$request['sexo'],
-        'confidentiality'=>$consentimiento,
-        'email'=>$request['email'],
-        'psswd'=>md5($request['psswd']),
-        'id_typeuser_fk'=>$request['rol']]);
-
-        return response()->json('OKAY',200);
-    }
-
-    public function actualizar_usuario(Request $request){
-        $consentimiento = 0;
-        if($request['confidentiality'] == 'true'){
-            $consentimiento = 1;
-        }
-
-        DB::select('UPDATE tbl_user SET `name`=?,`lastname`=?,`email`=?,`gender`=?,`confidentiality`=?,`id_typeuser_fk`=? WHERE `id_user`=?',
-        [$request['nombre'],
-        $request['apellidos'],
-        $request['email'],
-        $request['sexo'],
-        $consentimiento,
-        $request['rol'],
-        $request['id_user']]);
-
-        return response()->json($request['id_user'],200);
-    }
-
-    public function cambiar_estado(Request $request){
-        if ($request['status']==1){
-            DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?',
-            ['Inhabilitado',$request['id_user']]);
-        } else {
-            DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?',
-            ['Activo',$request['id_user']]);
-        }
-
-        return response()->json('OK',200);
-    }
-
     public function perfilU() {
         //redirige a la vista login si no has iniciado sesion.
         return view('perfilU');
@@ -453,6 +362,98 @@ class UserController extends Controller
                 $message = 'El correo introducido no pertenece a ninguna cuenta';
                 return redirect('/contra_olvidada')->with('message',$message);
             }
+    }
+
+    public function ver_usuarios(Request $request){
+        $usuarios = DB::select('SELECT * FROM tbl_user WHERE `name` LIKE ? AND `lastname` LIKE ? AND `email` LIKE ? AND `gender` LIKE ? AND `confidentiality` LIKE ? AND `id_typeuser_fk` LIKE ? AND `status` LIKE ?',
+        ['%'.$request['nombre'].'%' ,
+        '%'.$request['apellidos'].'%',
+        '%'.$request['email'].'%',
+        '%'.$request['sexo'].'%',
+        '%'.$request['conf'].'%',
+        '%'.$request['rol'].'%',
+        '%'.$request['status'].'%']);
+        return response()->json($usuarios,200);
+    }
+    public function ver_usuario(Request $request){
+        $id_user = $request['id_user'];
+        $usuarios = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
+        return response()->json($usuarios,200);
+    }
+
+    public function eliminar_usuario(Request $request){
+        $id_user = $request['id_usuario'];
+
+        // TODO: HEMOS DE COMPROBAR EL TIPO DE USUARIO
+        // * en función del usuario se eliminara al usuario de unas tablas u otras
+        // ? Cliente -> Eliminar sellos, tarjetas y al usuario
+        // ? Camarero -> 
+        // ? Adm establecimiento ->
+        // ? Adm grupo ->
+        // ? Adm master ->
+
+        // Si el usuario es de tipo cliente, hemos de elimar sus cartas y sellos
+        // Comprobamos si el usuario tiene o ha tenido cartas
+        $cards =  DB::select('SELECT * FROM tbl_card WHERE id_user_fk = ?',[$id_user]);
+        foreach ($cards as $card){
+            DB::select('DELETE FROM tbl_stamp WHERE id_card_fk = ?',[$card->id_card]);
+            DB::select('DELETE FROM tbl_card WHERE id_user_fk = ?',[$id_user]);
+            // Eliminamos cada una de las cartas
+        }
+
+        DB::select('DELETE FROM tbl_user WHERE id_user = ?',[$id_user]);
+        // return response()->json('OK',200);
+
+        return response()->json('OK',200);
+    }
+    public function registrar_usuario(Request $request){
+        $consentimiento = 0;
+        if($request['confidentiality'] == 'true'){
+            $consentimiento = 1;
+        } 
+        
+        DB::table('tbl_user')->insertGetId(['name'=>$request['nombre'],
+        'lastname'=>$request['apellidos'],
+        'gender'=>$request['sexo'],
+        'confidentiality'=>$consentimiento,
+        'email'=>$request['email'],
+        'psswd'=>md5($request['psswd']),
+        'id_typeuser_fk'=>$request['rol']]);
+
+        return response()->json('OKAY',200);
+    }
+
+    public function actualizar_usuario(Request $request){
+        $consentimiento = 0;
+        if($request['confidentiality'] == 'true'){
+            $consentimiento = 1;
+        } 
+
+        DB::select('UPDATE tbl_user SET `name`=?,`lastname`=?,`email`=?,`gender`=?,`confidentiality`=?,`id_typeuser_fk`=? WHERE `id_user`=?', 
+        [$request['nombre'],
+        $request['apellidos'],
+        $request['email'],
+        $request['sexo'],
+        $consentimiento,
+        $request['rol'],
+        $request['id_user']]);
+        
+        return response()->json($request['id_user'],200);
+    }
+    public function cambiar_estado(Request $request){
+        if ($request['status']==1){
+            DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?', 
+            ['Inhabilitado',$request['id_user']]);
+        } else {
+            DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?', 
+            ['Activo',$request['id_user']]);
+        }
+
+        return response()->json('OK',200);
+    }
+    public function ver_locales_u(){
+        $locales = DB::select('SELECT * FROM `tbl_local`');
+        return response()->json($locales,200);
     }
 
     public function sendSessionId(){

@@ -85,13 +85,13 @@ Route::get('/crudUsuarios', [DirectionController::class, 'crudUsuarios']);
 
 //CRUD USUARIOS
 Route::post('/ver_usuarios', [UserController::class, 'ver_usuarios']);
-Route::get('/ver_usuarios', [UserController::class, 'ver_usuarios']);
 Route::post('/ver_usuario', [UserController::class, 'ver_usuario']);
 Route::post('/eliminar_usuario', [UserController::class, 'eliminar_usuario']);
 Route::post('/registrar_usuario', [UserController::class, 'registrar_usuario']);
 Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']);
 Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);
 Route::get('/sendSessionId', [UserController::class, 'sendSessionId']);
+Route::post('/ver_locales_u', [UserController::class, 'ver_locales_u']);
 
 // CRUD TARJETAS
 Route::post('/ver_tarjetas', [CardController::class, 'ver_tarjetas']);
