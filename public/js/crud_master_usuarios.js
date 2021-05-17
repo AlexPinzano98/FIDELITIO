@@ -298,7 +298,6 @@ function openUpdate(id_user) {
     x.style.display = "block";
     closeRegister();
     ver_usuario(id_user);
-    //console.log(id_user)
 }
 
 function closeUpdate() {
