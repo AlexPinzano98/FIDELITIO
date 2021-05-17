@@ -19,7 +19,7 @@
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LAS LOCALES -->
     <div class="datos">
         <table>
-            <thead>
+            <thead> 
                 <tr>
                     <th>#</th>
                     <th>Imagen</th>
