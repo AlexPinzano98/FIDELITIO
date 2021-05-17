@@ -60,12 +60,12 @@ function mostrar_datos(){
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
 
     //console.log(pag_totales)
-    console.log(num_results)
+    //console.log(num_results)
     //console.log(pag_actual-1)
     var desde = ((pag_actual-1) * num_results);
     var hasta = (desde + (num_results*1));
-    console.log(desde)
-    console.log(hasta)
+    //console.log(desde)
+    //console.log(hasta)
 
     var tabla = '';
     for (let i = desde; i < hasta; i++) {
@@ -74,6 +74,9 @@ function mostrar_datos(){
         }
         //console.log(respuesta[i])
         tabla += '<tr>'+'<td>'+respuesta[i].id_user+'</td>';
+        var dia = respuesta[i].create_date.split(' ');
+        tabla += '<td>'+dia[0]+'</td>';
+        //console.log(pepe[0])
         tabla += '<td>'+respuesta[i].name+'</td>';
         tabla += '<td>'+respuesta[i].lastname+'</td>';
         tabla += '<td>'+respuesta[i].email+'</td>';
@@ -83,7 +86,6 @@ function mostrar_datos(){
         } else {
             tabla += '<td>'+ 'No' +'</td>';
         }
-
         switch (respuesta[i].id_typeuser_fk) {
             case 1:
                 tabla += '<td>'+ 'Cliente' +'</td>';
@@ -101,7 +103,6 @@ function mostrar_datos(){
                 tabla += '<td>'+ 'Adm master' +'</td>';
                 break;
         }
-        
         if (respuesta[i].status=='Activo'){ // Usuario activo
             tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 1 +')">Activo</a>'+'</td>';
         } else { // Usuario inactivo

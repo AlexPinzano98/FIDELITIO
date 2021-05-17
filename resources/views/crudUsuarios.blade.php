@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,9 +15,7 @@
     <title>CRUD - USUARIOS</title>
     <link rel="stylesheet" href="{{asset('css/crudUsuarios.css')}}">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
-
 </head>
-
 <body>
     <header class="header">
         <p class="text-start">{{ session('name') }}</p>
@@ -33,11 +30,11 @@
 
     <h1>USUARIOS</h1>
 
-<!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
-<div>
-    <h1>Registra un nuevo usuario</h1>
-    <button id="btn-register" onclick="openRegister()">REGISTRAR!</button>
-</div>
+    <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
+    <div>
+        <h1>Registra un nuevo usuario</h1>
+        <button id="btn-register" onclick="openRegister()">REGISTRAR!</button>
+    </div>
  
 <!-- FORMULARIO PARA REGISTRAR UN USUARIO -->
 <div id="registrar" class="registrar" style="display: none;">
@@ -153,6 +150,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Creado</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Email</th>
@@ -163,6 +161,7 @@
                 <th colspan="2">Acciones</th>
             </tr>
             <tr>
+                <th></th>
                 <th></th>
                 <th> <input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"> </th>
                 <th> <input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"> </th>

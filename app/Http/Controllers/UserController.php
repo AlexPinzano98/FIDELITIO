@@ -365,7 +365,10 @@ class UserController extends Controller
     }
 
     public function ver_usuarios(Request $request){
-        $usuarios = DB::select('SELECT * FROM tbl_user WHERE `name` LIKE ? AND `lastname` LIKE ? AND `email` LIKE ? AND `gender` LIKE ? AND `confidentiality` LIKE ? AND `id_typeuser_fk` LIKE ? AND `status` LIKE ?',
+        $usuarios = DB::select('SELECT * FROM tbl_user 
+        WHERE `name` LIKE ? AND `lastname` LIKE ? AND `email` LIKE ? 
+        AND `gender` LIKE ? AND `confidentiality` LIKE ? 
+        AND `id_typeuser_fk` LIKE ? AND `status` LIKE ?',
         ['%'.$request['nombre'].'%' ,
         '%'.$request['apellidos'].'%',
         '%'.$request['email'].'%',
@@ -407,20 +410,26 @@ class UserController extends Controller
         return response()->json('OK',200);
     }
     public function registrar_usuario(Request $request){
-        $consentimiento = 0;
-        if($request['confidentiality'] == 'true'){
-            $consentimiento = 1;
-        } 
-        
-        DB::table('tbl_user')->insertGetId(['name'=>$request['nombre'],
-        'lastname'=>$request['apellidos'],
-        'gender'=>$request['sexo'],
-        'confidentiality'=>$consentimiento,
-        'email'=>$request['email'],
-        'psswd'=>md5($request['psswd']),
-        'id_typeuser_fk'=>$request['rol']]);
-
-        return response()->json('OKAY',200);
+        $user = DB::select('SELECT COUNT(id_user) AS user_exists FROM tbl_user WHERE email = ?', [$request['email']]);
+        if ($user[0]->user_exists == 1) {
+            return response()->json('NOK.El email introducido ya existe',200);
+        } else {
+            $consentimiento = 0;
+            if($request['confidentiality'] == 'true'){
+                $consentimiento = 1;
+            } 
+            
+            DB::table('tbl_user')->insertGetId(['name'=>$request['nombre'],
+            'lastname'=>$request['apellidos'],
+            'gender'=>$request['sexo'],
+            'confidentiality'=>$consentimiento,
+            'create_date'=>NOW(),
+            'email'=>$request['email'],
+            'psswd'=>md5($request['psswd']),
+            'id_typeuser_fk'=>$request['rol']]);
+            
+            return response()->json('OK.Usuario registrado correctamente',200);
+        }
     }
 
     public function actualizar_usuario(Request $request){
