@@ -63,12 +63,12 @@ function mostrar_datos() {
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
 
     //console.log(pag_totales)
-    //console.log(num_results)
-    //console.log(pag_actual-1)
+    console.log(num_results)
+        //console.log(pag_actual-1)
     var desde = ((pag_actual - 1) * num_results);
     var hasta = (desde + (num_results * 1));
-    //console.log(desde)
-    //console.log(hasta)
+    console.log(desde)
+    console.log(hasta)
 
     var tabla = '';
     for (let i = desde; i < hasta; i++) {
@@ -76,7 +76,7 @@ function mostrar_datos() {
             break;
         }
         //console.log(respuesta[i])
-        tabla += '<tr>' + '<td>' + respuesta[i].id_user + '</td>';
+        tabla += '<tr>' + '<input type="hidden" value=' + respuesta[i].name + '>';
         var dia = respuesta[i].create_date.split(' ');
         tabla += '<td>' + dia[0] + '</td>';
         //console.log(pepe[0])
@@ -107,12 +107,12 @@ function mostrar_datos() {
                 break;
         }
         if (respuesta[i].status == 'Activo') { // Usuario activo
-            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 1 + ')">Activo</a>' + '</td>';
+            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 1 + ')"><i class="fas fa-lock-open"></i></a>' + '</td>';
         } else { // Usuario inactivo
-            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 0 + ')">Inhabilitado</a>' + '</td>';
+            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 0 + ')"><i class="fas fa-lock"></i></a>' + '</td>';
         }
-        tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_user + ')">UPDATE</button>' + '</td>';
-        tabla += '<td>' + '<button onclick="eliminar_usuario(' + respuesta[i].id_user + ')">DELETE</button>' + '</td>' + '</tr>';
+        tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_user + ')"><i class="fas fa-user-edit"></i></button>' + '</td>';
+        tabla += '<td>' + '<button onclick="eliminar_usuario(' + respuesta[i].id_user + ')"><i class="fas fa-user-slash"></i></button>' + '</td>' + '</tr>';
     }
     datos.innerHTML = tabla;
 }
@@ -312,7 +312,6 @@ function openUpdate(id_user) {
     x.style.display = "block";
     closeRegister();
     ver_usuario(id_user);
-    //console.log(id_user)
 }
 
 function closeUpdate() {
@@ -332,7 +331,6 @@ function borrar_registro() {
 
 function es_camarero() {
     var type_user = document.getElementById('rol').value;
-
     if (type_user == 2) {
         //console.log(type_user)
         document.getElementById('local').style.display = 'block';
