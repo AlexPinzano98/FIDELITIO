@@ -1,12 +1,8 @@
-window.addEventListener('load', ()=>{
-    callData();
-});
-
-var myChart = null;
+// var myChart = null;
 var myChart2 = null;
 var myChart3 = null;
 
-var valueFilter = document.getElementById('filter');
+// var valueFilter = document.getElementById('filter');
 var valueFilter2 = document.getElementById('filter2');
 var valueFilter3 = document.getElementById('filter3');
 
@@ -32,13 +28,11 @@ function callData() {
     var ajax = new objetoAjax();
     var token = document.getElementById('token').getAttribute('content');
     // Obtener la instancia del objeto XMLHttpRequest
-    ajax.open('POST', 'sendData', true);
+    ajax.open('POST', 'sendDataGrupo', true);
 
     var datasend = new FormData();
     datasend.append('_token', token);
-    datasend.append('valueFilter', valueFilter.value);
     datasend.append('valueFilter2', valueFilter2.value);
-    console.log(valueFilter3.value);
     datasend.append('valueFilter3', valueFilter3.value);
 
     ajax.onreadystatechange = function() {
@@ -46,64 +40,26 @@ function callData() {
             let response = JSON.parse(ajax.responseText);
             console.log(response);
 
-            var date = [];
-            var cantidad = [];
             var date2 = [];
             var cantidad2 = [];
             var date3 = [];
             var cantidad3 = [];
 
             for (let i = 0; i < response[0].length; i++) {
-                date.push(response[0][i].fecha) ;
-                cantidad.push(response[0][i].cantidad) ;
+                date2.push(response[0][i].estado) ;
+                cantidad2.push(response[0][i].tarjetas) ;
             }
 
             for (let i = 0; i < response[1].length; i++) {
-                date2.push(response[1][i].estado) ;
-                cantidad2.push(response[1][i].tarjetas) ;
+                date3.push(response[1][i].fecha);
+                cantidad3.push(response[1][i].Tcafes);
             }
 
-            for (let i = 0; i < response[2].length; i++) {
-                date3.push(response[2][i].fecha);
-                cantidad3.push(response[2][i].Tcafes);
-            }
-
-            var ctx = document.getElementById('myChart').getContext('2d');
+            // var ctx = document.getElementById('myChart').getContext('2d');
             var ctx2 = document.getElementById('myChart2').getContext('2d');
             var ctx3 = document.getElementById('myChart3').getContext('2d');
 
-            myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: date,
-                    datasets: [{
-                        label: 'clientes dados de alta', // Name the series
-                        data: cantidad, // Specify the data values array
-                        fill: false,
-                        borderColor: '#2196f3', // Add custom color border (Line)
-                        backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
-                        tension: 0.1 // Specify bar border width
-                    }]
-                },
-
-                options: {
-                    responsive: true,
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                fontSize: 14.5
-                            }
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                fontSize: 14.5
-                            }
-                        }]
-                    }
-                }
-            });
-
+            console.log(myChart2);
             myChart2 = new Chart(ctx2, {
                 type: 'pie',
                 data: {
@@ -142,7 +98,7 @@ function callData() {
                     responsive: true,
                 }
             });
-
+            console.log(myChart3);
             myChart3 = new Chart(ctx3, {
                     type: 'bar',
                     data: {
@@ -173,34 +129,25 @@ function callData() {
                     }
             });
 
-
-            console.log(response.datos);
+            // console.log(response.datos);
 
         }
     }
     ajax.send(datasend);
 }
 
-valueFilter.addEventListener('change', ()=>{
-    myChart.destroy();
-    myChart2.destroy();
-    myChart3.destroy();
-    callData();
-});
 
 valueFilter2.addEventListener('change', ()=>{
-    myChart.destroy();
     myChart2.destroy();
     myChart3.destroy();
     callData();
 });
 
 valueFilter3.addEventListener('change', ()=>{
-    myChart.destroy();
     myChart2.destroy();
     myChart3.destroy();
     callData();
 });
 
-
+callData();
 

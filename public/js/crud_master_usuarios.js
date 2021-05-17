@@ -4,7 +4,7 @@ window.onload = function() {
     ver_usuarios();
     cargar_locales();
 }
-function objetoAjax() { 
+function objetoAjax() {
     var xmlhttp = false;
     try {
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -45,12 +45,12 @@ function ver_usuarios(){
     datasend.append('status', f_status);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
-            respuesta = JSON.parse(ajax.responseText);            
+            respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta)
             pag_actual = 1;
             mostrar_datos();
         }
-    } 
+    }
     ajax.send(datasend);
 }
 function mostrar_datos(){
@@ -81,7 +81,7 @@ function mostrar_datos(){
         tabla += '<td>'+respuesta[i].lastname+'</td>';
         tabla += '<td>'+respuesta[i].email+'</td>';
         tabla += '<td>'+respuesta[i].gender+'</td>';
-        if (respuesta[i].confidentiality == 1) { 
+        if (respuesta[i].confidentiality == 1) {
             tabla += '<td>'+ 'Si' +'</td>';
         } else {
             tabla += '<td>'+ 'No' +'</td>';
@@ -103,6 +103,10 @@ function mostrar_datos(){
                 tabla += '<td>'+ 'Adm master' +'</td>';
                 break;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0bebe914fd1cc44f2dd2af501dc6065a2ec58398
         if (respuesta[i].status=='Activo'){ // Usuario activo
             tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 1 +')">Activo</a>'+'</td>';
         } else { // Usuario inactivo
@@ -116,7 +120,7 @@ function mostrar_datos(){
 function prev(){
     if (pag_actual > 1){
         pag_actual--;
-    } 
+    }
     mostrar_datos();
 }
 function next(){
@@ -124,7 +128,7 @@ function next(){
     var pag_totales = Math.ceil(respuesta.length / num_results);
     if (pag_actual < pag_totales){
         pag_actual++;
-    } 
+    }
     mostrar_datos(pag_actual);
 }
 function registrar_usuario(){
@@ -153,7 +157,7 @@ function registrar_usuario(){
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            console.log(respuesta); 
+            console.log(respuesta);
         }
         ver_usuarios();
         borrar_registro();
@@ -314,8 +318,8 @@ function borrar_registro(){
     document.getElementById('consentimiento').checked = false;
 }
 function es_camarero(){
-    var type_user = document.getElementById('rol').value; 
-    
+    var type_user = document.getElementById('rol').value;
+
     if (type_user == 2){
         //console.log(type_user)
         document.getElementById('local').style.display = 'block';

@@ -464,4 +464,9 @@ class UserController extends Controller
         $locales = DB::select('SELECT * FROM `tbl_local`');
         return response()->json($locales,200);
     }
+
+    public function sendSessionId(){
+        $id_user = session()->get('id_user');
+        return response()->json($id_user);
+    }
 }
