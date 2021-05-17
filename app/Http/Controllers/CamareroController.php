@@ -15,7 +15,7 @@ class CamareroController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function viewCamarero(){
-        if (!(session()->has('id_user'))) {
+        if (session('typeuser') != 2) {
             return redirect('/');
         } else {
             return view('viewCamarero');

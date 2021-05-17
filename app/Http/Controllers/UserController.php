@@ -395,6 +395,12 @@ class UserController extends Controller
         // ? Adm grupo ->
         // ? Adm master ->
 
+        //Eliminar sellos 
+        // DELETE FROM `tbl_stamp` WHERE id_user_fk_stamp = 2
+        // DELETE FROM `tbl_card` WHERE id_user_fk = 2
+        // DELETE FROM `tbl_promotion` WHERE id_user_fk = 2
+
+
         // Si el usuario es de tipo cliente, hemos de elimar sus cartas y sellos
         // Comprobamos si el usuario tiene o ha tenido cartas
         $cards =  DB::select('SELECT * FROM tbl_card WHERE id_user_fk = ?',[$id_user]);
