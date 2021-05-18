@@ -103,10 +103,6 @@ function mostrar_datos(){
                 tabla += '<td>'+ 'Adm master' +'</td>';
                 break;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0bebe914fd1cc44f2dd2af501dc6065a2ec58398
         if (respuesta[i].status=='Activo'){ // Usuario activo
             tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 1 +')">Activo</a>'+'</td>';
         } else { // Usuario inactivo

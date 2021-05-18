@@ -162,11 +162,7 @@
             </tr>
             <tr>
                 <th></th>
-<<<<<<< HEAD
                 <th></th>
-=======
-                <th> <input type="date" name="f_fecha" id="f_fecha" onchange="ver_usuarios()"> </th>
->>>>>>> 0bebe914fd1cc44f2dd2af501dc6065a2ec58398
                 <th> <input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"> </th>
                 <th> <input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"> </th>
                 <th> <input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"> </th>
