@@ -27,9 +27,9 @@ function ver_permisos(){
 
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            console.log(respuesta);
+            console.log(respuesta[0].id_typeuser_fk);
 
-            switch(respuesta) {
+            switch(respuesta[0].id_typeuser_fk) {
                 case 3:
                     permissionsTag.innerHTML = `
                     <a href="crudPromociones">PROMOCIONES</a>

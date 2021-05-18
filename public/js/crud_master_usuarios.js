@@ -4,6 +4,7 @@ window.onload = function() {
     ver_usuarios();
     cargar_locales();
 }
+
 function objetoAjax() {
     var xmlhttp = false;
     try {
@@ -20,7 +21,8 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
-function ver_usuarios(){
+
+function ver_usuarios() {
     var datos = document.getElementById("datos");
     //console.log('hola')
     var token = document.getElementById("token").getAttribute("content");
@@ -53,81 +55,85 @@ function ver_usuarios(){
     }
     ajax.send(datasend);
 }
-function mostrar_datos(){
+
+function mostrar_datos() {
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results)
     document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
 
     //console.log(pag_totales)
-    //console.log(num_results)
-    //console.log(pag_actual-1)
-    var desde = ((pag_actual-1) * num_results);
-    var hasta = (desde + (num_results*1));
-    //console.log(desde)
-    //console.log(hasta)
+    console.log(num_results)
+        //console.log(pag_actual-1)
+    var desde = ((pag_actual - 1) * num_results);
+    var hasta = (desde + (num_results * 1));
+    console.log(desde)
+    console.log(hasta)
 
     var tabla = '';
     for (let i = desde; i < hasta; i++) {
-        if (i == respuesta.length){
+        if (i == respuesta.length) {
             break;
         }
         //console.log(respuesta[i])
-        tabla += '<tr>'+'<td>'+respuesta[i].id_user+'</td>';
-        var dia = respuesta[i].create_date.split(' ');
-        tabla += '<td>'+dia[0]+'</td>';
+        tabla += '<tr>' + '<input type="hidden" value=' + respuesta[i].name + '>';
+        // var dia = respuesta[i].create_date.split(' ');
+        // tabla += '<td>' + dia[0] + '</td>';
         //console.log(pepe[0])
-        tabla += '<td>'+respuesta[i].name+'</td>';
-        tabla += '<td>'+respuesta[i].lastname+'</td>';
-        tabla += '<td>'+respuesta[i].email+'</td>';
-        tabla += '<td>'+respuesta[i].gender+'</td>';
+        tabla += '<td>' + respuesta[i].name + '</td>';
+        tabla += '<td>' + respuesta[i].lastname + '</td>';
+        tabla += '<td>' + respuesta[i].email + '</td>';
+        tabla += '<td>' + respuesta[i].gender + '</td>';
         if (respuesta[i].confidentiality == 1) {
-            tabla += '<td>'+ 'Si' +'</td>';
+            tabla += '<td>' + 'Si' + '</td>';
         } else {
-            tabla += '<td>'+ 'No' +'</td>';
+            tabla += '<td>' + 'No' + '</td>';
         }
         switch (respuesta[i].id_typeuser_fk) {
             case 1:
-                tabla += '<td>'+ 'Cliente' +'</td>';
+                tabla += '<td>' + 'Cliente' + '</td>';
                 break;
             case 2:
-                tabla += '<td>'+ 'Camarero' +'</td>';
+                tabla += '<td>' + 'Camarero' + '</td>';
                 break;
             case 3:
-                tabla += '<td>'+ 'Adm establecimiento' +'</td>';
+                tabla += '<td>' + 'Adm establecimiento' + '</td>';
                 break;
             case 4:
-                tabla += '<td>'+ 'Adm grupo' +'</td>';
+                tabla += '<td>' + 'Adm grupo' + '</td>';
                 break;
             case 5:
-                tabla += '<td>'+ 'Adm master' +'</td>';
+                tabla += '<td>' + 'Adm master' + '</td>';
                 break;
         }
-        if (respuesta[i].status=='Activo'){ // Usuario activo
-            tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 1 +')">Activo</a>'+'</td>';
+        if (respuesta[i].status == 'Activo') { // Usuario activo
+            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 1 + ')"><i class="fas fa-lock-open"></i></a>' + '</td>';
         } else { // Usuario inactivo
-            tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_user + ',' + 0 +')">Inhabilitado</a>'+'</td>';
+            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 0 + ')"><i class="fas fa-lock"></i></a>' + '</td>';
         }
-        tabla += '<td> <button onclick="openUpdate('+respuesta[i].id_user+')">UPDATE</button>'+ '</td>';
-        tabla += '<td>'+'<button onclick="eliminar_usuario('+respuesta[i].id_user+')">DELETE</button>' +'</td>'+'</tr>';
+        tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_user + ')"><i class="fas fa-user-edit"></i></button>' + '</td>';
+        tabla += '<td>' + '<button onclick="eliminar_usuario(' + respuesta[i].id_user + ')"><i class="fas fa-user-slash"></i></button>' + '</td>' + '</tr>';
     }
     datos.innerHTML = tabla;
 }
-function prev(){
-    if (pag_actual > 1){
+
+function prev() {
+    if (pag_actual > 1) {
         pag_actual--;
     }
     mostrar_datos();
 }
-function next(){
+
+function next() {
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results);
-    if (pag_actual < pag_totales){
+    if (pag_actual < pag_totales) {
         pag_actual++;
     }
     mostrar_datos(pag_actual);
 }
-function registrar_usuario(){
+
+function registrar_usuario() {
     var token = document.getElementById("token").getAttribute("content");
     var nombre = document.getElementById('nombre').value;
     var apellidos = document.getElementById('apellidos').value;
@@ -160,7 +166,8 @@ function registrar_usuario(){
     }
     ajax.send(datasend);
 }
-function actualizar_usuario(){
+
+function actualizar_usuario() {
     var token = document.getElementById("token").getAttribute("content");
     var id = document.getElementById('id_user').value;
     var nombre = document.getElementById('nombrea').value;
@@ -194,9 +201,10 @@ function actualizar_usuario(){
     }
     ajax.send(datasend);
 }
-function eliminar_usuario(id_usuario){
+
+function eliminar_usuario(id_usuario) {
     console.log(id_usuario)
-    // var datos = document.getElementById("datos");
+        // var datos = document.getElementById("datos");
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'eliminar_usuario', true);
@@ -212,7 +220,8 @@ function eliminar_usuario(id_usuario){
     }
     ajax.send(datasend)
 }
-function cambiar_estado(id,act){
+
+function cambiar_estado(id, act) {
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'cambiar_estado', true);
@@ -230,7 +239,8 @@ function cambiar_estado(id,act){
     }
     ajax.send(datasend);
 }
-function ver_usuario(id_user){
+
+function ver_usuario(id_user) {
     //console.log(id_user);
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
@@ -249,7 +259,7 @@ function ver_usuario(id_user){
             document.getElementById('contrasenyaa').value = respuesta[0].psswd;
             document.getElementById('sexoa').value = respuesta[0].gender;
             document.getElementById('rola').value = respuesta[0].id_typeuser_fk;
-            if (respuesta[0].confidentiality == 1){
+            if (respuesta[0].confidentiality == 1) {
                 document.getElementById('consentimientoa').checked = true;
             } else {
                 document.getElementById('consentimientoa').checked = false;
@@ -258,7 +268,8 @@ function ver_usuario(id_user){
     }
     ajax.send(datasend);
 }
-function cargar_locales(){
+
+function cargar_locales() {
     var locales = document.getElementById("local");
 
     var token = document.getElementById("token").getAttribute("content");
@@ -273,38 +284,42 @@ function cargar_locales(){
             //console.log(respuesta)
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i].name)
-                tabla += '<option value="'+ respuesta[i].id_local + '">' + respuesta[i].name + '</option>';
+                tabla += '<option value="' + respuesta[i].id_local + '">' + respuesta[i].name + '</option>';
             }
         }
         locales.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
-function openRegister(){
+
+function openRegister() {
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
     var btn = document.getElementById("btn-register");
     btn.style.display = "none";
 }
-function closeRegister(){
+
+function closeRegister() {
     var x = document.getElementById("registrar");
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
     btn.style.display = "block";
 }
-function openUpdate(id_user){
+
+function openUpdate(id_user) {
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();
     ver_usuario(id_user);
-    //console.log(id_user)
 }
-function closeUpdate(){
+
+function closeUpdate() {
     var x = document.getElementById("actualizar");
     x.style.display = "none";
 }
-function borrar_registro(){
+
+function borrar_registro() {
     document.getElementById('nombre').value = '';
     document.getElementById('apellidos').value = '';
     document.getElementById('email').value = '';
@@ -313,10 +328,10 @@ function borrar_registro(){
     document.getElementById('rol').value = '';
     document.getElementById('consentimiento').checked = false;
 }
-function es_camarero(){
-    var type_user = document.getElementById('rol').value;
 
-    if (type_user == 2){
+function es_camarero() {
+    var type_user = document.getElementById('rol').value;
+    if (type_user == 2) {
         //console.log(type_user)
         document.getElementById('local').style.display = 'block';
     } else {
