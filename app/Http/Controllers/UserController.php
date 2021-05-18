@@ -378,6 +378,7 @@ class UserController extends Controller
         '%'.$request['status'].'%']);
         return response()->json($usuarios,200);
     }
+    
     public function ver_usuario(Request $request){
         $id_user = $request['id_user'];
         $usuarios = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
