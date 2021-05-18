@@ -63,11 +63,18 @@ Route::get('/viewGrupo', [UserController::class, 'viewGrupo']);
 //Vista admin master
 Route::get('/viewMaster', [UserController::class, 'viewMaster']);
 
-Route::get('/cruds', function() {
+Route::get('/cruds_master', function() {
     if (session('typeuser') != 5) {
         return redirect('/');
     } else {
         return view('viewAdm_homeCruds');
+    }
+});
+Route::get('/cruds_local', function() {
+    if (session('typeuser') != 3) {
+        return redirect('/');
+    } else {
+        return view('viewAdm_establecimiento');
     }
 });
 Route::get('/crudUsuarios', function() {
@@ -92,7 +99,8 @@ Route::get('/crudPromociones', [DirectionController::class, 'crudPromociones']);
 Route::get('/crudTarjetas', [DirectionController::class, 'crudTarjetas']);
 Route::get('/crudUsuarios', [DirectionController::class, 'crudUsuarios']);
 
-//CRUD USUARIOS
+// ADMIN MASTER
+// CRUD USUARIOS
 Route::post('/ver_usuarios', [UserController::class, 'ver_usuarios']);
 Route::post('/ver_usuario', [UserController::class, 'ver_usuario']);
 Route::post('/eliminar_usuario', [UserController::class, 'eliminar_usuario']);
@@ -101,7 +109,6 @@ Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']
 Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);
 Route::get('/sendSessionId', [UserController::class, 'sendSessionId']);
 Route::post('/ver_locales_u', [UserController::class, 'ver_locales_u']);
-
 // CRUD TARJETAS
 Route::post('/ver_tarjetas', [CardController::class, 'ver_tarjetas']);
 Route::post('/ver_locales_t', [CardController::class, 'ver_locales_t']);
@@ -129,6 +136,11 @@ Route::post('/actualizar_local', [LocalController::class, 'actualizar_local']);
 Route::post('/ver_companys', [CompanyController::class, 'ver_companys']);
 Route::post('/registrar_company', [CompanyController::class, 'registrar_company']);
 Route::post('/eliminar_company', [CompanyController::class, 'eliminar_company']);
+
+// ADMIN ESTABLECIMIENTO (GERENTE)
+// CRUD USUARIOS
+// CRUD TARJETAS
+// CRUD PROMOCIONES
 
 //recuperar contraseña
 Route::post('/password_reset', [UserController::class, 'password_reset']);
