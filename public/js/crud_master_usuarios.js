@@ -77,9 +77,6 @@ function mostrar_datos() {
         }
         //console.log(respuesta[i])
         tabla += '<tr>' + '<input type="hidden" value=' + respuesta[i].name + '>';
-        var dia = respuesta[i].create_date.split(' ');
-        tabla += '<td>' + dia[0] + '</td>';
-        //console.log(pepe[0])
         tabla += '<td>' + respuesta[i].name + '</td>';
         tabla += '<td>' + respuesta[i].lastname + '</td>';
         tabla += '<td>' + respuesta[i].email + '</td>';
@@ -106,6 +103,7 @@ function mostrar_datos() {
                 tabla += '<td>' + 'Adm master' + '</td>';
                 break;
         }
+        tabla += '<td>' + respuesta[i].create_date + '</td>';
         if (respuesta[i].status == 'Activo') { // Usuario activo
             tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 1 + ')"><i class="fas fa-lock-open"></i></a>' + '</td>';
         } else { // Usuario inactivo

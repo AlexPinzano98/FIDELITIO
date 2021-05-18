@@ -21,11 +21,11 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('#menu_on').click(function() {
-            $('body').toggleClass('visible_menu');
-        })
-    });
+        $(document).ready(function() {
+            $('#menu_on').click(function() {
+                $('body').toggleClass('visible_menu');
+            })
+        });
     </script>
 </head>
 
@@ -34,7 +34,7 @@
     <div id="wrapper">
         <section>
             <header id="#header">
-                <p class="text-start">{{ session('name') }}</p>
+                <p class="text-start">{{session('name')}}</p>
                 <button class="fas fa-camera" onclick="openCamara()" id="camara">
                 </button>
                 <a id="menu_on" onclick="closeModal2()">

@@ -149,7 +149,6 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Fecha</th>
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Email</th>
@@ -157,6 +156,7 @@
                         <th>Confidencialidad</th>
                         <th>Rol</th>
                         <th>Status</th>
+                        <th>Fecha</th>  
                         <th colspan="2">Acciones</th>
                     </tr>
                     <tr>
