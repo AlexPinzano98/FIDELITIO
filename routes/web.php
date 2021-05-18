@@ -63,10 +63,18 @@ Route::get('/viewGrupo', [UserController::class, 'viewGrupo']);
 Route::get('/viewMaster', [UserController::class, 'viewMaster']);
 
 Route::get('/cruds', function() {
-    return view('viewAdm_homeCruds');
+    if (session('typeuser') != 5) {
+        return redirect('/');
+    } else {
+        return view('viewAdm_homeCruds');
+    }
 });
 Route::get('/crudUsuarios', function() {
-    return view('crudUsers');
+    if (session('typeuser') != 5) {
+        return redirect('/');
+    } else {
+        return view('crudUsers');
+    }
 });
 
 // URL::forceScheme('https');
