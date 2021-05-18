@@ -10,8 +10,14 @@
 <body style="text-align: center;">
     <h1>TARJETAS</h1>
 
+    <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
+    <div>
+        <h1>Registra una nueva tarjeta</h1>
+        <button id="btn-register" onclick="openRegister()">REGISTRAR!</button>
+    </div>
+
     <!-- FORMULARIO PARA REGISTRAR UNA TARJETA -->
-    <div id="registrar" class="registrar" >
+    <div id="registrar" class="registrar" style="display: none;">
         <h1> REGISTRA UNA TARJETA</h1>
         <button onclick="closeRegister()">CANCELAR</button>
             
@@ -34,18 +40,56 @@
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
+
+    <!-- FORMULARIO PARA ACTUALIZAR UNA TARJETA -->
+    <div id="actualizar" class="actualizar" style="display: none;">
+        <h1> ACTUALIZA UNA TARJETA</h1>
+        <button onclick="closeUpdate()">CANCELAR</button>
+            
+        <div class="mb-3">
+            <select id="locala" name="rol">
+            </select>
+        </div>
+        <div class="mb-3">
+            <select id="promoa" name="promo">
+            </select>
+        </div>
+        <div class="mb-3">
+            <input name="sellosa" type="number"  id="sellosa"
+                ></input>
+        </div>
+        <div class="mb-3">
+            <input name="email" type="text"  id="emaila"
+                placeholder="Email..."></input>
+        </div>
+        <button type="submit" id="submit" class="btn btn-warning">
+            Registrar tarjeta
+        </button>
+        <div id="message">
+        </div>
+        <p id="error"> {{Session::get('message')}} </p>
+    </div>
  
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LAS TARJETAS -->
+    <p>Num de resultados</p>
+    <select id="results" name="results" onchange="mostrar_datos()">
+        <option selected value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+    </select>
     <div class="datos">
         <table>
-            <thead>
+            <thead> 
                 <tr>
                     <th>#</th>
                     <th>Nº sellos</th>
                     <th>Status</th>
                     <th>Promoción</th>
                     <th>Usuario</th>
-                    <th>Acciones</th>
+                    <th>Creación</th>
+                    <th>Finalización</th>
+                    <th>Status_card</th>
+                    <th colspan="2">Acciones</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -57,11 +101,22 @@
                          </select> </th>
                     <th> <input type="text" name="f_promo" id="f_promo" onkeyup="ver_tarjetas()"> </th>
                     <th> <input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_tarjetas()"> </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody id="datos">
             </tbody>
         </table>
+        <div>
+            <p id="total_datos"></p>
+            <p id="listado"></p>
+            <button onclick="prev()">Anterior</button>
+            <button onclick="next()">Siguiente</button>
+        </div>
     </div>
 
     <script src="js/crud_master_tarjetas.js"></script>

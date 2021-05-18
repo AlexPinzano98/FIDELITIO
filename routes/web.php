@@ -8,6 +8,7 @@ use App\Http\Controllers\GraficasController;
 use App\Http\Controllers\DirectionController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,12 +99,28 @@ Route::post('/ver_tarjetas', [CardController::class, 'ver_tarjetas']);
 Route::post('/ver_locales_t', [CardController::class, 'ver_locales_t']);
 Route::post('/ver_promos_t', [CardController::class, 'ver_promos_t']);
 Route::post('/registrar_tarjeta', [CardController::class, 'registrar_tarjeta']);
+Route::post('/eliminar_tarjeta', [CardController::class, 'eliminar_tarjeta']);
+Route::post('/cambiar_estado_t', [CardController::class, 'cambiar_estado_t']);
+Route::post('/ver_card', [CardController::class, 'ver_card']);
 // CRUD PROMOCIONES
-//Route::post('/ver_promociones', [PromotionController::class, 'ver_promociones']);
+Route::post('/ver_promos', [PromotionController::class, 'ver_promos']);
+Route::post('/eliminar_promo', [PromotionController::class, 'eliminar_promo']);
+Route::post('/cambiar_estado_p', [PromotionController::class, 'cambiar_estado_p']);
+Route::post('/ver_locales_p', [PromotionController::class, 'ver_locales_p']);
+Route::post('/registrar_promo', [PromotionController::class, 'registrar_promo']);
+Route::post('/ver_promo', [PromotionController::class, 'ver_promo']);
 // CRUD LOCALES
 Route::post('/ver_locales', [LocalController::class, 'ver_locales']);
+Route::post('/registrar_local', [LocalController::class, 'registrar_local']);
+Route::post('/eliminar_local', [LocalController::class, 'eliminar_local']);
+Route::post('/ver_companys_l', [LocalController::class, 'ver_companys_l']);
+Route::post('/ver_grupos_l', [LocalController::class, 'ver_grupos_l']);
+Route::post('/ver_local', [LocalController::class, 'ver_local']);
+Route::post('/actualizar_local', [LocalController::class, 'actualizar_local']);
 // CRUD COMPAÑIA
-Route::post('/ver_companyias', [CompanyController::class, 'ver_companyias']);
+Route::post('/ver_companys', [CompanyController::class, 'ver_companys']);
+Route::post('/registrar_company', [CompanyController::class, 'registrar_company']);
+Route::post('/eliminar_company', [CompanyController::class, 'eliminar_company']);
 
 //recuperar contraseña
 Route::post('/password_reset', [UserController::class, 'password_reset']);

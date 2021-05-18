@@ -281,17 +281,17 @@ class CardController extends Controller
     }
 
     public function ver_tarjetas(Request $request){
-        $usuarios = DB::select('SELECT tbl_card.*,tbl_promotion.name_promo,tbl_user.name,tbl_user.lastname FROM tbl_card
+        $usuarios = DB::select('SELECT tbl_card.*,tbl_promotion.name_promo,tbl_user.email FROM tbl_card
         INNER JOIN tbl_promotion
         ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
         INNER JOIN tbl_user
         ON tbl_card.id_user_fk = tbl_user.id_user
-        WHERE `stamp_now` LIKE ? AND tbl_card.`status` LIKE ? AND name_promo LIKE ? AND `name`LIKE ?
+        WHERE `stamp_now` LIKE ? AND tbl_card.`status` LIKE ? AND name_promo LIKE ? AND `email`LIKE ?
         GROUP BY tbl_card.id_card',
         ['%'.$request['sellos'],
         '%'.$request['status'].'%',
         '%'.$request['promo'].'%',
-        '%'.$request['nombre'].'%'
+        '%'.$request['email'].'%'
         ]); // Buscamos los que acaben con el numero filtrado
         // Esto nos permite si por ejemplo buscamos 1 que salgan los sellos que terminan en 1
         // Y no todos los sellos que contienen un 1
@@ -311,11 +311,14 @@ class CardController extends Controller
         $id_user = session()->get('id_user');
         $user = DB::select('SELECT * FROM `tbl_user` WHERE `email`=?',[$request['email']]);
         if (empty($user)){
-            return response()->json('El email no existe',200);
+            return response()->json('NOK. El email no existe',200);
         } else {
-            DB::select('INSERT INTO tbl_card (stamp_now,color,`status`,id_promotion_fk,id_user_fk) VALUES (?,?,?,?,?)',[
-                1, '#C70039', 'open', $request['promo'], $user[0]->id_user
+            DB::select('INSERT INTO `tbl_card` (`stamp_now`, `color`, `status`, 
+            `create_date`, `complete_date_card`, `status_card`, `id_promotion_fk`, `id_user_fk`) 
+            VALUES (?,?,?,?,?,?,?,?)',[
+                1, '#C70039', 'open', NOW(), NULL, 'Activado', $request['promo'], $user[0]->id_user
             ]);
+
             $id = DB::select('SELECT MAX(id_card) AS id_card FROM tbl_card'); // $id[0]->id_card
             DB::table('tbl_stamp')->insert(
                 ['date' => NOW(),
@@ -323,12 +326,38 @@ class CardController extends Controller
                 'id_user_fk_stamp' => $id_user] // Camarero que pone el sello
             );
 
-            return response()->json('Tarjeta creada',200);
+            return response()->json('Ok. Tarjeta creada correctamente',200);
         }
         //$alex = $user['num'];
         //print_r($user);
         // return response()->json($user,200);
+    }
 
-        
+    public function eliminar_tarjeta(Request $request){
+        $id_card = $request['id_tarjeta'];
+
+        DB::select('DELETE FROM tbl_stamp WHERE id_card_fk = ?',[$id_card]);
+        DB::select('DELETE FROM tbl_card WHERE id_card = ?',[$id_card]);
+
+        return response()->json('OK. Tarjeta eliminada correctamente',200);
+    }
+    public function cambiar_estado_t(Request $request){
+        if ($request['status'] == 1){
+            DB::select('UPDATE tbl_card SET `status`=? WHERE `id_card`=?', 
+            ['close',$request['id_card']]);
+            return response()->json('OK. Tarjeta cerrada correctamente',200);
+        } else {
+            DB::select('UPDATE tbl_card SET `status`=? WHERE `id_card`=?', 
+            ['open',$request['id_card']]);
+            return response()->json('OK. Tarjeta abierta correctamente',200);
+        }
+    }
+    public function ver_card(Request $request){
+        $id_card = $request['id_card'];
+        $card = DB::select('SELECT tbl_card.*,tbl_user.email,tbl_promotion.* FROM tbl_card 
+        INNER JOIN tbl_user ON tbl_card.id_user_fk = tbl_user.id_user
+        INNER JOIN tbl_promotion ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion 
+        WHERE id_card = ?',[$id_card]);
+        return response()->json($card,200);
     }
 }
