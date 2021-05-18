@@ -277,7 +277,7 @@ class UserController extends Controller
 
 
     public function viewCliente(){
-        if (!(session()->has('id_user'))) {
+        if (session('typeuser') != 1) {
             return redirect('/');
         } else {
             return view('viewCliente');
@@ -306,7 +306,7 @@ class UserController extends Controller
     }
 
     public function viewEstablecimiento(){
-        if (!(session()->has('id_user'))) {
+        if (session('typeuser') != 3) {
             return redirect('/');
         } else {
             return view('graficaAdminEstablecimiento');
@@ -314,7 +314,7 @@ class UserController extends Controller
     }
 
     public function viewGrupo(){
-        if (!(session()->has('id_user'))) {
+        if (session('typeuser') != 4) {
             return redirect('/');
         } else {
             return view('graficaAdminGrupo');
@@ -322,7 +322,7 @@ class UserController extends Controller
     }
 
     public function viewMaster(){
-        if (!(session()->has('id_user'))) {
+        if (session('typeuser') != 5) {
             return redirect('/');
         } else {
             return  view('viewAdm_master');
