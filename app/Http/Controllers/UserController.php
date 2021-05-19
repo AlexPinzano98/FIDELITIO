@@ -53,7 +53,8 @@ class UserController extends Controller
             //hare login ya que tengo cuenta con google o facebook
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -83,7 +84,8 @@ class UserController extends Controller
         }elseif($contador2==1){
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -115,7 +117,8 @@ class UserController extends Controller
             DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $user->id_user);
             return redirect('viewCliente');
         }
@@ -151,7 +154,8 @@ class UserController extends Controller
             //hare login ya que tengo cuenta con google o facebook
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -181,7 +185,8 @@ class UserController extends Controller
         }elseif($contador2==1){
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -213,7 +218,8 @@ class UserController extends Controller
             DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $user->id_user);
             Mail::to($email)->send(new EmergencyCallReceived($user));
             return redirect('viewCliente');
@@ -244,6 +250,7 @@ class UserController extends Controller
             $request->session()->put('name', $user->name);
             $request->session()->put('typeuser', $user->id_typeuser_fk);
             $request->session()->put('id_user', $user->id_user);
+
             switch ($user->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
                     return redirect('viewCliente');
@@ -277,7 +284,7 @@ class UserController extends Controller
 
 
     public function viewCliente(){
-        if (session('typeuser') != 1) {
+        if (session('typeuser') != 1 || !session()->has('id_user')) {
             return redirect('/');
         } else {
             return view('viewCliente');
@@ -306,7 +313,7 @@ class UserController extends Controller
     }
 
     public function viewEstablecimiento(){
-        if (session('typeuser') != 3) {
+        if (session('typeuser') != 3 || !session()->has('id_user')) {
             return redirect('/');
         } else {
             return view('graficaAdminEstablecimiento');
@@ -314,7 +321,7 @@ class UserController extends Controller
     }
 
     public function viewGrupo(){
-        if (session('typeuser') != 4) {
+        if (session('typeuser') != 4 || !session()->has('id_user')) {
             return redirect('/');
         } else {
             return view('graficaAdminGrupo');
