@@ -283,7 +283,7 @@ function openUpdate(id_user){
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();
-    ver_usuario(id_user);
+    ver_local(id_user);
     //console.log(id_user)
 }
 function closeUpdate(){
