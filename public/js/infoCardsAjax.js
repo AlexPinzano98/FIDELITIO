@@ -61,7 +61,7 @@ function showCard(recojoData) {
                             <div class="swiper-slide">
                             <div class="card">
                             <div class="card-body">
-                                <img src="img/cafe.png" class="card-img-top" alt="perfil">
+                                <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
                             </div>
                             <div class="card-stamp">
                             <h5 class="card-title">${response[i].name_promo}</h5>
@@ -71,13 +71,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             tabla0 += "</div></div></div>"
@@ -91,7 +91,7 @@ function showCard(recojoData) {
                         if (response[i].status == "open") {
                             tabla0 += `<div class="card">
                         <div class="card-body">
-                            <img src="img/cafe.png" class="card-img-top" alt="perfil">
+                            <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
                         </div>
                         <div class="card-stamp">
                             <h5 class="card-title">${response[i].name_promo}</h5>
@@ -101,13 +101,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             if (response[i].stamp_now == response[i].stamp_max) {
@@ -125,7 +125,7 @@ function showCard(recojoData) {
                             tabla0 += `<div class="cardclose">
                             <img src="img/complete.png" class="completeIMG">
                         <div class="card-body">
-                            <img src="img/cafe.png" class="card-img-top" alt="perfil">
+                            <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
                         </div>
                         <div class="card-stamp">
                             <h5 class="card-title">${response[i].name_promo}</h5>
@@ -135,13 +135,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             tabla0 += "</div></div>";
@@ -168,7 +168,7 @@ function showCard(recojoData) {
       <div class="swiper-slide">
             <div class="card">
                 <div class="card-body">
-                    <img src="img/cafe.png" class="card-img-top" alt="perfil">
+                    <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
                 </div>
                 <div class="card-stamp">
                     <h5 class="card-title">${cardLocal[i].name_promo}</h5>
@@ -178,13 +178,13 @@ function showCard(recojoData) {
                     <div class="card-stamp_grid">`;
 
             for (var x = 0; x < cardLocal[i].stamp_now; x++) {
-                tabla1 += `<img src="img/onstamp.svg" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/iconos/`+ response[i].image +`" class="img-thumbnail" alt="sello">`;
             }
 
             for (
                 var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++
             ) {
-                tabla1 += `<img src="img/offstamp.svg" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
             }
             tabla1 += "</div>";
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
@@ -362,7 +362,7 @@ function generar_qr(id_card, id_promotion) {
 //                     <div class="swiper-slide">
 //                     <div class="card">
 //                         <div class="card-body">
-//                             <img src="img/cafe.png" class="card-img-top" alt="perfil">
+//                             <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
 //                         </div>
 //                         <div class="card-stamp">
 //                             <h5 class="card-title">Descripción</h5>
