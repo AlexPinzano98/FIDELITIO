@@ -88,9 +88,18 @@ Route::get('/cruds', [DirectionController::class, 'cruds']);
 //Redirecciones a los diferentes tipos de CRUD (admin master)
 Route::get('/crudCompany', [DirectionController::class, 'crudCompany']);
 Route::get('/crudLocales', [DirectionController::class, 'crudLocales']);
+Route::get('/crudLocales_Grupo', [DirectionController::class, 'crudLocales_Grupo']);
 Route::get('/crudPromociones', [DirectionController::class, 'crudPromociones']);
+Route::get('/crudPromociones_Grupo', [DirectionController::class, 'crudPromociones_Grupo']);
+Route::get('/crudPromociones_Local', [DirectionController::class, 'crudPromociones_Local']);
 Route::get('/crudTarjetas', [DirectionController::class, 'crudTarjetas']);
+Route::get('/crudTarjetas_Grupo', [DirectionController::class, 'crudTarjetas_Grupo']);
+Route::get('/crudTarjetas_Local', [DirectionController::class, 'crudTarjetas_Local']);
 Route::get('/crudUsuarios', [DirectionController::class, 'crudUsuarios']);
+Route::get('/crudUsuarios_Grupo', [DirectionController::class, 'crudUsuarios_Grupo']);
+Route::get('/crudUsuarios_Local', [DirectionController::class, 'crudUsuarios_Local']);
+Route::get('/viewAdm_LocalesCruds', [DirectionController::class, 'viewAdm_LocalesCruds']);
+Route::get('/viewAdm_GrupoCruds', [DirectionController::class, 'viewAdm_GrupoCruds']);
 
 //CRUD USUARIOS
 Route::post('/ver_usuarios', [UserController::class, 'ver_usuarios']);

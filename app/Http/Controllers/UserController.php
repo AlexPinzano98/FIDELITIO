@@ -66,15 +66,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -96,15 +96,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -164,15 +164,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -194,15 +194,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -255,15 +255,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -378,7 +378,7 @@ class UserController extends Controller
         '%'.$request['status'].'%']);
         return response()->json($usuarios,200);
     }
-    
+
     public function ver_usuario(Request $request){
         $id_user = $request['id_user'];
         $usuarios = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
@@ -396,7 +396,7 @@ class UserController extends Controller
         // ? Adm grupo ->
         // ? Adm master ->
 
-        //Eliminar sellos 
+        //Eliminar sellos
         // DELETE FROM `tbl_stamp` WHERE id_user_fk_stamp = 2
         // DELETE FROM `tbl_card` WHERE id_user_fk = 2
         // DELETE FROM `tbl_promotion` WHERE id_user_fk = 2
@@ -466,9 +466,9 @@ class UserController extends Controller
         return response()->json($locales,200);
     }
 
-    public function sendSessionId(){
-        $id_user = session()->get('id_user');
-        $id_type = DB::select('SELECT tbl_user.id_typeuser_fk FROM tbl_user WHERE tbl_user.id_user= ?',[$id_user]);
-        return response()->json($id_type);
-    }
+    // public function sendSessionId(){
+    //     $id_user = session()->get('id_user');
+    //     $id_type = DB::select('SELECT tbl_user.id_typeuser_fk FROM tbl_user WHERE tbl_user.id_user= ?',[$id_user]);
+    //     return response()->json($id_type);
+    // }
 }
