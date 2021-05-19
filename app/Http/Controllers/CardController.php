@@ -225,7 +225,7 @@ class CardController extends Controller
     public function verLocales() {
         try { 
             $id_user = session()->get('id_user');
-            $locales = DB::select('SELECT DISTINCT tbl_local.id_local, tbl_local.name FROM tbl_local
+            $locales = DB::select('SELECT DISTINCT tbl_local.id_local, tbl_local.name, tbl_local.image FROM tbl_local
             INNER JOIN tbl_promotion
             ON tbl_local.id_local = tbl_promotion.id_local_fk
             INNER JOIN tbl_card

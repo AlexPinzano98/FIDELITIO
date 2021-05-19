@@ -248,7 +248,7 @@ function verLocales() {
                 tabla2 += `
                 <div class="item">
                 <div>
-                    <img src="img/imgPerfilNull.png" alt="perfilRestaurant">
+                    <img src="img/restaurantes/` + response[i].image + `" alt="perfilRestaurant">
                 </div>
                 <div>
                     <h5>${response[i].name}</h5>
