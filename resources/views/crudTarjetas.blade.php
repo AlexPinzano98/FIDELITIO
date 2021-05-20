@@ -19,19 +19,15 @@
     <!-- FORMULARIO PARA REGISTRAR UNA TARJETA -->
     <div id="registrar" class="registrar" style="display: none;">
         <h1> REGISTRA UNA TARJETA</h1>
-        <button onclick="closeRegister()">CANCELAR</button>
-            
+        <button onclick="closeRegister()">CANCELAR</button>  
         <div class="mb-3">
-            <select id="local" name="rol" onchange="start_promocion()">
-            </select>
+            <select id="local" name="rol" onchange="start_promocion()"></select>
         </div>
         <div class="mb-3">
-            <select id="promo" name="promo">
-            </select>
+            <select id="promo" name="promo"></select>
         </div>
         <div class="mb-3">
-            <input name="email" type="text"  id="email"
-                placeholder="Email..."></input>
+            <input name="email" type="text"  id="email" placeholder="Email..."></input>
         </div>
         <button type="submit" id="submit" class="btn btn-warning" onclick="registrar_tarjeta()">
             Registrar tarjeta
@@ -45,22 +41,17 @@
     <div id="actualizar" class="actualizar" style="display: none;">
         <h1> ACTUALIZA UNA TARJETA</h1>
         <button onclick="closeUpdate()">CANCELAR</button>
-            
         <div class="mb-3">
-            <select id="locala" name="rol">
-            </select>
+            <select id="locala" name="rol"></select>
         </div>
         <div class="mb-3">
-            <select id="promoa" name="promo">
-            </select>
+            <select id="promoa" name="promo"></select>
         </div>
         <div class="mb-3">
-            <input name="sellosa" type="number"  id="sellosa"
-                ></input>
+            <input name="sellosa" type="number"  id="sellosa"></input>
         </div>
         <div class="mb-3">
-            <input name="email" type="text"  id="emaila"
-                placeholder="Email..."></input>
+            <input name="email" type="text"  id="emaila" placeholder="Email..."></input>
         </div>
         <button type="submit" id="submit" class="btn btn-warning">
             Registrar tarjeta

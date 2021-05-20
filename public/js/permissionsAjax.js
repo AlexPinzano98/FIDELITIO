@@ -49,14 +49,10 @@ function ver_permisos(){
                     <a href="crudPromociones">PROMOCIONES</a>
                     <a href="crudTarjetas">TARJETAS</a>
                     <a href="crudUsuarios">USUARIOS</a>`;
-              }
-
+            }
         }
-
     }
-
     ajax.send();
-
 }
 
 

@@ -61,80 +61,8 @@ header {
     z-index: 2;
 }
 
-.text-start {
-    padding: 2.5%;
-    width: 45%;
-    float: left;
-    color: white;
-    font-size: 130%;
-}
 
-#camara {
-    background-color: transparent;
-    border: none;
-    font-size: 230%;
-    width: 10%;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-}
-
-#menu_on {
-    width: 10%;
-    height: 20px;
-    position: relative;
-    z-index: 2;
-    float: right;
-    margin-top: 2%;
-    margin-right: 3%;
-}
-
-#menu_on:hover {
-    cursor: pointer;
-}
-
-#menu_on span {
-    width: 100%;
-    height: 4px;
-    border-radius: 4px;
-    display: block;
-    position: absolute;
-    background: #fff;
-    transition: all 0.75s ease;
-    transform-origin: 0px 100%;
-}
-
-#menu_on span:nth-child(2) {
-    top: calc(50% - 2px);
-}
-
-#menu_on span:nth-child(3) {
-    bottom: 0;
-}
-
-.visible_menu span:nth-child(1) {
-    transform: rotate(45deg) translate(-1px, 1px);
-}
-
-.visible_menu span:nth-child(2) {
-    opacity: 0;
-}
-
-.visible_menu span:nth-child(3) {
-    transform: rotate(-45deg) translate(3px, -1px);
-}
-
-#content {
-    padding-top: 0%;
-    transition: all 0.75s ease;
-    z-index: 0;
-}
-
-.visible_menu #content {
-    transform: translateX(260px);
-}
-
-#home {
+/* #home {
     margin-top: 22%;
     margin-left: 35%;
     margin-bottom: 5%;
@@ -145,15 +73,50 @@ header {
     text-align: center;
     cursor: pointer;
     float: left;
-}
+} */
 
 #list {
-    margin-top: 22%;
-    color: #58D68D;
     font-size: 250%;
-    width: 10%;
+    width: 15%;
     text-align: center;
     cursor: pointer;
+    float: left;
+    margin-top: 1%;
+    margin-right: 30%;
+}
+
+#camara {
+    width: 15%;
+    color: white !important;
+    cursor: pointer;
+    float: left;
+    margin-right: 27.5%;
+}
+
+#menu_on {
+    float: left;
+    width: 10%;
+    color: white;
+    margin-top: 1%;
+}
+
+#menu_on:hover {
+    cursor: pointer;
+}
+
+.far {
+    font-size: 270%;
+    color: white;
+}
+
+#content {
+    padding-top: 25%;
+    transition: all 0.75s ease;
+    z-index: 0;
+}
+
+.visible_menu #content {
+    transform: translateX(260px);
 }
 
 nav {
@@ -163,7 +126,7 @@ nav {
     left: 100%;
     width: 100%;
     z-index: 1;
-    padding: 25% 8%;
+    padding: 15% 8%;
     padding-bottom: 5%;
     background: #82E0AA;
     opacity: 1;
@@ -177,7 +140,16 @@ nav {
 }
 
 .profile {
-    padding: 5%;
+    padding: 20% 10% 4% 0%;
+    border-bottom: 2px solid white;
+}
+
+#link {
+    height: 20%;
+    font-size: 150%;
+    margin-left: 12%;
+    text-decoration: none;
+    color: white;
 }
 
 .fas {
@@ -190,22 +162,16 @@ nav {
     cursor: pointer;
 }
 
-.perfil,
-.noche {
-    font-size: 160%;
-    display: block;
-    text-decoration: none;
-    padding-left: 24%;
-    padding-top: 3%;
-    padding-bottom: 6%;
-    color: white;
-    border-bottom: 2px solid white;
+#icono {
+    float: left;
+    padding-left: 4%;
+    margin-top: -2%;
     transition: all ease 0.25s;
 }
 
-nav form:hover {
-    color: rgba(255, 255, 255, 1);
-    border-bottom-color: rgba(255, 255, 255, 0.4);
+nav div:hover {
+    /* background-color: rgb(173, 169, 169); */
+    border-bottom: 2px solid rgb(54, 141, 54) !important;
 }
 
 .cerrar {
@@ -216,19 +182,27 @@ nav form:hover {
     transition: all ease 0.25s;
 }
 
+#cerSes {
+    margin-top: 20%;
+    padding: 1%;
+    border: 2px solid rgb(54, 141, 54);
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 15%;
+}
+
 #cerrar {
     background-color: transparent;
     color: white;
-    padding: 3%;
-    margin-left: 10%;
     width: 20%;
+    margin-left: 5%;
 }
 
 #sesion {
     cursor: pointer;
     position: absolute;
-    margin-top: 3.5%;
-    width: 50%;
+    margin-top: 1%;
+    width: 40%;
     background-color: transparent;
     color: white;
     text-align: left;
@@ -388,83 +362,91 @@ nav form:hover {
 }
 
 @media (min-width: 440px) {
-    .modal {
-        top: 8%;
-    }
     .modal-content {
-        margin: 15% auto;
-        width: 65%;
+        margin: 10% auto;
+        width: 60%;
     }
     .fas {
         margin-top: 1%;
-        font-size: 275%;
+        font-size: 200%;
     }
     header {
         padding: 2%;
     }
-    .text-start {
-        font-size: 200%;
-        padding-top: 2%;
+    /* #home {
+    margin-top: 22%;
+    margin-left: 35%;
+    margin-bottom: 5%;
+    margin-right: 10%;
+    color: #58D68D;
+    font-size: 250%;
+    width: 10%;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+} */
+    #list {
+        font-size: 280%;
+        margin-top: 0.75%;
     }
     #camara {
-        font-size: 375%;
+        width: 7%;
+        margin-right: 32.5%;
     }
     #menu_on {
-        width: 7%;
-        height: 25px;
-        margin-top: 2.75%;
+        width: 10%;
+        color: white;
+        margin-top: 0.75%;
     }
-    #menu_on span {
-        width: 100%;
-        height: 6px;
-    }
-    #menu_on span:nth-child(2) {
-        top: calc(50% - 10.5%);
-    }
-    .visible_menu span:nth-child(1) {
-        transform: rotate(45deg) translate(-2px, 0px);
-    }
-    .visible_menu span:nth-child(3) {
-        transform: rotate(-45deg) translate(3px, 0px);
+    .far {
+        font-size: 300%;
+        color: white;
     }
     #content {
-        padding-top: 0%;
+        padding-top: 12%;
     }
     .visible_menu #content {
         transform: translateX(0px);
     }
-    #home {
-        margin-top: 14%;
-        margin-bottom: 3%;
-        font-size: 375%;
-    }
-    #list {
-        margin-top: 14%;
-        font-size: 375%;
-    }
     nav {
         /* position: static; */
         padding: 12% 5%;
-        width: 75%;
-        margin-left: 25%;
+        width: 50%;
+        margin-left: 50%;
     }
-    nav a {
-        padding-left: 20%;
+    .profile {
+        margin-left: 5%;
+        width: 90%;
+        padding: 12% 10% 4% 0%;
     }
-    nav form {
-        margin-top: 20%;
+    #link {
+        height: 20%;
+        font-size: 125%;
+        margin-left: 10%;
+        text-decoration: none;
+        color: white;
+    }
+    #cerSes {
+        margin-top: 15%;
+        width: 60%;
+        margin-left: 20%;
     }
     #cerrar {
-        margin-left: 20%;
+        background-color: transparent;
+        color: white;
+        padding: 3%;
         width: 20%;
+        margin-left: 7%;
     }
     #sesion {
-        margin-top: 4.4%;
+        margin-top: 3%;
         width: 40%;
+        font-size: 125%;
+        margin-left: 1%;
     }
     #checkboxFiltro {
         padding: 1%;
-        margin: 2% 0% 0% 35%;
+        margin: 0% 0% 2% 35%;
         font-size: 150%;
         width: 30%;
         padding-left: 6%;
@@ -478,74 +460,101 @@ nav form:hover {
 }
 
 @media (min-width: 1024px) {
+    .modal {
+        top: 1%;
+    }
+    .modal-content {
+        margin: 8.5% auto;
+        width: 50%;
+    }
     .fas {
         margin-top: 1%;
-        font-size: 275%;
+        font-size: 260%;
     }
     header {
-        padding: 0%;
+        padding: 1%;
     }
-    .text-start {
-        font-size: 200%;
-        padding-top: 2%;
+    /* #home {
+    margin-top: 22%;
+    margin-left: 35%;
+    margin-bottom: 5%;
+    margin-right: 10%;
+    color: #58D68D;
+    font-size: 250%;
+    width: 10%;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+} */
+    #list {
+        width: 5%;
+        font-size: 350%;
+        margin-top: 0.5%;
+        margin-left: 5%;
+        margin-right: 37.5%;
     }
     #camara {
-        margin-top: 1.5%;
-        font-size: 375%;
+        width: 5%;
+        margin-right: 37.5%;
     }
     #menu_on {
         width: 4%;
-        height: 25px;
-        margin-top: 2.5%;
-        margin-right: 2.75%;
+        margin-top: 0.5%;
     }
-    #menu_on span {
-        width: 100%;
-        height: 6px;
-    }
-    #menu_on span:nth-child(2) {
-        top: calc(50% - 3px);
+    .far {
+        font-size: 370%;
+        color: white;
     }
     #content {
-        padding-top: 0%;
+        padding-top: 8%;
     }
     .visible_menu #content {
         transform: translateX(0px);
     }
-    #home {
-        margin-top: 7.3%;
-        margin-bottom: 0.9%;
-        font-size: 375%;
-    }
-    #list {
-        margin-top: 7.3%;
-        font-size: 375%;
-    }
     nav {
         /* position: static; */
-        padding: 7% 5%;
-        width: 50%;
-        margin-left: 50%;
+        padding: 6% 5%;
     }
-    nav form {
-        margin-top: 30%;
+    .profile {
+        padding: 10% 10% 4% 0%;
+    }
+    #link {
+        height: 20%;
+        font-size: 160%;
+        margin-left: 8%;
+        text-decoration: none;
+        color: white;
+    }
+    .cerrar {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 50%;
+        border-bottom: 2px solid white;
+        transition: all ease 0.25s;
+    }
+    #cerSes {
+        margin-top: 5%;
+        padding: 0%;
+        width: 45%;
+        margin-left: 27.5%;
     }
     #cerrar {
-        margin-left: 15%;
+        background-color: transparent;
+        color: white;
         width: 20%;
+        margin-left: 5%;
     }
     #sesion {
-        font-size: 200%;
-        margin-top: 3.5%;
+        margin-top: 2.5%;
         width: 40%;
+        font-size: 160%;
+        border: none;
     }
-    nav a:hover {
-        color: rgba(255, 255, 255, 1);
-        border-bottom-color: rgba(255, 255, 255, 0.4);
-    }
-    nav form:hover {
-        color: rgba(255, 255, 255, 1);
-        border-bottom-color: rgba(255, 255, 255, 0.4);
+    #icono {
+        float: left;
+        padding-left: 4%;
+        margin-top: -2%;
+        transition: all ease 0.25s;
     }
     #checkboxFiltro {
         padding: 0.5%;

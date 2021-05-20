@@ -9,13 +9,13 @@
 <body>
 
     <div id="permissions">
-        <!-- <a href="{{ url('/crudCompany') }}">COMPAÑIAS</a>
+        <a href="{{ url('/crudCompany') }}">COMPAÑIAS</a>
         <a href="{{ url('/crudLocales') }}">LOCALES</a>
         <a href="{{ url('/crudPromociones') }}">PROMOCIONES</a>
         <a href="{{ url('/crudTarjetas') }}">TARJETAS</a>
-        <a href="{{ url('/crudUsuarios') }}">USUARIOS</a> -->
+        <a href="{{ url('/crudUsuarios') }}">USUARIOS</a>
     </div>
 
-    <script src="js/permissionsAjax.js"></script>
+    <!-- <script src="js/permissionsAjax.js"></script> -->
 </body>
 </html>

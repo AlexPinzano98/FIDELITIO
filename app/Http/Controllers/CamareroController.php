@@ -15,7 +15,7 @@ class CamareroController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function viewCamarero(){
-        if (session('typeuser') != 2) {
+        if (session('typeuser') != 2 || !session()->has('id_user')) {
             return redirect('/');
         } else {
             return view('viewCamarero');
@@ -49,7 +49,7 @@ class CamareroController extends Controller
         // echo "VALIDACIÓN DEL QR <br>";
 
         //return response()->json($id_usuari, 200);
-        
+
         // Recibimos los datos del QR
 
         // Buscamos el id_card de la tbl_card
