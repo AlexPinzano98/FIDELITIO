@@ -2,8 +2,9 @@
     color: #58D68D;
 } */
 
-#listLocales #listLocal {
-    width: 92%;
+#listLocales {
+    padding-top: 25%;
+    width: 90%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -11,24 +12,34 @@
 }
 
 #listLocales .item {
-    margin-top: 20%;
     display: flex;
     align-items: center;
     margin-bottom: 5%;
     box-shadow: 0px 2px 5px #ccc;
 }
 
-#listLocales img {
-    max-width: 100%;
+#tmI {
+    /* background-color: green; */
+    width: 50%;
 }
 
-#listLocales .item,
+#tmT {
+    /* background-color: blue; */
+    width: 50%;
+}
+
+#tmF {
+    background-color: blue;
+    width: 50%;
+}
+
 #listLocales img {
     border-radius: 8px;
+    width: 100%;
 }
 
 #listLocales .play {
-    width: 10%;
+    width: 5%;
     margin: auto;
     padding-right: 1.5%;
 }

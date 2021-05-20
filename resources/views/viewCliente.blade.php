@@ -38,8 +38,7 @@
                     <button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
                     </button>
                 </form>
-                    <img src="img/qr-code.png" onclick="openCamara()" id="camara">
-                </button>
+                <img src="img/qr-code.png" onclick="openCamara()" id="camara">
                 <!-- <a id="menu_on" onclick="closeModal2()"> -->
                     <div id="menu_on" onclick="closeModal2()">
                         <i class="far fa-user-circle" style="float: left;"></i>
