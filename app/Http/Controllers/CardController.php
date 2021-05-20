@@ -17,6 +17,8 @@ class CardController extends Controller
             ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
             INNER JOIN tbl_local
             ON tbl_promotion.id_local_fk = tbl_local.id_local
+            INNER JOIN tbl_images
+            ON tbl_promotion.id_image_fk_promo = tbl_images.id_image
             GROUP BY tbl_card.id_card
             HAVING tbl_card.id_user_fk = ?
             AND tbl_promotion.status_promo = "enable"
@@ -223,7 +225,7 @@ class CardController extends Controller
     public function verLocales() {
         try { 
             $id_user = session()->get('id_user');
-            $locales = DB::select('SELECT DISTINCT tbl_local.id_local, tbl_local.name FROM tbl_local
+            $locales = DB::select('SELECT DISTINCT tbl_local.id_local, tbl_local.name, tbl_local.image FROM tbl_local
             INNER JOIN tbl_promotion
             ON tbl_local.id_local = tbl_promotion.id_local_fk
             INNER JOIN tbl_card
@@ -281,11 +283,13 @@ class CardController extends Controller
     }
 
     public function ver_tarjetas(Request $request){
-        $usuarios = DB::select('SELECT tbl_card.*,tbl_promotion.name_promo,tbl_user.email FROM tbl_card
+        $usuarios = DB::select('SELECT tbl_card.*,tbl_promotion.name_promo,tbl_user.email,tbl_images.* FROM tbl_card
         INNER JOIN tbl_promotion
         ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
         INNER JOIN tbl_user
         ON tbl_card.id_user_fk = tbl_user.id_user
+        INNER JOIN tbl_images
+        ON tbl_promotion.id_image_fk_promo = tbl_images.id_image
         WHERE `stamp_now` LIKE ? AND tbl_card.`status` LIKE ? AND name_promo LIKE ? AND `email`LIKE ?
         GROUP BY tbl_card.id_card',
         ['%'.$request['sellos'],

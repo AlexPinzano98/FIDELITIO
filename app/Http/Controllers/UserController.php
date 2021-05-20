@@ -53,7 +53,8 @@ class UserController extends Controller
             //hare login ya que tengo cuenta con google o facebook
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -66,15 +67,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -83,7 +84,8 @@ class UserController extends Controller
         }elseif($contador2==1){
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -96,15 +98,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -115,7 +117,8 @@ class UserController extends Controller
             DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $user->id_user);
             return redirect('viewCliente');
         }
@@ -151,7 +154,8 @@ class UserController extends Controller
             //hare login ya que tengo cuenta con google o facebook
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -164,15 +168,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -181,7 +185,8 @@ class UserController extends Controller
         }elseif($contador2==1){
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -194,15 +199,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -213,7 +218,8 @@ class UserController extends Controller
             DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
-            session()->put('typeuser', '1');
+            // session()->put('typeuser', '1');
+            $request->session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $user->id_user);
             Mail::to($email)->send(new EmergencyCallReceived($user));
             return redirect('viewCliente');
@@ -244,6 +250,7 @@ class UserController extends Controller
             $request->session()->put('name', $user->name);
             $request->session()->put('typeuser', $user->id_typeuser_fk);
             $request->session()->put('id_user', $user->id_user);
+
             switch ($user->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
                     return redirect('viewCliente');
@@ -255,15 +262,15 @@ class UserController extends Controller
                     break;
                 case '3':
                     // echo "ADM establecimiento";
-                    return redirect('viewEstablecimiento');
+                    return redirect('viewAdm_LocalesCruds');
                     break;
                 case '4':
                     // echo "ADM grupo";
-                    return redirect('viewGrupo');
+                    return redirect('viewAdm_GrupoCruds');
                     break;
                 case '5':
                     //echo "ADM master";
-                    return redirect('viewMaster');
+                    return redirect('cruds');
                     break;
                 default:
                     # code...
@@ -277,7 +284,7 @@ class UserController extends Controller
 
 
     public function viewCliente(){
-        if (session('typeuser') != 1) {
+        if (session('typeuser') != 1 || !session()->has('id_user')) {
             return redirect('/');
         } else {
             return view('viewCliente');
@@ -306,7 +313,7 @@ class UserController extends Controller
     }
 
     public function viewEstablecimiento(){
-        if (session('typeuser') != 3) {
+        if (session('typeuser') != 3 || !session()->has('id_user')) {
             return redirect('/');
         } else {
             return view('graficaAdminEstablecimiento');
@@ -314,7 +321,7 @@ class UserController extends Controller
     }
 
     public function viewGrupo(){
-        if (session('typeuser') != 4) {
+        if (session('typeuser') != 4 || !session()->has('id_user')) {
             return redirect('/');
         } else {
             return view('graficaAdminGrupo');
@@ -378,7 +385,7 @@ class UserController extends Controller
         '%'.$request['status'].'%']);
         return response()->json($usuarios,200);
     }
-    
+
     public function ver_usuario(Request $request){
         $id_user = $request['id_user'];
         $usuarios = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
@@ -396,7 +403,7 @@ class UserController extends Controller
         // ? Adm grupo ->
         // ? Adm master ->
 
-        //Eliminar sellos 
+        //Eliminar sellos
         // DELETE FROM `tbl_stamp` WHERE id_user_fk_stamp = 2
         // DELETE FROM `tbl_card` WHERE id_user_fk = 2
         // DELETE FROM `tbl_promotion` WHERE id_user_fk = 2
@@ -466,9 +473,9 @@ class UserController extends Controller
         return response()->json($locales,200);
     }
 
-    public function sendSessionId(){
-        $id_user = session()->get('id_user');
-        $id_type = DB::select('SELECT tbl_user.id_typeuser_fk FROM tbl_user WHERE tbl_user.id_user= ?',[$id_user]);
-        return response()->json($id_type);
-    }
+    // public function sendSessionId(){
+    //     $id_user = session()->get('id_user');
+    //     $id_type = DB::select('SELECT tbl_user.id_typeuser_fk FROM tbl_user WHERE tbl_user.id_user= ?',[$id_user]);
+    //     return response()->json($id_type);
+    // }
 }
