@@ -11,6 +11,7 @@
 }
 
 #listLocales .item {
+    margin-top: 20%;
     display: flex;
     align-items: center;
     margin-bottom: 5%;
