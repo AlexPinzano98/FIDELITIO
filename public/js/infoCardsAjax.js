@@ -72,7 +72,7 @@ function showCard(recojoData) {
                             <div class="swiper-slide">
                             <div class="card">
                             <div class="card-body">
-                                <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
+                                <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
                             </div>
                             <div class="card-stamp">
                             <h5 class="card-title">${response[i].name_promo}</h5>
@@ -82,13 +82,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="img/iconos/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/` + response[i].on + `" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             tabla0 += "</div></div></div>"
@@ -99,10 +99,10 @@ function showCard(recojoData) {
                     for (let i = 0; i < response.length; i++) {
                         tabla0 += `
                     <div class="swiper-slide">`;
-                        if (response[i].status == "open") {
+                        if ((response[i].status == "open") && (response[i].status_card == "Activado")) {
                             tabla0 += `<div class="card">
                         <div class="card-body">
-                            <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
+                            <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
                         </div>
                         <div class="card-stamp">
                             <h5 class="card-title">${response[i].name_promo}</h5>
@@ -112,13 +112,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="img/iconos/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/` + response[i].on + `" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             if (response[i].stamp_now == response[i].stamp_max) {
@@ -132,13 +132,13 @@ function showCard(recojoData) {
                                 tabla0 += "</div>";
                             }
                             tabla0 += "</div></div>";
-                        } else if (response[i].status == "close") {
+                        } else if ((response[i].status == "close") && (response[i].status_card == "Canjeado")) {
                             tabla0 += `<div class="cardclose">
                             <img src="img/complete.png" class="completeIMG">
-                        <div class="card-body">
-                            <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
-                        </div>
-                        <div class="card-stamp">
+                            <div class="card-body">
+                                <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
+                            </div>
+                            <div class="card-stamp">
                             <h5 class="card-title">${response[i].name_promo}</h5>
                             <h5 class="card-title">${response[i].name}</h5>
                             <p class="card-text">Premio: ${response[i].reward}</p>
@@ -146,13 +146,36 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="img/iconos/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/` + response[i].on + `" class="img-thumbnail" alt="sello">`;
+                            }
+                            for (
+                                var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
+                            ) {
+                                tabla0 += `<img src="img/iconos/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
+                            }
+                            tabla0 += "</div>";
+                            tabla0 += "</div></div>";
+                        } else if ((response[i].status == "close") && (response[i].status_card == "Caducado")) {
+                            tabla0 += `<div class="cardclose">
+                            <img src="img/expired.png" class="completeIMG">
+                            <div class="card-body">
+                                <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
+                            </div>
+                            <div class="card-stamp">
+                                <h5 class="card-title">${response[i].name_promo}</h5>
+                                <h5 class="card-title">${response[i].name}</h5>
+                                <p class="card-text">Premio: ${response[i].reward}</p>
+                                <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
+                                <div class="card-stamp_grid">`;
+
+                            for (var x = 0; x < response[i].stamp_now; x++) {
+                                tabla0 += `<img src="img/iconos/` + response[i].on + `" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="img/iconos/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             tabla0 += "</div></div>";
@@ -179,7 +202,7 @@ function showCard(recojoData) {
       <div class="swiper-slide">
             <div class="card">
                 <div class="card-body">
-                    <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
+                    <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
                 </div>
                 <div class="card-stamp">
                     <h5 class="card-title">${cardLocal[i].name_promo}</h5>
@@ -189,13 +212,13 @@ function showCard(recojoData) {
                     <div class="card-stamp_grid">`;
 
             for (var x = 0; x < cardLocal[i].stamp_now; x++) {
-                tabla1 += `<img src="img/iconos/`+ response[i].image +`" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/iconos/` + response[i].image + `" class="img-thumbnail" alt="sello">`;
             }
 
             for (
                 var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++
             ) {
-                tabla1 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/iconos/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
             }
             tabla1 += "</div>";
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
@@ -266,10 +289,10 @@ function verLocales() {
             for (let i = 0; i < response.length; i++) {
                 tabla2 += `
                 <div class="item">
-                <div>
-                    <img src="img/restaurantes/` + response[i].image + `" style="width:300px;" alt="perfilRestaurant">
+                <div id="tmI">
+                    <img src="img/restaurantes/` + response[i].image + `" alt="perfilRestaurant">
                 </div>
-                <div>
+                <div id="tmT">
                     <h5>${response[i].name}</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto deserunt adipisci natus
                     </p>
