@@ -1,7 +1,10 @@
+
 window.onload = function() {
+    document.getElementsByClassName('fas')[1].style.display="none";
     showCard();
     modal_qr = document.getElementById("modal");
 };
+//variables globales
 mySwiper = "";
 listado = 0;
 cartas = 0;
@@ -53,6 +56,14 @@ function showCard(recojoData) {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var response = JSON.parse(ajax.responseText);
                 console.log(response);
+
+                console.log(document.getElementsByClassName('fas')[1]);
+                document.getElementsByClassName('fas')[0].style.display="block";
+                document.getElementsByClassName('fas')[1].style.display="none";
+
+                // document.getElementById('views').innerHTML = `<button  class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+                // </button>`;
+
                 tabla0 = "";
                 if (filtroActivo == true) {
                     for (let i = 0; i < response.length; i++) {
@@ -243,12 +254,20 @@ function verLocales() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var response = JSON.parse(ajax.responseText);
             console.log(response);
+
+            console.log(document.getElementsByClassName('fas')[1]);
+                document.getElementsByClassName('fas')[0].style.display="none";
+                document.getElementsByClassName('fas')[1].style.display="block";
+
+            // document.getElementById('views').innerHTML = `<button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
+            // </button>`;
+
             tabla2 = "";
             for (let i = 0; i < response.length; i++) {
                 tabla2 += `
                 <div class="item">
                 <div>
-                    <img src="img/restaurantes/` + response[i].image + `" alt="perfilRestaurant">
+                    <img src="img/restaurantes/` + response[i].image + `" style="width:300px;" alt="perfilRestaurant">
                 </div>
                 <div>
                     <h5>${response[i].name}</h5>

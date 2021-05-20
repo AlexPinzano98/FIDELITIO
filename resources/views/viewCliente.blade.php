@@ -34,12 +34,15 @@
     <div id="wrapper">
         <section>
             <header id="#header">
-                <form method="get">
-                    <button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+                <form method="get" id="views">
+                    <!--<button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+                    </button>-->
+                    <button  class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+                    </button>
+                    <button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
                     </button>
                 </form>
                     <img src="img/qr-code.png" onclick="openCamara()" id="camara">
-                </button>
                 <!-- <a id="menu_on" onclick="closeModal2()"> -->
                     <div id="menu_on" onclick="closeModal2()">
                         <i class="far fa-user-circle" style="float: left;"></i>
@@ -109,9 +112,9 @@
                     <!-- Nombre de la Aplicación -->
                     <strong class="mr-auto">¡QR no válido!</strong><br>
                     <!-- Tiempo del Evento realizado -->
-                    <!-- <?php 
-                        $fecha = date('d-m-Y');   
-                        echo "<small>".$fecha."</small>";             
+                    <!-- <?php
+                        $fecha = date('d-m-Y');
+                        echo "<small>".$fecha."</small>";
                     ?> -->
                 </div>
                 <!-- MENSAJE VALIDO -->
@@ -125,9 +128,9 @@
                         <!-- Nombre de la Aplicación -->
                         <strong class="mr-auto" id="val"></strong><br>
                         <!-- Tiempo del Evento realizado -->
-                        <!-- <?php 
-                            $fecha = date('d-m-Y');   
-                            echo "<small>".$fecha."</small>";             
+                        <!-- <?php
+                            $fecha = date('d-m-Y');
+                            echo "<small>".$fecha."</small>";
                         ?> -->
                 </div>
                 <div class="swiper-wrapper" id="swiperStyle">
