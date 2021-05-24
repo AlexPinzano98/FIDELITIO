@@ -1,7 +1,10 @@
+
 window.onload = function() {
+    document.getElementsByClassName('fas')[1].style.display="none";
     showCard();
     modal_qr = document.getElementById("modal");
 };
+//variables globales
 mySwiper = "";
 listado = 0;
 cartas = 0;
@@ -53,6 +56,14 @@ function showCard(recojoData) {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var response = JSON.parse(ajax.responseText);
                 console.log(response);
+
+                console.log(document.getElementsByClassName('fas')[1]);
+                document.getElementsByClassName('fas')[0].style.display="block";
+                document.getElementsByClassName('fas')[1].style.display="none";
+
+                // document.getElementById('views').innerHTML = `<button  class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+                // </button>`;
+
                 tabla0 = "";
                 if (filtroActivo == true) {
                     for (let i = 0; i < response.length; i++) {
@@ -61,7 +72,7 @@ function showCard(recojoData) {
                             <div class="swiper-slide">
                             <div class="card">
                             <div class="card-body">
-                                <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
+                                <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
                             </div>
                             <div class="card-stamp">
                             <h5 class="card-title">${response[i].name_promo}</h5>
@@ -88,10 +99,10 @@ function showCard(recojoData) {
                     for (let i = 0; i < response.length; i++) {
                         tabla0 += `
                     <div class="swiper-slide">`;
-                        if (response[i].status == "open") {
+                        if ((response[i].status == "open") && (response[i].status_card == "Activado")) {
                             tabla0 += `<div class="card">
                         <div class="card-body">
-                            <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
+                            <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
                         </div>
                         <div class="card-stamp">
                             <h5 class="card-title">${response[i].name_promo}</h5>
@@ -121,13 +132,13 @@ function showCard(recojoData) {
                                 tabla0 += "</div>";
                             }
                             tabla0 += "</div></div>";
-                        } else if (response[i].status == "close") {
+                        } else if ((response[i].status == "close") && (response[i].status_card == "Canjeado")) {
                             tabla0 += `<div class="cardclose">
                             <img src="img/complete.png" class="completeIMG">
-                        <div class="card-body">
-                            <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
-                        </div>
-                        <div class="card-stamp">
+                            <div class="card-body">
+                                <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
+                            </div>
+                            <div class="card-stamp">
                             <h5 class="card-title">${response[i].name_promo}</h5>
                             <h5 class="card-title">${response[i].name}</h5>
                             <p class="card-text">Premio: ${response[i].reward}</p>
@@ -168,7 +179,7 @@ function showCard(recojoData) {
       <div class="swiper-slide">
             <div class="card">
                 <div class="card-body">
-                    <img src="img/restaurantes/`+ response[i].image + `" class="card-img-top" alt="perfil">
+                    <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
                 </div>
                 <div class="card-stamp">
                     <h5 class="card-title">${cardLocal[i].name_promo}</h5>
@@ -178,13 +189,13 @@ function showCard(recojoData) {
                     <div class="card-stamp_grid">`;
 
             for (var x = 0; x < cardLocal[i].stamp_now; x++) {
-                tabla1 += `<img src="img/iconos/`+ response[i].image +`" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/iconos/` + response[i].image + `" class="img-thumbnail" alt="sello">`;
             }
 
             for (
                 var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++
             ) {
-                tabla1 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/iconos/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
             }
             tabla1 += "</div>";
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
@@ -243,14 +254,22 @@ function verLocales() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var response = JSON.parse(ajax.responseText);
             console.log(response);
+
+            console.log(document.getElementsByClassName('fas')[1]);
+                document.getElementsByClassName('fas')[0].style.display="none";
+                document.getElementsByClassName('fas')[1].style.display="block";
+
+            // document.getElementById('views').innerHTML = `<button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
+            // </button>`;
+
             tabla2 = "";
             for (let i = 0; i < response.length; i++) {
                 tabla2 += `
                 <div class="item">
-                <div>
+                <div id="tmI">
                     <img src="img/restaurantes/` + response[i].image + `" alt="perfilRestaurant">
                 </div>
-                <div>
+                <div id="tmT">
                     <h5>${response[i].name}</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto deserunt adipisci natus
                     </p>

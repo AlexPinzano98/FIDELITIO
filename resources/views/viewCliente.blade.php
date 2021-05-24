@@ -34,30 +34,55 @@
     <div id="wrapper">
         <section>
             <header id="#header">
-                <p class="text-start">{{session('name')}}</p>
-                <button class="fas fa-camera" onclick="openCamara()" id="camara">
-                </button>
-                <a id="menu_on" onclick="closeModal2()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
+                <form method="get" id="views">
+                    <!--<button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+                    </button>-->
+                    <button  class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+                    </button>
+                    <button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
+                    </button>
+                </form>
+                <img src="img/qr-code.png" onclick="openCamara()" id="camara">
+                <!-- <a id="menu_on" onclick="closeModal2()"> -->
+                    <div id="menu_on" onclick="closeModal2()">
+                        <i class="far fa-user-circle" style="float: left;"></i>
+                        <!-- <p class="text-start">{{session('name')}}</p> -->
+                    </div>
+                <!-- </a> -->
             </header>
             <nav>
                 <ul>
                     <div class="profile">
-                        <i class="fas fa-user" style="float: left; padding-left: 4%;"></i>
-                        <a href="#">
+                        <i class="fas fa-user" id="icono"></i>
+                        <a href="{{url('/perfilU')}}" id="link">
                             Perfil del usuario
                         </a>
                     </div>
                     <div class="profile">
-                        <i class="fas fa-moon" style="float: left; padding-left: 4%;"></i>
-                        <a href="#">
-                            Modo noche
+                        <i class="fas fa-history" id="icono"></i>
+                        <a href="{{url('/historial')}}" id="link">
+                            Historial
                         </a>
                     </div>
-                    <form method="get" action="{{url('/cerrar_sesion')}}">
+                    <div class="profile">
+                        <i class="fas fa-life-ring" id="icono"></i>
+                        <a href="{{url('/ayuda')}}" id="link">
+                            Ayuda
+                        </a>
+                    </div>
+                    <div class="profile">
+                        <i class="fas fa-balance-scale" id="icono"></i>
+                        <a href="{{url('/terCon')}}" id="link">
+                            Terminos y condiciones
+                        </a>
+                    </div>
+                    <div class="profile">
+                        <i class="fas fa-question-circle" id="icono"></i>
+                        <a href="{{url('/soporte')}}" id="link">
+                            Soporte
+                        </a>
+                    </div>
+                    <form method="get" action="{{url('/cerrar_sesion')}}" id="cerSes">
                         <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
                         </button>
                         <button type="submit" id="sesion">Cerrar Sesion</button>
@@ -65,14 +90,14 @@
                 </ul>
             </nav>
         </section>
-        <form method="get">
+        <!-- <form method="get">
             <button class="fas fa-home" id="home" onclick="controladores(0); return false">
             </button>
         </form>
         <form method="get">
             <button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
             </button>
-        </form>
+        </form> -->
         <!-- Swiper -->
         <div id="listCartas">
             <div class="swiper-container" id="content">
@@ -87,9 +112,9 @@
                     <!-- Nombre de la Aplicación -->
                     <strong class="mr-auto">¡QR no válido!</strong><br>
                     <!-- Tiempo del Evento realizado -->
-                    <!-- <?php 
-                        $fecha = date('d-m-Y');   
-                        echo "<small>".$fecha."</small>";             
+                    <!-- <?php
+                        $fecha = date('d-m-Y');
+                        echo "<small>".$fecha."</small>";
                     ?> -->
                 </div>
                 <!-- MENSAJE VALIDO -->
@@ -103,9 +128,9 @@
                         <!-- Nombre de la Aplicación -->
                         <strong class="mr-auto" id="val"></strong><br>
                         <!-- Tiempo del Evento realizado -->
-                        <!-- <?php 
-                            $fecha = date('d-m-Y');   
-                            echo "<small>".$fecha."</small>";             
+                        <!-- <?php
+                            $fecha = date('d-m-Y');
+                            echo "<small>".$fecha."</small>";
                         ?> -->
                 </div>
                 <div class="swiper-wrapper" id="swiperStyle">
