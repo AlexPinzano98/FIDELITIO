@@ -365,22 +365,62 @@ class UserController extends Controller
     }
 
     public function ver_usuarios(Request $request){
-        $usuarios = DB::select('SELECT * FROM tbl_user
-        WHERE `name` LIKE ? AND `lastname` LIKE ? AND `email` LIKE ?
-        AND `gender` LIKE ? AND `confidentiality` LIKE ?
-        AND `id_typeuser_fk` LIKE ? AND `status` LIKE ?',
-        ['%'.$request['nombre'].'%' ,
-        '%'.$request['apellidos'].'%',
-        '%'.$request['email'].'%',
-        '%'.$request['sexo'].'%',
-        '%'.$request['conf'].'%',
-        '%'.$request['rol'].'%',
-        '%'.$request['status'].'%']);
+        $id_user = session()->get('id_user');
+        $userLog = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
+        // $id_local = $userLog->id_local_fk;
+        // $userLog->id_local_fk -> ID local del usuario logeado
+        if ($request['fecha'] == null){
+            $query = 'SELECT tbl_user.* FROM tbl_user 
+            LEFT JOIN tbl_card
+            ON tbl_card.id_user_fk = tbl_user.id_user
+            LEFT JOIN tbl_promotion
+            ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?))) 
+                    AND tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
+                    AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
+                    AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?
+                    GROUP BY tbl_user.id_user
+                       ORDER BY `tbl_user`.`id_typeuser_fk` DESC';
+            $params = [ $userLog[0]->id_local_fk,
+            $userLog[0]->id_local_fk,
+            '%'.$request['nombre'].'%' ,
+            '%'.$request['apellidos'].'%',
+            '%'.$request['email'].'%',
+            '%'.$request['sexo'].'%',
+            '%'.$request['conf'].'%',
+            '%'.$request['rol'].'%',
+            '%'.$request['status'].'%'];
+            //return response()->json('NULL',200);
+        } else {
+            $query = 'SELECT tbl_user.* FROM tbl_user 
+            LEFT JOIN tbl_card
+            ON tbl_card.id_user_fk = tbl_user.id_user
+            LEFT JOIN tbl_promotion
+            ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?))) 
+                    AND tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
+                    AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
+                    AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?
+                    AND DATE (tbl_user.create_date) >= ?
+                    GROUP BY tbl_user.id_user
+                       ORDER BY `tbl_user`.`id_typeuser_fk` DESC';
+            $params = [ $userLog[0]->id_local_fk,
+            $userLog[0]->id_local_fk,
+            '%'.$request['nombre'].'%' ,
+            '%'.$request['apellidos'].'%',
+            '%'.$request['email'].'%',
+            '%'.$request['sexo'].'%',
+            '%'.$request['conf'].'%',
+            '%'.$request['rol'].'%',
+            '%'.$request['status'].'%',
+            $request['fecha']];
+        }
+        $usuarios = DB::select($query,$params);
         return response()->json($usuarios,200);
     }
 
     public function ver_usuario(Request $request){
-        $id_user = $request['id_user'];
+        $id_user = $request['id_user']; // $id_user->id_local_fk
         $usuarios = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
         return response()->json($usuarios,200);
     }
@@ -401,7 +441,6 @@ class UserController extends Controller
         // DELETE FROM `tbl_card` WHERE id_user_fk = 2
         // DELETE FROM `tbl_promotion` WHERE id_user_fk = 2
 
-
         // Si el usuario es de tipo cliente, hemos de elimar sus cartas y sellos
         // Comprobamos si el usuario tiene o ha tenido cartas
         $cards =  DB::select('SELECT * FROM tbl_card WHERE id_user_fk = ?',[$id_user]);
@@ -421,16 +460,23 @@ class UserController extends Controller
         if($request['confidentiality'] == 'true'){
             $consentimiento = 1;
         }
+        $local = $request['local'];
+        if ($local == 0){
+            $local = null;
+        }
 
         DB::table('tbl_user')->insertGetId(['name'=>$request['nombre'],
         'lastname'=>$request['apellidos'],
         'gender'=>$request['sexo'],
+        'phone'=>$request['phone'],
         'confidentiality'=>$consentimiento,
         'email'=>$request['email'],
+        'create_date'=>now(),
         'psswd'=>md5($request['psswd']),
+        'id_local_fk'=>$local,
         'id_typeuser_fk'=>$request['rol']]);
 
-        return response()->json('OKAY',200);
+        return response()->json('OK. Usuario registrado correctamente',200);
     }
 
     public function actualizar_usuario(Request $request){
@@ -438,28 +484,33 @@ class UserController extends Controller
         if($request['confidentiality'] == 'true'){
             $consentimiento = 1;
         }
+        $local = $request['local'];
+        if ($local == 0){
+            $local = null;
+        }
 
-        DB::select('UPDATE tbl_user SET `name`=?,`lastname`=?,`email`=?,`gender`=?,`confidentiality`=?,`id_typeuser_fk`=? WHERE `id_user`=?',
+        DB::select('UPDATE tbl_user SET `name`=?,`lastname`=?,`email`=?,`gender`=?,`confidentiality`=?,`id_typeuser_fk`=?, `id_local_fk`=? WHERE `id_user`=?',
         [$request['nombre'],
         $request['apellidos'],
         $request['email'],
         $request['sexo'],
         $consentimiento,
         $request['rol'],
+        $local,
         $request['id_user']]);
 
-        return response()->json($request['id_user'],200);
+        return response()->json('OK. Usuario actualizado correctamente.',200);
     }
     public function cambiar_estado(Request $request){
         if ($request['status']==1){
             DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?',
             ['Inhabilitado',$request['id_user']]);
+            return response()->json('OK. Usuario inhabilitado correctamente.',200);
         } else {
             DB::select('UPDATE tbl_user SET `status`=? WHERE `id_user`=?',
             ['Activo',$request['id_user']]);
+            return response()->json('OK. Usuario activado correctamente.',200);
         }
-
-        return response()->json('OK',200);
     }
     public function ver_locales_u(){
         $locales = DB::select('SELECT * FROM `tbl_local`');

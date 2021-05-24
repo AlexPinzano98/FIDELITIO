@@ -71,13 +71,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="img/iconos/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             tabla0 += "</div></div></div>"
@@ -101,13 +101,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="img/iconos/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             if (response[i].stamp_now == response[i].stamp_max) {
@@ -135,13 +135,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="img/iconos/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="img/iconos/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             tabla0 += "</div></div>";

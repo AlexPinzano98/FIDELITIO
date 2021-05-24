@@ -131,7 +131,9 @@ Route::post('/ver_promos', [PromotionController::class, 'ver_promos']);
 Route::post('/eliminar_promo', [PromotionController::class, 'eliminar_promo']);
 Route::post('/cambiar_estado_p', [PromotionController::class, 'cambiar_estado_p']);
 Route::post('/ver_locales_p', [PromotionController::class, 'ver_locales_p']);
+Route::post('/ver_iconos', [PromotionController::class, 'ver_iconos']);
 Route::post('/registrar_promo', [PromotionController::class, 'registrar_promo']);
+Route::post('/registrar_icono', [PromotionController::class, 'registrar_icono']);
 Route::post('/ver_promo', [PromotionController::class, 'ver_promo']);
 // CRUD LOCALES
 Route::post('/ver_locales', [LocalController::class, 'ver_locales']);
