@@ -1,5 +1,6 @@
 
 window.onload = function() {
+    //escondes el icono de tarjetas
     document.getElementsByClassName('fas')[1].style.display="none";
     showCard();
     modal_qr = document.getElementById("modal");
@@ -60,6 +61,7 @@ function showCard(recojoData) {
                 console.log(document.getElementsByClassName('fas')[1]);
                 document.getElementsByClassName('fas')[0].style.display="block";
                 document.getElementsByClassName('fas')[1].style.display="none";
+                document.getElementById('cam').innerHTML = `<img src="img/qr-code.png" onclick="openCamara()" id="camara">`;
 
                 // document.getElementById('views').innerHTML = `<button  class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
                 // </button>`;
@@ -255,9 +257,10 @@ function verLocales() {
             var response = JSON.parse(ajax.responseText);
             console.log(response);
 
-            console.log(document.getElementsByClassName('fas')[1]);
+            console.log(document.getElementById('cam'));
                 document.getElementsByClassName('fas')[0].style.display="none";
                 document.getElementsByClassName('fas')[1].style.display="block";
+                document.getElementById('cam').innerHTML = `<img src="img/qr-code.png" id="camara">`;
 
             // document.getElementById('views').innerHTML = `<button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
             // </button>`;

@@ -377,12 +377,12 @@ class UserController extends Controller
         // $id_local = $userLog->id_local_fk;
         // $userLog->id_local_fk -> ID local del usuario logeado
         if ($request['fecha'] == null){
-            $query = 'SELECT tbl_user.* FROM tbl_user 
+            $query = 'SELECT tbl_user.* FROM tbl_user
             LEFT JOIN tbl_card
             ON tbl_card.id_user_fk = tbl_user.id_user
             LEFT JOIN tbl_promotion
             ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
-                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?))) 
+                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?)))
                     AND tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
                     AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
                     AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?
@@ -399,12 +399,12 @@ class UserController extends Controller
             '%'.$request['status'].'%'];
             //return response()->json('NULL',200);
         } else {
-            $query = 'SELECT tbl_user.* FROM tbl_user 
+            $query = 'SELECT tbl_user.* FROM tbl_user
             LEFT JOIN tbl_card
             ON tbl_card.id_user_fk = tbl_user.id_user
             LEFT JOIN tbl_promotion
             ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
-                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?))) 
+                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?)))
                     AND tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
                     AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
                     AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?
