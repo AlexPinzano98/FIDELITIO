@@ -60,6 +60,10 @@ class PromotionController extends Controller
         $locales = DB::select('SELECT * FROM `tbl_images`');
         return response()->json($locales,200);
     }
+    public function ver_icono(Request $request){
+        $iconos = DB::select('SELECT * FROM `tbl_images` WHERE id_image = ?' , [$request['id_icono']]);
+        return response()->json($iconos,200);
+    }
     public function registrar_promo(Request $request){
         $id_user = session()->get('id_user');
         $request['imagen']->store('public'); // Guardamos imagen
