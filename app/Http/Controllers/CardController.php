@@ -19,11 +19,10 @@ class CardController extends Controller
             ON tbl_promotion.id_local_fk = tbl_local.id_local
             INNER JOIN tbl_images
             ON tbl_promotion.id_image_fk_promo = tbl_images.id_image
+            WHERE tbl_card.create_date BETWEEN NOW() - INTERVAL 90 DAY AND NOW()
             GROUP BY tbl_card.id_card
             HAVING tbl_card.id_user_fk = ?
-            AND tbl_promotion.status_promo = "enable"
-            AND (tbl_promotion.unlimited = "Si" OR tbl_promotion.expiration > NOW())
-            ORDER BY tbl_card.status ASC;', [$id_user]);
+            ORDER BY tbl_card.status_card ASC;', [$id_user]);
             return response()->json($tarjetas, 200);
         } catch (\Throwable $th) {
             //throw $th;

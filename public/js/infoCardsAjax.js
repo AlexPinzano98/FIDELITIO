@@ -1,7 +1,6 @@
-
 window.onload = function() {
     //escondes el icono de tarjetas
-    document.getElementsByClassName('fas')[1].style.display="none";
+    document.getElementsByClassName('fas')[1].style.display = "none";
     showCard();
     modal_qr = document.getElementById("modal");
 };
@@ -59,8 +58,8 @@ function showCard(recojoData) {
                 console.log(response);
 
                 console.log(document.getElementsByClassName('fas')[1]);
-                document.getElementsByClassName('fas')[0].style.display="block";
-                document.getElementsByClassName('fas')[1].style.display="none";
+                document.getElementsByClassName('fas')[0].style.display = "block";
+                document.getElementsByClassName('fas')[1].style.display = "none";
                 document.getElementById('cam').innerHTML = `<img src="img/qr-code.png" onclick="openCamara()" id="camara">`;
 
                 // document.getElementById('views').innerHTML = `<button  class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
@@ -84,13 +83,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="storage/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/` + response[i].on + `" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="storage/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             tabla0 += "</div></div></div>"
@@ -114,13 +113,13 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="storage/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/` + response[i].on + `" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="storage/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             if (response[i].stamp_now == response[i].stamp_max) {
@@ -148,13 +147,37 @@ function showCard(recojoData) {
                             <div class="card-stamp_grid">`;
 
                             for (var x = 0; x < response[i].stamp_now; x++) {
-                                tabla0 += `<img src="storage/`+ response[i].on +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/` + response[i].on + `" class="img-thumbnail" alt="sello">`;
                             }
 
                             for (
                                 var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
                             ) {
-                                tabla0 += `<img src="storage/`+response[i].off +`" class="img-thumbnail" alt="sello">`;
+                                tabla0 += `<img src="storage/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
+                            }
+                            tabla0 += "</div>";
+                            tabla0 += "</div></div>";
+                        } else if ((response[i].status == "close") && (response[i].status_card == "Caducado")) {
+                            tabla0 += `<div class="cardclose">
+                            <img src="img/expired.png" class="completeIMG">
+                            <div class="card-body">
+                                <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
+                            </div>
+                            <div class="card-stamp">
+                            <h5 class="card-title">${response[i].name_promo}</h5>
+                            <h5 class="card-title">${response[i].name}</h5>
+                            <p class="card-text">Premio: ${response[i].reward}</p>
+                            <h5 class="stamp-title">Sellos de la promoción: ${response[i].stamp_now} / ${response[i].stamp_max}</h5>
+                            <div class="card-stamp_grid">`;
+
+                            for (var x = 0; x < response[i].stamp_now; x++) {
+                                tabla0 += `<img src="storage/` + response[i].on + `" class="img-thumbnail" alt="sello">`;
+                            }
+
+                            for (
+                                var x = 0; x < response[i].stamp_max - response[i].stamp_now; x++
+                            ) {
+                                tabla0 += `<img src="storage/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
                             tabla0 += "</div></div>";
@@ -258,9 +281,9 @@ function verLocales() {
             console.log(response);
 
             console.log(document.getElementById('cam'));
-                document.getElementsByClassName('fas')[0].style.display="none";
-                document.getElementsByClassName('fas')[1].style.display="block";
-                document.getElementById('camara').remove();
+            document.getElementsByClassName('fas')[0].style.display = "none";
+            document.getElementsByClassName('fas')[1].style.display = "block";
+            document.getElementById('camara').remove();
 
             // document.getElementById('views').innerHTML = `<button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
             // </button>`;
