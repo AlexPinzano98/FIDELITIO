@@ -119,8 +119,6 @@
         <table>
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Imagen</th>
                     <th>Nº sellos</th>
                     <th>Premio</th>
                     <th>Nombre</th>
@@ -134,8 +132,6 @@
                     <th colspan="2">Acciones</th>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th></th>
                     <th> <input type="number" name="f_sellos" id="f_sellos" onkeyup="ver_promociones()"> </th>
                     <th> <input type="text" name="f_premio" id="f_premio" onkeyup="ver_promociones()"> </th>
                     <th> <input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_promociones()"> </th>

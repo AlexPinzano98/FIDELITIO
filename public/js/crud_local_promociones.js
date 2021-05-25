@@ -71,8 +71,6 @@ function mostrar_datos(){
             break;
         }
         //console.log(respuesta[i])
-        tabla += '<tr>'+'<td>'+respuesta[i].id_promotion+'</td>';
-        tabla += '<td>'+respuesta[i].image+'</td>';
         //tabla += '<td>'+ '<img src="storage/storage/icons/UqNtJHQjMfbBpLUkRORaM4dp6abyFWBbRH4SlIpt.svg" alt="perfilRestaurant">'+'</td>'
         tabla += '<td>'+respuesta[i].stamp_max+'</td>';
         tabla += '<td>'+respuesta[i].reward+'</td>';
