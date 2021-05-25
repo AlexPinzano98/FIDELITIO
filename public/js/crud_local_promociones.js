@@ -391,8 +391,17 @@ function registerIcon(){
 function openRegisterIcons(){
     document.getElementById('newIcono').style.display = 'block';
     document.getElementById('btn-register-icon').style.display = 'none';
+    closeRegisterIcons();
 }
 function closeRegisterIcon(){
     document.getElementById('newIcono').style.display = 'none';
     document.getElementById('btn-register-icon').style.display = 'block';
+    closeRegisterIcons();
+}
+function closeRegisterIcons(){
+    document.getElementById('icon_name').value = '';
+    document.getElementById('onimg').value = '';
+    document.getElementById('offimg').value = '';
+    document.getElementById('onprev').innerHTML = '';
+    document.getElementById('offprev').innerHTML = '';
 }
