@@ -38,11 +38,13 @@ function showCard(recojoData) {
     //alert(listado)
     var containCards = document.getElementsByClassName("swiper-wrapper")[0];
     if (listado == 1 && cartas == 0) {
+        // ! VER LA VISTA PARA FILTRAR RESTAURANTES
         document.getElementById("listCartas").style.display = "none";
         document.getElementById("checkboxFiltro").style.display = "none";
         document.getElementById("listLocales").style.display = "block";
         verLocales();
     } else if (listado == 0) {
+        // ! VER TARJETAS PANTALLA INICIAL
         document.getElementById("listLocales").style.display = "none";
         document.getElementById("checkboxFiltro").style.display = "block";
         document.getElementById("listCartas").style.display = "block";
@@ -67,6 +69,7 @@ function showCard(recojoData) {
 
                 tabla0 = "";
                 if (filtroActivo == true) {
+                    // ! APLICO FILTRO DENTRO DE LA PANTALLA INICIAL
                     for (let i = 0; i < response.length; i++) {
                         if (response[i].status == "open") {
                             tabla0 += `
@@ -97,6 +100,7 @@ function showCard(recojoData) {
                         }
                     }
                 } else {
+                    // ! PANTALLA INCIAL SIN FILTRO
                     for (let i = 0; i < response.length; i++) {
                         tabla0 += `
                     <div class="swiper-slide">`;
@@ -194,17 +198,19 @@ function showCard(recojoData) {
         };
         ajax.send();
     } else if (cartas == 1) {
+        // ! VISTA DESPUES DE FILTRAR POR UN RESTAURANTE
         cartas = 0;
         tabla1 = "";
         document.getElementById("listLocales").style.display = "none";
         document.getElementById("checkboxFiltro").style.display = "none";
         document.getElementById("listCartas").style.display = "block";
+        document.getElementById('camara').style.display = "block";
         for (let i = 0; i < cardLocal.length; i++) {
             tabla1 += `
       <div class="swiper-slide">
             <div class="card">
                 <div class="card-body">
-                    <img src="img/restaurantes/` + response[i].image + `" class="card-img-top" alt="perfil">
+                    <img src="img/restaurantes/` + cardLocal[i].image + `" class="card-img-top" alt="perfil">
                 </div>
                 <div class="card-stamp">
                     <h5 class="card-title">${cardLocal[i].name_promo}</h5>
@@ -214,13 +220,13 @@ function showCard(recojoData) {
                     <div class="card-stamp_grid">`;
 
             for (var x = 0; x < cardLocal[i].stamp_now; x++) {
-                tabla1 += `<img src="img/iconos/` + response[i].image + `" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/iconos/` + cardLocal[i].image + `" class="img-thumbnail" alt="sello">`;
             }
 
             for (
                 var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++
             ) {
-                tabla1 += `<img src="img/iconos/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="img/iconos/` + cardLocal[i].off + `" class="img-thumbnail" alt="sello">`;
             }
             tabla1 += "</div>";
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
@@ -268,6 +274,7 @@ function showCard(recojoData) {
 }
 
 function verLocales() {
+    // ! VER LOS LOCALES A FILTRAR
     var containLocal = document.getElementById("listLocal");
     document.getElementById("camara").style.color = "#58D68D";
     var ajax = new objetoAjax();
@@ -283,7 +290,8 @@ function verLocales() {
             console.log(document.getElementById('cam'));
             document.getElementsByClassName('fas')[0].style.display = "none";
             document.getElementsByClassName('fas')[1].style.display = "block";
-            document.getElementById('camara').remove();
+            document.getElementById('camara').style.display = "none";
+            // document.getElementById('camara').remove();
 
             // document.getElementById('views').innerHTML = `<button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
             // </button>`;
@@ -324,7 +332,6 @@ function verCardLocal(id_local) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-
             if (respuesta.resultado == "NOK") {
                 console.log("no datos");
             } else {
