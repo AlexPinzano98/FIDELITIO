@@ -56,17 +56,49 @@ class PromotionController extends Controller
         $locales = DB::select('SELECT * FROM `tbl_local`');
         return response()->json($locales,200);
     }
+    public function ver_iconos(){
+        $locales = DB::select('SELECT * FROM `tbl_images`');
+        return response()->json($locales,200);
+    }
     public function registrar_promo(Request $request){
         $id_user = session()->get('id_user');
-        DB::select('INSERT INTO `tbl_promotion` (`stamp_max`, `id_image_fk_promo`, 
+        $request['imagen']->store('public'); // Guardamos imagen
+        $path = $request['imagen']->store('public');
+        //$request->file('archivo')->store('public');
+        // $image->move('uploads', $image->getClientOriginalName());
+        //$nombre_tabla->imagen = image->getClientOriginalName();
+        /*DB::select('INSERT INTO `tbl_promotion` (`stamp_max`, `id_image_fk_promo`, 
         `reward`, `name_promo`, `status_promo`, `expiration`, `unlimited`, `create_date_promo`, 
         `close_data_promo`, `id_local_fk`, `id_user_fk_promo`) 
         VALUES (?,?,?,?,?,?,?,?,?,?,?)' , [
             $request['sellos'],1,$request['premio'],$request['nombre'],
             'enable', null, 'Si', null, null, $request['restaurante'],$id_user
-        ]);
+        ]);*/
 
-        return response()->json('OK. Promoción creada correctamente',200);
+        return response()->json($path,200);
+        //return response()->json('OK. Promoción creada correctamente',200);
+    }
+    public function registrar_icono(Request $request){
+        $user = $request['fileon'];
+        /*
+        $request['fileon']->store('public'); // Guardamos imagen
+        $path = $request['fileon']->store('public');
+        $ruta = explode("/", $path); // ruta[1]*/
+        
+        unlink('storage/IDJU0uB2v1pk9PmqwZOP8bYvOZK66Qdie4fyPini.png');
+        /*
+        $request['fileoff']->store('public'); // Guardamos imagen
+        $path2 = $request['fileoff']->store('public');
+
+        DB::select('INSERT INTO `tbl_images` (`name`, `on`, `off`) VALUES (?,?,?)',
+        [$request['name'],$path, $path2]);*/
+        //unlink(storage_path('storage/storage/icons/bHCUbyE1IsOvSaZPVw2oq8Ybfy1yHjLyWEbtqITA.svg'));
+        
+        //$file = $request['fileon'];
+
+       //obtenemos el nombre del archivo
+        //$nombre = $file->getClientOriginalName();
+        return response()->json($user,200);
     }
     public function ver_promo(Request $request){
         $id_promo = $request['id_promo'];

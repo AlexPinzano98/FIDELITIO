@@ -75,7 +75,7 @@ header {
     float: left;
 } */
 
-#list {
+#list{
     font-size: 250%;
     width: 15%;
     text-align: center;
@@ -84,6 +84,7 @@ header {
     margin-top: 1%;
     margin-right: 30%;
 }
+
 
 #camara {
     width: 15%;

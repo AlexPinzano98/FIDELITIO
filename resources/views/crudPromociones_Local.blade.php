@@ -9,28 +9,61 @@
 </head>
 <body style="text-align: center;">
     <h1>PROMOCIONES</h1>
-    <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
+    <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO DE PROMOCIONES -->
     <div>
         <h1>Registra una nueva promocion</h1>
-        <button id="btn-register" onclick="openRegister()">REGISTRAR!</button>
+        <button id="btn-register" onclick="openRegister()">REGISTRAR PROMO!</button>
     </div>
- 
+    <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO DE ICONOS -->
+    <div>
+            <h1>Registra una nuevo icono</h1>
+            <button id="btn-register" onclick="openIcons()">REGISTRAR ICONO!</button>
+        </div>
+    <!-- FORMULARIO PARA REGISTRAR UNA PROMOCIÓN -->
+    <div id="newIcono">
+        <p>Nombre del icono</p>
+        <input type="text" name="icon_name" id="icon_name" >
+        <p>Icono canjeado</p>
+        <input type="file" name="onimg" id="onimg" >
+        <div id="onprev"></div>
+        <p>Icono sin canjear</p>
+        <input type="file" name="offimg" id="offimg" >
+        <div id="offprev"></div>
+        <button id="registerIcon" onclick="registerIcon()">REGISTRAR ICONO!</button>
+    </div>
+
     <!-- FORMULARIO PARA REGISTRAR UNA PROMOCIÓN -->
     <div id="registrar" class="registrar" style="display: none;">
         <h1> REGISTRA UNA PROMOCIÓN </h1>
         <button onclick="closeRegister()">CANCELAR</button>
              
             <div>
-                <p>Nombre promoción</p>
+            <!-- Select para escoger el icono y mostrarlos-->
+                
+                <p>Icono de la promoción</p>
+                <select id="iconos"></select>
+                <input type="file" name="img" id="img" >
+                <div id="preview"></div>
+                <p>Nombre de la promoción</p>
                 <input name="nombre" type="text" id="nombre" placeholder="Nombre promo..."></input>
-                <p>Premio</p>
+                <p>Premio de la promoción</p>
                 <input name="premio" type="text" id="premio" placeholder="Premio..."></input>
-                <p>Estampados máximos</p>
+                <p>Número de sellos máximos (estampados)</p>
                 <input name="sellos" type="number" id="sellos" placeholder="Sellos máximos..."></input>
-                <p>Fecha expiración</p>
-                <input name="fecha" type="date" id="fecha" placeholder="Fecha expiración..."></input>
-
-                <p>Restaurante</p>
+                <p>La promoción será ilimitada?</p>
+                <div>
+                    <input type="radio" id="Si" name="unlimited" value="Si" checked onclick="display_fecha(1)">
+                    <label for="huey">Si</label>
+                </div>
+                <div>
+                    <input type="radio" id="No" name="unlimited" value="No" onclick="display_fecha(0)">
+                    <label for="dewey">No</label>
+                </div>
+                <div id="div_fecha" style="display: none;">
+                    <p>Fecha expiración</p>
+                    <input name="fecha" type="date" id="fecha" placeholder="Fecha expiración..."></input>
+                </div>
+                <p>Seleccione el establecimiento</p>
                 <select class="form-control" id="restaurante" name="restaurante">
                     <option selected disabled value="">Seleccione su restaurante</option>
                 </select>
@@ -138,6 +171,6 @@
         </div>
     </div>
 
-    <script src="js/crud_master_promociones.js"></script>
+    <script src="js/crud_local_promociones.js"></script>
 </body>
 </html>

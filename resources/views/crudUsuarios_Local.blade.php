@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -55,6 +55,9 @@
             <input name="psswd" type="password" class="form-control" id="psswd" placeholder="Contrasenya..."></input>
         </div> 
         <div class="mb-3">
+            <input name="phone" type="text" class="form-control" id="phone" placeholder="Teléfono..."></input>
+        </div>
+        <div class="mb-3">
             <select class="form-control" id="sexo" name="sexo">
                 <option selected disabled value="">Seleccione su sexo</option>
                 <option value="Hombre">Hombre</option>
@@ -67,9 +70,6 @@
                 <option selected disabled value="">Seleccione su rol</option>
                 <option value="1">Cliente</option>
                 <option value="2">Camarero</option>
-                <option value="3">Adm establecimiento</option>
-                <option value="4">Adm grupo</option>
-                <option value="5">Adm master</option>
             </select>
         </div>
         <div class="mb-3">
@@ -104,6 +104,9 @@
         </div>
         <div class="mb-3">
             <input name="psswd" type="password" class="form-control" id="contrasenyaa" placeholder="Contrasenya..."></input>
+        </div> 
+        <div class="mb-3">
+            <input name="phone" type="text" class="form-control" id="phonea" placeholder="Teléfono..."></input>
         </div>
         <div class="mb-3">
             <select class="form-control" id="sexoa" name="sexo">
@@ -114,13 +117,14 @@
             </select>
         </div>
         <div class="mb-3">
-            <select class="form-control" id="rola" name="rol">
+            <select class="form-control" id="rola" name="rol" onchange="es_camareroa()">
                 <option selected disabled value="">Seleccione su rol</option>
                 <option value="1">Cliente</option>
                 <option value="2">Camarero</option>
-                <option value="3">Adm establecimiento</option>
-                <option value="4">Adm grupo</option>
-                <option value="5">Adm master</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <select class="form-control" id="locala" name="locala">
             </select>
         </div>
         <div class="mb-3 d-flex justify-content-center align-items-center">
@@ -153,14 +157,14 @@
                         <th>Apellidos</th>
                         <th>Email</th>
                         <th>Género</th>
+                        <th>Teféfono</th>
                         <th>Confidencialidad</th>
                         <th>Rol</th>
-                        <th>Status</th>
-                        <th>Fecha</th>  
+                        <th>Fecha</th>
+                        <th>Status</th>  
                         <th colspan="2">Acciones</th>
                     </tr>
                     <tr>
-                        <th></th>
                         <th><input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"> </th>
                         <th><input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"> </th>
                         <th><input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"> </th>
@@ -171,6 +175,9 @@
                                 <option value="Mujer">Mujer</option>
                                 <option value="No especificar">No especificar</option>
                             </select> 
+                        </th>
+                        <th>
+                            <input type="text" name="f_phone" id="f_phone" onkeyup="ver_usuarios()"> </th>
                         </th>
                         <th> 
                             <select class="form-control" id="f_conf" name="f_conf" onchange="ver_usuarios()">
@@ -184,10 +191,10 @@
                                 <option selected value="">-</option>
                                 <option value="1">Cliente</option>
                                 <option value="2">Camarero</option>
-                                <option value="3">Adm establecimiento</option>
-                                <option value="4">Adm grupo</option>
-                                <option value="5">Adm master</option>
                             </select> 
+                        </th>
+                        <th>
+                            <input type="date" name="f_fecha" id="f_fecha" onchange="ver_usuarios()">
                         </th>
                         <th>
                             <select class="form-control" id="f_status" name="f_status" onchange="ver_usuarios()">
@@ -210,6 +217,6 @@
             <p id="listado"></p>
         </div>
     </div>
-    <script src="js/crud_master_usuarios.js"></script>
+    <script src="js/crud_local_usuarios.js"></script>
 </body>
 </html>

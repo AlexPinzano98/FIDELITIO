@@ -56,6 +56,9 @@ class CamareroController extends Controller
         // Hacemos un update para cerrar la tarjeta
 
         DB::select('UPDATE `tbl_card` SET `status` = ? WHERE `tbl_card`.`id_card` = ? ',['close',$id_card]);
+        DB::select('UPDATE `tbl_card` SET `status_card` = "Canjeado" WHERE `tbl_card`.`id_card` = ?',[$id_card]);
+        DB::select('UPDATE `tbl_card` SET `complete_date_card` = NOW() WHERE `tbl_card`.`id_card` = ?',[$id_card]);
+        
         return response()->json('Promoción canjeada con éxito', 200);
     }
 
