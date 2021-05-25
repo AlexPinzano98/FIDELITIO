@@ -25,6 +25,7 @@ class UserController extends Controller
     {
         return Socialite::driver('facebook')->redirect();
     }
+    // ! FUNCION INICIO SESION CON FACEBOOK
     public function handleProviderCallback2()
     {
         $user = Socialite::driver('facebook')->user();
@@ -114,7 +115,8 @@ class UserController extends Controller
             }
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            // ! INSERTAR USUARIO CREADO CON FACEBOOK
+            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'create_date'=>NOW(),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             // session()->put('typeuser', '1');
@@ -127,6 +129,7 @@ class UserController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
+    // ! FUNCION INICIO SESION CON GOOGLE
     public function handleProviderCallback(){
         //return Socialite::driver('google')->redirect();
         $user = Socialite::driver('google')->user();
@@ -215,7 +218,8 @@ class UserController extends Controller
             }
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            // ! INSERTAR USUARIO CREADO CON GOOGLE
+            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'create_date'=>NOW(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             // session()->put('typeuser', '1');
