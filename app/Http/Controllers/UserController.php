@@ -54,7 +54,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -85,7 +85,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -118,7 +118,7 @@ class UserController extends Controller
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $user->id_user);
             return redirect('viewCliente');
         }
@@ -155,7 +155,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -186,7 +186,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -219,7 +219,7 @@ class UserController extends Controller
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $user->id_user);
             Mail::to($email)->send(new EmergencyCallReceived($user));
             return redirect('viewCliente');
