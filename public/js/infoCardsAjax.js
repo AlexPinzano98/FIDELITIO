@@ -260,7 +260,7 @@ function verLocales() {
             console.log(document.getElementById('cam'));
                 document.getElementsByClassName('fas')[0].style.display="none";
                 document.getElementsByClassName('fas')[1].style.display="block";
-                document.getElementById('cam').innerHTML = `<img src="img/qr-code.png" id="camara">`;
+                document.getElementById('camara').remove();
 
             // document.getElementById('views').innerHTML = `<button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
             // </button>`;

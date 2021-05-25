@@ -43,7 +43,7 @@
                     </button>
                 </form>
                 <div id="cam">
-                    <!-- <img src="img/qr-code.png" onclick="openCamara()" id="camara"> -->
+                    <img src="img/qr-code.png" onclick="openCamara()" id="camara">
                 </div>
                 <!-- <a id="menu_on" onclick="closeModal2()"> -->
                     <div id="menu_on" onclick="closeModal2()">
