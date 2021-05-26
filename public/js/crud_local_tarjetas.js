@@ -260,6 +260,11 @@ function closeRegister(){
     document.getElementById('promo').value = '';
     document.getElementById('email').value = '';
 }
+function closeRegisterIcons(){
+    document.getElementById('icon_name').value = '';
+    document.getElementById('onimg').value = '';
+    document.getElementById('offimg').value = '';
+}
 function openUpdate(id_user){
     var x = document.getElementById("actualizar");
     x.style.display = "block";

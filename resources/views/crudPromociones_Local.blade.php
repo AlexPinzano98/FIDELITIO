@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
     <title>CRUD - PROMOCIONES</title>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
@@ -14,12 +15,14 @@
         <h1>Registra una nueva promocion</h1>
         <button id="btn-register" onclick="openRegister()">REGISTRAR PROMO!</button>
     </div>
+
     <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO DE ICONOS -->
     <div>
-            <h1>Registra una nuevo icono</h1>
-            <button id="btn-register-icon" onclick="openRegisterIcons()">REGISTRAR ICONO!</button>
-        </div>
-    <!-- FORMULARIO PARA REGISTRAR UNA PROMOCIÓN -->
+        <h1>Registra una nuevo icono</h1>
+        <button id="btn-register-icon" onclick="openRegisterIcons()">REGISTRAR ICONO!</button>
+    </div>
+
+    <!-- FORMULARIO PARA REGISTRAR UN ICONO -->
     <div id="newIcono" style="display: none;">
         <button onclick="closeRegisterIcon()">CANCELAR</button>
         <p>Nombre del icono</p>
@@ -40,7 +43,6 @@
              
             <div>
             <!-- Select para escoger el icono y mostrarlos-->
-                
                 <p>Icono de la promoción</p>
                 <select id="iconos"></select>
                 <div>
@@ -106,7 +108,7 @@
             </div>
        
         <button type="submit" id="submit" class="btn btn-warning" onclick="registrar_promo()">
-            Registrar promocion
+            Actualizar promocion
         </button>
         <div id="message">
         </div>

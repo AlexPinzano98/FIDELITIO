@@ -83,8 +83,6 @@ class PromotionController extends Controller
         //return response()->json('OK. Promoción creada correctamente',200);
     }
     public function registrar_icono(Request $request){
-        $user = $request['fileon'];
-        
         $request['fileon']->store('public'); // Guardamos imagen
         $path = $request['fileon']->store('public');
         $ruta = explode("/", $path); // ruta[1]*/
@@ -96,9 +94,9 @@ class PromotionController extends Controller
         $ruta2 = explode("/", $path2);
 
         DB::select('INSERT INTO `tbl_images` (`name`, `on`, `off`) VALUES (?,?,?)',
-        [$request['name'],$ruta, $ruta2]);
+        [$request['name'],$ruta[1], $ruta2[1]]);
        
-        return response()->json($user,200);
+        return response()->json('OK. Icono registrado correctamente',200);
     }
     public function ver_promo(Request $request){
         $id_promo = $request['id_promo'];

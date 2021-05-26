@@ -80,9 +80,9 @@ function mostrar_datos(){
         tabla += '<td>'+respuesta[i].name+'</td>';
         tabla += '<td>'+respuesta[i].email+'</td>';
         if (respuesta[i].status_promo=='enable'){ // Usuario activo
-            tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_promotion + ',' + 1 +')">enable</a>'+'</td>';
+            tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_promotion + ',' + 1 +')"><i class="fas fa-lock" style="color: green"></i></a>'+'</td>';
         } else { // Usuario inactivo
-            tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_promotion + ',' + 0 +')">disable</a>'+'</td>';
+            tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_promotion + ',' + 0 +')"><i class="fas fa-lock-open" style="color: red"></i></a></a>'+'</td>';
         }
         tabla += '<td>'+respuesta[i].create_date_promo+'</td>';
         tabla += '<td>'+respuesta[i].close_data_promo+'</td>';
@@ -173,7 +173,7 @@ function start_iconos(){
     var datasend = new FormData();
     datasend.append('_token', token);
     ajax.onreadystatechange = function() {
-        var tabla = '<option selected disabled value="">Seleccione el icono</option>';
+        var tabla = '<option selected disabled value="0">Seleccione el icono</option>';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             //console.log(respuesta)
@@ -274,16 +274,22 @@ function openRegister(){
     x.style.display = "block";
     var btn = document.getElementById("btn-register");
     btn.style.display = "none";
+    closeRegisterIcon();
 }
 function closeRegister(){
     var x = document.getElementById("registrar");
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
     btn.style.display = "block";
+    document.getElementById('iconos').value = 0;
+    document.getElementById('img_on_r').src = '';
+    document.getElementById('img_off_r').src = '';
     document.getElementById('nombre').value = '';
     document.getElementById('premio').value = '';
     document.getElementById('sellos').value = '';
+    document.getElementById('Si').checked = true;
     document.getElementById('fecha').value = '';
+    document.getElementById('div_fecha').style.display = 'none';
     document.getElementById('restaurante').value = '';
 }
 function openUpdate(id_user){
@@ -392,6 +398,7 @@ function openRegisterIcons(){
     document.getElementById('newIcono').style.display = 'block';
     document.getElementById('btn-register-icon').style.display = 'none';
     closeRegisterIcons();
+    closeRegister();
 }
 function closeRegisterIcon(){
     document.getElementById('newIcono').style.display = 'none';

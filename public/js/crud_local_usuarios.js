@@ -58,7 +58,7 @@ function ver_usuarios() {
     ajax.send(datasend);
 }
 
-function mostrar_datos() {
+ function mostrar_datos() {
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results)
     document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
