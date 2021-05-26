@@ -45,6 +45,7 @@
     <div id="actualizar" class="actualizar" style="display: none;">
         <h1> ACTUALIZA UNA TARJETA</h1>
         <button onclick="closeUpdate()">CANCELAR</button>
+        <!--
         <div class="mb-3">
             <select id="locala" name="rol">
             </select>
@@ -61,6 +62,7 @@
             <input name="email" type="text"  id="emaila"
                 placeholder="Email..."></input>
         </div>
+        -->
         <button type="submit" id="submit" class="btn btn-warning">
             Registrar tarjeta
         </button>
