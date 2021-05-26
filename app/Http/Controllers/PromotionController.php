@@ -84,24 +84,20 @@ class PromotionController extends Controller
     }
     public function registrar_icono(Request $request){
         $user = $request['fileon'];
-        /*
+        
         $request['fileon']->store('public'); // Guardamos imagen
         $path = $request['fileon']->store('public');
         $ruta = explode("/", $path); // ruta[1]*/
         
-        unlink('storage/IDJU0uB2v1pk9PmqwZOP8bYvOZK66Qdie4fyPini.png');
-        /*
+        // unlink('storage/l7OtKFniXh6oSFwDaqUHoepvhLy0thL1XVXRPLje.jpg');
+        
         $request['fileoff']->store('public'); // Guardamos imagen
-        $path2 = $request['fileoff']->store('public');
+        $path2 = $request['fileooff']->store('public');
+        $ruta2 = explode("/", $path2);
 
         DB::select('INSERT INTO `tbl_images` (`name`, `on`, `off`) VALUES (?,?,?)',
-        [$request['name'],$path, $path2]);*/
-        //unlink(storage_path('storage/storage/icons/bHCUbyE1IsOvSaZPVw2oq8Ybfy1yHjLyWEbtqITA.svg'));
-        
-        //$file = $request['fileon'];
-
-       //obtenemos el nombre del archivo
-        //$nombre = $file->getClientOriginalName();
+        [$request['name'],$ruta, $ruta2]);
+       
         return response()->json($user,200);
     }
     public function ver_promo(Request $request){
