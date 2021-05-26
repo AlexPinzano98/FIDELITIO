@@ -42,7 +42,9 @@
                     <button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
                     </button>
                 </form>
-                <img src="img/qr-code.png" onclick="openCamara()" id="camara">
+                <div id="cam">
+                    <img src="img/qr-code.png" onclick="openCamara()" id="camara">
+                </div>
                 <!-- <a id="menu_on" onclick="closeModal2()"> -->
                     <div id="menu_on" onclick="closeModal2()">
                         <i class="far fa-user-circle" style="float: left;"></i>

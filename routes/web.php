@@ -132,6 +132,7 @@ Route::post('/eliminar_promo', [PromotionController::class, 'eliminar_promo']);
 Route::post('/cambiar_estado_p', [PromotionController::class, 'cambiar_estado_p']);
 Route::post('/ver_locales_p', [PromotionController::class, 'ver_locales_p']);
 Route::post('/ver_iconos', [PromotionController::class, 'ver_iconos']);
+Route::post('/ver_icono', [PromotionController::class, 'ver_icono']);
 Route::post('/registrar_promo', [PromotionController::class, 'registrar_promo']);
 Route::post('/registrar_icono', [PromotionController::class, 'registrar_icono']);
 Route::post('/ver_promo', [PromotionController::class, 'ver_promo']);
