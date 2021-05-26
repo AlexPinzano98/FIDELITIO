@@ -54,7 +54,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -85,7 +85,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -114,11 +114,12 @@ class UserController extends Controller
             }
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            // ! INSERTAR USUARIO CREADO CON FACEBOOK
+            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'create_date'=>NOW(),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
-            // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', '1');
+            //session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $user->id_user);
             return redirect('viewCliente');
         }
@@ -155,7 +156,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -186,7 +187,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -215,11 +216,12 @@ class UserController extends Controller
             }
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            // ! INSERTAR USUARIO CREADO CON GOOGLE
+            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'create_date'=>NOW(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             // session()->put('typeuser', '1');
-            $request->session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $user->id_user);
             Mail::to($email)->send(new EmergencyCallReceived($user));
             return redirect('viewCliente');
@@ -377,12 +379,12 @@ class UserController extends Controller
         // $id_local = $userLog->id_local_fk;
         // $userLog->id_local_fk -> ID local del usuario logeado
         if ($request['fecha'] == null){
-            $query = 'SELECT tbl_user.* FROM tbl_user 
+            $query = 'SELECT tbl_user.* FROM tbl_user
             LEFT JOIN tbl_card
             ON tbl_card.id_user_fk = tbl_user.id_user
             LEFT JOIN tbl_promotion
             ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
-                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?))) 
+                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?)))
                     AND tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
                     AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
                     AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?
@@ -399,12 +401,12 @@ class UserController extends Controller
             '%'.$request['status'].'%'];
             //return response()->json('NULL',200);
         } else {
-            $query = 'SELECT tbl_user.* FROM tbl_user 
+            $query = 'SELECT tbl_user.* FROM tbl_user
             LEFT JOIN tbl_card
             ON tbl_card.id_user_fk = tbl_user.id_user
             LEFT JOIN tbl_promotion
             ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
-                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?))) 
+                    WHERE (((tbl_user.id_typeuser_fk = 1) && (tbl_promotion.id_local_fk = ?)) || ((tbl_user.id_typeuser_fk = 2) && (tbl_user.id_local_fk = ?)))
                     AND tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
                     AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
                     AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?

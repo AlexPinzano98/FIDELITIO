@@ -1,43 +1,50 @@
-let scanner = new Instascan.Scanner({
-    video: document.getElementById('preview'),
-    scanPeriod: 4,
-    mirror: false
-});
-scanner.addListener('scan', function(content) {
-    sellar(content);
-});
+// let scanner = new Instascan.Scanner({
+//     video: document.getElementById('preview'),
+//     scanPeriod: 4,
+//     mirror: false
+// });
+// scanner.addListener('scan', function(content) {
+//     sellar(content);
+// });
 
-function openCamara() {
-    Instascan.Camera.getCameras().then(cameras => {
-        //If a camera is detected
-        if (cameras.length > 0) {
-            //If the user has a rear/back camera
-            if (cameras[1]) {
-                //use that by default
-                scanner.start(cameras[1]);
-            } else {
-                //else use front camera
-                scanner.start(cameras[0]);
-            }
-        } else {
-            //if no cameras are detected give error
-            console.error('No cameras found.');
-        }
-    });
-    document.getElementById('modal2').style.display = "block";
-    document.getElementById('preview').style.display = "block";
-}
+// function openCamara() {
+//     Instascan.Camera.getCameras().then(cameras => {
+//         //If a camera is detected
+//         if (cameras.length > 0) {
+//             //If the user has a rear/back camera
+//             if (cameras[1]) {
+//                 //use that by default
+//                 scanner.start(cameras[1]);
+//             } else {
+//                 //else use front camera
+//                 scanner.start(cameras[0]);
+//             }
+//         } else {
+//             //if no cameras are detected give error
+//             console.error('No cameras found.');
+//         }
+//     });
+//     document.getElementById('modal2').style.display = "block";
+//     document.getElementById('preview').style.display = "block";
+// }
 
-function closeCamara() {
-    scanner.stop();
-    document.getElementById('modal2').style.display = "none";
-    document.getElementById('preview').style.display = "none";
-}
+// function closeCamara() {
+//     scanner.stop();
+//     document.getElementById('modal2').style.display = "none";
+//     document.getElementById('preview').style.display = "none";
+// }
 
-function closeModal() {
-    document.getElementById('modal2').style.display = "none";
-    closeCamara();
-}
+// function OpenModal2() {
+//     document.getElementById('modal2').style.display = "block";
+// }
+// function OpenModal() {
+//     document.getElementById('modal').style.display = "block";
+// }
+
+// function closeModal() {
+//     document.getElementById('modal2').style.display = "none";
+//     closeCamara();
+// }
 
 function mostrarToast() {
     var toast = document.getElementById("expirado");
@@ -64,6 +71,7 @@ function cerrarValido() {
 }
 
 function sellar(content) {
+    //alert('has lelgado a sellar')
     const array = content.split(',');
     // no se usa
     var id_promo = array[2];
@@ -86,13 +94,13 @@ function sellar(content) {
     if (year != "") {
         if (fecha_actual.getTime() < fecha_qr.getTime()) {
             read();
-            closeCamara();
+            //closeCamara();
         } else {
-            closeCamara();
+            //closeCamara();
             mostrarToast();
         }
     } else {
-        closeCamara();
+        //closeCamara();
         mostrarToast();
     }
 
@@ -107,7 +115,9 @@ function sellar(content) {
         ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var respuesta = JSON.parse(ajax.responseText);
+                location.reload();
                 mostrarValido();
+                
             }
         }
         ajax.send(datasend);

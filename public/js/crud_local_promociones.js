@@ -71,8 +71,6 @@ function mostrar_datos(){
             break;
         }
         //console.log(respuesta[i])
-        tabla += '<tr>'+'<td>'+respuesta[i].id_promotion+'</td>';
-        tabla += '<td>'+respuesta[i].image+'</td>';
         //tabla += '<td>'+ '<img src="storage/storage/icons/UqNtJHQjMfbBpLUkRORaM4dp6abyFWBbRH4SlIpt.svg" alt="perfilRestaurant">'+'</td>'
         tabla += '<td>'+respuesta[i].stamp_max+'</td>';
         tabla += '<td>'+respuesta[i].reward+'</td>';
@@ -190,6 +188,23 @@ function start_iconos(){
 }
 function mostrar_iconos(id_img){
     console.log(id_img)
+    var on = document.getElementById('img_on_r');
+    var off = document.getElementById('img_off_r');
+    var token = document.getElementById("token").getAttribute("content");
+    var ajax = new objetoAjax();
+    ajax.open('POST', 'ver_icono', true);
+    var datasend = new FormData();
+    datasend.append('_token', token);
+    datasend.append('id_icono', id_img);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(ajax.responseText);
+            console.log(respuesta)
+            on.src = 'storage/' + respuesta[0].on;
+            off.src = 'storage/' + respuesta[0].off;
+        }
+    }
+    ajax.send(datasend);
 }
 function registrar_promo(){
     var token = document.getElementById("token").getAttribute("content");
@@ -372,4 +387,21 @@ function registerIcon(){
         }
     }
     ajax.send(datasend);
+}
+function openRegisterIcons(){
+    document.getElementById('newIcono').style.display = 'block';
+    document.getElementById('btn-register-icon').style.display = 'none';
+    closeRegisterIcons();
+}
+function closeRegisterIcon(){
+    document.getElementById('newIcono').style.display = 'none';
+    document.getElementById('btn-register-icon').style.display = 'block';
+    closeRegisterIcons();
+}
+function closeRegisterIcons(){
+    document.getElementById('icon_name').value = '';
+    document.getElementById('onimg').value = '';
+    document.getElementById('offimg').value = '';
+    document.getElementById('onprev').innerHTML = '';
+    document.getElementById('offprev').innerHTML = '';
 }

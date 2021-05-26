@@ -24,7 +24,7 @@
         <div class="mb-3">
             <select id="local" name="rol" onchange="start_promocion()">
             </select>
-        </div>
+        </div> 
         <div class="mb-3">
             <select id="promo" name="promo">
             </select>
@@ -81,7 +81,6 @@
         <table>
             <thead> 
                 <tr>
-                    <th>#</th>
                     <th>Nº sellos</th>
                     <th>Status</th>
                     <th>Promoción</th>
@@ -92,7 +91,6 @@
                     <th colspan="2">Acciones</th>
                 </tr>
                 <tr>
-                    <th></th>
                     <th> <input type="number" name="f_sellos" id="f_sellos" onkeyup="ver_tarjetas()"> </th>
                     <th> <select class="form-control" id="f_status" name="f_status" onchange="ver_tarjetas()">
                             <option selected value="">-</option>
@@ -119,6 +117,6 @@
         </div>
     </div>
 
-    <script src="js/crud_master_tarjetas.js"></script>
+    <script src="js/crud_local_tarjetas.js"></script>
 </body>
 </html>

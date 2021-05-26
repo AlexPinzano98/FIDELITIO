@@ -17,10 +17,11 @@
     <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO DE ICONOS -->
     <div>
             <h1>Registra una nuevo icono</h1>
-            <button id="btn-register" onclick="openIcons()">REGISTRAR ICONO!</button>
+            <button id="btn-register-icon" onclick="openRegisterIcons()">REGISTRAR ICONO!</button>
         </div>
     <!-- FORMULARIO PARA REGISTRAR UNA PROMOCIÓN -->
-    <div id="newIcono">
+    <div id="newIcono" style="display: none;">
+        <button onclick="closeRegisterIcon()">CANCELAR</button>
         <p>Nombre del icono</p>
         <input type="text" name="icon_name" id="icon_name" >
         <p>Icono canjeado</p>
@@ -42,6 +43,10 @@
                 
                 <p>Icono de la promoción</p>
                 <select id="iconos"></select>
+                <div>
+                    <img id="img_on_r" src="" style="width: 100px;">
+                    <img id="img_off_r" src="" style="width: 100px;">
+                </div>
                 <input type="file" name="img" id="img" >
                 <div id="preview"></div>
                 <p>Nombre de la promoción</p>
@@ -119,13 +124,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Imagen</th>
                     <th>Nº sellos</th>
                     <th>Premio</th>
                     <th>Nombre</th>
                     <th>Expiracion</th>
-                    <th>Ilimitada</th>
+                    <th>Ilimitada</th> 
                     <th>Local</th>
                     <th>Usuario</th>
                     <th>Status</th>
@@ -134,8 +137,6 @@
                     <th colspan="2">Acciones</th>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th></th>
                     <th> <input type="number" name="f_sellos" id="f_sellos" onkeyup="ver_promociones()"> </th>
                     <th> <input type="text" name="f_premio" id="f_premio" onkeyup="ver_promociones()"> </th>
                     <th> <input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_promociones()"> </th>
