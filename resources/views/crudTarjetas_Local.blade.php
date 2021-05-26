@@ -8,7 +8,7 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
 <body style="text-align: center;">
-    <h1>TARJETAS</h1>
+    <h1>Administración de tarjetas</h1>
 
     <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
     <div>
@@ -45,7 +45,6 @@
     <div id="actualizar" class="actualizar" style="display: none;">
         <h1> ACTUALIZA UNA TARJETA</h1>
         <button onclick="closeUpdate()">CANCELAR</button>
-            
         <div class="mb-3">
             <select id="locala" name="rol">
             </select>

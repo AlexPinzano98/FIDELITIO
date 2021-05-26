@@ -9,7 +9,7 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
 <body style="text-align: center;">
-    <h1>PROMOCIONES</h1>
+    <h1>Administración de promociones</h1>
     <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO DE PROMOCIONES -->
     <div>
         <h1>Registra una nueva promocion</h1>

@@ -92,7 +92,7 @@
     <div id="actualizar" class="actualizar" style="display: none;">
         <h1>ACTUALIZA UN USUARIO</h1>
         <button onclick="closeUpdate()">CANCELAR</button>
-        <input name="id_user" id="id_user" readonly>
+        <input type="hidden" name="id_user" id="id_user" readonly>
         <div class="mb-3">
             <input name="nombre" type="text" class="form-control" id="nombrea" placeholder="Nombre..."></input>
         </div> 
