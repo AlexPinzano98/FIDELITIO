@@ -171,7 +171,7 @@ h1 {
     text-align: center;
 }
 
-.fa-user-plus {
+.fa-credit-card {
     padding: 1%;
     font-size: 120%;
     margin-right: 5%;
@@ -223,6 +223,7 @@ td {
 }
 
 input[type=text],
+input[type=number],
 .form-control {
     border: 1px solid black;
     border-radius: 3px;
