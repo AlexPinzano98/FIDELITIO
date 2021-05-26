@@ -1,133 +1,166 @@
 body {
-    background-color: #f9f9fa
+    font-family: 'Mulish', sans-serif;
+    font-size: 100%;
+    color: #000;
 }
 
-.padding {
-    padding: 3rem !important
+header {
+    background: #58D68D;
+    position: fixed;
+    width: 100%;
+    padding: 4%;
+    z-index: 2;
 }
 
-.user-card-full {
-    overflow: hidden
+#list {
+    font-size: 250%;
+    width: 15%;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+    margin-top: 1%;
+    margin-right: 30%;
 }
 
-.card {
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+#menu_on {
+    float: left;
+    width: 10%;
+    color: white;
+    margin-top: 1%;
+}
+
+#menu_on:hover {
+    cursor: pointer;
+}
+
+.far {
+    font-size: 270%;
+    color: white;
+}
+
+#content {
+    padding-top: 25%;
+    transition: all 0.75s ease;
+    z-index: 0;
+}
+
+.visible_menu #content {
+    transform: translateX(260px);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    z-index: 1;
+    padding: 15% 8%;
+    padding-bottom: 5%;
+    background: #82E0AA;
+    opacity: 1;
+    transition: all 0.75s ease;
+    overflow-y: auto;
+}
+
+.visible_menu nav {
+    left: 100;
+    opacity: 1;
+}
+
+.profile {
+    padding: 20% 10% 4% 0%;
+    border-bottom: 2px solid white;
+}
+
+#link {
+    height: 20%;
+    font-size: 150%;
+    margin-left: 12%;
+    text-decoration: none;
+    color: white;
+}
+
+.fas {
+    background-color: transparent;
     border: none;
-    margin-bottom: 30px
+    font-size: 230%;
+    width: 10%;
+    text-align: center;
+    color: white;
+    cursor: pointer;
 }
 
-.m-r-0 {
-    margin-right: 0px
+#icono {
+    float: left;
+    padding-left: 4%;
+    margin-top: -2%;
+    transition: all ease 0.25s;
 }
 
-.m-l-0 {
-    margin-left: 0px
+nav div:hover {
+    border-bottom: 2px solid rgb(54, 141, 54) !important;
 }
 
-.user-card-full .user-profile {
-    border-radius: 5px 0 0 5px
+.cerrar {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 50%;
+    border-bottom: 2px solid white;
+    transition: all ease 0.25s;
 }
 
-.bg-c-lite-green {
-    background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
-    background: linear-gradient(to right, #ee5a6f, #f29263)
+#cerSes {
+    margin-top: 20%;
+    padding: 1%;
+    border: 2px solid rgb(54, 141, 54);
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 15%;
 }
 
-.user-profile {
-    padding: 20px 0
+#cerrar {
+    background-color: transparent;
+    color: white;
+    width: 20%;
+    margin-left: 5%;
 }
 
-.card-block {
-    padding: 1.25rem
+#sesion {
+    cursor: pointer;
+    position: absolute;
+    margin-top: 1%;
+    width: 40%;
+    background-color: transparent;
+    color: white;
+    text-align: left;
+    font-size: 160%;
+    border: none;
 }
 
-.m-b-25 {
-    margin-bottom: 25px
+
+/* cuerpo */
+
+#card {
+    padding: 3%;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 8px;
+    /* background-color: red; */
+    -webkit-box-shadow: 0px 0px 10px 5px #8C8C8C;
+    box-shadow: 0px 0px 10px 5px #8C8C8C;
 }
 
-.img-radius {
-    border-radius: 5px
+.text-center {
+    background-color: rgb(255, 198, 198);
+    border-bottom: 1px solid black;
 }
 
-h6 {
-    font-size: 14px
-}
-
-.card .card-block p {
-    line-height: 25px
-}
-
-@media only screen and (min-width: 1400px) {
-    p {
-        font-size: 14px
-    }
-}
-
-.card-block {
-    padding: 1.25rem
-}
-
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0
-}
-
-.m-b-20 {
-    margin-bottom: 20px
-}
-
-.p-b-5 {
-    padding-bottom: 5px !important
-}
-
-.card .card-block p {
-    line-height: 25px
-}
-
-.m-b-10 {
-    margin-bottom: 10px
-}
-
-.text-muted {
-    color: #919aa3 !important
-}
-
-.b-b-default {
-    border-bottom: 1px solid #e0e0e0
-}
-
-.f-w-600 {
-    font-weight: 600
+.col-sm-8 {
+    /* background-color: red; */
+    margin-top: 5%;
 }
 
 .m-b-20 {
-    margin-bottom: 20px
-}
-
-.m-t-40 {
-    margin-top: 20px
-}
-
-.p-b-5 {
-    padding-bottom: 5px !important
-}
-
-.m-b-10 {
-    margin-bottom: 10px
-}
-
-.m-t-40 {
-    margin-top: 20px
-}
-
-.user-card-full .social-link li {
-    display: inline-block
-}
-
-.user-card-full .social-link li a {
-    font-size: 20px;
-    margin: 0 10px 0 0;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out
+    text-align: center;
 }

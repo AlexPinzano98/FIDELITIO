@@ -1,7 +1,3 @@
-/* #camara {
-    color: #58D68D;
-} */
-
 #listLocales {
     padding-top: 25%;
     width: 90%;
@@ -28,11 +24,6 @@
     width: 50%;
 }
 
-#tmF {
-    background-color: blue;
-    width: 50%;
-}
-
 #listLocales img {
     border-radius: 8px;
     width: 100%;
@@ -50,7 +41,7 @@
 
 #listLocales h5,
 #listLocales p {
-    font-size: 0.8em;
+    font-size: 80%;
 }
 
 #listLocales h5,
@@ -64,22 +55,42 @@
 }
 
 @media (min-width: 768px) {
+    #listLocales {
+        padding-top: 12.5%;
+        width: 70%;
+    }
+    #tmI {
+        width: 40%;
+    }
+    #tmT {
+        width: 60%;
+    }
     #listLocales h5,
     #listLocales p {
-        font-size: 1em;
-    }
-    #listLocales .play {
-        max-width: 4%;
+        font-size: 100%;
     }
     #listLocales img {
-        border-radius: 15px;
+        border-radius: 12px;
     }
 }
 
 @media (min-width: 1024px) {
     #listLocales h5,
     #listLocales p {
-        font-size: 1.2em;
+        font-size: 120%;
+    }
+    #listLocales {
+        padding-top: 9%;
+        width: 50%;
+    }
+    #tmI {
+        width: 40%;
+    }
+    #tmT {
+        width: 60%;
+    }
+    #listLocales img {
+        border-radius: 12px;
     }
 }
 

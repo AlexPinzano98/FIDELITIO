@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         return Socialite::driver('facebook')->redirect();
     }
-    public function handleProviderCallback2()
+    public function handleProviderCallback2(Request $request)
     {
         $user = Socialite::driver('facebook')->user();
         //return $user->getEmail();
@@ -127,7 +127,7 @@ class UserController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-    public function handleProviderCallback(){
+    public function handleProviderCallback(Request $request){
         //return Socialite::driver('google')->redirect();
         $user = Socialite::driver('google')->user();
         $email= $user->getEmail();
@@ -529,4 +529,10 @@ class UserController extends Controller
     //     $id_type = DB::select('SELECT tbl_user.id_typeuser_fk FROM tbl_user WHERE tbl_user.id_user= ?',[$id_user]);
     //     return response()->json($id_type);
     // }
+
+    public function mostrarU(){
+        $id_user = session()->get('id_user');
+        $perfilU=DB::select('SELECT * FROM tbl_user where id_user='.$id_user.'');
+        return view('perfilU', compact('perfilU'));
+    }
 }
