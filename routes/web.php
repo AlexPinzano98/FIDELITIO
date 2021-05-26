@@ -159,3 +159,4 @@ Route::post('/password_reset', [UserController::class, 'password_reset']);
 Route::post('/cambiar_password', [UserController::class, 'cambiar_password']);
 Route::get('/contra_olvidada', function (){ return view('contra_olvidada');});
 Route::post('/restaurar_pass', [UserController::class, 'restaurar_pass']);
+Route::get('/prueba_cam', function (){ return view('prueba_cam');});
