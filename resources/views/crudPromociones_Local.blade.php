@@ -49,8 +49,6 @@
                     <img id="img_on_r" src="" style="width: 100px;">
                     <img id="img_off_r" src="" style="width: 100px;">
                 </div>
-                <input type="file" name="img" id="img" >
-                <div id="preview"></div>
                 <p>Nombre de la promoción</p>
                 <input name="nombre" type="text" id="nombre" placeholder="Nombre promo..."></input>
                 <p>Premio de la promoción</p>
@@ -61,8 +59,6 @@
                 <div>
                     <input type="radio" id="Si" name="unlimited" value="Si" checked onclick="display_fecha(1)">
                     <label for="huey">Si</label>
-                </div>
-                <div>
                     <input type="radio" id="No" name="unlimited" value="No" onclick="display_fecha(0)">
                     <label for="dewey">No</label>
                 </div>
@@ -87,27 +83,36 @@
     <!-- FORMULARIO PARA ACTUALIZAR UNA PROMOCIÓN -->
     <div id="actualizar" class="actualizar" style="display: none;"> 
         <h1> ACTUALIZA UNA PROMOCIÓN</h1>
-        <button onclick="closeRegister()">CANCELAR</button>
+        <button onclick="closeUpdate()">CANCELAR</button>
              
             <div>
-                <p>Nombre promoción</p>
-                <input name="nombrea" type="text" id="nombrea" placeholder="Nombre promo..."></input>
+                <input type="hidden" name="id_promo" id="id_promo" readonly>
+                <p>Icono de la promoción</p>
+                <select id="iconosa"></select>
+                <p>Nombre de la promoción</p>
+                <input name="nombrea" type="text" id="nombrea"></input>
                 <p>Premio</p>
-                <input name="premioa" type="text" id="premioa" placeholder="Premio..."></input>
+                <input name="premioa" type="text" id="premioa"></input>
                 <p>Estampados máximos</p>
-                <input name="sellosa" type="number" id="sellosa" placeholder="Sellos máximos..."></input>
-                <p>Fecha expiración</p>
-                <input name="fechaa" type="date" id="fechaa" placeholder="Fecha expiración..."></input>
-
-                <p>Restaurante</p>
-                <select class="form-control" id="restaurantea" name="restaurantea">
-                    <option selected disabled value="">Seleccione su restaurante</option>
-                </select>
-                <p>Email</p>
-                <input name="emaila" type="email" id="emaila" placeholder="Email..."></input>
+                <input name="sellosa" type="number" id="sellosa" readonly></input>
+                <p>La promoción será ilimitada?</p>
+                <div>
+                    <input type="radio" id="Sia" name="unlimiteda" value="Si" onclick="display_fechaa(1)">
+                    <label for="yes">Si</label>
+                    <input type="radio" id="Noa" name="unlimiteda" value="No" onclick="display_fechaa(0)">
+                    <label for="not">No</label>
+                </div>
+                <div id="div_fechaa" style="display: none;">
+                    <p>Fecha expiración</p>
+                    <input name="fechaa" type="date" id="fechaa"></input>
+                </div>
+                <p>Establecimiento</p>
+                <input type="text" id="restaurantea" name="restaurantea" readonly>
+                <p>Usuario</p>
+                <input name="emaila" type="email" id="emaila" readonly></input>
             </div>
        
-        <button type="submit" id="submit" class="btn btn-warning" onclick="registrar_promo()">
+        <button type="submit" id="submit" class="btn btn-warning" onclick="actualizar_promo()">
             Actualizar promocion
         </button>
         <div id="message">
@@ -129,36 +134,36 @@
                     <th>Nº sellos</th>
                     <th>Premio</th>
                     <th>Nombre</th>
-                    <th>Expiracion</th>
-                    <th>Ilimitada</th> 
                     <th>Local</th>
                     <th>Usuario</th>
-                    <th>Status</th>
+                    <th>Expiracion</th>
+                    <th>Ilimitada</th> 
                     <th>Inicio</th>
                     <th>Final</th>
+                    <th>Status</th>
                     <th colspan="2">Acciones</th>
                 </tr>
                 <tr>
                     <th> <input type="number" name="f_sellos" id="f_sellos" onkeyup="ver_promociones()"> </th>
                     <th> <input type="text" name="f_premio" id="f_premio" onkeyup="ver_promociones()"> </th>
                     <th> <input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_promociones()"> </th>
-                    <th> <input type="date" name="f_fecha" id="f_fecha" onkeyup="ver_promociones()"> </th>
-                    <th> <select class="form-control" id="f_ilimitada" name="f_ilimitada" onclick="ver_promociones()">
+                    <th> <input type="text" name="f_local" id="f_local" onkeyup="ver_promociones()"> </th>
+                    <th> <input type="text" name="f_email" id="f_email" onkeyup="ver_promociones()"> </th>
+                    <th> </th>
+                    <th> <select class="form-control" id="f_ilimitada" name="f_ilimitada" onchange="ver_promociones()">
                             <option selected value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
                          </select> 
                     </th>
-                    <th> <input type="text" name="f_local" id="f_local" onkeyup="ver_promociones()"> </th>
-                    <th> <input type="text" name="f_email" id="f_email" onkeyup="ver_promociones()"> </th>
-                    <th><select class="form-control" id="f_status" name="f_status" onclick="ver_promociones()">
+                    <th> </th>
+                    <th> </th>
+                    <th><select class="form-control" id="f_status" name="f_status" onchange="ver_promociones()">
                             <option selected value="">-</option>
                             <option value="enable">Enable</option>
                             <option value="disable">Disable</option>
                          </select> 
                     </th>
-                    <th></th>
-                    <th></th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
                 </tr>

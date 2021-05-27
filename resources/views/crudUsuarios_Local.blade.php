@@ -203,7 +203,7 @@
                                 <option value="Inhabilitado">Inhabilitado</option>
                             </select> 
                         </th>
-                        <th>Modificar</th>
+                        <th>Actualizar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>

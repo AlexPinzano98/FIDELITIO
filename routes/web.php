@@ -136,6 +136,7 @@ Route::post('/ver_icono', [PromotionController::class, 'ver_icono']);
 Route::post('/registrar_promo', [PromotionController::class, 'registrar_promo']);
 Route::post('/registrar_icono', [PromotionController::class, 'registrar_icono']);
 Route::post('/ver_promo', [PromotionController::class, 'ver_promo']);
+Route::post('/actualizar_promo', [PromotionController::class, 'actualizar_promo']);
 // CRUD LOCALES
 Route::post('/ver_locales', [LocalController::class, 'ver_locales']);
 Route::post('/registrar_local', [LocalController::class, 'registrar_local']);

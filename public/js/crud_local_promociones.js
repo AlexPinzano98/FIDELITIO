@@ -28,7 +28,6 @@ function ver_promociones(){
     var f_sellos = document.getElementById("f_sellos").value;
     var f_premio = document.getElementById("f_premio").value;
     var f_nombre = document.getElementById("f_nombre").value;
-    var f_fecha = document.getElementById("f_fecha").value;
     var f_ilimitada = document.getElementById("f_ilimitada").value;
     var f_local = document.getElementById("f_local").value;
     var f_email = document.getElementById("f_email").value;
@@ -40,7 +39,6 @@ function ver_promociones(){
     datasend.append('sellos', f_sellos);
     datasend.append('premio', f_premio);
     datasend.append('nombre', f_nombre);
-    datasend.append('fecha', f_fecha);
     datasend.append('ilimitada', f_ilimitada);
     datasend.append('local', f_local);
     datasend.append('email', f_email);
@@ -75,17 +73,23 @@ function mostrar_datos(){
         tabla += '<td>'+respuesta[i].stamp_max+'</td>';
         tabla += '<td>'+respuesta[i].reward+'</td>';
         tabla += '<td>'+respuesta[i].name_promo+'</td>';
-        tabla += '<td>'+respuesta[i].expiration+'</td>';
-        tabla += '<td>'+respuesta[i].unlimited+'</td>';
+        
         tabla += '<td>'+respuesta[i].name+'</td>';
         tabla += '<td>'+respuesta[i].email+'</td>';
+        if (respuesta[i].unlimited == 'Si'){ // Promocion ilimitada
+            tabla += '<td> Ilimitada </td>';
+            tabla += '<td>'+respuesta[i].unlimited+'</td>';
+        } else { // Promoción limitada
+            tabla += '<td>'+respuesta[i].expiration+'</td>';
+            tabla += '<td>'+respuesta[i].unlimited+'</td>';
+        }
+        tabla += '<td>'+respuesta[i].create_date_promo+'</td>';
+        tabla += '<td>'+respuesta[i].close_data_promo+'</td>';
         if (respuesta[i].status_promo=='enable'){ // Usuario activo
             tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_promotion + ',' + 1 +')"><i class="fas fa-lock" style="color: green"></i></a>'+'</td>';
         } else { // Usuario inactivo
             tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_promotion + ',' + 0 +')"><i class="fas fa-lock-open" style="color: red"></i></a></a>'+'</td>';
         }
-        tabla += '<td>'+respuesta[i].create_date_promo+'</td>';
-        tabla += '<td>'+respuesta[i].close_data_promo+'</td>';
         tabla += '<td> <button onclick="openUpdate('+respuesta[i].id_promotion+')">UPDATE</button>'+ '</td>';
         tabla += '<td>'+'<button onclick="eliminar_promo('+respuesta[i].id_promotion+')">DELETE</button>' +'</td>'+'</tr>';
     }
@@ -144,7 +148,6 @@ function cambiar_estado(id,act){
 
 function start_locales(){
     var locales = document.getElementById("restaurante");
-    var localesa = document.getElementById("restaurantea");
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'ver_locales_p', true);
@@ -161,12 +164,12 @@ function start_locales(){
             }
         }
         locales.innerHTML = tabla;
-        localesa.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
 function start_iconos(){
     var iconos = document.getElementById("iconos");
+    var iconosa = document.getElementById("iconosa");
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'ver_iconos', true);
@@ -174,15 +177,18 @@ function start_iconos(){
     datasend.append('_token', token);
     ajax.onreadystatechange = function() {
         var tabla = '<option selected disabled value="0">Seleccione el icono</option>';
+        var tabla2 = '<option selected disabled value="0">Seleccione el icono</option>';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             //console.log(respuesta)
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i].name)
-                tabla += '<option value="'+ respuesta[i].id_image + '" onclick="mostrar_iconos('+ respuesta[i].id_image  +')">' + respuesta[i].name + '</option>';
+                tabla += '<option value="'+ respuesta[i].id_image + '" onselect="mostrar_iconos('+ respuesta[i].id_image +')">' + respuesta[i].name + '</option>';
+                tabla2 += '<option value="'+ respuesta[i].id_image + '">' + respuesta[i].name + '</option>';
             }
         }
         iconos.innerHTML = tabla;
+        iconosa.innerHTML = tabla2;
     }
     ajax.send(datasend);
 }
@@ -208,39 +214,63 @@ function mostrar_iconos(id_img){
 }
 function registrar_promo(){
     var token = document.getElementById("token").getAttribute("content");
+    var id_icono = document.getElementById('iconos').value;
     var nombre = document.getElementById('nombre').value;
     var premio = document.getElementById('premio').value;
     var sellos = document.getElementById('sellos').value;
     var fecha = document.getElementById('fecha').value;
     var restaurante = document.getElementById('restaurante').value;
-    let file = document.getElementById('img').files[0];
-    console.log(nombre)
-    console.log(premio)
-    console.log(sellos)
-    console.log(fecha)
-    console.log(restaurante)
-    console.log(file)
 
     var ajax = new objetoAjax();
     ajax.open('POST', 'registrar_promo', true);
     var datasend = new FormData();
     datasend.append('_token', token);
+    datasend.append('id_icono', id_icono);
     datasend.append('nombre', nombre);
     datasend.append('premio', premio);
     datasend.append('sellos', sellos);
     datasend.append('fecha', fecha);
     datasend.append('restaurante', restaurante);
-    datasend.append('imagen',file); 
 
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
             ver_promociones();
+            closeRegister();
         }
     }
     ajax.send(datasend);
 }
+function actualizar_promo(){
+    var token = document.getElementById("token").getAttribute("content");
+    var id_promo = document.getElementById('id_promo').value;
+    var id_icono = document.getElementById('iconosa').value;
+    var nombre = document.getElementById('nombrea').value;
+    var premio = document.getElementById('premioa').value;
+    var fecha = document.getElementById('fechaa').value;
+
+    var ajax = new objetoAjax();
+    ajax.open('POST', 'actualizar_promo', true);
+    var datasend = new FormData();
+    datasend.append('_token', token);
+    datasend.append('id_promo', id_promo);
+    datasend.append('id_icono', id_icono);
+    datasend.append('nombre', nombre);
+    datasend.append('premio', premio);
+    datasend.append('fecha', fecha);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(ajax.responseText);
+            console.log(respuesta);
+            ver_promociones();
+            closeUpdate();
+        }
+    }
+    ajax.send(datasend);
+}
+
 function openUpdate(id_promo){
     //var x = document.getElementById("actualizar");
     // x.style.display = "block";
@@ -259,11 +289,23 @@ function ver_promo(id_promo){
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta[0])
+            document.getElementById('id_promo').value = respuesta[0].id_promotion;
+            document.getElementById('iconosa').value = respuesta[0].id_image_fk_promo;
             document.getElementById('nombrea').value = respuesta[0].name_promo;
             document.getElementById('premioa').value = respuesta[0].reward;
             document.getElementById('sellosa').value = respuesta[0].stamp_max;
+            // Marcamos si es seleccionada o no
+            if (respuesta[0].unlimited == 'No'){
+                document.getElementById('Noa').checked = true;
+                document.getElementById('div_fechaa').style.display = 'block';
+                document.getElementById('fechaa').value = respuesta[0].expiration;
+            } else {
+                document.getElementById('Sia').checked = true;
+                document.getElementById('div_fechaa').style.display = 'none';
+            }
             document.getElementById('fechaa').value = respuesta[0].expiration;
             document.getElementById('emaila').value = respuesta[0].email;
+            document.getElementById('restaurantea').value = respuesta[0].name;
         }
     }
     ajax.send(datasend);
@@ -314,6 +356,17 @@ function display_fecha(sino){
         fecha.value = '';
     }
 }
+function display_fechaa(sino){
+    console.log(sino)
+    var div_fecha = document.getElementById('div_fechaa');
+    var fecha = document.getElementById('fechaa');
+    if (sino == 0){
+        div_fecha.style.display = 'block';
+    } else {
+        div_fecha.style.display = 'none';
+        fecha.value = '';
+    }
+}
 document.getElementById("onimg").onchange = function(e) {
     // Creamos el objeto de la clase FileReader
     let reader = new FileReader();
@@ -352,25 +405,6 @@ document.getElementById("offimg").onchange = function(e) {
       preview.append(image);
     };
 }
-document.getElementById("img").onchange = function(e) {
-    // Creamos el objeto de la clase FileReader
-    let reader = new FileReader();
-  
-    // Leemos el archivo subido y se lo pasamos a nuestro fileReader
-    reader.readAsDataURL(e.target.files[0]);
-  
-    // Le decimos que cuando este listo ejecute el código interno
-    reader.onload = function(){
-        let preview = document.getElementById('preview'),
-              image = document.createElement('img');
-  
-      image.src = reader.result;
-      image.style.width = '300px';
-  
-      preview.innerHTML = '';
-      preview.append(image);
-    };
-  }
 function registerIcon(){
     var token = document.getElementById("token").getAttribute("content");
     let fileon = document.getElementById('onimg').files[0];
