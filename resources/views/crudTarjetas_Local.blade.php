@@ -75,9 +75,9 @@
 
     <!-- FORMULARIO PARA REGISTRAR UNA TARJETA -->
     <div id="registrar" class="registrar" style="display: none;">
-        <h1> REGISTRA UNA TARJETA</h1>
+        <h1> Registrar tarjeta</h1>
         <div class="mb-3">
-            <p>Establecimiento: </p>
+            Establecimiento:
             <input type="text" id="local" name="local" readonly>
         </div> 
         <div class="mb-3">
@@ -87,7 +87,7 @@
             <input name="email" type="text"  id="email" placeholder="Email..."></input>
         </div>
         <button type="submit" id="submit" class="btn btn-success" onclick="registrar_tarjeta()">
-            Registrar tarjeta
+            REGISTRAR
         </button>
         <button onclick="closeRegister()" class="btn btn-danger">CANCELAR</button>
         <div id="message">
@@ -97,11 +97,10 @@
 
     <!-- FORMULARIO PARA ACTUALIZAR UNA TARJETA -->
     <div id="actualizar" class="actualizar" style="display: none;">
-        <h1> ACTUALIZA UNA TARJETA</h1>
-        <button onclick="closeUpdate()">CANCELAR</button>
+        <h1> Actualizar tarjeta</h1>
         <input type="hidden" id="id_card" name="id_card">
         <div class="mb-3">
-            <p>Establecimiento: </p>
+            Establecimiento:
             <input type="text" id="locala" name="locala" readonly>
         </div>
         <div class="mb-3">
@@ -114,7 +113,7 @@
             <input name="email" type="text"  id="emaila" readonly></input>
         </div>
         <div class="mb-3">
-            <p>Estado de la tarjeta:</p>
+            Estado de la tarjeta:
             <select class="form-control" id="status_card" name="status_card" onchange="ver_tarjetas()">
                 <option value="Activado">Activado</option>
                 <option value="Caducado">Caducado</option>
@@ -122,9 +121,10 @@
             </select>
         </div>
         
-        <button type="submit" id="submit" class="btn btn-warning" onclick="actualizar_tarjeta()">
-            Actualizar tarjeta
+        <button type="submit" id="submit" class="btn btn-success" onclick="actualizar_tarjeta()">
+            ACTUALIZAR
         </button>
+        <button onclick="closeUpdate()" class="btn btn-danger">CANCELAR</button>
         <div id="message">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
