@@ -23,7 +23,7 @@
 <body>
     <header class="header">
         <p class="text-start">{{ session('name') }}</p>
-        <!-- <a class="fas fa-users-cog" href="{{url('/viewAdm_LocalesCruds')}}" id="admi"></a> -->
+        <h1 href="{{url('/viewAdm_LocalesCruds')}}" id="admi"></a>
         <div id="menu_on" onclick="closeModal2()">
             <i class="far fa-user-circle" style="float: left;"></i>
         </div>

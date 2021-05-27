@@ -68,7 +68,7 @@
             </form>
         </ul>
     </nav>
-    
+
     <div>
         <h1>Administración de tarjetas</h1>
     </div>
@@ -129,7 +129,7 @@
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
- 
+
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LAS TARJETAS -->
     <div class="crud" id="content">
         <div class="datos">
@@ -142,7 +142,7 @@
                 <option value="20">20</option>
             </select>
             <table>
-                <thead> 
+                <thead>
                     <tr>
                         <th>Nº sellos</th>
                         <th>Status</th>
@@ -187,6 +187,7 @@
         </div>
     </div>
 
+    <script src="js/validateCrudTarjeta.js"></script>
     <script src="js/crud_local_tarjetas.js"></script>
 </body>
 </html>
