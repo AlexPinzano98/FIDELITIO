@@ -123,7 +123,7 @@
                     <option selected disabled value="">Seleccione su restaurante</option>
                 </select>
             </div>
-        <button type="submit" id="submit" class="btn btn-warning" onclick="registrar_promo()">
+        <button type="submit" id="submit" class="btn btn-warning">
             Registrar promocion
         </button>
         <div id="message2">
@@ -141,7 +141,7 @@
                 <p>Icono de la promoción</p>
                 <select id="iconosa"></select>
                 <p>Nombre de la promoción</p>
-                <input name="nombrea" type="text" id="nombrea"></input>
+                <input  name="nombrea" type="text" id="nombrea"></input>
                 <p>Premio</p>
                 <input name="premioa" type="text" id="premioa"></input>
                 <p>Estampados máximos</p>
@@ -163,7 +163,7 @@
                 <input name="emaila" type="email" id="emaila" readonly></input>
             </div>
 
-        <button type="submit" id="submit" class="btn btn-warning" onclick="actualizar_promo()">
+        <button type="submit" id="submit2" class="btn btn-warning">
             Actualizar promocion
         </button>
         <div id="message3">
@@ -234,7 +234,7 @@
         </div>
     </div>
 
-    <!-- <script src="js/validateCrudPromociones.js"></script> -->
+    <script src="js/validateCrudPromociones.js"></script>
     <script src="js/crud_local_promociones.js"></script>
 </body>
 </html>
