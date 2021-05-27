@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; 
 
 use App\Models\Card;
 use Illuminate\Support\Facades\DB;
@@ -183,7 +183,7 @@ class CardController extends Controller
 
     public function image(){
         return view('image');
-    }
+    } 
 
     public function imgUp(Request $request){
 
@@ -204,19 +204,24 @@ class CardController extends Controller
     }
 
     public function ver_tarjetas(Request $request){
-        $usuarios = DB::select('SELECT tbl_card.*,tbl_promotion.name_promo,tbl_user.email,tbl_images.* FROM tbl_card
+        $id_user = session()->get('id_user');
+        $user = DB::select('SELECT * FROM `tbl_user` WHERE `id_user`=?',[$id_user]);
+        $usuarios = DB::select('SELECT tbl_card.*,tbl_promotion.*,tbl_user.email,tbl_images.* FROM tbl_card
         INNER JOIN tbl_promotion
         ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
         INNER JOIN tbl_user
         ON tbl_card.id_user_fk = tbl_user.id_user
         INNER JOIN tbl_images
         ON tbl_promotion.id_image_fk_promo = tbl_images.id_image
-        WHERE `stamp_now` LIKE ? AND tbl_card.`status` LIKE ? AND name_promo LIKE ? AND `email`LIKE ?
+        WHERE `stamp_now` LIKE ? AND tbl_card.`status` LIKE ? AND name_promo LIKE ? 
+        AND `email`LIKE ? AND `status_card` LIKE ? AND tbl_promotion.id_local_fk LIKE ?
         GROUP BY tbl_card.id_card',
         ['%'.$request['sellos'],
         '%'.$request['status'].'%',
         '%'.$request['promo'].'%',
-        '%'.$request['email'].'%'
+        '%'.$request['email'].'%',
+        '%'.$request['f_status_card'].'%',
+        $user[0]->id_local_fk
         ]); // Buscamos los que acaben con el numero filtrado
         // Esto nos permite si por ejemplo buscamos 1 que salgan los sellos que terminan en 1
         // Y no todos los sellos que contienen un 1
@@ -224,12 +229,15 @@ class CardController extends Controller
     }
 
     public function ver_locales_t(){
-        $locales = DB::select('SELECT * FROM `tbl_local`');
-        return response()->json($locales,200);
+        $id_user = session()->get('id_user');
+        $user = DB::select('SELECT * FROM `tbl_user` WHERE `id_user`=?',[$id_user]);
+        $local = DB::select('SELECT * FROM `tbl_local` WHERE id_local = ?',[$user[0]->id_local_fk]);
+        return response()->json($local,200);
     }
-    public function ver_promos_t(Request $request){
-        // $promos = DB::select('SELECT * FROM `tbl_promotion`');
-        $promos = DB::select('SELECT * FROM `tbl_promotion` WHERE `id_local_fk`=?',[$request['id_local']]);
+    public function ver_promos_t(){
+        $id_user = session()->get('id_user');
+        $user = DB::select('SELECT * FROM `tbl_user` WHERE `id_user`=?',[$id_user]);
+        $promos = DB::select('SELECT * FROM `tbl_promotion` WHERE `id_local_fk`=?',[$user[0]->id_local_fk]);
         return response()->json($promos,200);
     }
     public function registrar_tarjeta(Request $request){
@@ -268,12 +276,12 @@ class CardController extends Controller
     }
     public function cambiar_estado_t(Request $request){
         if ($request['status'] == 1){
-            DB::select('UPDATE tbl_card SET `status`=? WHERE `id_card`=?', 
-            ['close',$request['id_card']]);
+            DB::select('UPDATE tbl_card SET `status`=?,`status_card`=?,`complete_date_card`=? WHERE `id_card`=?', 
+            ['close','Caducado',now(),$request['id_card']]);
             return response()->json('OK. Tarjeta cerrada correctamente',200);
         } else {
-            DB::select('UPDATE tbl_card SET `status`=? WHERE `id_card`=?', 
-            ['open',$request['id_card']]);
+            DB::select('UPDATE tbl_card SET `status`=?,`status_card`=?,`complete_date_card`=? WHERE `id_card`=?', 
+            ['open','Activado',null,$request['id_card']]);
             return response()->json('OK. Tarjeta abierta correctamente',200);
         }
     }
@@ -284,5 +292,11 @@ class CardController extends Controller
         INNER JOIN tbl_promotion ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion 
         WHERE id_card = ?',[$id_card]);
         return response()->json($card,200);
+    }
+    public function actualizar_card(Request $request){
+        DB::select('UPDATE `tbl_card` SET `status_card`=? WHERE `id_card`=?', 
+        [$request['status_card'], $request['id_card']]);
+        
+        return response()->json('OK. Tarjeta actualizada correctamente',200);
     }
 }
