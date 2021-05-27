@@ -118,7 +118,7 @@ function mostrar_datos() {
             }
             tabla += '<td></td> <td></td>';
         }
-        
+
     }
     datos.innerHTML = tabla;
 }
@@ -308,6 +308,9 @@ function cargar_locales() {
 }
 
 function openRegister() {
+    //vacio mensajes de validación
+    message.innerHTML = "";
+    message2.innerHTML = "";
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
@@ -324,6 +327,9 @@ function closeRegister() {
 }
 
 function openUpdate(id_user) {
+     //vacio mensajes de validación
+     message.innerHTML = "";
+     message2.innerHTML = "";
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();

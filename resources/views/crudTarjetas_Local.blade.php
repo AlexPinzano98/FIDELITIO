@@ -20,11 +20,11 @@
     <div id="registrar" class="registrar" style="display: none;">
         <h1> REGISTRA UNA TARJETA</h1>
         <button onclick="closeRegister()">CANCELAR</button>
-            
+
         <div class="mb-3">
             <select id="local" name="rol" onchange="start_promocion()">
             </select>
-        </div> 
+        </div>
         <div class="mb-3">
             <select id="promo" name="promo">
             </select>
@@ -45,7 +45,7 @@
     <div id="actualizar" class="actualizar" style="display: none;">
         <h1> ACTUALIZA UNA TARJETA</h1>
         <button onclick="closeUpdate()">CANCELAR</button>
-            
+
         <div class="mb-3">
             <select id="locala" name="rol">
             </select>
@@ -69,7 +69,7 @@
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
- 
+
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LAS TARJETAS -->
     <p>Num de resultados</p>
     <select id="results" name="results" onchange="mostrar_datos()">
@@ -79,7 +79,7 @@
     </select>
     <div class="datos">
         <table>
-            <thead> 
+            <thead>
                 <tr>
                     <th>Nº sellos</th>
                     <th>Status</th>
@@ -117,6 +117,7 @@
         </div>
     </div>
 
+    <script src="js/validateCrudTarjeta.js"></script>
     <script src="js/crud_local_tarjetas.js"></script>
 </body>
 </html>
