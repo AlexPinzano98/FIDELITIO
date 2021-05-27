@@ -80,10 +80,10 @@ function mostrar_datos() {
         tabla += '<td>' + respuesta[i].name + '</td>';
         tabla += '<td>' + respuesta[i].email + '</td>';
         if (respuesta[i].unlimited == 'Si') { // Promocion ilimitada
-            tabla += '<td> Ilimitada </td>';
+            tabla += '<td style="color: blue;"> Ilimitada </td>';
             tabla += '<td>' + respuesta[i].unlimited + '</td>';
         } else { // Promoción limitada
-            tabla += '<td>' + respuesta[i].expiration + '</td>';
+            tabla += '<td style="color: green;">' + respuesta[i].expiration + '</td>';
             tabla += '<td>' + respuesta[i].unlimited + '</td>';
         }
         tabla += '<td>' + respuesta[i].create_date_promo + '</td>';

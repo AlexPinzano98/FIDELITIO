@@ -10,21 +10,24 @@ use Illuminate\Support\Facades\DB;
 class PromotionController extends Controller
 {
     public function ver_promos(Request $request){
+        $id_user = session()->get('id_user');
+        $userLog = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
         $promos = DB::select('SELECT tbl_promotion.*, tbl_local.name, tbl_user.email FROM tbl_promotion 
         INNER JOIN tbl_local ON tbl_promotion.id_local_fk = tbl_local.id_local
         INNER JOIN tbl_user ON tbl_promotion.id_user_fk_promo = tbl_user.id_user
         WHERE stamp_max LIKE ? AND reward LIKE ? AND name_promo LIKE ? 
         AND `unlimited` LIKE ? AND tbl_local.name like ? AND tbl_user.email LIKE ?
-        AND status_promo LIKE ?
+        AND status_promo LIKE ? AND tbl_promotion.id_local_fk LIKE ?
         GROUP BY tbl_promotion.id_promotion', //AND expiration LIKE ?
         ['%'.$request['sellos'],
         '%'.$request['premio'].'%',
         '%'.$request['nombre'].'%',
         //'%'.$request['fecha'].'%',
         '%'.$request['ilimitada'].'%',
-        '%'.$request['local'].'%',
+        '%'.$request['local'].'%', 
         '%'.$request['email'].'%',
-        '%'.$request['status'].'%']); 
+        '%'.$request['status'].'%',
+        $userLog[0]->id_local_fk]); 
         return response()->json($promos,200);
     }
     public function eliminar_promo(Request $request){
@@ -54,7 +57,9 @@ class PromotionController extends Controller
         
     }
     public function ver_locales_p(){
-        $locales = DB::select('SELECT * FROM `tbl_local`');
+        $id_user = session()->get('id_user');
+        $userLog = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
+        $locales = DB::select('SELECT * FROM `tbl_local` WHERE id_local = ?',[$userLog[0]->id_local_fk]);
         return response()->json($locales,200);
     }
     public function ver_iconos(){

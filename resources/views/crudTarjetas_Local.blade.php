@@ -77,8 +77,9 @@
     <div id="registrar" class="registrar" style="display: none;">
         <h1> REGISTRA UNA TARJETA</h1>
         <div class="mb-3">
-            <select id="local" name="rol" onchange="start_promocion()"></select>
-        </div>
+            <p>Establecimiento: </p>
+            <input type="text" id="local" name="local" readonly>
+        </div> 
         <div class="mb-3">
             <select id="promo" name="promo"></select>
         </div>
@@ -98,21 +99,31 @@
     <div id="actualizar" class="actualizar" style="display: none;">
         <h1> ACTUALIZA UNA TARJETA</h1>
         <button onclick="closeUpdate()">CANCELAR</button>
+        <input type="hidden" id="id_card" name="id_card">
         <div class="mb-3">
-            <select id="locala" name="rol"></select>
+            <p>Establecimiento: </p>
+            <input type="text" id="locala" name="locala" readonly>
         </div>
         <div class="mb-3">
-            <select id="promoa" name="promo"></select>
+            <input type="text" id="promoa" name="promoa" readonly>
         </div>
         <div class="mb-3">
-            <input name="sellosa" type="number"  id="sellosa"></input>
+            <input name="sellosa" type="number"  id="sellosa" readonly></input>
         </div>
         <div class="mb-3">
-            <input name="email" type="text"  id="emaila" placeholder="Email..."></input>
+            <input name="email" type="text"  id="emaila" readonly></input>
         </div>
-
-        <button type="submit" id="submit" class="btn btn-warning">
-            Registrar tarjeta
+        <div class="mb-3">
+            <p>Estado de la tarjeta:</p>
+            <select class="form-control" id="status_card" name="status_card" onchange="ver_tarjetas()">
+                <option value="Activado">Activado</option>
+                <option value="Caducado">Caducado</option>
+                <option value="Canjeado">Canjeado</option>
+            </select>
+        </div>
+        
+        <button type="submit" id="submit" class="btn btn-warning" onclick="actualizar_tarjeta()">
+            Actualizar tarjeta
         </button>
         <div id="message">
         </div>
@@ -122,7 +133,7 @@
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LAS TARJETAS -->
     <div class="crud" id="content">
         <div class="datos">
-            <button id="btn-register" onclick="openRegister()"><i class="far fa-credit-card"></i>Añadir tarjeta</button>
+            <button id="btn-register" onclick="openRegister(); start()"><i class="far fa-credit-card"></i>Añadir tarjeta</button>
             <p id="total_datos"></p>
             <p id="num">Num de resultados</p>
             <select id="results" name="results" onchange="mostrar_datos()">
@@ -153,7 +164,14 @@
                         <th><input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_tarjetas()"> </th>
                         <th></th>
                         <th></th>
-                        <th></th>
+                        <th> <select class="form-control" id="f_status_card" name="f_status_card" onchange="ver_tarjetas()">
+                                <option selected value="">-</option>
+                                <option value="Activado">Activado</option>
+                                <option value="Caducado">Caducado</option>
+                                <option value="Canjeado">Canjeado</option>
+                            </select>
+                        </th>
+                        </th>
                         <th>Modificar</th>
                         <th>Eliminar</th>
                     </tr>
