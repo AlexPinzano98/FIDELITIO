@@ -68,7 +68,7 @@
             </form>
         </ul>
     </nav>
-    
+
     <div>
         <h1>Administración de tarjetas</h1>
     </div>
@@ -76,10 +76,10 @@
     <!-- FORMULARIO PARA REGISTRAR UNA TARJETA -->
     <div id="registrar" class="registrar" style="display: none;">
         <h1> REGISTRA UNA TARJETA</h1>
-        <button onclick="closeRegister()">CANCELAR</button>   
+        <button onclick="closeRegister()">CANCELAR</button>
         <div class="mb-3">
             <select id="local" name="rol" onchange="start_promocion()"></select>
-        </div> 
+        </div>
         <div class="mb-3">
             <select id="promo" name="promo"></select>
         </div>
@@ -110,7 +110,7 @@
         <div class="mb-3">
             <input name="email" type="text"  id="emaila" placeholder="Email..."></input>
         </div>
-        
+
         <button type="submit" id="submit" class="btn btn-warning">
             Registrar tarjeta
         </button>
@@ -118,7 +118,7 @@
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
- 
+
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LAS TARJETAS -->
     <div class="crud" id="content">
         <div class="datos">
@@ -131,7 +131,7 @@
                 <option value="20">20</option>
             </select>
             <table>
-                <thead> 
+                <thead>
                     <tr>
                         <th>Nº sellos</th>
                         <th>Status</th>
@@ -169,6 +169,7 @@
         </div>
     </div>
 
+    <script src="js/validateCrudTarjeta.js"></script>
     <script src="js/crud_local_tarjetas.js"></script>
 </body>
 </html>

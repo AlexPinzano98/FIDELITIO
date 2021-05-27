@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -77,7 +77,7 @@
     <div>
         <h1>Administración de usuarios</h1>
     </div>
- 
+
     <!-- FORMULARIO PARA REGISTRAR UN USUARIO -->
     <div id="registrar" class="registrar" style="display: none;">
         <h1> REGISTRA UN USUARIO</h1>
@@ -93,7 +93,7 @@
         </div>
         <div class="mb-3">
             <input name="psswd" type="password" class="form-control" id="psswd" placeholder="Contrasenya..."></input>
-        </div> 
+        </div>
         <div class="mb-3">
             <input name="phone" type="text" class="form-control" id="phone" placeholder="Teléfono..."></input>
         </div>
@@ -120,7 +120,7 @@
             <input type="checkbox" id="consentimiento" name="consentimiento" value="1">
             <label for="consentimiento" class="ms-2">Consentimiento</label>
         </div>
-        <button type="submit" id="submit" class="btn btn-warning" onclick="registrar_usuario()">
+        <button type="submit" id="submit" class="btn btn-warning">
             Registrar usuario
         </button>
         <div id="message">
@@ -135,7 +135,7 @@
         <input type="hidden" name="id_user" id="id_user" readonly>
         <div class="mb-3">
             <input name="nombre" type="text" class="form-control" id="nombrea" placeholder="Nombre..."></input>
-        </div> 
+        </div>
         <div class="mb-3">
             <input name="apellidos" type="text" class="form-control" id="apellidosa" placeholder="Apellidos..."></input>
         </div>
@@ -144,7 +144,7 @@
         </div>
         <div class="mb-3">
             <input name="psswd" type="password" class="form-control" id="contrasenyaa" placeholder="Contrasenya..."></input>
-        </div> 
+        </div>
         <div class="mb-3">
             <input name="phone" type="text" class="form-control" id="phonea" placeholder="Teléfono..."></input>
         </div>
@@ -171,10 +171,10 @@
             <input type="checkbox" id="consentimientoa" name="consentimiento" value="1">
             <label for="consentimiento" class="ms-2">Consentimiento</label>
         </div>
-        <button type="submit" id="submita" class="btn btn-warning" onclick="actualizar_usuario()">
+        <button type="submit" id="submita" class="btn btn-warning">
             Actualizar
         </button>
-        <div id="message">
+        <div id="message2">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
@@ -201,37 +201,37 @@
                         <th>Confidencialidad</th>
                         <th>Rol</th>
                         <th>Fecha</th>
-                        <th>Status</th>  
+                        <th>Status</th>
                         <th colspan="2">Acciones</th>
                     </tr>
                     <tr>
                         <th><input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"></th>
                         <th><input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"></th>
                         <th><input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"></th>
-                        <th> 
+                        <th>
                             <select class="form-control" id="f_sexo" name="f_sexo" onchange="ver_usuarios()">
                                 <option selected value="">-</option>
                                 <option value="Hombre">Hombre</option>
                                 <option value="Mujer">Mujer</option>
                                 <option value="No especificar">No especificar</option>
-                            </select> 
+                            </select>
                         </th>
                         <th>
                             <input type="text" name="f_phone" id="f_phone" onkeyup="ver_usuarios()"></th>
                         </th>
-                        <th> 
+                        <th>
                             <select class="form-control" id="f_conf" name="f_conf" onchange="ver_usuarios()">
                                 <option selected value="">-</option>
                                 <option value="1">Si</option>
                                 <option value="0">No</option>
-                            </select> 
+                            </select>
                         </th>
                         <th>
                             <select class="form-control" id="f_rol" name="f_rol" onchange="ver_usuarios()">
                                 <option selected value="">-</option>
                                 <option value="1">Cliente</option>
                                 <option value="2">Camarero</option>
-                            </select> 
+                            </select>
                         </th>
                         <th>
                             <input type="date" name="f_fecha" id="f_fecha" onchange="ver_usuarios()">
@@ -241,11 +241,11 @@
                                 <option selected value="">-</option>
                                 <option value="Activo">Activo</option>
                                 <option value="Inhabilitado">Inhabilitado</option>
-                            </select> 
+                            </select>
                         </th>
                         <th>Actualizar</th>
                         <th>Eliminar</th>
-                    </tr>   
+                    </tr>
                 </thead>
                 <tbody id="datos">
                 </tbody>
@@ -257,6 +257,7 @@
             <p id="listado"></p>
         </div>
     </div>
+    <script src="js/validateCrudLocal.js"></script>
     <script src="js/crud_local_usuarios.js"></script>
 </body>
 </html>
