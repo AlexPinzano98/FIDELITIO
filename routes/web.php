@@ -126,6 +126,7 @@ Route::post('/registrar_tarjeta', [CardController::class, 'registrar_tarjeta']);
 Route::post('/eliminar_tarjeta', [CardController::class, 'eliminar_tarjeta']);
 Route::post('/cambiar_estado_t', [CardController::class, 'cambiar_estado_t']);
 Route::post('/ver_card', [CardController::class, 'ver_card']);
+Route::post('/actualizar_card', [CardController::class, 'actualizar_card']);
 // CRUD PROMOCIONES
 Route::post('/ver_promos', [PromotionController::class, 'ver_promos']);
 Route::post('/eliminar_promo', [PromotionController::class, 'eliminar_promo']);
@@ -161,3 +162,6 @@ Route::post('/cambiar_password', [UserController::class, 'cambiar_password']);
 Route::get('/contra_olvidada', function (){ return view('contra_olvidada');});
 Route::post('/restaurar_pass', [UserController::class, 'restaurar_pass']);
 Route::get('/prueba_cam', function (){ return view('prueba_cam');});
+
+Route::get('/historial', function (){ return view('historial');});
+Route::get('/verHistorial', [UserController::class, 'verHistorial']);

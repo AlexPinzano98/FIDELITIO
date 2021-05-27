@@ -537,4 +537,13 @@ class UserController extends Controller
         $perfilU=DB::select('SELECT * FROM tbl_user where id_user='.$id_user.'');
         return view('perfilU', compact('perfilU'));
     }
+
+    public function verHistorial() {
+        $id_user = session()->get('id_user');
+        $historial = DB::select('SELECT tbl_card.status_card, tbl_card.stamp_now, tbl_promotion.stamp_max, DATE(tbl_card.create_date) AS create_date, DATE(tbl_card.complete_date_card) AS complete_date_card, tbl_promotion.name_promo, tbl_card.id_card FROM `tbl_card` 
+        INNER JOIN tbl_promotion
+        ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+        WHERE id_user_fk = ? ORDER BY `tbl_card`.`status_card` ASC', [$id_user]);
+        return response()->json($historial,200);
+    }
 }

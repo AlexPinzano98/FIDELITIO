@@ -35,7 +35,6 @@ body {
     color: white !important;
     cursor: pointer;
     float: left;
-    /* margin-right: 27.5%; */
     font-size: 250%;
     margin-top: 1%;
 }
@@ -140,12 +139,11 @@ nav div:hover {
 #sesion {
     cursor: pointer;
     position: absolute;
-    /* margin-top: 1.5%; */
     width: 40%;
     background-color: transparent;
     color: white;
     text-align: left;
-    font-size: 160%;
+    font-size: 150%;
     border: none;
 }
 
@@ -159,15 +157,14 @@ h1 {
 }
 
 .crud {
-    width: 97%;
+    width: 95%;
     padding-top: 1%;
-    display: flex;
-    justify-content: center;
     margin-bottom: 1%;
+    margin-left: 2.5%;
 }
 
 .datos {
-    width: 95%;
+    width: 100%;
     text-align: center;
 }
 
@@ -199,19 +196,23 @@ h1 {
     font-weight: bold;
     float: left;
     width: 15%;
-    margin-right: 10%;
+    margin-right: 20%;
+}
+
+.bugR {
+    float: left;
+    width: 15%;
 }
 
 #num {
     float: left;
-    width: 15%;
+    width: 75%;
 }
 
 #results {
     border: 1px solid black;
     border-radius: 5px;
-    width: 4%;
-    margin-left: -15%;
+    width: 17.5%;
 }
 
 table {
@@ -252,5 +253,89 @@ button {
 /* registro */
 
 #registrar {
-    background-color: green;
+    width: 40%;
+    margin-left: 30%;
+    padding-left: 2.5%;
+    border: 2px solid rgb(109, 109, 109);
+    border-radius: 8px;
+    margin-bottom: 2%;
+}
+
+#registrar h1 {
+    font-size: 150%;
+    padding-top: 2%;
+    text-align: center;
+}
+
+#registrar .form-control {
+    border-radius: 8px;
+}
+
+input[type=checkbox] {
+    margin-left: 2%;
+    width: 20px;
+    height: 20px;
+}
+
+#registrar .ms-2 {
+    margin-left: 1%;
+}
+
+#submit {
+    margin-left: 15%;
+}
+
+#registrar button {
+    width: 30%;
+}
+
+
+/* actualizar */
+
+#actualizar {
+    width: 40%;
+    margin-left: 30%;
+    padding-left: 2.5%;
+    border: 2px solid rgb(109, 109, 109);
+    border-radius: 8px;
+}
+
+#actualizar h1 {
+    font-size: 150%;
+    padding-top: 2%;
+    text-align: center;
+}
+
+#actualizar .form-control {
+    border-radius: 8px;
+    border: 1px solid rgb(109, 109, 109);
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+#registrar select {
+    border-radius: 8px;
+    border: 1px solid rgb(109, 109, 109);
+}
+
+input[type=checkbox] {
+    margin-left: 2%;
+    width: 20px;
+    height: 20px;
+    border-radius: 8px;
+    border: 1px solid rgb(109, 109, 109);
+}
+
+#actualizar button {
+    width: 25%;
+}
+
+#actualizar .ms-2 {
+    margin-left: 1%;
+    margin-top: 1.5%;
+}
+
+#submita {
+    margin-left: 22.5%;
 }

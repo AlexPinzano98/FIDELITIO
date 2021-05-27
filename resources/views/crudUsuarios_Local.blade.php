@@ -80,8 +80,7 @@
 
     <!-- FORMULARIO PARA REGISTRAR UN USUARIO -->
     <div id="registrar" class="registrar" style="display: none;">
-        <h1> REGISTRA UN USUARIO</h1>
-        <button onclick="closeRegister()">CANCELAR</button>
+        <h1> Registrar usuario</h1>
         <div class="mb-3">
             <input name="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre..."></input>
         </div>
@@ -116,13 +115,14 @@
             <select class="form-control" id="local" name="local" style="display: none;">
             </select>
         </div>
-        <div class="mb-3 d-flex justify-content-center align-items-center">
+        <div class="mb-3 d-flex justify-content-center">
             <input type="checkbox" id="consentimiento" name="consentimiento" value="1">
             <label for="consentimiento" class="ms-2">Consentimiento</label>
         </div>
-        <button type="submit" id="submit" class="btn btn-warning">
-            Registrar usuario
+        <button type="submit" id="submit" class="btn btn-success">
+            REGISTRAR
         </button>
+        <button onclick="closeRegister()" class="btn btn-danger">CANCELAR</button>
         <div id="message">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
@@ -130,8 +130,7 @@
 
     <!-- FORMULARIO PARA MODIFICAR/ACTUALIZAR UN USUARIO -->
     <div id="actualizar" class="actualizar" style="display: none;">
-        <h1>ACTUALIZA UN USUARIO</h1>
-        <button onclick="closeUpdate()">CANCELAR</button>
+        <h1>Actualizar usuario</h1>
         <input type="hidden" name="id_user" id="id_user" readonly>
         <div class="mb-3">
             <input name="nombre" type="text" class="form-control" id="nombrea" placeholder="Nombre..."></input>
@@ -171,9 +170,10 @@
             <input type="checkbox" id="consentimientoa" name="consentimiento" value="1">
             <label for="consentimiento" class="ms-2">Consentimiento</label>
         </div>
-        <button type="submit" id="submita" class="btn btn-warning">
-            Actualizar
+        <button type="submit" id="submita" class="btn btn-success">
+            ACTUALIZAR
         </button>
+        <button onclick="closeUpdate()" class="btn btn-danger">CANCELAR</button>
         <div id="message2">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
@@ -184,12 +184,14 @@
         <div class="datos">
             <button id="btn-register" onclick="openRegister()"><i class="fas fa-user-plus"></i>Añadir usuario</button>
             <p id="total_datos"></p>
-            <p id="num">Num de resultados</p>
-            <select id="results" name="results" onchange="mostrar_datos()">
-                <option selected value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-            </select>
+            <div class="bugR">
+                <p id="num">Num de resultados</p>
+                <select id="results" name="results" onchange="mostrar_datos()">
+                    <option selected value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
             <table>
                 <thead>
                     <tr>
