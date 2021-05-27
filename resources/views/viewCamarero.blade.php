@@ -11,12 +11,10 @@
     <script src="js/instascan.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
-    <!-- <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script> -->
+    <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="{{asset('css/camarero.css')}}">
-    <script src="cam_libreria/html5-qrcode-scanner.js"></script>
-    <script src="cam_libreria/html5-qrcode.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         $('#menu_on').click(function() {
@@ -32,7 +30,8 @@
     <section>
         <header id="#header">
             <p class="text-start">{{ session('name') }}</p>
-            <button type="button" class="close" onclick="cerrar_camara()" data-dismiss="modal">&times;</button>
+            <button class="fas fa-camera" onclick="openCamara()" id="cam">
+            </button>
             <a id="menu_on" onclick="closeModal2()">
                 <span></span>
                 <span></span>
@@ -114,13 +113,9 @@
             <div class="showQRCode"></div>
         </div>
     </div>
+
     <script src="js/camarero.js"></script>
     <script src="js/camara_c.js"></script>
-
-</br>
-</br>
-</br>
-
-
 </body>
+
 </html>

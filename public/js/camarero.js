@@ -1,145 +1,115 @@
-// window.onload = function() {
-//     ver_promociones();
-//     modal_qr = document.getElementById("modal");
-// }
-var html5QrcodeScanner="";
-window.onload = function() {
-    html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", { fps: 10, qrbox: 250 });
+let scanner = new Instascan.Scanner({
+    video: document.getElementById('preview'),
+    scanPeriod: 4,
+    mirror: false
+});
+scanner.addListener('scan', function(content) {
+    sellar(content);
+});
 
-function onScanSuccess(qrCodeMessage) {
-    //alert(`QR matched = ${qrCodeMessage}`);
-    sellar(qrCodeMessage);
-    // html5QrcodeScanner.clear();
-    // ^ this will stop the scanner (video feed) and clear the scan area.
-}
-
-    html5QrcodeScanner.render(onScanSuccess);
-    ver_promociones();
-    modal_qr = document.getElementById("modal");
-}  
-
-function cerrar_camara(){
-    //html5QrcodeScanner.stop();
-    //html5QrcodeScanner.clear();
-    location.reload();
-}
-
-function objetoAjax() {
-    var xmlhttp = false;
-    try {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {
-        try {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (E) {
-            xmlhttp = false;
-        }
-    }
-    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-        xmlhttp = new XMLHttpRequest();
-    }
-    return xmlhttp;
-}
-
-function ver_promociones() {
-    var promociones = document.getElementById("promociones");
-    //var id_local=1;
-    var token = document.getElementById("token").getAttribute("content");
-    var ajax = new objetoAjax();
-    ajax.open('POST', 'ver_promociones', true);
-    var datasend = new FormData();
-    //datasend.append('id_local', id_local);
-    datasend.append('_token', token);
-    ajax.onreadystatechange = function() {
-        var tabla = '';
-        if (ajax.readyState == 4 && ajax.status == 200) {
-            var respuesta = JSON.parse(ajax.responseText);
-            console.log(respuesta);
-            tabla += '<div>';
-            //tabla +='<button style="text-aling:center;" onclick="canjear_promocion()">Canjear Promocion</button>';
-            for (let i = 0; i < respuesta[0].length; i++) {
-                tabla += '<div class="sketchy">';
-                tabla += '<p> Promocion ' + respuesta[0][i].name_promo + '</p>';
-                tabla += '<p> Sellos : ' + respuesta[0][i].stamp_max + '</p>';
-                if (respuesta[0][i].unlimited == "Si") {
-                    tabla += '<p style="color: blue;"> Ilimitada </p>';
-                } else {
-                    tabla += '<p style="color: green;"> Valido hasta : ' + respuesta[0][i].expiration + '</p>';
-                }
-                tabla += '</br>';
-
-                tabla += '<button class="btn" onclick="generar_qr(' + respuesta[0][i].id_promotion + ',' + respuesta[1][0].id_user + ')">Generar QR</button>';
-                tabla += '</div>';
-                tabla += '</br>';
+function openCamara() {
+    Instascan.Camera.getCameras().then(cameras => {
+        //If a camera is detected
+        if (cameras.length > 0) {
+            //If the user has a rear/back camera
+            if (cameras[1]) {
+                //use that by default
+                scanner.start(cameras[1]);
+            } else {
+                //else use front camera
+                scanner.start(cameras[0]);
             }
-            tabla += '</div>';
-
         } else {
-            var cont = 1
+            //if no cameras are detected give error
+            console.error('No cameras found.');
         }
-        if (tabla == '<div></div>') {
-            tabla = '<h1>Tu restaurante no tiene promociones activas, habla con el gerente para que las cree!</h1>';
-        }
-
-        promociones.innerHTML = tabla;
-    }
-    ajax.send(datasend);
-}
-
-function closeModal2() {
-    modal_qr.style.display = "none";
-    closeModal();
-}
-window.onclick = function(event) {
-    if (event.target == modal_qr) {
-        modal_qr.style.display = "none";
-    }
-}
-
-function generar_qr(id_promotion, id_camarero) {
-    var random = Math.random() * (1 - 1000) + 1;
-    var random2 = Math.random() * (1 - 1000) + 1;
-
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = now.getMonth() + 1;
-    var day = now.getDate();
-    var hour = now.getHours();
-    var minute = now.getMinutes();
-    var seconds = now.getSeconds() + 45;
-
-    document.getElementById('content').value = random + ',' + random2 + ',' + id_promotion + ',' + id_camarero + ',' + year + ',' + month + ',' + day + ',' + hour + ',' + minute + ',' + seconds;
-    //console.log(document.getElementById('content').value)
-
-    // return false;
-    // var ajax = new objetoAjax();
-    // ajax.open('POST', '../generate_code.php', true);
-    // var datasend = new FormData();
-    // datasend.append('$', nombre_local);
-    // datasend.append('ecc', "M");
-    // datasend.append('size', "40");
-    // datasend.append('_token', token);
-    // ajax.onreadystatechange = function() {
-    //     if (ajax.readyState == 4 && ajax.status == 200) {
-    //         $(".showQRCode").html(response);
-    //     }
-    // }
-    // ajax.send(datasend);
-    // $(document).ready(function() {
-    //     $("#codeForm").submit(function(){
-    //var ruta= "asset('camarero.php')";
-    // var formData = new FormData();
-    // formData.append("id_promotion", id_promotion);
-    $.ajax({
-        url: './generate_code.php',
-        type: 'POST',
-        //data: {data:formData, ecc:$("#ecc").val(), size:$("#size").val()},
-        data: { formData: $("#content").val(), ecc: $("#ecc").val(), size: $("#size").val() },
-        success: function(response) {
-            $(".showQRCode").html(response);
-        },
     });
+    document.getElementById('modal2').style.display = "block";
+    document.getElementById('preview').style.display = "block";
+}
 
-    modal_qr.style.display = "block";
+function closeCamara() {
+    scanner.stop();
+    document.getElementById('modal2').style.display = "none";
+    document.getElementById('preview').style.display = "none";
+}
+
+function closeModal() {
+    document.getElementById('modal2').style.display = "none";
+    closeCamara();
+}
+
+function mostrarToast() {
+    var toast = document.getElementById("expirado");
+    toast.className = "mostrar";
+    setTimeout(function() { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+}
+
+function cerrarToast() {
+    var toast = document.getElementById("expirado");
+    toast.className = "cerrar";
+    toast.className = toast.className.replace("cerrar", "");
+}
+
+function mostrarValido() {
+    var toast = document.getElementById("valido");
+    toast.className = "mostrar";
+    setTimeout(function() { toast.className = toast.className.replace("mostrar", ""); }, 5000);
+}
+
+function cerrarValido() {
+    var toast = document.getElementById("valido");
+    toast.className = "cerrar";
+    toast.className = toast.className.replace("cerrar", "");
+}
+
+function sellar(content) {
+    const array = content.split(',');
+    // no se usa
+    var id_promo = array[2];
+    var id_card = array[3];
+    var year = array[4];
+    var month = array[5];
+    var day = array[6];
+    var hour = array[7];
+    var minute = array[8];
+    var seconds = array[9];
+    var now = new Date();
+    var year_now = now.getFullYear();
+    var month_now = now.getMonth() + 1;
+    var day_now = now.getDate();
+    var hour_now = now.getHours();
+    var minute_now = now.getMinutes();
+    var seconds_now = now.getSeconds();
+    var fecha_qr = new Date(year, month, day, hour, minute, seconds)
+    var fecha_actual = new Date(year_now, month_now, day_now, hour_now, minute_now, seconds_now)
+    if (year != "") {
+        if (fecha_actual.getTime() < fecha_qr.getTime()) {
+            read();
+            closeCamara();
+        } else {
+            closeCamara();
+            mostrarToast();
+        }
+    } else {
+        closeCamara();
+        mostrarToast();
+    }
+
+    function read() {
+        var ajax = new objetoAjax();
+        var token = document.getElementById('token').getAttribute('content');
+        // Busca la ruta read y que sea asyncrono
+        ajax.open('POST', 'validarQRcamarero', true);
+        var datasend = new FormData();
+        datasend.append('_token', token);
+        datasend.append('id_card', id_card);
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                var respuesta = JSON.parse(ajax.responseText);
+                mostrarValido();
+            }
+        }
+        ajax.send(datasend);
+    }
 }
