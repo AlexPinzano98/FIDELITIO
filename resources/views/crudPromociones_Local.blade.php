@@ -131,8 +131,8 @@
     </div>
 
     <!-- FORMULARIO PARA ACTUALIZAR UNA PROMOCIÓN -->
-    <div id="actualizar" class="actualizar" style="display: none;"> 
-        <h1> Actualizar promocion</h1>             
+    <div id="actualizar" class="actualizar" style="display: none;">
+        <h1> Actualizar promocion</h1>
             <div>
                 <input type="hidden" name="id_promo" id="id_promo" readonly>
                 Icono de la promoción
@@ -191,7 +191,7 @@
                     <th>Local</th>
                     <th>Usuario</th>
                     <th>Expiracion</th>
-                    <th>Ilimitada</th> 
+                    <th>Ilimitada</th>
                     <th>Inicio</th>
                     <th>Final</th>
                     <th>Status</th>
@@ -208,7 +208,7 @@
                             <option selected value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
-                         </select> 
+                         </select>
                     </th>
                     <th> </th>
                     <th> </th>
@@ -216,7 +216,7 @@
                             <option selected value="">-</option>
                             <option value="enable">Enable</option>
                             <option value="disable">Disable</option>
-                         </select> 
+                         </select>
                     </th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
@@ -232,6 +232,8 @@
             <p id="listado"></p>
         </div>
     </div>
+
+    <script src="js/validateCrudPromociones.js"></script>
     <script src="js/crud_local_promociones.js"></script>
 </body>
 </html>

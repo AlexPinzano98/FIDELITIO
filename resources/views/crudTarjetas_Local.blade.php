@@ -79,7 +79,7 @@
         <div class="mb-3">
             Establecimiento:
             <input type="text" id="local" name="local" readonly>
-        </div> 
+        </div>
         <div class="mb-3">
             <select id="promo" name="promo"></select>
         </div>
