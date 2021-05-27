@@ -154,7 +154,7 @@
                 <input name="emaila" type="email" id="emaila" placeholder="Email..."></input>
             </div>
         <button type="submit" id="submit" class="btn btn-warning" onclick="registrar_promo()">
-            Registrar promocion
+            Actualizar promocion
         </button>
         <div id="message">
         </div>

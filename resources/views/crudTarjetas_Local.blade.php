@@ -110,6 +110,7 @@
         <div class="mb-3">
             <input name="email" type="text"  id="emaila" placeholder="Email..."></input>
         </div>
+        
         <button type="submit" id="submit" class="btn btn-warning">
             Registrar tarjeta
         </button>

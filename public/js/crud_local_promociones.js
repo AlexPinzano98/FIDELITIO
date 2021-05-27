@@ -180,7 +180,7 @@ function start_iconos() {
     var datasend = new FormData();
     datasend.append('_token', token);
     ajax.onreadystatechange = function() {
-        var tabla = '<option selected disabled value="">Seleccione el icono</option>';
+        var tabla = '<option selected disabled value="0">Seleccione el icono</option>';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             //console.log(respuesta)
@@ -286,6 +286,7 @@ function openRegister() {
     x.style.display = "block";
     var btn = document.getElementById("btn-register");
     btn.style.display = "none";
+    closeRegisterIcon();
 }
 
 function closeRegister() {
@@ -293,10 +294,15 @@ function closeRegister() {
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
     btn.style.display = "block";
+    document.getElementById('iconos').value = 0;
+    document.getElementById('img_on_r').src = '';
+    document.getElementById('img_off_r').src = '';
     document.getElementById('nombre').value = '';
     document.getElementById('premio').value = '';
     document.getElementById('sellos').value = '';
+    document.getElementById('Si').checked = true;
     document.getElementById('fecha').value = '';
+    document.getElementById('div_fecha').style.display = 'none';
     document.getElementById('restaurante').value = '';
 }
 
@@ -410,6 +416,7 @@ function openRegisterIcons() {
     document.getElementById('newIcono').style.display = 'block';
     document.getElementById('btn-register-icon').style.display = 'none';
     closeRegisterIcons();
+    closeRegister();
 }
 
 function closeRegisterIcon() {
