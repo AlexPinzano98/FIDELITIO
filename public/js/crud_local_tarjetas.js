@@ -42,7 +42,7 @@ function ver_tarjetas() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             respuesta = JSON.parse(ajax.responseText);
-            //console.log(respuesta)
+            console.log(respuesta)
             pag_actual = 1;
             mostrar_datos();
         }
