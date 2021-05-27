@@ -79,12 +79,14 @@
         <p>Nombre del icono</p>
         <input type="text" name="icon_name" id="icon_name" >
         <p>Icono canjeado</p>
-        <input type="file" name="onimg" id="onimg" >
+        <input type="file" name="onimg" id="onimg">
         <div id="onprev"></div>
         <p>Icono sin canjear</p>
         <input type="file" name="offimg" id="offimg" >
         <div id="offprev"></div>
         <button id="registerIcon" onclick="registerIcon()">REGISTRAR ICONO!</button>
+        <div id="message1">
+        </div>
     </div>
 
     <!-- FORMULARIO PARA REGISTRAR UNA PROMOCIÓN -->
@@ -124,16 +126,16 @@
         <button type="submit" id="submit" class="btn btn-warning" onclick="registrar_promo()">
             Registrar promocion
         </button>
-        <div id="message">
+        <div id="message2">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
 
     <!-- FORMULARIO PARA ACTUALIZAR UNA PROMOCIÓN -->
-    <div id="actualizar" class="actualizar" style="display: none;"> 
+    <div id="actualizar" class="actualizar" style="display: none;">
         <h1> ACTUALIZA UNA PROMOCIÓN</h1>
         <button onclick="closeUpdate()">CANCELAR</button>
-             
+
             <div>
                 <input type="hidden" name="id_promo" id="id_promo" readonly>
                 <p>Icono de la promoción</p>
@@ -160,11 +162,11 @@
                 <p>Usuario</p>
                 <input name="emaila" type="email" id="emaila" readonly></input>
             </div>
-       
+
         <button type="submit" id="submit" class="btn btn-warning" onclick="actualizar_promo()">
             Actualizar promocion
         </button>
-        <div id="message">
+        <div id="message3">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
@@ -190,7 +192,7 @@
                     <th>Local</th>
                     <th>Usuario</th>
                     <th>Expiracion</th>
-                    <th>Ilimitada</th> 
+                    <th>Ilimitada</th>
                     <th>Inicio</th>
                     <th>Final</th>
                     <th>Status</th>
@@ -207,7 +209,7 @@
                             <option selected value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
-                         </select> 
+                         </select>
                     </th>
                     <th> </th>
                     <th> </th>
@@ -215,7 +217,7 @@
                             <option selected value="">-</option>
                             <option value="enable">Enable</option>
                             <option value="disable">Disable</option>
-                         </select> 
+                         </select>
                     </th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
@@ -231,6 +233,8 @@
             <p id="listado"></p>
         </div>
     </div>
+
+    <!-- <script src="js/validateCrudPromociones.js"></script> -->
     <script src="js/crud_local_promociones.js"></script>
 </body>
 </html>
