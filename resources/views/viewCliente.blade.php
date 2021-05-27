@@ -35,8 +35,6 @@
         <section>
             <header id="#header">
                 <form method="get" id="views">
-                    <!--<button class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
-                    </button>-->
                     <button  class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
                     </button>
                     <button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
@@ -45,12 +43,9 @@
                 <div id="cam">
                     <img src="img/qr-code.png" onclick="openCamara()" id="camara">
                 </div>
-                <!-- <a id="menu_on" onclick="closeModal2()"> -->
-                    <div id="menu_on" onclick="closeModal2()">
-                        <i class="far fa-user-circle" style="float: left;"></i>
-                        <!-- <p class="text-start">{{session('name')}}</p> -->
-                    </div>
-                <!-- </a> -->
+                <div id="menu_on" onclick="closeModal2()">
+                    <i class="far fa-user-circle" style="float: left;"></i>
+                </div>
             </header>
             <nav>
                 <ul>

@@ -3,8 +3,9 @@ var pag_actual = 1;
 window.onload = function() {
     ver_tarjetas();
     start();
-}  
-function objetoAjax() { 
+}
+
+function objetoAjax() {
     var xmlhttp = false;
     try {
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -18,9 +19,10 @@ function objetoAjax() {
     if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
         xmlhttp = new XMLHttpRequest();
     }
-    return xmlhttp; 
+    return xmlhttp;
 }
-function ver_tarjetas(){
+
+function ver_tarjetas() {
     //console.log('hola')
     var token = document.getElementById("token").getAttribute("content");
     var f_sellos = document.getElementById("f_sellos").value;
@@ -45,53 +47,57 @@ function ver_tarjetas(){
     }
     ajax.send(datasend);
 }
-function mostrar_datos(){
+
+function mostrar_datos() {
     var datos = document.getElementById("datos");
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results)
     document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
 
-    var desde = ((pag_actual-1) * num_results);
-    var hasta = (desde + (num_results*1));
+    var desde = ((pag_actual - 1) * num_results);
+    var hasta = (desde + (num_results * 1));
 
     var datos = document.getElementById("datos");
     var tabla = '';
     for (let i = desde; i < hasta; i++) {
-        if (i == respuesta.length){
+        if (i == respuesta.length) {
             break;
         }
-        tabla += '<td>'+respuesta[i].stamp_now+'</td>';
-        if (respuesta[i].status=='open'){ // Tarjeta abierta (open)
-            tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_card + ',' + 1 +')">open</a>'+'</td>';
+        tabla += '<td>' + respuesta[i].stamp_now + '</td>';
+        if (respuesta[i].status == 'open') { // Tarjeta abierta (open)
+            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_card + ',' + 1 + ')"><i class="fas fa-lock-open"></a>' + '</td>';
         } else { // Tarjeta cerrada (close)
-            tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_card + ',' + 0 +')">close</a>'+'</td>';
+            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_card + ',' + 0 + ')"><i class="fas fa-lock"></i></a>' + '</td>';
         }
-        tabla += '<td>'+respuesta[i].name_promo+'</td>';
-        tabla += '<td>'+respuesta[i].email +'</td>';
-        tabla += '<td>'+respuesta[i].create_date +'</td>';
-        tabla += '<td>'+respuesta[i].complete_date_card +'</td>';
-        tabla += '<td>'+respuesta[i].status_card +'</td>';
-        tabla += '<td> <button onclick="openUpdate('+respuesta[i].id_card+')">UPDATE</button>'+ '</td>';
-        tabla += '<td>' + '<button onclick="eliminar_tarjeta('+respuesta[i].id_card+')">DELETE</button>' + '</td></tr>';
+        tabla += '<td>' + respuesta[i].name_promo + '</td>';
+        tabla += '<td>' + respuesta[i].email + '</td>';
+        tabla += '<td>' + respuesta[i].create_date + '</td>';
+        tabla += '<td>' + respuesta[i].complete_date_card + '</td>';
+        tabla += '<td>' + respuesta[i].status_card + '</td>';
+        tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_card + ')"><i class="fas fa-user-edit"></i></button>' + '</td>';
+        tabla += '<td>' + '<button onclick="eliminar_tarjeta(' + respuesta[i].id_card + ')"><i class="fas fa-user-slash"></i></button>' + '</td></tr>';
     }
     datos.innerHTML = tabla;
 }
-function prev(){
-    if (pag_actual > 1){
+
+function prev() {
+    if (pag_actual > 1) {
         pag_actual--;
-    } 
+    }
     mostrar_datos();
 }
-function next(){
+
+function next() {
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results);
-    if (pag_actual < pag_totales){
+    if (pag_actual < pag_totales) {
         pag_actual++;
-    } 
+    }
     mostrar_datos(pag_actual);
 }
-function start(){
+
+function start() {
     var local = document.getElementById("local");
     var locala = document.getElementById("locala");
     //console.log('hola')
@@ -107,7 +113,7 @@ function start(){
             //console.log(respuesta)
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i].name)
-                tabla += '<option value="'+ respuesta[i].id_local + '">' + respuesta[i].name + '</option>';
+                tabla += '<option value="' + respuesta[i].id_local + '">' + respuesta[i].name + '</option>';
             }
         }
         local.innerHTML = tabla;
@@ -115,11 +121,12 @@ function start(){
     }
     ajax.send(datasend);
 }
-function start_promocion(){
+
+function start_promocion() {
     var id_local = document.getElementById("local").value;
     console.log(id_local)
-    //var promo = document.getElementById("promo");
-    //console.log('hola')
+        //var promo = document.getElementById("promo");
+        //console.log('hola')
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'ver_promos_t', true);
@@ -137,16 +144,17 @@ function start_promocion(){
                 var tabla = '<option selected disabled value="0">Seleccione la promocion</option>';
                 for (let i = 0; i < respuesta.length; i++) {
                     //console.log(respuesta[i].name)
-                    tabla += '<option value="'+ respuesta[i].id_promotion + '">' + respuesta[i].name_promo + '</option>';
+                    tabla += '<option value="' + respuesta[i].id_promotion + '">' + respuesta[i].name_promo + '</option>';
                 }
             }
-            
+
         }
         promo.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
-function registrar_tarjeta(){
+
+function registrar_tarjeta() {
     var token = document.getElementById("token").getAttribute("content");
     var promo = document.getElementById('promo').value;
     var email = document.getElementById('email').value;
@@ -169,9 +177,10 @@ function registrar_tarjeta(){
     }
     ajax.send(datasend);
 }
-function eliminar_tarjeta(id_tarjeta){
+
+function eliminar_tarjeta(id_tarjeta) {
     console.log(id_tarjeta)
-    // var datos = document.getElementById("datos");
+        // var datos = document.getElementById("datos");
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'eliminar_tarjeta', true);
@@ -182,12 +191,13 @@ function eliminar_tarjeta(id_tarjeta){
         if (ajax.readyState == 4 && ajax.status == 200) {
             // var respuesta = JSON.parse(ajax.responseText);
             // console.log(respuesta);
-            ver_tarjetas(); 
+            ver_tarjetas();
         }
     }
     ajax.send(datasend)
 }
-function cambiar_estado(id,act){
+
+function cambiar_estado(id, act) {
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'cambiar_estado_t', true);
@@ -205,15 +215,17 @@ function cambiar_estado(id,act){
     }
     ajax.send(datasend);
 }
-function openUpdate(id_card){
+
+function openUpdate(id_card) {
     console.log(id_card)
-    // var x = document.getElementById("actualizar");
-    //x.style.display = "block";
-    // closeRegister();
+        // var x = document.getElementById("actualizar");
+        //x.style.display = "block";
+        // closeRegister();
     ver_card(id_card);
     //console.log(id_card) 
 }
-function ver_card(id_card){
+
+function ver_card(id_card) {
     //console.log(id_card);
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
@@ -244,14 +256,16 @@ function ver_card(id_card){
     }
     ajax.send(datasend);
 }
-function openRegister(){
+
+function openRegister() {
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
     var btn = document.getElementById("btn-register");
     btn.style.display = "none";
 }
-function closeRegister(){
+
+function closeRegister() {
     var x = document.getElementById("registrar");
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
@@ -260,19 +274,22 @@ function closeRegister(){
     document.getElementById('promo').value = '';
     document.getElementById('email').value = '';
 }
-function closeRegisterIcons(){
+
+function closeRegisterIcons() {
     document.getElementById('icon_name').value = '';
     document.getElementById('onimg').value = '';
     document.getElementById('offimg').value = '';
 }
-function openUpdate(id_user){
+
+function openUpdate(id_user) {
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();
     ver_card(id_user);
     //console.log(id_user)
 }
-function closeUpdate(){
+
+function closeUpdate() {
     var x = document.getElementById("actualizar");
     x.style.display = "none";
 }

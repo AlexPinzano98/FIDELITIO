@@ -159,11 +159,10 @@ h1 {
 }
 
 .crud {
-    width: 97%;
+    width: 95%;
     padding-top: 1%;
-    display: flex;
-    justify-content: center;
     margin-bottom: 1%;
+    margin-left: 5%;
 }
 
 .datos {
@@ -173,8 +172,16 @@ h1 {
 
 .fa-user-plus {
     padding: 1%;
-    font-size: 120%;
+    font-size: 100%;
     margin-right: 5%;
+}
+
+.fa-clone,
+.fa-magic {
+    padding: 1%;
+    padding-top: 2%;
+    font-size: 100%;
+    margin-right: 4%;
 }
 
 .fa-lock-open {
@@ -190,16 +197,26 @@ h1 {
     justify-content: left;
     border: 2px solid black;
     border-radius: 5px;
-    width: 13%;
+    width: 15%;
     float: left;
-    margin: 0% 26.9% 1% 2.6%;
+    margin: 0% 1% 1% 2%;
+}
+
+#btn-register-icon {
+    display: flex;
+    justify-content: left;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 12.5%;
+    float: left;
+    margin: 0% 11% 1% 1%;
 }
 
 #total_datos {
     font-weight: bold;
     float: left;
     width: 15%;
-    margin-right: 10%;
+    margin-right: 15%;
 }
 
 #num {
@@ -211,7 +228,7 @@ h1 {
     border: 1px solid black;
     border-radius: 5px;
     width: 4%;
-    margin-left: -15%;
+    margin-left: -12%;
 }
 
 table {
@@ -223,6 +240,8 @@ td {
 }
 
 input[type=text],
+input[type=number],
+input[type=date],
 .form-control {
     border: 1px solid black;
     border-radius: 3px;

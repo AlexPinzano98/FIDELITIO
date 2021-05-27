@@ -16,24 +16,64 @@
     <title>CRUD - USUARIOS</title>
     <link rel="stylesheet" href="{{asset('css/crudUsuarios.css')}}">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#menu_on').click(function() {
+                $('body').toggleClass('visible_menu');
+            })
+        });
+    </script>
 </head>
 
 <body>
     <header class="header">
         <p class="text-start">{{ session('name') }}</p>
-        <a class="fas fa-chart-bar" href="{{url('/viewMaster')}}" id="est"></a>
-        <a class="fas fa-users-cog" href="{{url('/cruds')}}" id="admi"></a>
-        <a id="menu_on" onclick="closeModal2()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </a>
+        <!-- <a class="fas fa-chart-bar" href="{{url('/viewMaster')}}" id="est"></a> -->
+        <a class="fas fa-users-cog" href="{{url('/viewAdm_LocalesCruds')}}" id="admi"></a>
+        <div id="menu_on" onclick="closeModal2()">
+            <i class="far fa-user-circle" style="float: left;"></i>
+        </div>
     </header>
+    <nav>
+        <ul>
+            <div class="profile">
+                <i class="fas fa-user" id="icono"></i>
+                <a href="{{url('/perfilU')}}" id="link">
+                    Perfil del usuario
+                </a>
+            </div>
+            <div class="profile">
+                <i class="fas fa-history" id="icono"></i>
+                <a href="{{url('/historial')}}" id="link">
+                    Historial
+                </a>
+            </div>
+            <div class="profile">
+                <i class="fas fa-life-ring" id="icono"></i>
+                <a href="{{url('/ayuda')}}" id="link">
+                    Ayuda
+                </a>
+            </div>
+            <div class="profile">
+                <i class="fas fa-balance-scale" id="icono"></i>
+                <a href="{{url('/terCon')}}" id="link">
+                    Terminos y condiciones
+                </a>
+            </div>
+            <div class="profile">
+                <i class="fas fa-question-circle" id="icono"></i>
+                <a href="{{url('/soporte')}}" id="link">
+                    Soporte
+                </a>
+            </div>
+            <form method="get" action="{{url('/cerrar_sesion')}}" id="cerSes">
+                <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
+                </button>
+                <button type="submit" id="sesion">Cerrar Sesion</button>
+            </form>
+        </ul>
+    </nav>
 
-    <h1>USUARIOS</h1>
-
-    <!-- BOTÓN PARA ACTIVAR EL FORMULARIO DE REGISTRO -->
     <div>
         <h1>Administración de usuarios</h1>
     </div>
@@ -137,10 +177,10 @@
         <div id="message">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
-</div>
+    </div>
 
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
-    <div id="crud">
+    <div class="crud" id="content">
         <div class="datos">
             <button id="btn-register" onclick="openRegister()"><i class="fas fa-user-plus"></i>Añadir usuario</button>
             <p id="total_datos"></p>
@@ -165,9 +205,9 @@
                         <th colspan="2">Acciones</th>
                     </tr>
                     <tr>
-                        <th><input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"> </th>
-                        <th><input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"> </th>
-                        <th><input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"> </th>
+                        <th><input type="text" name="f_nombre" id="f_nombre" onkeyup="ver_usuarios()"></th>
+                        <th><input type="text" name="f_apellidos" id="f_apellidos" onkeyup="ver_usuarios()"></th>
+                        <th><input type="text" name="f_email" id="f_email" onkeyup="ver_usuarios()"></th>
                         <th> 
                             <select class="form-control" id="f_sexo" name="f_sexo" onchange="ver_usuarios()">
                                 <option selected value="">-</option>
@@ -177,7 +217,7 @@
                             </select> 
                         </th>
                         <th>
-                            <input type="text" name="f_phone" id="f_phone" onkeyup="ver_usuarios()"> </th>
+                            <input type="text" name="f_phone" id="f_phone" onkeyup="ver_usuarios()"></th>
                         </th>
                         <th> 
                             <select class="form-control" id="f_conf" name="f_conf" onchange="ver_usuarios()">
@@ -205,7 +245,7 @@
                         </th>
                         <th>Actualizar</th>
                         <th>Eliminar</th>
-                    </tr>
+                    </tr>   
                 </thead>
                 <tbody id="datos">
                 </tbody>

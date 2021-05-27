@@ -5,7 +5,8 @@ window.onload = function() {
     start_locales();
     start_iconos();
 }
-function objetoAjax() { 
+
+function objetoAjax() {
     var xmlhttp = false;
     try {
         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -21,7 +22,8 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
-function ver_promociones(){
+
+function ver_promociones() {
     var datos = document.getElementById("datos");
     // console.log('hola')
     var token = document.getElementById("token").getAttribute("content");
@@ -49,23 +51,24 @@ function ver_promociones(){
             console.log(respuesta)
             pag_actual = 1;
             mostrar_datos();
-        }   
+        }
     }
     ajax.send(datasend);
 }
-function mostrar_datos(){
+
+function mostrar_datos() {
     var datos = document.getElementById("datos");
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results)
     document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
 
-    var desde = ((pag_actual-1) * num_results); 
-    var hasta = (desde + (num_results*1));
-    
+    var desde = ((pag_actual - 1) * num_results);
+    var hasta = (desde + (num_results * 1));
+
     var tabla = '';
     for (let i = desde; i < hasta; i++) {
-        if (i == respuesta.length){
+        if (i == respuesta.length) {
             break;
         }
         //console.log(respuesta[i])
@@ -88,28 +91,31 @@ function mostrar_datos(){
         if (respuesta[i].status_promo=='enable'){ // Usuario activo
             tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_promotion + ',' + 1 +')"><i class="fas fa-lock" style="color: green"></i></a>'+'</td>';
         } else { // Usuario inactivo
-            tabla += '<td>'+'<a onclick="cambiar_estado('+respuesta[i].id_promotion + ',' + 0 +')"><i class="fas fa-lock-open" style="color: red"></i></a></a>'+'</td>';
+            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_promotion + ',' + 0 + ')"><i class="fas fa-lock"></i></a>' + '</td>';
         }
         tabla += '<td> <button onclick="openUpdate('+respuesta[i].id_promotion+')">UPDATE</button>'+ '</td>';
         tabla += '<td>'+'<button onclick="eliminar_promo('+respuesta[i].id_promotion+')">DELETE</button>' +'</td>'+'</tr>';
     }
     datos.innerHTML = tabla;
 }
-function prev(){
-    if (pag_actual > 1){
+
+function prev() {
+    if (pag_actual > 1) {
         pag_actual--;
-    } 
-    mostrar_datos(); 
-}
-function next(){
-    var num_results = document.getElementById('results').value;
-    var pag_totales = Math.ceil(respuesta.length / num_results);
-    if (pag_actual < pag_totales){
-        pag_actual++;
-    } 
+    }
     mostrar_datos();
 }
-function eliminar_promo(id_promo){
+
+function next() {
+    var num_results = document.getElementById('results').value;
+    var pag_totales = Math.ceil(respuesta.length / num_results);
+    if (pag_actual < pag_totales) {
+        pag_actual++;
+    }
+    mostrar_datos();
+}
+
+function eliminar_promo(id_promo) {
     //console.log(id_promo)
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
@@ -120,14 +126,14 @@ function eliminar_promo(id_promo){
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            console.log(respuesta); 
+            console.log(respuesta);
             ver_promociones();
         }
     }
     ajax.send(datasend)
 }
 
-function cambiar_estado(id,act){
+function cambiar_estado(id, act) {
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'cambiar_estado_p', true);
@@ -135,7 +141,7 @@ function cambiar_estado(id,act){
     datasend.append('_token', token);
     datasend.append('id_promo', id);
     datasend.append('status', act);
- 
+
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
@@ -146,7 +152,7 @@ function cambiar_estado(id,act){
     ajax.send(datasend);
 }
 
-function start_locales(){
+function start_locales() {
     var locales = document.getElementById("restaurante");
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
@@ -160,14 +166,15 @@ function start_locales(){
             //console.log(respuesta)
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i].name)
-                tabla += '<option value="'+ respuesta[i].id_local + '">' + respuesta[i].name + '</option>';
+                tabla += '<option value="' + respuesta[i].id_local + '">' + respuesta[i].name + '</option>';
             }
         }
         locales.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
-function start_iconos(){
+
+function start_iconos() {
     var iconos = document.getElementById("iconos");
     var iconosa = document.getElementById("iconosa");
     var token = document.getElementById("token").getAttribute("content");
@@ -192,7 +199,8 @@ function start_iconos(){
     }
     ajax.send(datasend);
 }
-function mostrar_iconos(id_img){
+
+function mostrar_iconos(id_img) {
     console.log(id_img)
     var on = document.getElementById('img_on_r');
     var off = document.getElementById('img_off_r');
@@ -212,7 +220,8 @@ function mostrar_iconos(id_img){
     }
     ajax.send(datasend);
 }
-function registrar_promo(){
+
+function registrar_promo() {
     var token = document.getElementById("token").getAttribute("content");
     var id_icono = document.getElementById('iconos').value;
     var nombre = document.getElementById('nombre').value;
@@ -278,7 +287,8 @@ function openUpdate(id_promo){
     ver_promo(id_promo);
     console.log(id_promo)
 }
-function ver_promo(id_promo){
+
+function ver_promo(id_promo) {
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
     ajax.open('POST', 'ver_promo', true);
@@ -310,7 +320,8 @@ function ver_promo(id_promo){
     }
     ajax.send(datasend);
 }
-function openRegister(){
+
+function openRegister() {
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
@@ -318,7 +329,8 @@ function openRegister(){
     btn.style.display = "none";
     closeRegisterIcon();
 }
-function closeRegister(){
+
+function closeRegister() {
     var x = document.getElementById("registrar");
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
@@ -334,22 +346,25 @@ function closeRegister(){
     document.getElementById('div_fecha').style.display = 'none';
     document.getElementById('restaurante').value = '';
 }
-function openUpdate(id_user){
+
+function openUpdate(id_user) {
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();
     ver_promo(id_user);
     //console.log(id_user)
 }
-function closeUpdate(){
+
+function closeUpdate() {
     var x = document.getElementById("actualizar");
     x.style.display = "none";
 }
-function display_fecha(sino){
+
+function display_fecha(sino) {
     console.log(sino)
     var div_fecha = document.getElementById('div_fecha');
     var fecha = document.getElementById('fecha');
-    if (sino == 0){
+    if (sino == 0) {
         div_fecha.style.display = 'block';
     } else {
         div_fecha.style.display = 'none';
@@ -370,39 +385,39 @@ function display_fechaa(sino){
 document.getElementById("onimg").onchange = function(e) {
     // Creamos el objeto de la clase FileReader
     let reader = new FileReader();
-  
+
     // Leemos el archivo subido y se lo pasamos a nuestro fileReader
     reader.readAsDataURL(e.target.files[0]);
-  
+
     // Le decimos que cuando este listo ejecute el código interno
-    reader.onload = function(){
+    reader.onload = function() {
         let preview = document.getElementById('onprev'),
-              image = document.createElement('img');
-  
-      image.src = reader.result;
-      image.style.width = '50px';
-  
-      preview.innerHTML = '';
-      preview.append(image);
+            image = document.createElement('img');
+
+        image.src = reader.result;
+        image.style.width = '50px';
+
+        preview.innerHTML = '';
+        preview.append(image);
     };
 }
 document.getElementById("offimg").onchange = function(e) {
     // Creamos el objeto de la clase FileReader
     let reader = new FileReader();
-  
+
     // Leemos el archivo subido y se lo pasamos a nuestro fileReader
     reader.readAsDataURL(e.target.files[0]);
-  
+
     // Le decimos que cuando este listo ejecute el código interno
-    reader.onload = function(){
+    reader.onload = function() {
         let preview = document.getElementById('offprev'),
-              image = document.createElement('img');
-  
-      image.src = reader.result;
-      image.style.width = '50px';
-  
-      preview.innerHTML = '';
-      preview.append(image);
+            image = document.createElement('img');
+
+        image.src = reader.result;
+        image.style.width = '50px';
+
+        preview.innerHTML = '';
+        preview.append(image);
     };
 }
 function registerIcon(){
@@ -428,18 +443,21 @@ function registerIcon(){
     }
     ajax.send(datasend);
 }
-function openRegisterIcons(){
+
+function openRegisterIcons() {
     document.getElementById('newIcono').style.display = 'block';
     document.getElementById('btn-register-icon').style.display = 'none';
     closeRegisterIcons();
     closeRegister();
 }
-function closeRegisterIcon(){
+
+function closeRegisterIcon() {
     document.getElementById('newIcono').style.display = 'none';
     document.getElementById('btn-register-icon').style.display = 'block';
     closeRegisterIcons();
 }
-function closeRegisterIcons(){
+
+function closeRegisterIcons() {
     document.getElementById('icon_name').value = '';
     document.getElementById('onimg').value = '';
     document.getElementById('offimg').value = '';
