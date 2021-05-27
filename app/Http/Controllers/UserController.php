@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         return Socialite::driver('facebook')->redirect();
     }
-    public function handleProviderCallback2()
+    public function handleProviderCallback2(Request $request)
     {
         $user = Socialite::driver('facebook')->user();
         //return $user->getEmail();
@@ -54,7 +54,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -85,7 +85,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -114,11 +114,12 @@ class UserController extends Controller
             }
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            // ! INSERTAR USUARIO CREADO CON FACEBOOK
+            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'create_date'=>NOW(),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
-            // session()->put('typeuser', '1');
-            session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', '1');
+            //session()->put('typeuser', $user->id_typeuser_fk);
             session()->put('id_user', $user->id_user);
             return redirect('viewCliente');
         }
@@ -127,7 +128,7 @@ class UserController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-    public function handleProviderCallback(){
+    public function handleProviderCallback(Request $request){
         //return Socialite::driver('google')->redirect();
         $user = Socialite::driver('google')->user();
         $email= $user->getEmail();
@@ -155,7 +156,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -186,7 +187,7 @@ class UserController extends Controller
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
             // session()->put('typeuser', '1');
-            session()->put('typeuser', $user->id_typeuser_fk);
+            session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
             switch ($usario->id_typeuser_fk) { // Comprovamos el tipo de usuario ( 1-5 )
                 case '1':
@@ -215,7 +216,8 @@ class UserController extends Controller
             }
         }else{
             //registrarse con la cuenta y hacer login
-            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
+            // ! INSERTAR USUARIO CREADO CON GOOGLE
+            DB::table('tbl_user')->insertGetId(['name'=>$name,'lastname'=>$lastname,'gender'=>'No especificar','confidentiality'=>$consentimiento,'email'=>$user->getEmail(),'create_date'=>NOW(),'psswd'=>md5(Str::random(16)),'id_typeuser_fk'=>'1','google/facebook'=>'1']);
             $user = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $name);
             // session()->put('typeuser', '1');
@@ -529,4 +531,10 @@ class UserController extends Controller
     //     $id_type = DB::select('SELECT tbl_user.id_typeuser_fk FROM tbl_user WHERE tbl_user.id_user= ?',[$id_user]);
     //     return response()->json($id_type);
     // }
+
+    public function mostrarU(){
+        $id_user = session()->get('id_user');
+        $perfilU=DB::select('SELECT * FROM tbl_user where id_user='.$id_user.'');
+        return view('perfilU', compact('perfilU'));
+    }
 }

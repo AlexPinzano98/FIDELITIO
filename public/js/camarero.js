@@ -1,7 +1,22 @@
+// window.onload = function() {
+//     ver_promociones();
+//     modal_qr = document.getElementById("modal");
+// }
 window.onload = function() {
-    ver_promociones();
-    modal_qr = document.getElementById("modal");
+    var html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", { fps: 10, qrbox: 250 });
+        
+function onScanSuccess(qrCodeMessage) {
+    alert(`QR matched = ${qrCodeMessage}`);
+    sellar(qrCodeMessage);
+    // html5QrcodeScanner.clear();
+    // ^ this will stop the scanner (video feed) and clear the scan area.
 }
+
+html5QrcodeScanner.render(onScanSuccess);
+ver_promociones();
+    modal_qr = document.getElementById("modal");
+}  
 
 
 function objetoAjax() {

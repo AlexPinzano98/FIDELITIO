@@ -132,9 +132,11 @@ Route::post('/eliminar_promo', [PromotionController::class, 'eliminar_promo']);
 Route::post('/cambiar_estado_p', [PromotionController::class, 'cambiar_estado_p']);
 Route::post('/ver_locales_p', [PromotionController::class, 'ver_locales_p']);
 Route::post('/ver_iconos', [PromotionController::class, 'ver_iconos']);
+Route::post('/ver_icono', [PromotionController::class, 'ver_icono']);
 Route::post('/registrar_promo', [PromotionController::class, 'registrar_promo']);
 Route::post('/registrar_icono', [PromotionController::class, 'registrar_icono']);
 Route::post('/ver_promo', [PromotionController::class, 'ver_promo']);
+Route::post('/actualizar_promo', [PromotionController::class, 'actualizar_promo']);
 // CRUD LOCALES
 Route::post('/ver_locales', [LocalController::class, 'ver_locales']);
 Route::post('/registrar_local', [LocalController::class, 'registrar_local']);
@@ -158,3 +160,4 @@ Route::post('/password_reset', [UserController::class, 'password_reset']);
 Route::post('/cambiar_password', [UserController::class, 'cambiar_password']);
 Route::get('/contra_olvidada', function (){ return view('contra_olvidada');});
 Route::post('/restaurar_pass', [UserController::class, 'restaurar_pass']);
+Route::get('/prueba_cam', function (){ return view('prueba_cam');});
