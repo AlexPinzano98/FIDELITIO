@@ -117,6 +117,8 @@ function sellar(content) {
                 var respuesta = JSON.parse(ajax.responseText);
                 location.reload();
                 mostrarValido();
+                // html5QrcodeScanner.clear();
+                cerrar_camara();
                 
             }
         }

@@ -2,22 +2,28 @@
 //     ver_promociones();
 //     modal_qr = document.getElementById("modal");
 // }
+var html5QrcodeScanner="";
 window.onload = function() {
-    var html5QrcodeScanner = new Html5QrcodeScanner(
+    html5QrcodeScanner = new Html5QrcodeScanner(
     "reader", { fps: 10, qrbox: 250 });
-        
+
 function onScanSuccess(qrCodeMessage) {
-    alert(`QR matched = ${qrCodeMessage}`);
+    //alert(`QR matched = ${qrCodeMessage}`);
     sellar(qrCodeMessage);
     // html5QrcodeScanner.clear();
     // ^ this will stop the scanner (video feed) and clear the scan area.
 }
 
-html5QrcodeScanner.render(onScanSuccess);
-ver_promociones();
+    html5QrcodeScanner.render(onScanSuccess);
+    ver_promociones();
     modal_qr = document.getElementById("modal");
 }  
 
+function cerrar_camara(){
+    //html5QrcodeScanner.stop();
+    //html5QrcodeScanner.clear();
+    location.reload();
+}
 
 function objetoAjax() {
     var xmlhttp = false;
