@@ -33,8 +33,6 @@
         <header id="#header">
             <p class="text-start">{{ session('name') }}</p>
             <button type="button" class="close" onclick="cerrar_camara()" data-dismiss="modal">&times;</button>
-            <div style="width: 100px; height: 100px; margin-top:5%;" id="reader">
-            </div>
             <a id="menu_on" onclick="closeModal2()">
                 <span></span>
                 <span></span>
