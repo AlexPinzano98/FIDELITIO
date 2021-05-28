@@ -15,8 +15,6 @@ message3.style.color = "red";
 document.getElementById("registerIcon").addEventListener("click", () => {
     // vacio el div message de informe de errores siempre que se le da el boton de enviar los datos del form
     message1.innerHTML = "";
-    message2.innerHTML = "";
-    message3.innerHTML = "";
 
     let num = 0;
     console.log(fields.length);
@@ -37,9 +35,8 @@ document.getElementById("registerIcon").addEventListener("click", () => {
 });
 //form registro promociones
 document.getElementById("submit").addEventListener("click", () => {
-    message1.innerHTML = "";
+
     message2.innerHTML = "";
-    message3.innerHTML = "";
 
     let iconsSelect = document.getElementById('iconos');
     console.log(iconsSelect.value);
@@ -90,9 +87,8 @@ document.getElementById("submit").addEventListener("click", () => {
 
 //form actualizar promociones
 
-document.getElementById("submit2").addEventListener("click", () => {
-    message1.innerHTML = "";
-    message2.innerHTML = "";
+document.getElementById("submita").addEventListener("click", () => {
+
     message3.innerHTML = "";
 
     let nombrePromo = document.getElementById('nombrea');

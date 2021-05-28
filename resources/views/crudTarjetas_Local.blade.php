@@ -86,11 +86,11 @@
         <div class="mb-3">
             <input name="email" type="text"  id="email" placeholder="Email..."></input>
         </div>
-        <button type="submit" id="submit" class="btn btn-success" onclick="registrar_tarjeta()">
-            REGISTRAR
+        <button type="submit" id="submit" class="btn btn-success">
+            Registrar tarjeta
         </button>
         <button onclick="closeRegister()" class="btn btn-danger">CANCELAR</button>
-        <div id="message">
+        <div id="message1">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
@@ -121,7 +121,7 @@
                 <option value="Canjeado">Canjeado</option>
             </select>
         </div>
-        
+
         <button type="submit" id="submit" class="btn btn-success" onclick="actualizar_tarjeta()">
             ACTUALIZAR
         </button>

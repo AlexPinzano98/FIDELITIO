@@ -323,6 +323,9 @@ function ver_promo(id_promo) {
 }
 
 function openRegister() {
+    message1.innerHTML = "";
+    message2.innerHTML = "";
+    message3.innerHTML = "";
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
@@ -349,6 +352,9 @@ function closeRegister() {
 }
 
 function openUpdate(id_user) {
+    message1.innerHTML = "";
+    message2.innerHTML = "";
+    message3.innerHTML = "";
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();
@@ -448,6 +454,9 @@ function registerIcon() {
 }
 
 function openRegisterIcons() {
+    message1.innerHTML = "";
+    message2.innerHTML = "";
+    message3.innerHTML = "";
     document.getElementById('newIcono').style.display = 'block';
     document.getElementById('btn-register-icon').style.display = 'none';
     closeRegisterIcons();
