@@ -33,6 +33,16 @@
     border-radius: 7px;
 }
 
+.fas {
+    background-color: transparent;
+    border: none;
+    font-size: 230%;
+    width: 10%;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
 #close {
     font-size: 2.2em;
     border-radius: 5px 0;
@@ -59,6 +69,7 @@ header {
     width: 100%;
     padding: 4%;
     z-index: 2;
+    height: 10%;
 }
 
 #list {
@@ -76,14 +87,15 @@ header {
     color: white !important;
     cursor: pointer;
     float: left;
-    margin-right: 27.5%;
+    margin-right: 25%;
 }
 
 #menu_on {
-    float: left;
+    float: right;
     width: 10%;
     color: white;
     margin-top: 1%;
+    margin-right: 5%;
 }
 
 #menu_on:hover {
@@ -138,16 +150,6 @@ nav {
     color: white;
 }
 
-.fas {
-    background-color: transparent;
-    border: none;
-    font-size: 230%;
-    width: 10%;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-}
-
 #icono {
     float: left;
     padding-left: 4%;
@@ -156,7 +158,6 @@ nav {
 }
 
 nav div:hover {
-    /* background-color: rgb(173, 169, 169); */
     border-bottom: 2px solid rgb(54, 141, 54) !important;
 }
 
@@ -359,18 +360,6 @@ nav div:hover {
     header {
         padding: 2%;
     }
-    /* #home {
-    margin-top: 22%;
-    margin-left: 35%;
-    margin-bottom: 5%;
-    margin-right: 10%;
-    color: #58D68D;
-    font-size: 250%;
-    width: 10%;
-    text-align: center;
-    cursor: pointer;
-    float: left;
-} */
     #list {
         font-size: 280%;
         margin-top: 0.75%;
@@ -459,6 +448,7 @@ nav div:hover {
     }
     header {
         padding: 1%;
+        height: 13%;
     }
     #list {
         width: 5%;

@@ -43,17 +43,6 @@ td {
     word-wrap: break-word;
 }
 
-
-/* th {
-    text-align: center;
-    padding-right: 5%;
-}
-
-td {
-    text-align: center;
-    padding-right: 5%;
-} */
-
 #historial {
     font-size: 130%;
     border: 2px solid rgb(100, 165, 75);
