@@ -171,6 +171,19 @@ function registrar_usuario() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
+
+            let alert = "";
+            if(respuesta===1){
+                 alert =  `<ul class="list-group">
+                <li class="list-group-item list-group-item-succes">Usuario registrado correctamente</li>
+            </ul>`;
+            }else{
+                alert =  `<ul class="list-group">
+                <li class="list-group-item list-group-item-danger">El correo electrónico que ha intentado registrar ya existe, registra el usuario con otro correo electrónico</li>
+            </ul>`;
+            }
+            message1.innerHTML = alert;
+            message3.innerHTML = alert;
         }
         ver_usuarios();
         borrar_registro();
