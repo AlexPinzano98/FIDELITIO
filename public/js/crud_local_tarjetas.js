@@ -56,7 +56,7 @@ function mostrar_datos() {
     var pag_totales = Math.ceil(respuesta.length / num_results)
     document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
- 
+
     var desde = ((pag_actual - 1) * num_results);
     var hasta = (desde + (num_results * 1));
 
@@ -83,7 +83,7 @@ function mostrar_datos() {
         } else {
             tabla += '<td style="color: red">' + respuesta[i].status_card + '</td>';
         }
-        
+
         tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_card + ')"><i class="fas fa-user-edit"></i></button>' + '</td>';
         tabla += '<td>' + '<button onclick="eliminar_tarjeta(' + respuesta[i].id_card + ')"><i class="fas fa-user-slash"></i></button>' + '</td></tr>';
     }
@@ -223,7 +223,7 @@ function openUpdate(id_card) {
         //x.style.display = "block";
         // closeRegister();
     ver_card(id_card);
-    //console.log(id_card) 
+    //console.log(id_card)
 }
 
 function ver_card(id_card) {
@@ -271,6 +271,7 @@ function actualizar_tarjeta(){
 }
 
 function openRegister() {
+    message1.innerHTML = "";
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";

@@ -83,8 +83,10 @@
         Icono sin canjear<br>
         <input type="file" name="offimg" id="offimg" ><br><br>
         <div id="offprev"></div><br>
-        <button id="registerIcon" onclick="registerIcon()" class="btn btn-success">REGISTRAR</button>
+        <button id="registerIcon" class="btn btn-success">REGISTRAR</button>
         <button onclick="closeRegisterIcon()" class="btn btn-danger">CANCELAR</button>
+        <div id="message1">
+        </div>
     </div>
 
     <!-- FORMULARIO PARA REGISTRAR UNA PROMOCIÓN -->
@@ -121,11 +123,11 @@
                     <option selected disabled value="">Seleccione su restaurante</option>
                 </select><br>
             </div>
-        <button type="submit" id="submit" class="btn btn-success" onclick="registrar_promo()">
+        <button type="submit" id="submit" class="btn btn-success">
             REGISTRAR
         </button>
         <button onclick="closeRegister()" class="btn btn-danger">CANCELAR</button>
-        <div id="message">
+        <div id="message2">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
@@ -159,11 +161,11 @@
                 Usuario
                 <input name="emaila" type="email" id="emaila" readonly></input><br><br>
             </div>
-        <button type="submit" id="submita" class="btn btn-success" onclick="actualizar_promo()">
+        <button type="submit" id="submita" class="btn btn-success">
             ACTUALIZAR
         </button>
         <button onclick="closeUpdate()" class="btn btn-danger">CANCELAR</button>
-        <div id="message">
+        <div id="message3">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
