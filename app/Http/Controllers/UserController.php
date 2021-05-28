@@ -527,7 +527,9 @@ class UserController extends Controller
         }
     }
     public function ver_locales_u(){
-        $locales = DB::select('SELECT * FROM `tbl_local`');
+        $id_user = session()->get('id_user');
+        $user = DB::select('SELECT * FROM `tbl_user` WHERE `id_user`=?',[$id_user]);
+        $locales = DB::select('SELECT * FROM `tbl_local` WHERE `id_local`=?',[$user[0]->id_local_fk]);
         return response()->json($locales,200);
     }
 

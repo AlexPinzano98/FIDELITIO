@@ -295,7 +295,7 @@ function cargar_locales() {
         var tabla = '<option selected disabled value="0">Seleccione el restaurante</option>';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            //console.log(respuesta)
+            console.log(respuesta)
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i].name)
                 tabla += '<option value="' + respuesta[i].id_local + '">' + respuesta[i].name + '</option>';
