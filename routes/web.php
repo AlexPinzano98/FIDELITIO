@@ -127,6 +127,7 @@ Route::post('/eliminar_tarjeta', [CardController::class, 'eliminar_tarjeta']);
 Route::post('/cambiar_estado_t', [CardController::class, 'cambiar_estado_t']);
 Route::post('/ver_card', [CardController::class, 'ver_card']);
 Route::post('/actualizar_card', [CardController::class, 'actualizar_card']);
+Route::post('/addSello', [CardController::class, 'addSello']);
 // CRUD PROMOCIONES
 Route::post('/ver_promos', [PromotionController::class, 'ver_promos']);
 Route::post('/eliminar_promo', [PromotionController::class, 'eliminar_promo']);
