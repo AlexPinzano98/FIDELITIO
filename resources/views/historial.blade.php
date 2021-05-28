@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    
+    //! DIV QUE SE RELLENA CON LOS DATOS DEL HISTORIAL
     <div id="historial" style="overflow-x:auto;">
     </div>
 
