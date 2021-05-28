@@ -29,6 +29,7 @@
 </head>
 
 <body>
+    
     <section>
         <header id="#header">
             <form method="get" id="views" href="{{url('/viewCliente')}}">
@@ -80,6 +81,7 @@
     </section>
     
     <div id="content">
+        <!-- DIV QUE SE RELLENA CON LOS DATOS DEL HISTORIAL -->
         <div id="historial" style="overflow-x:auto;">
         </div>
     </div>

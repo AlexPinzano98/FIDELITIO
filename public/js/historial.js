@@ -1,5 +1,5 @@
 window.onload = function() {
-    //VER HISTORIAL
+    //? VER HISTORIAL
     verHistorial();
 }
 
@@ -21,6 +21,7 @@ function objetoAjax() {
 }
 
 function verHistorial() {
+    //! FUNCION PARA MOSTRAR EL RESULTADO EN LA VISTA
     var ajax = new objetoAjax();
     //var token = document.getElementById("token").getAttribute("content");
     ajax.open("GET", "verHistorial", true);
