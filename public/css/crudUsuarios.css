@@ -16,8 +16,8 @@ body {
 .text-start {
     float: left;
     color: white;
-    font-size: 160%;
-    margin: 1% 35% 0% 5%;
+    font-size: 200%;
+    margin: 0.5% 32% 0% 5%
 }
 
 #admi {
@@ -212,11 +212,12 @@ h1 {
 #results {
     border: 1px solid black;
     border-radius: 5px;
-    width: 17.5%;
+    width: 25%;
 }
 
 table {
     margin-bottom: 1%;
+    width: 100%;
 }
 
 td {
@@ -287,6 +288,12 @@ input[type=checkbox] {
 
 #registrar button {
     width: 30%;
+}
+
+#registrar .list-group {
+    width: 70%;
+    margin-left: 10%;
+    margin-top: 2.5%;
 }
 
 

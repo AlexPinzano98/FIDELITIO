@@ -108,7 +108,7 @@
         </div>
         <div class="mb-3">
             <input name="sellosa" type="number"  id="sellosa" readonly></input>
-            <button onclick="addSello()">+</button>
+            <button id="mas" onclick="addSello()">+ Añadir sello</button>
         </div>
         <div class="mb-3">
             <input name="email" type="text"  id="emaila" readonly></input>

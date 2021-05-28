@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{asset('css/cardStyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
-    <link rel="stylesheet" href="{{asset('css/listLocal.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/listLocal.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/perfilU.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
@@ -33,23 +33,21 @@
     <div id="wrapper">
         <section>
             <header id="#header">
-                <form method="get" id="views" href="{{url('/viewCliente')}}">
-                    <a class="fas fa-home" id="list">
-                    </a>
-                </form>
-                <h1 id="admi">Perfil Usuario</h1>
+                <a class="fas fa-home" id="list" href="{{url('/viewCliente')}}">
+                </a>
+                 <h1 id="admi">Perfil Usuario</h1>
                 <div id="menu_on">
                     <i class="far fa-user-circle" style="float: left;"></i>
                 </div>
             </header>
             <nav>
                 <ul>
-                    <div class="profile">
+                    <!-- <div class="profile">
                         <i class="fas fa-user" id="icono"></i>
                         <a href="{{url('/perfilU')}}" id="link">
                             Perfil del usuario
                         </a>
-                    </div>
+                    </div> -->
                     <div class="profile">
                         <i class="fas fa-history" id="icono"></i>
                         <a href="{{url('/historial')}}" id="link">

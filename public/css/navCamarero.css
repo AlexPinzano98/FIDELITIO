@@ -85,7 +85,7 @@ header {
     cursor: pointer;
     float: left;
     margin-top: 1%;
-    margin-right: 25%;
+    /* margin-right: 25%; */
 }
 
 #camara {
@@ -313,7 +313,6 @@ nav div:hover {
         transform: translateX(0px);
     }
     nav {
-        /* position: static; */
         padding: 6% 5%;
     }
     .profile {

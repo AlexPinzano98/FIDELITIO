@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{asset('css/cardStyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/cliente.css')}}">
-    <link rel="stylesheet" href="{{asset('css/listLocal.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/listLocal.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/historial.css')}}">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
@@ -32,10 +32,8 @@
     
     <section>
         <header id="#header">
-            <form method="get" id="views" href="{{url('/viewCliente')}}">
-                <button class="fas fa-home" id="list">
-                </button>
-            </form>
+            <a class="fas fa-home" id="list" href="{{url('/viewCliente')}}">
+            </a>
             <h1 id="admi">Historial</h1>
             <div id="menu_on" onclick="closeModal2()">
                 <i class="far fa-user-circle" style="float: left;"></i>
@@ -48,12 +46,12 @@
                         Perfil del usuario
                     </a>
                 </div>
-                <div class="profile">
+                <!-- <div class="profile">
                     <i class="fas fa-history" id="icono"></i>
                     <a href="{{url('/historial')}}" id="link">
                         Historial
                     </a>
-                </div>
+                </div> -->
                 <div class="profile">
                     <i class="fas fa-life-ring" id="icono"></i>
                     <a href="{{url('/ayuda')}}" id="link">

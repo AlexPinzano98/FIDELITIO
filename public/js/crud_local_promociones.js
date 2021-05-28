@@ -60,7 +60,7 @@ function mostrar_datos() {
     var datos = document.getElementById("datos");
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results)
-    document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
+    document.getElementById('total_datos').innerHTML = 'Promociones totales: ' + respuesta.length;
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
 
     var desde = ((pag_actual - 1) * num_results);

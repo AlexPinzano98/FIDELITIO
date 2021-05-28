@@ -306,6 +306,7 @@ function verLocales() {
             // </button>`;
 
             tabla2 = "";
+            tabla2 = "<h1>Mis restaurantes</h1>"
             for (let i = 0; i < response.length; i++) {
                 tabla2 += `
                 <div class="item">
