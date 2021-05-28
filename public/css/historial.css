@@ -1,4 +1,53 @@
-@media only screen and (max-width: 480px),
-only screen and (max-device-width: 480px) {
-    /*aquí nuestro cSS para dispositivos móviles*/
+#list {
+    font-size: 250%;
+    width: 15%;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+    margin-top: 1%;
+}
+
+#admi {
+    color: white !important;
+    cursor: pointer;
+    float: left;
+    margin: 1% 0% 0% -17%;
+    font-size: 250%;
+    text-decoration: none;
+}
+
+#menu_on {
+    float: right;
+    width: 10%;
+    color: white;
+    margin-top: 1%;
+    margin-right: 5%;
+}
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+th {
+    font-size: 110%;
+}
+
+th,
+td {
+    border: 1px solid rgba(103, 184, 93, 0.596);
+    width: 200px;
+    height: 50px;
+    word-wrap: break-word;
+}
+
+#historial {
+    font-size: 130%;
+    border: 2px solid rgb(100, 165, 75);
+    margin: 2.5%;
+    padding-right: 3%;
+    margin-top: 0%;
+    border-radius: 8px;
 }

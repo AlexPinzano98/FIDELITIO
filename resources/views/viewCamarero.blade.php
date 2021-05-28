@@ -2,62 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+    <title>FIDELITIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{asset('css/navCamarero.css')}}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/camarero.css')}}">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="js/instascan.js"></script>
     <script src="js/instascan.min.js"></script>
+    <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="{{asset('css/camarero.css')}}">
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('#menu_on').click(function() {
-            $('body').toggleClass('visible_menu');
-        })
-    });
+        $(document).ready(function() {
+            $('#menu_on').click(function() {
+                $('body').toggleClass('visible_menu');
+            })
+        });
     </script>
-    <title>Camarero</title>
-    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 </head>
 <body>
-
     <section>
         <header id="#header">
-            <p class="text-start">{{ session('name') }}</p>
-            <button class="fas fa-camera" onclick="openCamara()" id="cam">
-            </button>
-            <a id="menu_on" onclick="closeModal2()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
+            <form method="get" id="views">
+                <button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
+                </button>
+            </form>
+            <div id="cam">
+                <img src="img/qr-code.png" onclick="openCamara()" id="camara">
+            </div>
+            <div id="menu_on" onclick="closeModal2()">
+                <i class="far fa-user-circle" style="float: left;"></i>
+            </div>
         </header>
         <nav>
-            <ul>
                 <div class="profile">
-                    <i class="fas fa-user" style="float: left;"></i>
-                    <a href="#">
+                    <i class="fas fa-user" id="icono"></i>
+                    <a href="{{url('/perfilU')}}" id="link">
                         Perfil del usuario
                     </a>
                 </div>
                 <div class="profile">
-                    <i class="fas fa-moon" style="float: left;"></i>
-                    <a href="#">
-                        Modo noche
+                    <i class="fas fa-history" id="icono"></i>
+                    <a href="{{url('/historial')}}" id="link">
+                        Historial
                     </a>
                 </div>
-                <form method="get" action="{{url('/cerrar_sesion')}}">
+                <div class="profile">
+                    <i class="fas fa-life-ring" id="icono"></i>
+                    <a href="{{url('/ayuda')}}" id="link">
+                        Ayuda
+                    </a>
+                </div>
+                <div class="profile">
+                    <i class="fas fa-balance-scale" id="icono"></i>
+                    <a href="{{url('/terCon')}}" id="link">
+                        Terminos y condiciones
+                    </a>
+                </div>
+                <div class="profile">
+                    <i class="fas fa-question-circle" id="icono"></i>
+                    <a href="{{url('/soporte')}}" id="link">
+                        Soporte
+                    </a>
+                </div>
+                <form method="get" action="{{url('/cerrar_sesion')}}" id="cerSes">
                     <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
                     </button>
                     <button type="submit" id="sesion">Cerrar Sesion</button>
                 </form>
-            </ul>
         </nav>
     </section>
 

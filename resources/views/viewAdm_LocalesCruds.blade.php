@@ -23,7 +23,7 @@
 <body>
     <header class="header">
         <p class="text-start">{{ session('name') }}</p>
-        <h1 href="{{url('/viewAdm_LocalesCruds')}}" id="admi"></a>
+        <h1 id="admi">Panel de administración</h1>
         <div id="menu_on" onclick="closeModal2()">
             <i class="far fa-user-circle" style="float: left;"></i>
         </div>

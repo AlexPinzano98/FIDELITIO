@@ -33,7 +33,6 @@ function verHistorial() {
 
             tabla = "";
             tabla += `<table>
-            <caption>Historial tarjetas</caption>
             <thead>
                 <tr>
                 <th>Estado</th>
@@ -42,7 +41,7 @@ function verHistorial() {
                 <th>Creación</th>
                 <th>Finalizada</th>
                 <th>Nombre promoción</th>
-                <th>nº</th>
+                <th>Nº</th>
                 </tr>
             </thead>
             <tbody>`;

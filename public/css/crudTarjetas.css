@@ -159,15 +159,14 @@ h1 {
 }
 
 .crud {
-    width: 97%;
+    width: 95%;
     padding-top: 1%;
-    display: flex;
-    justify-content: center;
     margin-bottom: 1%;
+    margin-left: 2.5%;
 }
 
 .datos {
-    width: 95%;
+    width: 100%;
     text-align: center;
 }
 
@@ -253,5 +252,97 @@ button {
 /* registro */
 
 #registrar {
-    background-color: green;
+    width: 40%;
+    margin-left: 30%;
+    padding-left: 2.5%;
+    border: 2px solid rgb(109, 109, 109);
+    border-radius: 8px;
+    margin-bottom: 2%;
+}
+
+#registrar h1 {
+    font-size: 150%;
+    padding-top: 2%;
+    text-align: center;
+}
+
+#registrar .form-control {
+    border-radius: 8px;
+}
+
+input[type=text],
+input[type=number],
+input[type=date],
+#registrar select {
+    border-radius: 8px;
+    border: 1px solid rgb(109, 109, 109);
+}
+
+input[type=checkbox] {
+    margin-left: 2%;
+    width: 20px;
+    height: 20px;
+}
+
+#registrar .ms-2 {
+    margin-left: 1%;
+}
+
+#submit {
+    margin-left: 15%;
+}
+
+#registrar button {
+    width: 30%;
+}
+
+
+/* actualizar */
+
+#actualizar {
+    width: 40%;
+    margin-left: 30%;
+    padding-left: 2.5%;
+    border: 2px solid rgb(109, 109, 109);
+    border-radius: 8px;
+}
+
+#actualizar h1 {
+    font-size: 150%;
+    padding-top: 2%;
+    text-align: center;
+}
+
+#actualizar .form-control {
+    border-radius: 8px;
+    border: 1px solid rgb(109, 109, 109);
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+#registrar select {
+    border-radius: 8px;
+    border: 1px solid rgb(109, 109, 109);
+}
+
+input[type=checkbox] {
+    margin-left: 2%;
+    width: 20px;
+    height: 20px;
+    border-radius: 8px;
+    border: 1px solid rgb(109, 109, 109);
+}
+
+#actualizar button {
+    width: 30%;
+}
+
+#actualizar .ms-2 {
+    margin-left: 1%;
+    margin-top: 1.5%;
+}
+
+#submita {
+    margin-left: 17.5%;
 }
