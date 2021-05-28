@@ -16,8 +16,8 @@ body {
 .text-start {
     float: left;
     color: white;
-    font-size: 160%;
-    margin: 1% 35% 0% 5%;
+    font-size: 200%;
+    margin: 0.5% 32% 0% 5%
 }
 
 #admi {
@@ -232,11 +232,14 @@ h1 {
 #results {
     border: 1px solid black;
     border-radius: 5px;
-    width: 17.5%;
+    width: 25%;
 }
 
 table {
+    margin-top: 5%;
     margin-bottom: 1%;
+    width: 100%;
+    margin-right: 2.5%;
 }
 
 td {
@@ -258,12 +261,16 @@ input[type=date],
     text-align: center;
     float: left;
     padding-left: 15%;
+    margin-bottom: 3%;
+    /* padding-top: 45%; */
 }
 
 #listado {
     text-align: center;
     width: 15%;
     float: right;
+    /* padding-top: 45%; */
+    margin-bottom: 3%;
 }
 
 button {
@@ -312,6 +319,13 @@ input[type=checkbox] {
     width: 30%;
 }
 
+#newIcono .list-group {
+    width: 75%;
+    margin-left: 7.5%;
+    margin-top: 2.5%;
+    margin-bottom: 3%;
+}
+
 
 /* registro */
 
@@ -358,6 +372,12 @@ input[type=checkbox] {
 
 #registrar button {
     width: 30%;
+}
+
+#registrar .list-group {
+    width: 70%;
+    margin-left: 10%;
+    margin-top: 2.5%;
 }
 
 

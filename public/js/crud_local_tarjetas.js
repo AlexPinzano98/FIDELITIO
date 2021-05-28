@@ -54,7 +54,7 @@ function mostrar_datos() {
     var datos = document.getElementById("datos");
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results)
-    document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
+    document.getElementById('total_datos').innerHTML = 'Tarjetas totales: ' + respuesta.length;
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
 
     var desde = ((pag_actual - 1) * num_results);
@@ -76,16 +76,16 @@ function mostrar_datos() {
         tabla += '<td>' + respuesta[i].email + '</td>';
         tabla += '<td>' + respuesta[i].create_date + '</td>';
         tabla += '<td>' + respuesta[i].complete_date_card + '</td>';
-        if (respuesta[i].status_card == 'Activado'){
+        if (respuesta[i].status_card == 'Activado') {
             tabla += '<td style="color: green">' + respuesta[i].status_card + '</td>';
-        } else if(respuesta[i].status_card == 'Canjeado'){
+        } else if (respuesta[i].status_card == 'Canjeado') {
             tabla += '<td style="color: orange">' + respuesta[i].status_card + '</td>';
         } else {
             tabla += '<td style="color: red">' + respuesta[i].status_card + '</td>';
         }
 
-        tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_card + ')"><i class="fas fa-user-edit"></i></button>' + '</td>';
-        tabla += '<td>' + '<button onclick="eliminar_tarjeta(' + respuesta[i].id_card + ')"><i class="fas fa-user-slash"></i></button>' + '</td></tr>';
+        tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_card + ')"><i class="fas fa-edit"></i></button>' + '</td>';
+        tabla += '<td>' + '<button onclick="eliminar_tarjeta(' + respuesta[i].id_card + ')"><i class="fas fa-trash-alt"></i>    </i></button>' + '</td></tr>';
     }
     datos.innerHTML = tabla;
 }
@@ -247,7 +247,8 @@ function ver_card(id_card) {
     }
     ajax.send(datasend);
 }
-function actualizar_tarjeta(){
+
+function actualizar_tarjeta() {
     var token = document.getElementById("token").getAttribute("content");
     var id_card = document.getElementById('id_card').value;
     var status_card = document.getElementById('status_card').value;
@@ -307,7 +308,8 @@ function closeUpdate() {
     var x = document.getElementById("actualizar");
     x.style.display = "none";
 }
-function addSello(){
+
+function addSello() {
     console.log('add sello')
     var token = document.getElementById("token").getAttribute("content");
     var id_card = document.getElementById('id_card').value;

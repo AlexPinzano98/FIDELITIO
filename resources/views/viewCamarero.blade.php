@@ -30,8 +30,9 @@
     <section>
         <header id="#header">
             <form method="get" id="views">
-                <button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
-                </button>
+                <!-- <h1 id="list"> -->
+                    <img src="img/stimpa.png" id="list" class="stimpa">
+                <!-- </h1>   -->
             </form>
             <div id="cam">
                 <img src="img/qr-code.png" onclick="openCamara()" id="camara">
