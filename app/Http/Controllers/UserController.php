@@ -473,19 +473,24 @@ class UserController extends Controller
         if ($local == 0){
             $local = null;
         }
-
-        DB::table('tbl_user')->insertGetId(['name'=>$request['nombre'],
-        'lastname'=>$request['apellidos'],
-        'gender'=>$request['sexo'],
-        'phone'=>$request['phone'],
-        'confidentiality'=>$consentimiento,
-        'email'=>$request['email'],
-        'create_date'=>now(),
-        'psswd'=>md5($request['psswd']),
-        'id_local_fk'=>$local,
-        'id_typeuser_fk'=>$request['rol']]);
-
-        return response()->json('OK. Usuario registrado correctamente',200);
+        $user = DB::select('SELECT * FROM `tbl_user` WHERE `email`=?',[$request['email']]);
+        if (empty($user)){
+            DB::table('tbl_user')->insertGetId(['name'=>$request['nombre'],
+            'lastname'=>$request['apellidos'],
+            'gender'=>$request['sexo'],
+            'phone'=>$request['phone'],
+            'confidentiality'=>$consentimiento,
+            'email'=>$request['email'],
+            'create_date'=>now(),
+            'psswd'=>md5($request['psswd']),
+            'id_local_fk'=>$local,
+            'id_typeuser_fk'=>$request['rol']]);
+    
+            return response()->json('OK. Usuario registrado correctamente',200);
+        } else {
+            return response()->json('NOK. El email existe',200);
+        }
+        
     }
 
     public function actualizar_usuario(Request $request){
@@ -522,7 +527,9 @@ class UserController extends Controller
         }
     }
     public function ver_locales_u(){
-        $locales = DB::select('SELECT * FROM `tbl_local`');
+        $id_user = session()->get('id_user');
+        $user = DB::select('SELECT * FROM `tbl_user` WHERE `id_user`=?',[$id_user]);
+        $locales = DB::select('SELECT * FROM `tbl_local` WHERE `id_local`=?',[$user[0]->id_local_fk]);
         return response()->json($locales,200);
     }
 

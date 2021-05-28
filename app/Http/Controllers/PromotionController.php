@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PromotionController extends Controller
+class PromotionController extends Controller 
 {
     public function ver_promos(Request $request){
         $id_user = session()->get('id_user');
@@ -94,18 +94,16 @@ class PromotionController extends Controller
     public function registrar_icono(Request $request){
         $request['fileon']->store('public'); // Guardamos imagen
         $path = $request['fileon']->store('public');
-        $ruta = explode("/", $path); // ruta[1]*/
-        
-        // unlink('storage/l7OtKFniXh6oSFwDaqUHoepvhLy0thL1XVXRPLje.jpg');
-        
+        $ruta = explode("/", $path); // ruta[1]
         $request['fileoff']->store('public'); // Guardamos imagen
         $path2 = $request['fileooff']->store('public');
         $ruta2 = explode("/", $path2);
-
         DB::select('INSERT INTO `tbl_images` (`name`, `on`, `off`) VALUES (?,?,?)',
         [$request['name'],$ruta[1], $ruta2[1]]);
+        
        
         return response()->json('OK. Icono registrado correctamente',200);
+        // unlink('storage/l7OtKFniXh6oSFwDaqUHoepvhLy0thL1XVXRPLje.jpg');
     }
     public function ver_promo(Request $request){
         $id_promo = $request['id_promo'];
