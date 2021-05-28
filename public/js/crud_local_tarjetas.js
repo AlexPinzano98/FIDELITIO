@@ -306,3 +306,24 @@ function closeUpdate() {
     var x = document.getElementById("actualizar");
     x.style.display = "none";
 }
+function addSello(){
+    console.log('add sello')
+    var token = document.getElementById("token").getAttribute("content");
+    var id_card = document.getElementById('id_card').value;
+
+    var ajax = new objetoAjax();
+    ajax.open('POST', 'addSello', true);
+    var datasend = new FormData();
+    datasend.append('_token', token);
+    datasend.append('id_card', id_card);
+
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(ajax.responseText);
+            console.log(respuesta);
+            ver_tarjetas();
+            ver_card(id_card);
+        }
+    }
+    ajax.send(datasend);
+}

@@ -299,4 +299,27 @@ class CardController extends Controller
         
         return response()->json('OK. Tarjeta actualizada correctamente',200);
     }
+    public function addSello(Request $request){
+        $id_user = session()->get('id_user');
+        $id_card = $request['id_card'];
+        $sellos = 0;
+        $card = DB::select('SELECT tbl_card.*,tbl_user.email,tbl_promotion.* FROM tbl_card 
+        INNER JOIN tbl_user ON tbl_card.id_user_fk = tbl_user.id_user
+        INNER JOIN tbl_promotion ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion 
+        WHERE id_card = ?',[$id_card]);
+        if ($card[0]->stamp_now == $card[0]->stamp_max){
+            return response()->json('OK. La tarjeta ya está completada',200);
+        } else {
+            $sellos = ($card[0]->stamp_now+1);
+            // Añadir un sello y añadir un stamp_now
+            DB::table('tbl_stamp')->insert(
+                ['date' => NOW(),
+                'id_card_fk' => $id_card, 
+                'id_user_fk_stamp' => $id_user] // Camarero que pone el sello
+            );
+            DB::select('UPDATE `tbl_card` SET `stamp_now`=? WHERE `id_card`=?', 
+            [$sellos, $id_card]);
+            return response()->json('Ok. Sello añadido correctamente',200); 
+        }  
+    }
 }
