@@ -95,7 +95,17 @@ function showCard(recojoData) {
                                 tabla0 += `<img src="storage/` + response[i].off + `" class="img-thumbnail" alt="sello">`;
                             }
                             tabla0 += "</div>";
-                            tabla0 += "</div></div></div>"
+                            if (response[i].stamp_now == response[i].stamp_max) {
+                                tabla0 += '<div class="Cbutton">';
+                                tabla0 +=
+                                    '<button class="button" onclick="generar_qr(' +
+                                    response[i].id_card +
+                                    "," +
+                                    response[i].id_promotion +
+                                    ')">CANJEAR</button>';
+                                tabla0 += "</div>";
+                            }
+                            tabla0 += "</div></div></div>";
                             containCards.innerHTML = tabla0;
                         }
                     }
@@ -230,7 +240,6 @@ function showCard(recojoData) {
             }
             tabla1 += "</div>";
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
-                //alert('tomatelaaaa');
                 tabla1 += '<div class="Cbutton">';
                 tabla1 += '<button class="button" onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')"> CANJEAR </button>'
                 tabla1 += '</div>';
@@ -239,7 +248,7 @@ function showCard(recojoData) {
             containCards.innerHTML = tabla1;
         }
     } else {
-        alert("error");
+        console.log("error");
     }
 
     console.log(mySwiper);

@@ -35,12 +35,11 @@ document.getElementById("registerIcon").addEventListener("click", () => {
 });
 //form registro promociones
 document.getElementById("submit").addEventListener("click", () => {
-
     message2.innerHTML = "";
 
-    let iconsSelect = document.getElementById('iconos');
+    let iconsSelect = document.getElementById("iconos");
     console.log(iconsSelect.value);
-    let restaurantsSelect = document.getElementById('restaurante');
+    let restaurantsSelect = document.getElementById("restaurante");
 
     let num = 0;
     console.log(num);
@@ -85,23 +84,38 @@ document.getElementById("submit").addEventListener("click", () => {
     }
 });
 
+const effectFormValidateDate = () =>{
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; //January is 0!
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = "0" + dd;
+    }
+    if (mm < 10) {
+        mm = "0" + mm;
+    }
+    today = `${yyyy}-${mm}-${dd}` ;
+    document.getElementById("fecha").setAttribute("min", today);
+    document.getElementById("fechaa").setAttribute("min", today);
+ }
+
+ effectFormValidateDate();
+
+
 //form actualizar promociones
 
 document.getElementById("submita").addEventListener("click", () => {
-
     message3.innerHTML = "";
 
-    let nombrePromo = document.getElementById('nombrea');
-    let premio = document.getElementById('premioa');
+    let nombrePromo = document.getElementById("nombrea");
+    let premio = document.getElementById("premioa");
 
     let num = 0;
     console.log(num);
 
     if (nombrePromo.value === "") {
-        effectFormIcon(
-            nombrePromo,
-            borderRed
-        );
+        effectFormIcon(nombrePromo, borderRed);
         num = 1;
         console.log(num);
     } else {
@@ -109,10 +123,7 @@ document.getElementById("submita").addEventListener("click", () => {
     }
 
     if (premio.value == "") {
-        effectFormIcon(
-            premio,
-            borderRed
-        );
+        effectFormIcon(premio, borderRed);
         num = 1;
         console.log(num);
     } else {
@@ -124,6 +135,7 @@ document.getElementById("submita").addEventListener("click", () => {
     }
 });
 
+
 const effectFormIcon = (input, borderRed) => {
     input.style.border = borderRed;
     message1.innerHTML = `<ul class="list-group">
@@ -134,9 +146,9 @@ const effectFormIcon = (input, borderRed) => {
                         </ul>`;
 };
 
-const effectForm = (input, text,borderRed) => {
+const effectForm = (input, text, borderRed) => {
     input.style.border = borderRed;
-	message2.innerHTML += `<ul class="list-group">
+    message2.innerHTML += `<ul class="list-group">
                             <li class="list-group-item list-group-item-danger">Rellena el campo ${text}</li>
                         </ul>`;
 };

@@ -87,7 +87,7 @@
             <input name="email" type="text"  id="email" placeholder="Email..."></input>
         </div>
         <button type="submit" id="submit" class="btn btn-success">
-            Registrar tarjeta
+            REGISTRAR
         </button>
         <button onclick="closeRegister()" class="btn btn-danger">CANCELAR</button>
         <div id="message1">

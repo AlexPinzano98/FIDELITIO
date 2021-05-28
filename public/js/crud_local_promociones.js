@@ -251,7 +251,7 @@ function registrar_promo() {
     }
     ajax.send(datasend);
 }
-
+ 
 function actualizar_promo() {
     var token = document.getElementById("token").getAttribute("content");
     var id_promo = document.getElementById('id_promo').value;

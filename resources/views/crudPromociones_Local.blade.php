@@ -73,7 +73,7 @@
         <h1>Administración de promociones</h1>
     </div>
 
-    <!-- FORMULARIO PARA REGISTRAR UNA PROMOCIÓN -->
+    <!-- FORMULARIO PARA REGISTRAR UN ICONO -->
     <div id="newIcono" style="display: none;">
         <h1> Registrar icono </h1>
         <input type="text" name="icon_name" id="icon_name" placeholder="Nombre del icono..."><br><br>
