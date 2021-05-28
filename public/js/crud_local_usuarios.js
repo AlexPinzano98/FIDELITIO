@@ -140,6 +140,7 @@ function next() {
 }
 
 function registrar_usuario() {
+
     var token = document.getElementById("token").getAttribute("content");
     var nombre = document.getElementById('nombre').value;
     var apellidos = document.getElementById('apellidos').value;
@@ -178,6 +179,7 @@ function registrar_usuario() {
 }
 
 function actualizar_usuario() {
+
     var token = document.getElementById("token").getAttribute("content");
     var id = document.getElementById('id_user').value;
     var nombre = document.getElementById('nombrea').value;
@@ -308,9 +310,7 @@ function cargar_locales() {
 }
 
 function openRegister() {
-    //vacio mensajes de validación
-    message.innerHTML = "";
-    message2.innerHTML = "";
+    clearInputs();
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
@@ -327,9 +327,7 @@ function closeRegister() {
 }
 
 function openUpdate(id_user) {
-     //vacio mensajes de validación
-     message.innerHTML = "";
-     message2.innerHTML = "";
+    clearInputs();
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();
@@ -376,4 +374,16 @@ function es_camareroa() {
         document.getElementById('locala').style.display = 'none';
         document.getElementById('locala').value = 0;
     }
+}
+
+const clearInputs = ()=>{
+    for (let i = 0; i < fields.length; i++) {
+        console.log(fields[i]);
+        fields[i].style.border = "1px solid #6D6D6D";
+    }
+    //vacio mensajes de validación
+    message.innerHTML = "";
+    message1.innerHTML = "";
+    message2.innerHTML = "";
+    message3.innerHTML = "";
 }

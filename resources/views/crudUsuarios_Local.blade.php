@@ -125,6 +125,8 @@
         <button onclick="closeRegister()" class="btn btn-danger">CANCELAR</button>
         <div id="message">
         </div>
+        <div id="message1">
+        </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
 
@@ -175,6 +177,8 @@
         </button>
         <button onclick="closeUpdate()" class="btn btn-danger">CANCELAR</button>
         <div id="message2">
+        </div>
+        <div id="message3">
         </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
