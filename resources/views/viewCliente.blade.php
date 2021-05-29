@@ -35,9 +35,9 @@
         <section>
             <header id="#header">
                 <form method="get" id="views">
-                    <button  class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+                    <button  class="fas fa-star" id="list" onclick="controladores(1); return false">
                     </button>
-                    <button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
+                    <button  class="fas fa-wallet" id="list" onclick="controladores(0); return false">
                     </button>
                 </form>
                 <div id="cam">

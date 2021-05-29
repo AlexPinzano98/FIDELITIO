@@ -539,12 +539,7 @@ class UserController extends Controller
     //     return response()->json($id_type);
     // }
 
-    public function mostrarU(){
-        $id_user = session()->get('id_user');
-        $perfilU=DB::select('SELECT * FROM tbl_user where id_user='.$id_user.'');
-        return view('perfilU', compact('perfilU'));
-    }
-
+    // ! FUNCION PARA RECOGER EL HISTORIAL DEL USUARIO
     public function verHistorial() {
         $id_user = session()->get('id_user');
         $historial = DB::select('SELECT tbl_card.status_card, tbl_card.stamp_now, tbl_promotion.stamp_max, DATE(tbl_card.create_date) AS create_date, DATE(tbl_card.complete_date_card) AS complete_date_card, tbl_promotion.name_promo, tbl_card.id_card FROM `tbl_card`
@@ -553,4 +548,37 @@ class UserController extends Controller
         WHERE id_user_fk = ? ORDER BY `tbl_card`.`status_card` ASC', [$id_user]);
         return response()->json($historial,200);
     }
+
+    // ! FUNCION PARA RECOGER LOS DATOS DEL PERFIL USUARIO
+    public function verInfouser() {
+        $id_user = session()->get('id_user');
+        $infoUser = DB::select('SELECT * FROM `tbl_user` WHERE id_user = ?', [$id_user]);
+        return response()->json($infoUser,200);
+    }
+
+    public function editPerfil() {
+        $id_user = session()->get('id_user');
+        $infoUser = DB::select('SELECT * FROM `tbl_user` WHERE id_user = ?', [$id_user]);
+        return response()->json($infoUser,200);
+    }
+
+    public function editarPerfil() {
+        //redirige a la vista login si no has iniciado sesion.
+        return view('editarPerfil');
+    }
+
+    public function editar($id){
+        $usuario=DB::table('tbl_user')->where('id_user', '=', $id)->first();
+        
+        return view('editarPerfil', compact('usuario'));
+    }
+
+    public function actualizarDatosUsuario($id, Request $request){
+        
+        $datos=request()->except('_token','enviar','_method', 'email');
+        DB::table('tbl_user')->where('id_user', '=', $id)->update(['name'=>$request['name'],'lastname'=>$request['lastname'],'phone'=>$request['phone'],'gender'=>$request['gender'],'psswd'=>MD5($request['psswd'])]);
+
+        return redirect('perfilU');
+    }
 }
+

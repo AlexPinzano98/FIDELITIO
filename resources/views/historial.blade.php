@@ -32,7 +32,7 @@
     
     <section>
         <header id="#header">
-            <a class="fas fa-home" id="list" href="{{url('/viewCliente')}}">
+            <a class="fas fa-wallet" id="list" href="{{url('/viewCliente')}}">
             </a>
             <h1 id="admi">Historial</h1>
             <div id="menu_on" onclick="closeModal2()">

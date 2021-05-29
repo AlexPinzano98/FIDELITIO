@@ -18,7 +18,6 @@
     <script src="https://kit.fontawesome.com/55e6be5a81.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <script src="js/clientePerfilU.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#menu_on').click(function() {
@@ -82,20 +81,36 @@
         </section>
         <div id="content">
             <div id="card">
-                <div class="col-sm-4">
-                    <div class="card-block text-center">
-                        <div class="m-b-25"> 
-                            <img src="https://img.icons8.com/bubbles/100/000000/user.png"> 
+                <div id="datosEdit">
+                    <form action="{{url('actualizarDatosUsuario/'.$usuario->id_user)}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    {{method_field('PUT')}}
+                        <div class="col-sm-6">
+                            <p class="m-b-10">Nombre</p>
+                            <input type="text" id="name" name="name" value="{{$usuario->name}}">
                         </div>
-                        <p class="font-italic">{{session('name')}}</p>
-                        <button type="submit" id="editarP" >Editar perfil</button>
-                        <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                    </div>
-                </div>
-                <div class="card-block col-sm-8">
-                    <div id="datosUsuario">
-                        <!-- // ! SE RELLENA CON AJAX FUNCION (verInfouser) -->
-                    </div>
+                        <div class="col-sm-6">
+                            <p class="m-b-10">Apellido</p>
+                            <input type="text" id="lastname" name="lastname" value="{{$usuario->lastname}}">
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="m-b-10">Email</p>
+                            <input type="text" id="email" name="email" value="{{$usuario->email}}" readonly>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="m-b-10">Teléfono</p>
+                            <input type="text" id="phone" name="phone" value="{{$usuario->phone}}">
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="m-b-10">Género</p>
+                            <input type="text" id="gender" name="gender" value="{{$usuario->gender}}">
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="m-b-10">Contraseña</p>
+                            <input type="password" id="psswd" name="psswd" value="{{$usuario->psswd}}">
+                        </div>
+                        <button type="submit" name="enviar" value="Enviar">Actualizar datos</button>
+                    </form>
                 </div>
             </div>
         </div>
