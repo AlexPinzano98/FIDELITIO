@@ -97,7 +97,7 @@
                             <input type="text" id="name" name="name" value="{{$usuario->name}}">
                         </div>
                         <div class="col-sm-6">
-                            <p class="m-b-10">Apellido</p>
+                            <p class="m-b-10">Apellidos</p>
                             <input type="text" id="lastname" name="lastname" value="{{$usuario->lastname}}">
                         </div>
                         <div class="col-sm-6">

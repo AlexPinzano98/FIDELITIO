@@ -68,6 +68,10 @@
             </form>
         </ul>
     </nav>
+    <div id="invisible">
+        <p> Datos no disponibles para este dispositivo
+        </p>
+    </div>
     <div id="content">
         <a href="{{ url('/crudPromociones_Local') }}">PROMOCIONES</a>
         <a href="{{ url('/crudTarjetas_Local') }}">TARJETAS</a>

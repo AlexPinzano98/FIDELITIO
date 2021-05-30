@@ -1,160 +1,186 @@
-body {
-    font-family: "Mulish", sans-serif;
-    margin: 0%;
-    background-color: #F8F9F9;
-}
-
-.header {
-    background: #58D68D;
-    position: fixed;
-    width: 100%;
-    height: 10vh;
-    text-align: center;
-    z-index: 2;
-}
-
-.text-start {
-    float: left;
-    color: white;
-    font-size: 200%;
-    margin: 0.5% 25% 0% 5%;
-}
-
-#admi {
-    margin-top: 0.5%;
-    color: white !important;
-    float: left;
-    font-size: 250%;
-}
-
-#menu_on {
-    width: 10%;
-    color: white !important;
-    cursor: pointer;
-    float: right;
-    font-size: 280%;
-    margin-top: 0.9%;
-}
-
-#menu_on:hover {
-    cursor: pointer;
-}
-
-#content {
-    padding-top: 10%;
-    transition: all 0.75s ease;
-    z-index: 0;
-}
-
-.visible_menu #content {
-    transform: translateX(0px);
-}
-
-nav {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 50%;
-    z-index: 1;
-    padding: 4% 5%;
-    padding-bottom: 5%;
-    background: #82E0AA;
-    opacity: 1;
-    transition: all 0.75s ease;
-    overflow-y: auto;
-    margin-left: 50%;
-}
-
-.visible_menu nav {
-    left: 0;
-    opacity: 1;
-}
-
-.profile {
-    padding: 10% 10% 4% 0%;
-    border-bottom: 2px solid white;
-}
-
-#link {
-    height: 20%;
-    font-size: 150%;
-    margin-left: 8%;
-    text-decoration: none;
-    color: white;
-}
-
-.fa-user,
-.fa-history,
-.fa-life-ring,
-.fa-balance-scale,
-.fa-question-circle,
-.fa-sign-out-alt {
-    background-color: transparent;
-    border: none;
-    font-size: 230%;
-    width: 10%;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-}
-
-#icono {
-    float: left;
-    padding-left: 4%;
-    margin-top: -2%;
-    transition: all ease 0.25s;
-}
-
-nav div:hover {
-    border-bottom: 2px solid rgb(54, 141, 54) !important;
-}
-
-.cerrar {
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 50%;
-    border-bottom: 2px solid white;
-    transition: all ease 0.25s;
-}
-
-#cerSes {
-    margin-top: 5%;
-    padding: 0%;
-    border: 2px solid rgb(54, 141, 54);
-    border-radius: 10px;
-    width: 45%;
-    margin-left: 27.5%;
-}
-
-#cerrar {
-    background-color: transparent;
-    color: white;
-    width: 20%;
-    margin-left: 2.5%;
-}
-
-#sesion {
-    cursor: pointer;
-    position: absolute;
-    width: 26%;
-    background-color: transparent;
-    color: white;
-    text-align: left;
-    font-size: 150%;
-    border: none !important;
-}
-
-#content a {
-    font-size: 150%;
-    color: white;
-    width: 42.5%;
-    float: left;
-    padding: 3%;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    text-decoration: none;
-    border: 1px solid rgb(48, 45, 45);
-    border-radius: 20px;
-    background-image: radial-gradient(circle at 120.71% 50%, #ffffe1 0, #ffffd6 12.5%, #fffecb 25%, #f0f8c0 37.5%, #def2b5 50%, #caecac 62.5%, #b6e6a5 75%, #a1e1a2 87.5%, #8cdda1 100%);
-}
+    body {
+        font-family: "Mulish", sans-serif;
+        margin: 0%;
+        background-color: #F8F9F9;
+    }
+    
+    .header {
+        background: #58D68D;
+        position: fixed;
+        width: 100%;
+        height: 10vh;
+        text-align: center;
+        z-index: 2;
+    }
+    
+    .text-start {
+        text-align: left;
+        width: 30%;
+        /* background-color: red; */
+        float: left;
+        color: white;
+        font-size: 200%;
+        margin: 0.5% 0% 0% 5%;
+    }
+    
+    #admi {
+        /* background-color: green; */
+        margin-top: 0.5%;
+        color: white !important;
+        float: left;
+        font-size: 250%;
+    }
+    
+    #menu_on {
+        width: 10%;
+        color: white !important;
+        cursor: pointer;
+        float: right;
+        font-size: 280%;
+        margin-top: 0.9%;
+    }
+    
+    #menu_on:hover {
+        cursor: pointer;
+    }
+    
+    #content {
+        padding-top: 10%;
+        transition: all 0.75s ease;
+        z-index: 0;
+    }
+    
+    .visible_menu #content {
+        transform: translateX(0px);
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 50%;
+        z-index: 1;
+        padding: 4% 5%;
+        padding-bottom: 5%;
+        background: #82E0AA;
+        opacity: 1;
+        transition: all 0.75s ease;
+        overflow-y: auto;
+        margin-left: 50%;
+    }
+    
+    .visible_menu nav {
+        left: 0;
+        opacity: 1;
+    }
+    
+    .profile {
+        padding: 10% 10% 4% 0%;
+        border-bottom: 2px solid white;
+    }
+    
+    #link {
+        height: 20%;
+        font-size: 150%;
+        margin-left: 8%;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .fa-user,
+    .fa-history,
+    .fa-life-ring,
+    .fa-balance-scale,
+    .fa-question-circle,
+    .fa-sign-out-alt {
+        background-color: transparent;
+        border: none;
+        font-size: 230%;
+        width: 10%;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+    }
+    
+    #icono {
+        float: left;
+        padding-left: 4%;
+        margin-top: -2%;
+        transition: all ease 0.25s;
+    }
+    
+    nav div:hover {
+        border-bottom: 2px solid rgb(54, 141, 54) !important;
+    }
+    
+    .cerrar {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 50%;
+        border-bottom: 2px solid white;
+        transition: all ease 0.25s;
+    }
+    
+    #cerSes {
+        margin-top: 5%;
+        padding: 0%;
+        border: 2px solid rgb(54, 141, 54);
+        border-radius: 10px;
+        width: 45%;
+        margin-left: 27.5%;
+    }
+    
+    #cerrar {
+        background-color: transparent;
+        color: white;
+        width: 20%;
+        margin-left: 2.5%;
+    }
+    
+    #sesion {
+        cursor: pointer;
+        position: absolute;
+        width: 26%;
+        background-color: transparent;
+        color: white;
+        text-align: left;
+        font-size: 150%;
+        border: none !important;
+    }
+    
+    #content a {
+        font-size: 150%;
+        color: white;
+        width: 42.5%;
+        float: left;
+        padding: 3%;
+        margin-left: 5%;
+        margin-bottom: 2%;
+        text-decoration: none;
+        border: 1px solid rgb(48, 45, 45);
+        border-radius: 20px;
+        background-image: radial-gradient(circle at 120.71% 50%, #ffffe1 0, #ffffd6 12.5%, #fffecb 25%, #f0f8c0 37.5%, #def2b5 50%, #caecac 62.5%, #b6e6a5 75%, #a1e1a2 87.5%, #8cdda1 100%);
+    }
+    
+    #invisible {
+        display: none;
+    }
+    
+    @media (max-width: 973px) {
+        #invisible {
+            display: block;
+            padding-top: 10%;
+        }
+        #invisible p {
+            width: 50%;
+            margin-left: 25%;
+            text-align: center;
+            border: 2px solid green;
+            border-radius: 8px;
+            font-size: 200%;
+        }
+        #content {
+            display: none;
+        }
+    }

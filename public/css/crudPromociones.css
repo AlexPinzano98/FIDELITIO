@@ -14,10 +14,11 @@ body {
 }
 
 .text-start {
+    width: 30%;
     float: left;
     color: white;
     font-size: 200%;
-    margin: 0.5% 32% 0% 5%
+    margin: 0.5% 7.5% 0% 5%
 }
 
 #admi {
@@ -429,4 +430,29 @@ input[type=checkbox] {
 
 #submita {
     margin-left: 17.5%;
+}
+
+#invisible {
+    display: none;
+}
+
+@media (max-width: 972px) {
+    #invisible {
+        display: block;
+        padding-top: 10%;
+    }
+    #invisible p {
+        width: 50%;
+        margin-left: 25%;
+        text-align: center;
+        border: 2px solid green;
+        border-radius: 8px;
+        font-size: 200%;
+    }
+    #content {
+        display: none;
+    }
+    h1 {
+        display: none;
+    }
 }
