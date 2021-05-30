@@ -59,7 +59,7 @@
                             Historial
                         </a>
                     </div>
-                    <div class="profile">
+                    <!-- <div class="profile">
                         <i class="fas fa-life-ring" id="icono"></i>
                         <a href="{{url('/ayuda')}}" id="link">
                             Ayuda
@@ -76,7 +76,7 @@
                         <a href="{{url('/soporte')}}" id="link">
                             Soporte
                         </a>
-                    </div>
+                    </div> -->
                     <form method="get" action="{{url('/cerrar_sesion')}}" id="cerSes">
                         <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
                         </button>
