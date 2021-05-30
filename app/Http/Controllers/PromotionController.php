@@ -96,7 +96,7 @@ class PromotionController extends Controller
         $path = $request['fileon']->store('public');
         $ruta = explode("/", $path); // ruta[1]
         $request['fileoff']->store('public'); // Guardamos imagen
-        $path2 = $request['fileooff']->store('public');
+        $path2 = $request['fileoff']->store('public');
         $ruta2 = explode("/", $path2);
         DB::select('INSERT INTO `tbl_images` (`name`, `on`, `off`) VALUES (?,?,?)',
         [$request['name'],$ruta[1], $ruta2[1]]);
