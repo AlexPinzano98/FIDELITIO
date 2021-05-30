@@ -156,5 +156,5 @@ nav div:hover {
     text-decoration: none;
     border: 1px solid rgb(48, 45, 45);
     border-radius: 20px;
-    background-image: radial-gradient(circle at 21.12% 8.76%, #ffbe64 0, #fbc260 7.14%, #f0c65e 14.29%, #e5ca5e 21.43%, #dace5f 28.57%, #ced262 35.71%, #c1d566 42.86%, #b4d86c 50%, #a6db73 57.14%, #98dd7c 64.29%, #89df85 71.43%, #78e190 78.57%, #65e39b 85.71%, #4fe4a7 92.86%, #2fe5b3 100%);
+    background-image: radial-gradient(circle at 120.71% 50%, #ffffe1 0, #ffffd6 12.5%, #fffecb 25%, #f0f8c0 37.5%, #def2b5 50%, #caecac 62.5%, #b6e6a5 75%, #a1e1a2 87.5%, #8cdda1 100%);
 }

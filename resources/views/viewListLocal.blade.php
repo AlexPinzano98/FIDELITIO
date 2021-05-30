@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
+    <link rel="icon" type="image/png" href="img/iconos/stimpaicon.png"> 
     <meta charset="utf-8">
-    <title>cliente</title>
+    <title>Mis restaurantes | STIMPA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/listLocal.css">
     <script src="js/infoCardsAjax.js"></script>

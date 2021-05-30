@@ -168,6 +168,8 @@ class CardController extends Controller
             ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
             INNER JOIN tbl_local
             ON tbl_promotion.id_local_fk = tbl_local.id_local
+            INNER JOIN tbl_images
+            ON tbl_promotion.id_image_fk_promo = tbl_images.id_image
             GROUP BY tbl_card.id_card
             HAVING tbl_card.id_user_fk = ? 
             AND tbl_promotion.status_promo = "enable" 
@@ -206,7 +208,7 @@ class CardController extends Controller
     public function ver_tarjetas(Request $request){
         $id_user = session()->get('id_user');
         $user = DB::select('SELECT * FROM `tbl_user` WHERE `id_user`=?',[$id_user]);
-        $usuarios = DB::select('SELECT tbl_card.*,tbl_promotion.*,tbl_user.email,tbl_images.* FROM tbl_card
+        $cards = DB::select('SELECT tbl_card.*,tbl_promotion.*,tbl_user.email,tbl_images.* FROM tbl_card
         INNER JOIN tbl_promotion
         ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
         INNER JOIN tbl_user
@@ -225,7 +227,28 @@ class CardController extends Controller
         ]); // Buscamos los que acaben con el numero filtrado
         // Esto nos permite si por ejemplo buscamos 1 que salgan los sellos que terminan en 1
         // Y no todos los sellos que contienen un 1
-        return response()->json($usuarios,200);
+        return response()->json($cards,200);
+    }
+    public function ver_tarjetas_master(Request $request){
+        $cards = DB::select('SELECT tbl_card.*,tbl_promotion.*,tbl_user.email,tbl_images.* FROM tbl_card
+        INNER JOIN tbl_promotion
+        ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+        INNER JOIN tbl_user
+        ON tbl_card.id_user_fk = tbl_user.id_user
+        INNER JOIN tbl_images
+        ON tbl_promotion.id_image_fk_promo = tbl_images.id_image
+        WHERE `stamp_now` LIKE ? AND tbl_card.`status` LIKE ? AND name_promo LIKE ? 
+        AND `email`LIKE ? AND `status_card` LIKE ?
+        GROUP BY tbl_card.id_card',
+        ['%'.$request['sellos'],
+        '%'.$request['status'].'%',
+        '%'.$request['promo'].'%',
+        '%'.$request['email'].'%',
+        '%'.$request['f_status_card'].'%'
+        ]); // Buscamos los que acaben con el numero filtrado
+        // Esto nos permite si por ejemplo buscamos 1 que salgan los sellos que terminan en 1
+        // Y no todos los sellos que contienen un 1
+        return response()->json($cards,200);
     }
 
     public function ver_locales_t(){

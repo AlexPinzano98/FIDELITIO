@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 <meta charset="utf-8">
-    <title>FIDELITIO</title>
+<link rel="icon" type="image/png" href="img/iconos/stimpaicon.png"> 
+    <title>Promociones | STIMPA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
@@ -30,9 +31,8 @@
     <section>
         <header id="#header">
             <form method="get" id="views">
-                <!-- <h1 id="list"> -->
-                    <img src="img/stimpa.png" id="list" class="stimpa">
-                <!-- </h1>   -->
+                <div id="list" class="stimpa">
+                </div> 
             </form>
             <div id="cam">
                 <img src="img/qr-code.png" onclick="openCamara()" id="camara">
@@ -54,7 +54,7 @@
                         Historial
                     </a>
                 </div>
-                <div class="profile">
+                <!-- <div class="profile">
                     <i class="fas fa-life-ring" id="icono"></i>
                     <a href="{{url('/ayuda')}}" id="link">
                         Ayuda
@@ -71,7 +71,7 @@
                     <a href="{{url('/soporte')}}" id="link">
                         Soporte
                     </a>
-                </div>
+                </div> -->
                 <form method="get" action="{{url('/cerrar_sesion')}}" id="cerSes">
                     <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
                     </button>

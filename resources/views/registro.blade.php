@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
+<link rel="icon" type="image/png" href="img/iconos/stimpaicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Registro | STIMPA</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -56,11 +57,14 @@
                     placeholder="Apellidos..."></input>
             </div>
             <div class="mb-3">
+                <input name="movil" type="text" class="form-control" id="movil" placeholder="Móvil...">
+            </div>
+            <div class="mb-3">
                 <input name="email" type="email" class="form-control" id="email" placeholder="Correo electrónico...">
             </div>
             <div class="mb-3">
                 <input name="psswd" type="password" class="form-control" id="contrasenya"
-                    placeholder="Contrasenya..."></input>
+                    placeholder="Contraseña..."></input>
             </div>
             <div class="mb-3">
                 <select class="form-control" id="sexo" name="sexo">

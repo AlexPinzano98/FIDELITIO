@@ -216,6 +216,7 @@ function showCard(recojoData) {
         document.getElementById("listCartas").style.display = "block";
         document.getElementById('camara').style.display = "block";
         for (let i = 0; i < cardLocal.length; i++) {
+            console.log(cardLocal[i])
             tabla1 += `
       <div class="swiper-slide">
             <div class="card">
@@ -228,21 +229,25 @@ function showCard(recojoData) {
                     <p class="card-text">Premio: ${cardLocal[i].reward}</p>
                     <h5 class="stamp-title">Sellos de la promoción: ${cardLocal[i].stamp_now} / ${cardLocal[i].stamp_max}</h5>
                     <div class="card-stamp_grid">`;
-
             for (var x = 0; x < cardLocal[i].stamp_now; x++) {
-                tabla1 += `<img src="img/iconos/` + cardLocal[i].image + `" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="storage/` + cardLocal[i].on + `" class="img-thumbnail" alt="sello">`;
             }
 
             for (
                 var x = 0; x < cardLocal[i].stamp_max - cardLocal[i].stamp_now; x++
             ) {
-                tabla1 += `<img src="img/iconos/` + cardLocal[i].off + `" class="img-thumbnail" alt="sello">`;
+                tabla1 += `<img src="storage/` + cardLocal[i].off + `" class="img-thumbnail" alt="sello">`;
             }
             tabla1 += "</div>";
             if (cardLocal[i].stamp_now == cardLocal[i].stamp_max) {
                 tabla1 += '<div class="Cbutton">';
-                tabla1 += '<button class="button" onclick="generar_qr(' + cardLocal[i].id_card + ',' + cardLocal[i].id_promotion + ')"> CANJEAR </button>'
-                tabla1 += '</div>';
+                tabla1 +=
+                    '<button class="button" onclick="generar_qr(' +
+                    cardLocal[i].id_card +
+                    "," +
+                    cardLocal[i].id_promotion +
+                    ')">CANJEAR</button>';
+                tabla1 += "</div>";
             }
             tabla1 += "</div></div></div>";
             containCards.innerHTML = tabla1;

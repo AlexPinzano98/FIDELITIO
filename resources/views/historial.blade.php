@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html leng="es">
 
 <head>
+<link rel="icon" type="image/png" href="img/iconos/stimpaicon.png">
     <meta charset="utf-8">
-    <title>FIDELITIO</title>
+    <title>Historial | STIMPA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
@@ -32,7 +33,7 @@
     
     <section>
         <header id="#header">
-            <a class="fas fa-home" id="list" href="{{url('/viewCliente')}}">
+            <a class="fas fa-wallet" id="list" href="{{url('/viewCliente')}}">
             </a>
             <h1 id="admi">Historial</h1>
             <div id="menu_on" onclick="closeModal2()">
@@ -52,7 +53,7 @@
                         Historial
                     </a>
                 </div> -->
-                <div class="profile">
+                <!-- <div class="profile">
                     <i class="fas fa-life-ring" id="icono"></i>
                     <a href="{{url('/ayuda')}}" id="link">
                         Ayuda
@@ -69,7 +70,7 @@
                     <a href="{{url('/soporte')}}" id="link">
                         Soporte
                     </a>
-                    </div>
+                </div> -->
                 <form method="get" action="{{url('/cerrar_sesion')}}" id="cerSes">
                     <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
                     </button>

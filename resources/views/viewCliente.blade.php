@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
+<link rel="icon" type="image/png" href="img/iconos/stimpaicon.png">
     <meta charset="utf-8">
-    <title>FIDELITIO</title>
+    <title>Tarjetas | STIMPA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
@@ -35,9 +36,9 @@
         <section>
             <header id="#header">
                 <form method="get" id="views">
-                    <button  class="fas fa-list-ul" id="list" onclick="controladores(1); return false">
+                    <button  class="fas fa-star" id="list" onclick="controladores(1); return false">
                     </button>
-                    <button  class="fas fa-sd-card" id="list" onclick="controladores(0); return false">
+                    <button  class="fas fa-wallet" id="list" onclick="controladores(0); return false">
                     </button>
                 </form>
                 <div id="cam">
@@ -61,7 +62,7 @@
                             Historial
                         </a>
                     </div>
-                    <div class="profile">
+                    <!-- <div class="profile">
                         <i class="fas fa-life-ring" id="icono"></i>
                         <a href="{{url('/ayuda')}}" id="link">
                             Ayuda
@@ -78,7 +79,7 @@
                         <a href="{{url('/soporte')}}" id="link">
                             Soporte
                         </a>
-                    </div>
+                    </div> -->
                     <form method="get" action="{{url('/cerrar_sesion')}}" id="cerSes">
                         <button type="submit" id="cerrar" class="fas fa-sign-out-alt">
                         </button>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
+<link rel="icon" type="image/png" href="img/iconos/stimpaicon.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Data table -->
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"> -->
-    <title>CRUD - USUARIOS</title>
+    <title>CRUD - USUARIOS | STIMPA</title>
     <link rel="stylesheet" href="{{asset('css/crudUsuarios.css')}}">
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 

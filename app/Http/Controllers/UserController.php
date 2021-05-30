@@ -53,6 +53,7 @@ class UserController extends Controller
             //hare login ya que tengo cuenta con google o facebook
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
+            session()->put('lastname', $usario->lastname);
             // session()->put('typeuser', '1');
             session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);
@@ -302,7 +303,7 @@ class UserController extends Controller
         }
         $users=DB::table('tbl_user')->where([['email','=',$datos['email']]])->count();
         if ($users == 0){
-            DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'create_date'=>Now(),'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
+            DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'create_date'=>Now(),'confidentiality'=>$consentimiento,'phone'=>$datos['movil'],'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
             $mensaje = 'Tu cuenta se ha creado correctamente';
             $email=$datos['email'];
             $user = DB::table('tbl_user')->where('email','=',$email)->first();
@@ -336,11 +337,6 @@ class UserController extends Controller
         } else {
             return  view('viewAdm_master');
         }
-    }
-
-    public function perfilU() {
-        //redirige a la vista login si no has iniciado sesion.
-        return view('perfilU');
     }
 
     public function password_reset(Request $request){
@@ -431,6 +427,53 @@ class UserController extends Controller
     public function ver_usuario(Request $request){
         $id_user = $request['id_user']; // $id_user->id_local_fk
         $usuarios = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
+        return response()->json($usuarios,200);
+    }
+
+    public function ver_usuarios_master(Request $request){
+        if ($request['fecha'] == null){
+            $query = 'SELECT tbl_user.* FROM tbl_user
+            LEFT JOIN tbl_card
+            ON tbl_card.id_user_fk = tbl_user.id_user
+            LEFT JOIN tbl_promotion
+            ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+                WHERE tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
+                AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
+                AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?
+                GROUP BY tbl_user.id_user
+                    ORDER BY `tbl_user`.`id_typeuser_fk` DESC';
+            $params = [ 
+            '%'.$request['nombre'].'%' ,
+            '%'.$request['apellidos'].'%',
+            '%'.$request['email'].'%',
+            '%'.$request['sexo'].'%',
+            '%'.$request['conf'].'%',
+            '%'.$request['rol'].'%',
+            '%'.$request['status'].'%'];
+            //return response()->json('NULL',200);
+        } else {
+            $query = 'SELECT tbl_user.* FROM tbl_user
+            LEFT JOIN tbl_card
+            ON tbl_card.id_user_fk = tbl_user.id_user
+            LEFT JOIN tbl_promotion
+            ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+                WHERE tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
+                AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
+                AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?
+                AND DATE (tbl_user.create_date) >= ?
+                GROUP BY tbl_user.id_user
+                    ORDER BY `tbl_user`.`id_typeuser_fk` DESC';
+            $params = [ 
+            '%'.$request['nombre'].'%' ,
+            '%'.$request['apellidos'].'%',
+            '%'.$request['email'].'%',
+            '%'.$request['sexo'].'%',
+            '%'.$request['conf'].'%',
+            '%'.$request['rol'].'%',
+            '%'.$request['status'].'%',
+            $request['fecha']];
+        }
+        $usuarios = DB::select($query,$params);
         return response()->json($usuarios,200);
     }
 
@@ -539,12 +582,7 @@ class UserController extends Controller
     //     return response()->json($id_type);
     // }
 
-    public function mostrarU(){
-        $id_user = session()->get('id_user');
-        $perfilU=DB::select('SELECT * FROM tbl_user where id_user='.$id_user.'');
-        return view('perfilU', compact('perfilU'));
-    }
-
+    // ! FUNCION PARA RECOGER EL HISTORIAL DEL USUARIO
     public function verHistorial() {
         $id_user = session()->get('id_user');
         $historial = DB::select('SELECT tbl_card.status_card, tbl_card.stamp_now, tbl_promotion.stamp_max, DATE(tbl_card.create_date) AS create_date, DATE(tbl_card.complete_date_card) AS complete_date_card, tbl_promotion.name_promo, tbl_card.id_card FROM `tbl_card`
@@ -553,4 +591,37 @@ class UserController extends Controller
         WHERE id_user_fk = ? ORDER BY `tbl_card`.`status_card` ASC', [$id_user]);
         return response()->json($historial,200);
     }
+
+    // ! FUNCION PARA RECOGER LOS DATOS DEL PERFIL USUARIO
+    public function verInfouser() {
+        $id_user = session()->get('id_user');
+        $infoUser = DB::select('SELECT * FROM `tbl_user` WHERE id_user = ?', [$id_user]);
+        return response()->json($infoUser,200);
+    }
+
+    public function editPerfil() {
+        $id_user = session()->get('id_user');
+        $infoUser = DB::select('SELECT * FROM `tbl_user` WHERE id_user = ?', [$id_user]);
+        return response()->json($infoUser,200);
+    }
+
+    public function editarPerfil() {
+        //redirige a la vista login si no has iniciado sesion.
+        return view('editarPerfil');
+    }
+
+    public function editar($id){
+        $usuario=DB::table('tbl_user')->where('id_user', '=', $id)->first();
+        
+        return view('editarPerfil', compact('usuario'));
+    }
+
+    public function actualizarDatosUsuario($id, Request $request){
+        
+        $datos=request()->except('_token','enviar','_method', 'email');
+        DB::table('tbl_user')->where('id_user', '=', $id)->update(['name'=>$request['name'],'lastname'=>$request['lastname'],'phone'=>$request['phone'],'gender'=>$request['gender'],'psswd'=>MD5($request['psswd'])]);
+
+        return redirect('perfilU');
+    }
 }
+
