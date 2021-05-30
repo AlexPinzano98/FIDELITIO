@@ -338,11 +338,6 @@ class UserController extends Controller
         }
     }
 
-    public function perfilU() {
-        //redirige a la vista login si no has iniciado sesion.
-        return view('perfilU');
-    }
-
     public function password_reset(Request $request){
         return view('password_reset',compact('request'));
     }
@@ -539,10 +534,10 @@ class UserController extends Controller
     //     return response()->json($id_type);
     // }
 
-    public function mostrarU(){
+    public function datosU(){
         $id_user = session()->get('id_user');
         $perfilU=DB::select('SELECT * FROM tbl_user where id_user='.$id_user.'');
-        return view('perfilU', compact('perfilU'));
+        return response()->json($perfilU,200);
     }
 
     public function verHistorial() {

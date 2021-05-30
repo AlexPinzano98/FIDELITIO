@@ -8,12 +8,12 @@
 }
 
 #admi {
-    width: 70%;
+    width: 60%;
     color: white !important;
     cursor: pointer;
     float: left;
-    margin: 1% 0% 0% -30%;
-    font-size: 250%;
+    margin: 1% 0% 0% -24%;
+    font-size: 230%;
     text-decoration: none;
     /* text-align: center; */
 }
@@ -30,18 +30,25 @@
 /* cuerpo */
 
 #card {
+    font-size: 150%;
     padding: 3%;
     width: 90%;
     margin-left: 5%;
     border-radius: 8px;
-    /* background-color: red; */
     -webkit-box-shadow: 0px 0px 10px 5px #8C8C8C;
     box-shadow: 0px 0px 10px 5px #8C8C8C;
+}
+
+.m-b-25 {
+    /* background-color: red; */
+    text-align: left;
+    float: left;
 }
 
 .text-center {
     background-color: rgb(255, 198, 198);
     border-bottom: 1px solid black;
+    /* padding-bottom: 12%; */
 }
 
 .col-sm-8 {
@@ -51,6 +58,12 @@
 
 .m-b-20 {
     text-align: center;
+}
+
+.font-italic {
+    text-align: left;
+    font-size: 150%;
+    background-color: blue;
 }
 
 a {
