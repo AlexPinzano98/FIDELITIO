@@ -18,7 +18,7 @@
         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
     </script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
-    <title>Para subir imagenes</title>
+    <title>Para subir imagenes | STIMPA</title>
 </head>
 
 <body>
