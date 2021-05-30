@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+<link rel="icon" type="image/png" href="img/iconos/stimpaicon.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
     </script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
-    <title>Para subir imagenes</title>
+    <title>Para subir imagenes | STIMPA</title>
 </head>
 
 <body>

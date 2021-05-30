@@ -167,5 +167,13 @@ Route::get('/contra_olvidada', function (){ return view('contra_olvidada');});
 Route::post('/restaurar_pass', [UserController::class, 'restaurar_pass']);
 Route::get('/prueba_cam', function (){ return view('prueba_cam');});
 
+// FUNCIONES PARA RECUPERAR EL HISTORIAL DEL USUARIO EN LA VISTA
 Route::get('/historial', function (){ return view('historial');});
 Route::get('/verHistorial', [UserController::class, 'verHistorial']);
+
+// FUNCIONES PARA VER Y EDITAR EL PERFIL DEL USUARIO
+Route::get('/verInfouser', [UserController::class, 'verInfouser']);
+Route::get('/editPerfil', [UserController::class, 'editPerfil']);
+Route::get('/editarPerfil', [UserController::class, 'editarPerfil']);
+Route::get('editar/{id}',[UserController::class, 'editar']);
+Route::put('actualizarDatosUsuario/{id}',[UserController::class, 'actualizarDatosUsuario']);

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 <meta charset="utf-8">
-    <title>FIDELITIO</title>
+<link rel="icon" type="image/png" href="img/iconos/stimpaicon.png"> 
+    <title>Promociones | STIMPA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
