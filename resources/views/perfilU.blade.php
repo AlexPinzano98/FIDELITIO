@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html leng="es">
 
 <head>
+<link rel="icon" type="image/png" href="img/iconos/stimpaicon.png">
 <meta charset="utf-8">
     <title>FIDELITIO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
