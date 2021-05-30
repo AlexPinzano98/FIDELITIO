@@ -4,7 +4,7 @@
 <head>
 <link rel="icon" type="image/png" href="img/iconos/stimpaicon.png">
 <meta charset="utf-8">
-    <title>FIDELITIO</title>
+    <title>Editar perfil | STIMPA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
