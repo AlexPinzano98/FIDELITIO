@@ -57,11 +57,14 @@
                     placeholder="Apellidos..."></input>
             </div>
             <div class="mb-3">
+                <input name="movil" type="text" class="form-control" id="movil" placeholder="Móvil...">
+            </div>
+            <div class="mb-3">
                 <input name="email" type="email" class="form-control" id="email" placeholder="Correo electrónico...">
             </div>
             <div class="mb-3">
                 <input name="psswd" type="password" class="form-control" id="contrasenya"
-                    placeholder="Contrasenya..."></input>
+                    placeholder="Contraseña..."></input>
             </div>
             <div class="mb-3">
                 <select class="form-control" id="sexo" name="sexo">
