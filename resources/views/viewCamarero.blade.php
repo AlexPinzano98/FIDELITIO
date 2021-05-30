@@ -31,9 +31,8 @@
     <section>
         <header id="#header">
             <form method="get" id="views">
-                <!-- <h1 id="list"> -->
-                    <img src="img/stimpa.png" id="list" class="stimpa">
-                <!-- </h1>   -->
+                <div id="list" class="stimpa">
+                </div> 
             </form>
             <div id="cam">
                 <img src="img/qr-code.png" onclick="openCamara()" id="camara">

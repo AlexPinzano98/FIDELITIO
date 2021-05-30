@@ -53,6 +53,7 @@ class UserController extends Controller
             //hare login ya que tengo cuenta con google o facebook
             $usario = DB::table('tbl_user')->where('email','=',$user->getEmail())->first();
             session()->put('name', $usario->name);
+            session()->put('lastname', $usario->lastname);
             // session()->put('typeuser', '1');
             session()->put('typeuser', $usario->id_typeuser_fk);
             session()->put('id_user', $usario->id_user);

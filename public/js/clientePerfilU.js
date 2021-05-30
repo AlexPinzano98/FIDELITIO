@@ -1,7 +1,7 @@
 window.onload = function() {
     //? VER INFO USUARIO
     verInfouser();
-    editPerfil();
+    // editPerfil();
 }
 
 function objetoAjax() {
@@ -43,13 +43,13 @@ function verInfouser() {
                             <h6 class="text-muted">` + response[i].name + `</h6>
                         </div>
                         <div class="col-sm-6">
-                            <p class="m-b-10">Apellido</p>
+                            <p class="m-b-10">Apellidos</p>
                             <h6 class="text-muted">` + response[i].lastname + `</h6>
                         </div>
                         <div class="col-sm-6">
                             <p class="m-b-10">Email</p>
                             <h6 class="text-muted">` + response[i].email + `</h6>
-                        </div>
+                        </div><br>
                         <div class="col-sm-6">
                             <p class="m-b-10">Teléfono</p>
                             <h6 class="text-muted">` + response[i].phone + `</h6>
