@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
                 <input name="psswd" type="password" class="form-control" id="contrasenya"
-                    placeholder="Contrasenya..."></input>
+                    placeholder="Contraseña..."></input>
             </div>
             <button type="submit" id="submit" class="btn btn-warning">
                 Inicia Sesión

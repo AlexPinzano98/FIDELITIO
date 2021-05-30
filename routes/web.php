@@ -40,7 +40,13 @@ Route::get('/viewCliente', [UserController::class, 'viewCliente']);
 Route::get('/viewCamarero', [CamareroController::class, 'viewCamarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
 Route::get('/datosU', [UserController::class, 'datosU']);
-Route::get('/perfilU', function (){ return view('perfilU');});
+Route::get('/perfilU', function() {
+    if (!session()->has('id_user')) {
+        return redirect('/');
+    } else {
+        return view('perfilU');
+    }
+});
 
 
 //vista lista restaurante
@@ -171,7 +177,13 @@ Route::post('/restaurar_pass', [UserController::class, 'restaurar_pass']);
 Route::get('/prueba_cam', function (){ return view('prueba_cam');});
 
 // FUNCIONES PARA RECUPERAR EL HISTORIAL DEL USUARIO EN LA VISTA
-Route::get('/historial', function (){ return view('historial');});
+Route::get('/historial', function() {
+    if (!session()->has('id_user')) {
+        return redirect('/');
+    } else {
+        return view('historial');
+    }
+});
 Route::get('/verHistorial', [UserController::class, 'verHistorial']);
 
 // FUNCIONES PARA VER Y EDITAR EL PERFIL DEL USUARIO

@@ -33,10 +33,11 @@ document.getElementById("submit").addEventListener("click", () => {
         }
     }
 
-    for (let i = 5; i < fields.length-13; i++) {
+    for (let i = 5; i < fields.length-(13); i++) {
         console.log(fields[i].getElementsByTagName('option')[0].innerText);
+        console.log(fields[i].value);
 
-        if (fields[i].value == "") {
+        if (fields[i].value == "" || fields[i].value == "0") {
 
             effectForm(fields[i], fields[i].getElementsByTagName('option')[0].innerText, borderRed);
             num = 1;
@@ -45,12 +46,26 @@ document.getElementById("submit").addEventListener("click", () => {
             effectFormInit(fields[i]);
         }
     }
+
+    if(fields[6].value == "2"){
+        console.log(fields[6].value);
+        if(fields[7].value == "0"){
+            console.log()
+            effectForm(fields[7], fields[7].getElementsByTagName('option')[0].innerText, borderRed);
+            num = 1;
+            console.log(num);
+        }else{
+            effectFormInit(fields[7]);
+        }
+    }
+
     console.log(num);
     if(num === 0){
         registrar_usuario();
     }
 
 });
+
 
 document.getElementById("submita").addEventListener("click", () => {
     // vacio el div message de informe de errores siempre que se le da el boton de enviar los datos del form

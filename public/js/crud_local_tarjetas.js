@@ -272,7 +272,7 @@ function actualizar_tarjeta() {
 }
 
 function openRegister() {
-    message1.innerHTML = "";
+    clearInputs();
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
@@ -329,4 +329,16 @@ function addSello() {
         }
     }
     ajax.send(datasend);
+}
+
+const clearInputs = ()=>{
+
+    let borderInit = "1px solid #6D6D6D";
+    promo.style.border = borderInit;
+    email.style.border = borderInit;
+
+    //vacio mensajes de validación
+    message1.innerHTML = "";
+    message2.innerHTML = "";
+
 }

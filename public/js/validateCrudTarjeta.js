@@ -3,6 +3,7 @@
 let promo = document.getElementById("promo");
 let email = document.getElementById("email");
 let message1 = document.getElementById("message1");
+let message2 = document.getElementById("message2");
 let borderRed = "1px solid red";
 
 message.style.color = "red";
@@ -11,6 +12,7 @@ message.style.color = "red";
 document.getElementById("submit").addEventListener("click", () => {
     // vacio el div message de informe de errores siempre que se le da el boton de enviar los datos del form
     message1.innerHTML = "";
+    message2.innerHTML = "";
     let num = 0;
     console.log(num);
 
@@ -28,6 +30,9 @@ document.getElementById("submit").addEventListener("click", () => {
             console.log(num);
         }else{
             effectFormInit(email);
+            if(email.value != ""){
+                num = validateEmail(email.value);
+            }
         }
 
     if(num === 0){
@@ -35,6 +40,22 @@ document.getElementById("submit").addEventListener("click", () => {
     }
 
 });
+
+const validateEmail = (value) => {
+
+    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(value))) {
+
+        email.style.border = borderRed;
+        message2.innerHTML = `<ul class="list-group">
+        <li class="list-group-item list-group-item-danger">${value} es un formato de correo electrónico incorrecto, el formato tiene que tener un @, ejemplo: nombre@gmail.com.</li>
+     </ul>`;
+
+        return 1;
+    }else{
+        return 0;
+    }
+
+};
 
 const effectForm = (input, text,borderRed) => {
     input.style.border = borderRed;
