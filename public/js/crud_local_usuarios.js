@@ -175,7 +175,7 @@ function registrar_usuario() {
             let alert = "";
             if(respuesta===1){
                  alert =  `<ul class="list-group">
-                <li class="list-group-item list-group-item-succes">Usuario registrado correctamente</li>
+                <li class="list-group-item list-group-item-success">Usuario registrado correctamente</li>
             </ul>`;
             }else{
                 alert =  `<ul class="list-group">
@@ -184,6 +184,7 @@ function registrar_usuario() {
             }
             message1.innerHTML = alert;
             message3.innerHTML = alert;
+            
         }
         ver_usuarios();
         borrar_registro();

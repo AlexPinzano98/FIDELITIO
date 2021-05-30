@@ -251,7 +251,7 @@ function registrar_promo() {
     }
     ajax.send(datasend);
 }
- 
+
 function actualizar_promo() {
     var token = document.getElementById("token").getAttribute("content");
     var id_promo = document.getElementById('id_promo').value;
@@ -323,9 +323,7 @@ function ver_promo(id_promo) {
 }
 
 function openRegister() {
-    message1.innerHTML = "";
-    message2.innerHTML = "";
-    message3.innerHTML = "";
+    clearInputs();
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
@@ -352,9 +350,7 @@ function closeRegister() {
 }
 
 function openUpdate(id_user) {
-    message1.innerHTML = "";
-    message2.innerHTML = "";
-    message3.innerHTML = "";
+    clearInputs();
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();
@@ -454,9 +450,8 @@ function registerIcon() {
 }
 
 function openRegisterIcons() {
-    message1.innerHTML = "";
-    message2.innerHTML = "";
-    message3.innerHTML = "";
+    clearInputs();
+
     document.getElementById('newIcono').style.display = 'block';
     document.getElementById('btn-register-icon').style.display = 'none';
     closeRegisterIcons();
@@ -475,4 +470,20 @@ function closeRegisterIcons() {
     document.getElementById('offimg').value = '';
     document.getElementById('onprev').innerHTML = '';
     document.getElementById('offprev').innerHTML = '';
+}
+
+const clearInputs = ()=>{
+
+    for (let i = 0; i < fields.length; i++) {
+        console.log(fields[i]);
+        fields[i].style.border = "1px solid #6D6D6D";
+    }
+    iconsSelect.style.border = "1px solid #6D6D6D";
+    restaurantsSelect.style.border = "1px solid #6D6D6D";
+    nombrePromo.style.border = "1px solid #6D6D6D";
+    premio.style.border = "1px solid #6D6D6D";
+    //vacio mensajes de validación
+    message1.innerHTML = "";
+    message2.innerHTML = "";
+    message3.innerHTML = "";
 }
