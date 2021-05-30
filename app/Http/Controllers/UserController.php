@@ -303,7 +303,7 @@ class UserController extends Controller
         }
         $users=DB::table('tbl_user')->where([['email','=',$datos['email']]])->count();
         if ($users == 0){
-            DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'create_date'=>Now(),'confidentiality'=>$consentimiento,'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
+            DB::table('tbl_user')->insertGetId(['name'=>$datos['nombre'],'lastname'=>$datos['apellidos'],'gender'=>$datos['sexo'],'create_date'=>Now(),'confidentiality'=>$consentimiento,'phone'=>$datos['movil'],'email'=>$datos['email'],'psswd'=>md5($datos['psswd']),'id_typeuser_fk'=>'1']);
             $mensaje = 'Tu cuenta se ha creado correctamente';
             $email=$datos['email'];
             $user = DB::table('tbl_user')->where('email','=',$email)->first();
@@ -427,6 +427,53 @@ class UserController extends Controller
     public function ver_usuario(Request $request){
         $id_user = $request['id_user']; // $id_user->id_local_fk
         $usuarios = DB::select('SELECT * FROM tbl_user WHERE id_user = ?',[$id_user]);
+        return response()->json($usuarios,200);
+    }
+
+    public function ver_usuarios_master(Request $request){
+        if ($request['fecha'] == null){
+            $query = 'SELECT tbl_user.* FROM tbl_user
+            LEFT JOIN tbl_card
+            ON tbl_card.id_user_fk = tbl_user.id_user
+            LEFT JOIN tbl_promotion
+            ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+                WHERE tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
+                AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
+                AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?
+                GROUP BY tbl_user.id_user
+                    ORDER BY `tbl_user`.`id_typeuser_fk` DESC';
+            $params = [ 
+            '%'.$request['nombre'].'%' ,
+            '%'.$request['apellidos'].'%',
+            '%'.$request['email'].'%',
+            '%'.$request['sexo'].'%',
+            '%'.$request['conf'].'%',
+            '%'.$request['rol'].'%',
+            '%'.$request['status'].'%'];
+            //return response()->json('NULL',200);
+        } else {
+            $query = 'SELECT tbl_user.* FROM tbl_user
+            LEFT JOIN tbl_card
+            ON tbl_card.id_user_fk = tbl_user.id_user
+            LEFT JOIN tbl_promotion
+            ON tbl_card.id_promotion_fk = tbl_promotion.id_promotion
+                WHERE tbl_user.`name` LIKE ? AND tbl_user.`lastname` LIKE ? AND tbl_user.`email` LIKE ?
+                AND tbl_user.`gender` LIKE ? AND tbl_user.`confidentiality` LIKE ?
+                AND tbl_user.`id_typeuser_fk` LIKE ? AND tbl_user.`status` LIKE ?
+                AND DATE (tbl_user.create_date) >= ?
+                GROUP BY tbl_user.id_user
+                    ORDER BY `tbl_user`.`id_typeuser_fk` DESC';
+            $params = [ 
+            '%'.$request['nombre'].'%' ,
+            '%'.$request['apellidos'].'%',
+            '%'.$request['email'].'%',
+            '%'.$request['sexo'].'%',
+            '%'.$request['conf'].'%',
+            '%'.$request['rol'].'%',
+            '%'.$request['status'].'%',
+            $request['fecha']];
+        }
+        $usuarios = DB::select($query,$params);
         return response()->json($usuarios,200);
     }
 

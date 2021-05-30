@@ -40,7 +40,13 @@ Route::get('/viewCliente', [UserController::class, 'viewCliente']);
 Route::get('/viewCamarero', [CamareroController::class, 'viewCamarero']);
 Route::post('/ver_promociones', [CamareroController::class, 'ver_promociones']);
 Route::get('/datosU', [UserController::class, 'datosU']);
-Route::get('/perfilU', function (){ return view('perfilU');});
+Route::get('/perfilU', function() {
+    if (!session()->has('id_user')) {
+        return redirect('/');
+    } else {
+        return view('perfilU');
+    }
+});
 
 
 //vista lista restaurante
@@ -114,6 +120,7 @@ Route::get('/viewAdm_GrupoCruds', [DirectionController::class, 'viewAdm_GrupoCru
 // ADMIN MASTER
 // CRUD USUARIOS
 Route::post('/ver_usuarios', [UserController::class, 'ver_usuarios']);
+Route::post('/ver_usuarios_master', [UserController::class, 'ver_usuarios_master']);
 Route::post('/ver_usuario', [UserController::class, 'ver_usuario']);
 Route::post('/eliminar_usuario', [UserController::class, 'eliminar_usuario']);
 Route::post('/registrar_usuario', [UserController::class, 'registrar_usuario']);
@@ -121,8 +128,9 @@ Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']
 Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);
 Route::get('/sendSessionId', [UserController::class, 'sendSessionId']);
 Route::post('/ver_locales_u', [UserController::class, 'ver_locales_u']);
-// CRUD TARJETAS
+// CRUD TARJETAS 
 Route::post('/ver_tarjetas', [CardController::class, 'ver_tarjetas']);
+Route::post('/ver_tarjetas_master', [CardController::class, 'ver_tarjetas_master']);
 Route::post('/ver_locales_t', [CardController::class, 'ver_locales_t']);
 Route::post('/ver_promos_t', [CardController::class, 'ver_promos_t']);
 Route::post('/registrar_tarjeta', [CardController::class, 'registrar_tarjeta']);
@@ -133,6 +141,7 @@ Route::post('/actualizar_card', [CardController::class, 'actualizar_card']);
 Route::post('/addSello', [CardController::class, 'addSello']);
 // CRUD PROMOCIONES
 Route::post('/ver_promos', [PromotionController::class, 'ver_promos']);
+Route::post('/ver_promos_master', [PromotionController::class, 'ver_promos_master']);
 Route::post('/eliminar_promo', [PromotionController::class, 'eliminar_promo']);
 Route::post('/cambiar_estado_p', [PromotionController::class, 'cambiar_estado_p']);
 Route::post('/ver_locales_p', [PromotionController::class, 'ver_locales_p']);
@@ -168,7 +177,13 @@ Route::post('/restaurar_pass', [UserController::class, 'restaurar_pass']);
 Route::get('/prueba_cam', function (){ return view('prueba_cam');});
 
 // FUNCIONES PARA RECUPERAR EL HISTORIAL DEL USUARIO EN LA VISTA
-Route::get('/historial', function (){ return view('historial');});
+Route::get('/historial', function() {
+    if (!session()->has('id_user')) {
+        return redirect('/');
+    } else {
+        return view('historial');
+    }
+});
 Route::get('/verHistorial', [UserController::class, 'verHistorial']);
 
 // FUNCIONES PARA VER Y EDITAR EL PERFIL DEL USUARIO

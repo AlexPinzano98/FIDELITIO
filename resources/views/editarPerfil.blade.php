@@ -88,7 +88,7 @@
         <div id="content">
             <div id="card">
                 <div id="datosEdit">
-                    <form action="{{url('actualizarDatosUsuario/'.$usuario->id_user)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{url('actualizarDatosUsuario/'.$usuario->id_user)}}" method="POST" enctype="multipart/form-data" id="sub">
                     <h2>Editar mis datos</h2>
                     @csrf
                     {{method_field('PUT')}}
@@ -117,9 +117,11 @@
                             <input type="password" id="psswd" name="psswd" value="{{$usuario->psswd}}">
                         </div>
                         <button type="submit" name="enviar"class="btn btn-success" value="Enviar">Actualizar datos</button>
+                        <div id="message"></div>
                     </form>
                 </div>
             </div>
         </div>
+        <script src="{{asset('js/validateEditarPerfil.js')}}"></script>
 </body>
 </html>

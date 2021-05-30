@@ -1,7 +1,11 @@
 //por defecto
 
 let fields = document.getElementsByTagName("input");
-let fieldsActualizarPromos = document.getElementsByClassName("form-control");
+let iconsSelect = document.getElementById("iconos");
+let restaurantsSelect = document.getElementById("restaurante");
+let nombrePromo = document.getElementById("nombrea");
+let premio = document.getElementById("premioa");
+// let fieldsActualizarPromos = document.getElementsByClassName("form-control");
 let message1 = document.getElementById("message1");
 let message2 = document.getElementById("message2");
 let message3 = document.getElementById("message3");
@@ -37,10 +41,6 @@ document.getElementById("registerIcon").addEventListener("click", () => {
 document.getElementById("submit").addEventListener("click", () => {
     message2.innerHTML = "";
 
-    let iconsSelect = document.getElementById("iconos");
-    console.log(iconsSelect.value);
-    let restaurantsSelect = document.getElementById("restaurante");
-
     let num = 0;
     console.log(num);
 
@@ -64,6 +64,23 @@ document.getElementById("submit").addEventListener("click", () => {
             console.log(num);
         } else {
             effectFormInit(fields[i]);
+        }
+    }
+
+    let ratioNo = document.getElementById("No");
+    let fecha = document.getElementById("fecha");
+
+    console.log(ratioNo.value);
+    console.log(fecha);
+
+    if(ratioNo){
+        console.log("entra");
+        if (fecha.value == "") {
+            effectForm(fecha, fecha.placeholder, borderRed);
+            num = 1;
+            console.log(num);
+        } else {
+            effectFormInit(fecha);
         }
     }
 
@@ -107,9 +124,6 @@ const effectFormValidateDate = () =>{
 
 document.getElementById("submita").addEventListener("click", () => {
     message3.innerHTML = "";
-
-    let nombrePromo = document.getElementById("nombrea");
-    let premio = document.getElementById("premioa");
 
     let num = 0;
     console.log(num);
