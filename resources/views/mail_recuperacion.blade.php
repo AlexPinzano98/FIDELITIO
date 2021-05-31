@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <div style="border: 1px solid black; border-radius: 10px;width: 40%; margin-left: 30%; padding-top: 5%; padding-bottom:5%; background-color: whitesmoke;"> 
+    <div style="border: 1px solid black; border-radius: 10px;width: 90%; margin-left: 10%; padding-top: 5%; padding-bottom:5%; background-color: whitesmoke;"> 
         <img src="img/stimpa.png" style="width: 60%; margin-left: 20%; border-bottom: 2px solid black;">
         <p style="width:40%;text-align: justify;margin-left:30%">Hola {{ $UserController->name }}.<br> Ha solicitado su cambio de contraseña, clique en el botón y le llevara a una página para poder hacerlo</p>
         <form  method="POST" action="https://localhost/FIDELITIO/public/password_reset">
