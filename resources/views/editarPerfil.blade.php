@@ -2,15 +2,22 @@
 <html leng="es">
 
 <head>
-<link rel="icon" type="image/png" href="img/iconos/stimpaicon.png">
-<meta charset="utf-8">
+    <link rel="icon" type="image/png" href="img/iconos/stimpaicon.png">
+    <meta charset="utf-8">
     <title>Editar perfil | STIMPA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
+    </script>
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -25,11 +32,11 @@
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#menu_on').click(function() {
-                $('body').toggleClass('visible_menu');
-            })
-        });
+    $(document).ready(function() {
+        $('#menu_on').click(function() {
+            $('body').toggleClass('visible_menu');
+        })
+    });
     </script>
 </head>
 
@@ -40,7 +47,7 @@
             <header id="#header">
                 <a class="fas fa-wallet" id="list" href="{{url('/viewCliente')}}">
                 </a>
-                 <h1 id="admi">Perfil Usuario</h1>
+                <h1 id="admi">Perfil Usuario</h1>
                 <div id="menu_on">
                     <i class="far fa-user-circle" style="float: left;"></i>
                 </div>
@@ -88,10 +95,11 @@
         <div id="content">
             <div id="card">
                 <div id="datosEdit">
-                    <form action="{{url('actualizarDatosUsuario/'.$usuario->id_user)}}" method="POST" enctype="multipart/form-data" id="sub">
-                    <h2>Editar mis datos</h2>
-                    @csrf
-                    {{method_field('PUT')}}
+                    <form action="{{url('actualizarDatosUsuario/'.$usuario->id_user)}}" method="POST"
+                        enctype="multipart/form-data" id="sub">
+                        <h2>Editar mis datos</h2>
+                        @csrf
+                        {{method_field('PUT')}}
                         <div class="col-sm-6">
                             <p class="m-b-10">Nombre</p>
                             <input type="text" id="name" name="name" value="{{$usuario->name}}">
@@ -116,7 +124,8 @@
                             <p class="m-b-10">Contraseña</p>
                             <input type="password" id="psswd" name="psswd" value="{{$usuario->psswd}}">
                         </div>
-                        <button type="submit" name="enviar"class="btn btn-success" value="Enviar">Actualizar datos</button>
+                        <button type="submit" name="enviar" class="btn btn-success" value="Enviar">Actualizar
+                            datos</button>
                         <div id="message"></div>
                     </form>
                 </div>
@@ -124,4 +133,5 @@
         </div>
         <script src="{{asset('js/validateEditarPerfil.js')}}"></script>
 </body>
+
 </html>
