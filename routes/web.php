@@ -128,6 +128,7 @@ Route::post('/actualizar_usuario', [UserController::class, 'actualizar_usuario']
 Route::post('/cambiar_estado', [UserController::class, 'cambiar_estado']);
 Route::get('/sendSessionId', [UserController::class, 'sendSessionId']);
 Route::post('/ver_locales_u', [UserController::class, 'ver_locales_u']);
+Route::post('/ver_locales_u_master', [UserController::class, 'ver_locales_u_master']);
 // CRUD TARJETAS 
 Route::post('/ver_tarjetas', [CardController::class, 'ver_tarjetas']);
 Route::post('/ver_tarjetas_master', [CardController::class, 'ver_tarjetas_master']);
@@ -145,6 +146,7 @@ Route::post('/ver_promos_master', [PromotionController::class, 'ver_promos_maste
 Route::post('/eliminar_promo', [PromotionController::class, 'eliminar_promo']);
 Route::post('/cambiar_estado_p', [PromotionController::class, 'cambiar_estado_p']);
 Route::post('/ver_locales_p', [PromotionController::class, 'ver_locales_p']);
+Route::post('/ver_locales_p_master', [PromotionController::class, 'ver_locales_p_master']);
 Route::post('/ver_iconos', [PromotionController::class, 'ver_iconos']);
 Route::post('/ver_icono', [PromotionController::class, 'ver_icono']);
 Route::post('/registrar_promo', [PromotionController::class, 'registrar_promo']);

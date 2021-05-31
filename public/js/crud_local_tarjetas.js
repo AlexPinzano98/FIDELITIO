@@ -173,6 +173,7 @@ function registrar_tarjeta() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
+            closeRegister();
             ver_tarjetas();
         }
     }
@@ -240,6 +241,7 @@ function ver_card(id_card) {
             console.log(respuesta)
             document.getElementById('id_card').value = respuesta[0].id_card;
             document.getElementById('sellosa').value = respuesta[0].stamp_now;
+            document.getElementById('sellosmax').value = respuesta[0].stamp_max;
             document.getElementById('emaila').value = respuesta[0].email;
             document.getElementById('promoa').value = respuesta[0].name_promo;
             document.getElementById('status_card').value = respuesta[0].status_card;
@@ -285,7 +287,6 @@ function closeRegister() {
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
     btn.style.display = "block";
-    document.getElementById('local').value = '';
     document.getElementById('promo').value = '';
     document.getElementById('email').value = '';
 }

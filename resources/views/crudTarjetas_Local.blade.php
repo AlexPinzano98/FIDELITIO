@@ -110,7 +110,7 @@
             <input type="text" id="promoa" name="promoa" readonly>
         </div>
         <div class="mb-3">
-            <input name="sellosa" type="number"  id="sellosa" readonly></input>
+            <input name="sellosa" type="number"  id="sellosa" readonly></input> / <input name="sellosmax" type="number"  id="sellosmax" readonly></input>
             <button id="mas" onclick="addSello()">+ Añadir sello</button>
         </div>
         <div class="mb-3">
@@ -151,7 +151,7 @@
             </select>
             <table>
                 <thead>
-                    <tr>
+                    <tr> 
                         <th>Nº sellos</th>
                         <th>Status</th>
                         <th>Promoción</th>

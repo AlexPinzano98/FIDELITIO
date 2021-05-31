@@ -480,19 +480,6 @@ class UserController extends Controller
     public function eliminar_usuario(Request $request){
         $id_user = $request['id_usuario'];
 
-        // TODO: HEMOS DE COMPROBAR EL TIPO DE USUARIO
-        // * en función del usuario se eliminara al usuario de unas tablas u otras
-        // ? Cliente -> Eliminar sellos, tarjetas y al usuario
-        // ? Camarero ->
-        // ? Adm establecimiento ->
-        // ? Adm grupo ->
-        // ? Adm master ->
-
-        //Eliminar sellos
-        // DELETE FROM `tbl_stamp` WHERE id_user_fk_stamp = 2
-        // DELETE FROM `tbl_card` WHERE id_user_fk = 2
-        // DELETE FROM `tbl_promotion` WHERE id_user_fk = 2
-
         // Si el usuario es de tipo cliente, hemos de elimar sus cartas y sellos
         // Comprobamos si el usuario tiene o ha tenido cartas
         $cards =  DB::select('SELECT * FROM tbl_card WHERE id_user_fk = ?',[$id_user]);
@@ -573,6 +560,10 @@ class UserController extends Controller
         $id_user = session()->get('id_user');
         $user = DB::select('SELECT * FROM `tbl_user` WHERE `id_user`=?',[$id_user]);
         $locales = DB::select('SELECT * FROM `tbl_local` WHERE `id_local`=?',[$user[0]->id_local_fk]);
+        return response()->json($locales,200);
+    }
+    public function ver_locales_u_master(){
+        $locales = DB::select('SELECT * FROM `tbl_local`');
         return response()->json($locales,200);
     }
 

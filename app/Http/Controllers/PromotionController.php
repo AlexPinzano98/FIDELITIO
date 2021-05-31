@@ -82,6 +82,10 @@ class PromotionController extends Controller
         $locales = DB::select('SELECT * FROM `tbl_local` WHERE id_local = ?',[$userLog[0]->id_local_fk]);
         return response()->json($locales,200);
     }
+    public function ver_locales_p_master(){
+        $locales = DB::select('SELECT * FROM `tbl_local`');
+        return response()->json($locales,200);
+    }
     public function ver_iconos(){
         $locales = DB::select('SELECT * FROM `tbl_images`');
         return response()->json($locales,200);
@@ -112,17 +116,22 @@ class PromotionController extends Controller
         return response()->json('OK. Promoción registrada correctamente',200);
     }
     public function registrar_icono(Request $request){
-        $request['fileon']->store('public'); // Guardamos imagen
-        $path = $request['fileon']->store('public');
-        $ruta = explode("/", $path); // ruta[1]
-        $request['fileoff']->store('public'); // Guardamos imagen
-        $path2 = $request['fileoff']->store('public');
-        $ruta2 = explode("/", $path2);
-        DB::select('INSERT INTO `tbl_images` (`name`, `on`, `off`) VALUES (?,?,?)',
-        [$request['name'],$ruta[1], $ruta2[1]]);
+        $icon= DB::select('SELECT `name` FROM tbl_images WHERE `name` = ?',[$request['name']]);
+        if (empty($icon)){
+            $request['fileon']->store('public'); // Guardamos imagen
+            $path = $request['fileon']->store('public');
+            $ruta = explode("/", $path); // ruta[1]
+            $request['fileoff']->store('public'); // Guardamos imagen
+            $path2 = $request['fileoff']->store('public');
+            $ruta2 = explode("/", $path2);
+            DB::select('INSERT INTO `tbl_images` (`name`, `on`, `off`) VALUES (?,?,?)',
+            [$request['name'],$ruta[1], $ruta2[1]]);
+           
+            return response()->json(1,200);
+        } else {
+            return response()->json(0,200);
+        }
         
-       
-        return response()->json('OK. Icono registrado correctamente',200);
         // unlink('storage/l7OtKFniXh6oSFwDaqUHoepvhLy0thL1XVXRPLje.jpg');
     }
     public function ver_promo(Request $request){

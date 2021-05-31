@@ -15,7 +15,7 @@
     <title>CRUD - PROMOCIONES | STIMPA</title>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function() { 
             $('#menu_on').click(function() {
                 $('body').toggleClass('visible_menu');
             })
@@ -96,11 +96,11 @@
             <div>
             <!-- Select para escoger el icono y mostrarlos-->
                 Icono de la promoción<br>
-                <select id="iconos">
+                <select id="iconos" onchange="mostrar_iconos()">
                 </select>
                 <div>
-                    <img id="img_on_r" src="" style="width: 100px;">
-                    <img id="img_off_r" src="" style="width: 100px;">
+                    <img id="img_on_r" src="" style="width: 80px;">
+                    <img id="img_off_r" src="" style="width: 80px;">
                 </div>
                 Nombre de la promoción
                 <input name="nombre" type="text" id="nombre" placeholder="Nombre promo..."></input><br><br>

@@ -190,7 +190,7 @@ function start_iconos() {
             //console.log(respuesta)
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i].name)
-                tabla += '<option value="' + respuesta[i].id_image + '" onselect="mostrar_iconos(' + respuesta[i].id_image + ')">' + respuesta[i].name + '</option>';
+                tabla += '<option value="' + respuesta[i].id_image + '">' + respuesta[i].name + '</option>';
                 tabla2 += '<option value="' + respuesta[i].id_image + '">' + respuesta[i].name + '</option>';
             }
         }
@@ -200,9 +200,10 @@ function start_iconos() {
     ajax.send(datasend);
 }
 
-function mostrar_iconos(id_img) {
+function mostrar_iconos() {
+    var id_img = document.getElementById("iconos").value;
     console.log(id_img)
-    var on = document.getElementById('img_on_r');
+   var on = document.getElementById('img_on_r');
     var off = document.getElementById('img_off_r');
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
@@ -443,7 +444,15 @@ function registerIcon() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
-            //ver_promociones();
+            if (respuesta == 1){
+                start_iconos();
+                document.getElementById('icon_name').value = '';
+                document.getElementById('onimg').value = '';
+                document.getElementById('offimg').value = '';
+                document.getElementById('onprev').innerHTML = '';
+                document.getElementById('offprev').innerHTML = '';
+                ver_promociones();
+            }
         }
     }
     ajax.send(datasend);

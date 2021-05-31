@@ -57,7 +57,7 @@ function mostrar_datos(){
     var datos = document.getElementById("datos");
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results)
-    document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
+    document.getElementById('total_datos').innerHTML = 'Locales totales: ' + respuesta.length;
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
 
     var desde = ((pag_actual-1) * num_results); 
@@ -67,8 +67,7 @@ function mostrar_datos(){
         if (i == respuesta.length){
             break;
         }
-        tabla += '<tr>'+'<td>'+respuesta[i].id_local+'</td>';
-        tabla += '<td>'+respuesta[i].image+'</td>';
+        tabla += '<td>'+ '<img src="./img/restaurantes/'+ respuesta[i].image +'" style="width: 100px">  ' + '</td>';
         tabla += '<td>'+respuesta[i].name+'</td>';
         tabla += '<td>'+respuesta[i].email+'</td>';
         tabla += '<td>'+respuesta[i].company+'</td>';
