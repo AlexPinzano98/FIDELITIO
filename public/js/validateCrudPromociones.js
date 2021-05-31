@@ -70,11 +70,8 @@ document.getElementById("submit").addEventListener("click", () => {
     let ratioNo = document.getElementById("No");
     let fecha = document.getElementById("fecha");
 
-    console.log(ratioNo.value);
-    console.log(fecha);
+    if(ratioNo.checked){
 
-    if(ratioNo){
-        console.log("entra");
         if (fecha.value == "") {
             effectForm(fecha, fecha.placeholder, borderRed);
             num = 1;

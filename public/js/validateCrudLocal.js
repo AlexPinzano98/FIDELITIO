@@ -28,10 +28,13 @@ document.getElementById("submit").addEventListener("click", () => {
         } else {
             effectFormInit(fields[i]);
             if(fields[2].value != ""){
-                num = validateEmail(fields[2].value);
+                if(validateEmail(fields[2].value)){
+                   num = 1;
+                }
             }
         }
     }
+
 
     for (let i = 5; i < fields.length-(13); i++) {
         console.log(fields[i].getElementsByTagName('option')[0].innerText);
@@ -83,11 +86,13 @@ document.getElementById("submita").addEventListener("click", () => {
             effectFormInit(fields[i]);
             console.log(fields[10]);
             if(fields[10].value != ""){
-                num = validateEmail(fields[10].value);
+                if(validateEmail(fields[10].value)){
+                   num = 1;
+                }
             }
         }
     }
-
+    console.log(num);
     if(num === 0){
         actualizar_usuario();
     }
@@ -107,9 +112,7 @@ const validateEmail = (value) => {
      </ul>`;
         message1.innerHTML = alert;
         message3.innerHTML = alert;
-        return 1;
-    }else{
-        return 0;
+        return true;
     }
 
 };
