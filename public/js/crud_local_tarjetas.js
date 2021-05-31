@@ -173,6 +173,7 @@ function registrar_tarjeta() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
+            closeRegister();
             ver_tarjetas();
         }
     }
@@ -285,7 +286,6 @@ function closeRegister() {
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
     btn.style.display = "block";
-    document.getElementById('local').value = '';
     document.getElementById('promo').value = '';
     document.getElementById('email').value = '';
 }
