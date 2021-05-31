@@ -156,7 +156,7 @@ function start_locales() {
     var locales = document.getElementById("restaurante");
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
-    ajax.open('POST', 'ver_locales_p', true);
+    ajax.open('POST', 'ver_locales_p_master', true);
     var datasend = new FormData();
     datasend.append('_token', token);
     ajax.onreadystatechange = function() {

@@ -147,7 +147,7 @@
             </select>
             <table>
                 <thead>
-                    <tr>
+                    <tr> 
                         <th>Nº sellos</th>
                         <th>Status</th>
                         <th>Promoción</th>

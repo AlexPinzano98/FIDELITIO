@@ -15,7 +15,7 @@
     <title>CRUD - PROMOCIONES | STIMPA</title>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function() { 
             $('#menu_on').click(function() {
                 $('body').toggleClass('visible_menu');
             })
