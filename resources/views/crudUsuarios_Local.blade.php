@@ -142,7 +142,7 @@
             <input name="apellidos" type="text" class="form-control" id="apellidosa" placeholder="Apellidos..."></input>
         </div>
         <div class="mb-3">
-            <input name="email" type="email" class="form-control" id="emaila" placeholder="Correo electrónico...">
+            <input name="email" type="email" class="form-control" id="emaila" placeholder="Correo electrónico..." readonly>
         </div>
         <div class="mb-3">
             <input name="psswd" type="password" class="form-control" id="contrasenyaa" placeholder="Contrasenya..."></input>
