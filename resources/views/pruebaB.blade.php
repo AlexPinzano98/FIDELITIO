@@ -35,16 +35,13 @@
 <body>
     <div style="border: 1px solid black; border-radius: 10px;width: 40%; margin-left: 30%; padding-top: 5%; padding-bottom:5%; background-color: whitesmoke;"> 
         <img src="img/stimpa.png" style="width: 60%; margin-left: 20%; border-bottom: 2px solid black;">
-        <p style="width:40%;text-align: justify;margin-left:30%">Bienvenido {{ $UserController->name }}.<br> Su cuenta se ha creado exitosamente, hemos asignado una contraseña aleatoria, si desea cambiarla, hágalo desde este correo</p>
+        <p style="width:40%;text-align: justify;margin-left:30%">Bienvenido Juan.<br> Su cuenta se ha creado exitosamente, hemos asignado una contraseña aleatoria, si desea cambiarla, hágalo desde este correo</p>
         <form  method="POST" action="https://localhost/FIDELITIO/public/password_reset">
             @csrf
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="hidden" value="{{ $UserController->id_user }}" id="id_user" name="id_user" class="btn btn-warning">
+            <input type="hidden" value="Juan" id="id_user" name="id_user" class="btn btn-warning">
             <button type="submit" id="btn" class="btn"><a style="cursor: pointer;"> Cambiar Contraseña</a> </button>                       
         </form>
     </div>
 </body>
 </html>
-
-
-

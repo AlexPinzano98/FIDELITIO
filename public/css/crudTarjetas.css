@@ -362,12 +362,17 @@ input[type=checkbox] {
 
 #sellosa {
     padding-left: 3.75%;
-    width: 10%;
+    width: 11%;
+}
+
+#sellosmax {
+    padding-left: 3.75%;
+    width: 11%;
 }
 
 .mb-3 button {
     float: right;
-    margin-right: 57.5%;
+    margin-right: 45%;
     background-color: rgb(109, 167, 255);
 }
 
