@@ -33,8 +33,7 @@
 </head>
 
 <body>
-    <div style="border: 1px solid black; border-radius: 10px;width: 40%; margin-left: 30%; padding-top: 5%; padding-bottom:5%; background-color: whitesmoke;"> 
-        <img src="img/stimpa.png" style="width: 60%; margin-left: 20%; border-bottom: 2px solid black;">
+    <div style="border: 1px solid black; border-radius: 10px;width: 90%; margin-left: 5%; padding-top: 5%; padding-bottom:5%; background-color: whitesmoke;"> 
         <p style="width:40%;text-align: justify;margin-left:30%">Bienvenido {{ $UserController->name }}.<br> Su cuenta se ha creado exitosamente, hemos asignado una contraseña aleatoria, si desea cambiarla, hágalo desde este correo</p>
         <form  method="POST" action="https://localhost/FIDELITIO/public/password_reset">
             @csrf
