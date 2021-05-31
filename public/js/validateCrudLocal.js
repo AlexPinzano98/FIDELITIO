@@ -28,15 +28,19 @@ document.getElementById("submit").addEventListener("click", () => {
         } else {
             effectFormInit(fields[i]);
             if(fields[2].value != ""){
-                num = validateEmail(fields[2].value);
+                if(validateEmail(fields[2].value)){
+                   num = 1;
+                }
             }
         }
     }
 
-    for (let i = 5; i < fields.length-13; i++) {
-        console.log(fields[i].getElementsByTagName('option')[0].innerText);
 
-        if (fields[i].value == "") {
+    for (let i = 5; i < fields.length-(13); i++) {
+        console.log(fields[i].getElementsByTagName('option')[0].innerText);
+        console.log(fields[i].value);
+
+        if (fields[i].value == "" || fields[i].value == "0") {
 
             effectForm(fields[i], fields[i].getElementsByTagName('option')[0].innerText, borderRed);
             num = 1;
@@ -45,12 +49,26 @@ document.getElementById("submit").addEventListener("click", () => {
             effectFormInit(fields[i]);
         }
     }
+
+    if(fields[6].value == "2"){
+        console.log(fields[6].value);
+        if(fields[7].value == "0"){
+            console.log()
+            effectForm(fields[7], fields[7].getElementsByTagName('option')[0].innerText, borderRed);
+            num = 1;
+            console.log(num);
+        }else{
+            effectFormInit(fields[7]);
+        }
+    }
+
     console.log(num);
     if(num === 0){
         registrar_usuario();
     }
 
 });
+
 
 document.getElementById("submita").addEventListener("click", () => {
     // vacio el div message de informe de errores siempre que se le da el boton de enviar los datos del form
@@ -68,11 +86,13 @@ document.getElementById("submita").addEventListener("click", () => {
             effectFormInit(fields[i]);
             console.log(fields[10]);
             if(fields[10].value != ""){
-                num = validateEmail(fields[10].value);
+                if(validateEmail(fields[10].value)){
+                   num = 1;
+                }
             }
         }
     }
-
+    console.log(num);
     if(num === 0){
         actualizar_usuario();
     }
@@ -92,9 +112,7 @@ const validateEmail = (value) => {
      </ul>`;
         message1.innerHTML = alert;
         message3.innerHTML = alert;
-        return 1;
-    }else{
-        return 0;
+        return true;
     }
 
 };

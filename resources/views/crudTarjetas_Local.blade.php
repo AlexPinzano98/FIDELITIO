@@ -93,6 +93,8 @@
         <button onclick="closeRegister()" class="btn btn-danger">CANCELAR</button>
         <div id="message1">
         </div>
+        <div id="message2">
+        </div>
         <p id="error"> {{Session::get('message')}} </p>
     </div>
 
@@ -108,7 +110,7 @@
             <input type="text" id="promoa" name="promoa" readonly>
         </div>
         <div class="mb-3">
-            <input name="sellosa" type="number"  id="sellosa" readonly></input>
+            <input name="sellosa" type="number"  id="sellosa" readonly></input> / <input name="sellosmax" type="number"  id="sellosmax" readonly></input>
             <button id="mas" onclick="addSello()">+ Añadir sello</button>
         </div>
         <div class="mb-3">
@@ -133,6 +135,10 @@
     </div>
 
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LAS TARJETAS -->
+    <div id="invisible">
+        <p> Datos no disponibles para este dispositivo
+        </p>
+    </div>
     <div class="crud" id="content">
         <div class="datos">
             <button id="btn-register" onclick="openRegister(); start()"><i class="far fa-credit-card"></i>Añadir tarjeta</button>
@@ -145,7 +151,7 @@
             </select>
             <table>
                 <thead>
-                    <tr>
+                    <tr> 
                         <th>Nº sellos</th>
                         <th>Status</th>
                         <th>Promoción</th>

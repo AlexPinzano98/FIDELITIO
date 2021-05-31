@@ -14,10 +14,11 @@ body {
 }
 
 .text-start {
+    width: 30%;
     float: left;
     color: white;
     font-size: 200%;
-    margin: 0.5% 32% 0% 5%
+    margin: 0.5% 7.5% 0% 5%
 }
 
 #admi {
@@ -429,4 +430,128 @@ input[type=checkbox] {
 
 #submita {
     margin-left: 17.5%;
+}
+
+#invisible {
+    display: none;
+}
+
+#actualizar .list-group {
+    width: 80%;
+    margin-left: 7.5%;
+    margin-top: 2.5%;
+}
+
+@media (max-width: 973px) {
+    #invisible {
+        display: block;
+        padding-top: 15%;
+    }
+    #invisible p {
+        width: 50%;
+        margin-left: 25%;
+        text-align: center;
+        border: 2px solid green;
+        border-radius: 8px;
+        font-size: 200%;
+    }
+    #content {
+        display: none;
+    }
+    h1 {
+        display: none;
+    }
+    .text-start {
+        text-align: left;
+        margin-top: 1%;
+        width: 30%;
+    }
+    #menu_on {
+        margin-top: 1.5%;
+    }
+    nav {
+        padding: 10% 5%;
+    }
+    #link {
+        margin-left: 10%;
+    }
+    #cerSes {
+        margin-top: 15%;
+        width: 75%;
+        margin-left: 12.5%;
+    }
+    #sesion {
+        cursor: pointer;
+        position: absolute;
+        width: 45%;
+        background-color: transparent;
+        color: white;
+        text-align: left;
+        font-size: 150%;
+        border: none !important;
+    }
+}
+
+@media (max-width: 375px) {
+    #invisible {
+        display: block;
+        padding-top: 30%;
+    }
+    #invisible p {
+        width: 70%;
+        margin-left: 15%;
+        text-align: center;
+        border: 2px solid green;
+        border-radius: 8px;
+        font-size: 200%;
+    }
+    #content {
+        display: none;
+    }
+    .text-start {
+        margin-top: 3%;
+        width: 22.5%;
+    }
+    #admi {
+        display: none;
+    }
+    #menu_on {
+        margin-left: 45%;
+        margin-top: 4%;
+    }
+    nav {
+        left: 100%;
+        width: 100%;
+        padding: 20% 5%;
+        padding-bottom: 5%;
+        margin-left: 0%;
+    }
+    #link {
+        font-size: 150%;
+        margin-left: 10%;
+    }
+    .cerrar {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 50%;
+        border-bottom: 2px solid white;
+        transition: all ease 0.25s;
+    }
+    #cerSes {
+        margin-top: 20%;
+        padding: 0%;
+        border: 2px solid rgb(54, 141, 54);
+        border-radius: 10px;
+        width: 70%;
+        margin-left: 15%;
+    }
+    #cerrar {
+        background-color: transparent;
+        color: white;
+        width: 20%;
+        margin-left: 2.5%;
+    }
+    #sesion {
+        width: 50%;
+    }
 }

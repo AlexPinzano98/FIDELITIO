@@ -45,7 +45,7 @@ function mostrar_datos(){
     var datos = document.getElementById("datos");
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results)
-    document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
+    document.getElementById('total_datos').innerHTML = 'Compañias totales: ' + respuesta.length;
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
     var desde = ((pag_actual-1) * num_results); 
     var hasta = (desde + (num_results*1));
@@ -55,7 +55,6 @@ function mostrar_datos(){
         if (i == respuesta.length){
             break;
         }
-        tabla += '<tr>'+'<td>'+respuesta[i].id_company+'</td>';
         tabla += '<td>'+respuesta[i].name+'</td>';
         tabla += '<td>'+respuesta[i].email+'</td>';
         tabla += '<td>'+'<button onclick="eliminar_company('+respuesta[i].id_company+')">DELETE</button>' +'</td>'+'</tr>';

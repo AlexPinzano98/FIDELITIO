@@ -32,10 +32,11 @@ function ver_usuarios() {
     var f_sexo = document.getElementById("f_sexo").value;
     var f_conf = document.getElementById("f_conf").value;
     var f_rol = document.getElementById("f_rol").value;
+    var f_fecha = document.getElementById("f_fecha").value;
     var f_status = document.getElementById("f_status").value;
     // console.log(f_sexo)
     var ajax = new objetoAjax();
-    ajax.open('POST', 'ver_usuarios', true);
+    ajax.open('POST', 'ver_usuarios_master', true);
     var datasend = new FormData();
     datasend.append('_token', token);
     datasend.append('nombre', f_nombre);
@@ -44,6 +45,7 @@ function ver_usuarios() {
     datasend.append('sexo', f_sexo);
     datasend.append('conf', f_conf);
     datasend.append('rol', f_rol);
+    datasend.append('fecha', f_fecha);
     datasend.append('status', f_status);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
@@ -56,19 +58,14 @@ function ver_usuarios() {
     ajax.send(datasend);
 }
 
-function mostrar_datos() {
+ function mostrar_datos() {
     var num_results = document.getElementById('results').value;
     var pag_totales = Math.ceil(respuesta.length / num_results)
     document.getElementById('total_datos').innerHTML = 'Usuarios totales: ' + respuesta.length;
     document.getElementById('listado').innerHTML = 'Listando pag ' + pag_actual + ' de ' + pag_totales;
 
-    //console.log(pag_totales)
-    console.log(num_results)
-        //console.log(pag_actual-1)
     var desde = ((pag_actual - 1) * num_results);
     var hasta = (desde + (num_results * 1));
-    console.log(desde)
-    console.log(hasta)
 
     var tabla = '';
     for (let i = desde; i < hasta; i++) {
@@ -77,13 +74,11 @@ function mostrar_datos() {
         }
         //console.log(respuesta[i])
         tabla += '<tr>' + '<input type="hidden" value=' + respuesta[i].name + '>';
-        // var dia = respuesta[i].create_date.split(' ');
-        // tabla += '<td>' + dia[0] + '</td>';
-        //console.log(pepe[0])
         tabla += '<td>' + respuesta[i].name + '</td>';
         tabla += '<td>' + respuesta[i].lastname + '</td>';
         tabla += '<td>' + respuesta[i].email + '</td>';
         tabla += '<td>' + respuesta[i].gender + '</td>';
+        tabla += '<td>' + respuesta[i].phone + '</td>';
         if (respuesta[i].confidentiality == 1) {
             tabla += '<td>' + 'Si' + '</td>';
         } else {
@@ -108,9 +103,9 @@ function mostrar_datos() {
         }
         tabla += '<td>' + respuesta[i].create_date + '</td>';
         if (respuesta[i].status == 'Activo') { // Usuario activo
-            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 1 + ')"><i class="fas fa-lock-open"></i></a>' + '</td>';
+            tabla += '<td>' + '<i class="fas fa-lock-open"></i></a>' + '</td>';
         } else { // Usuario inactivo
-            tabla += '<td>' + '<a onclick="cambiar_estado(' + respuesta[i].id_user + ',' + 0 + ')"><i class="fas fa-lock"></i></a>' + '</td>';
+            tabla += '<td>' + '<i class="fas fa-lock"></i></a>' + '</td>';
         }
         tabla += '<td> <button onclick="openUpdate(' + respuesta[i].id_user + ')"><i class="fas fa-user-edit"></i></button>' + '</td>';
         tabla += '<td>' + '<button onclick="eliminar_usuario(' + respuesta[i].id_user + ')"><i class="fas fa-user-slash"></i></button>' + '</td>' + '</tr>';
@@ -135,14 +130,17 @@ function next() {
 }
 
 function registrar_usuario() {
+
     var token = document.getElementById("token").getAttribute("content");
     var nombre = document.getElementById('nombre').value;
     var apellidos = document.getElementById('apellidos').value;
     var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
     var psswd = document.getElementById('psswd').value;
     var sexo = document.getElementById('sexo').value;
     var confidentiality = document.getElementById('consentimiento').checked;
     var rol = document.getElementById('rol').value;
+    var local = document.getElementById('local').value;
     //console.log(confidentiality)
 
     var ajax = new objetoAjax();
@@ -152,15 +150,30 @@ function registrar_usuario() {
     datasend.append('nombre', nombre);
     datasend.append('apellidos', apellidos);
     datasend.append('email', email);
+    datasend.append('phone', phone);
     datasend.append('psswd', psswd);
     datasend.append('sexo', sexo);
     datasend.append('confidentiality', confidentiality);
     datasend.append('rol', rol);
+    datasend.append('local', local);
 
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
+
+            let alert = "";
+            if(respuesta===1){
+                 alert =  `<ul class="list-group">
+                <li class="list-group-item list-group-item-succes">Usuario registrado correctamente</li>
+            </ul>`;
+            }else{
+                alert =  `<ul class="list-group">
+                <li class="list-group-item list-group-item-danger">El correo electrónico que ha intentado registrar ya existe, registra el usuario con otro correo electrónico</li>
+            </ul>`;
+            }
+            message1.innerHTML = alert;
+            message3.innerHTML = alert;
         }
         ver_usuarios();
         borrar_registro();
@@ -169,6 +182,7 @@ function registrar_usuario() {
 }
 
 function actualizar_usuario() {
+
     var token = document.getElementById("token").getAttribute("content");
     var id = document.getElementById('id_user').value;
     var nombre = document.getElementById('nombrea').value;
@@ -178,6 +192,7 @@ function actualizar_usuario() {
     var sexo = document.getElementById('sexoa').value;
     var confidentiality = document.getElementById('consentimientoa').checked;
     var rol = document.getElementById('rola').value;
+    var local = document.getElementById('locala').value;
     //console.log(confidentiality)
 
     var ajax = new objetoAjax();
@@ -192,6 +207,7 @@ function actualizar_usuario() {
     datasend.append('sexo', sexo);
     datasend.append('confidentiality', confidentiality);
     datasend.append('rol', rol);
+    datasend.append('local', local);
 
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
@@ -257,6 +273,7 @@ function ver_usuario(id_user) {
             document.getElementById('nombrea').value = respuesta[0].name;
             document.getElementById('apellidosa').value = respuesta[0].lastname;
             document.getElementById('emaila').value = respuesta[0].email;
+            document.getElementById('phonea').value = respuesta[0].phone;
             document.getElementById('contrasenyaa').value = respuesta[0].psswd;
             document.getElementById('sexoa').value = respuesta[0].gender;
             document.getElementById('rola').value = respuesta[0].id_typeuser_fk;
@@ -265,6 +282,13 @@ function ver_usuario(id_user) {
             } else {
                 document.getElementById('consentimientoa').checked = false;
             }
+            if ((respuesta[0].id_typeuser_fk == 2)||(respuesta[0].id_typeuser_fk == 3)){
+                document.getElementById('locala').style.display = 'block';
+                document.getElementById('locala').value = respuesta[0].id_local_fk;
+            } else {
+                document.getElementById('locala').style.display = 'none';
+            }
+            
         }
     }
     ajax.send(datasend);
@@ -272,28 +296,30 @@ function ver_usuario(id_user) {
 
 function cargar_locales() {
     var locales = document.getElementById("local");
-
+    var localesa = document.getElementById("locala");
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
-    ajax.open('POST', 'ver_locales_u', true);
+    ajax.open('POST', 'ver_locales_u_master', true);
     var datasend = new FormData();
     datasend.append('_token', token);
     ajax.onreadystatechange = function() {
-        var tabla = '<option selected disabled value="">Seleccione el restaurante</option>';
+        var tabla = '<option selected disabled value="0">Seleccione el restaurante</option>';
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            //console.log(respuesta)
+            console.log(respuesta)
             for (let i = 0; i < respuesta.length; i++) {
                 //console.log(respuesta[i].name)
                 tabla += '<option value="' + respuesta[i].id_local + '">' + respuesta[i].name + '</option>';
             }
         }
         locales.innerHTML = tabla;
+        localesa.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
 
 function openRegister() {
+    clearInputs();
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
@@ -306,13 +332,16 @@ function closeRegister() {
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
     btn.style.display = "block";
+    borrar_registro();
 }
 
 function openUpdate(id_user) {
+    clearInputs();
     var x = document.getElementById("actualizar");
     x.style.display = "block";
     closeRegister();
     ver_usuario(id_user);
+    borrar_registro();
 }
 
 function closeUpdate() {
@@ -325,18 +354,45 @@ function borrar_registro() {
     document.getElementById('apellidos').value = '';
     document.getElementById('email').value = '';
     document.getElementById('psswd').value = '';
+    document.getElementById('phone').value = '';
     document.getElementById('sexo').value = '';
     document.getElementById('rol').value = '';
+    document.getElementById('local').style.display = 'none';
+    document.getElementById('local').value = 0;
     document.getElementById('consentimiento').checked = false;
 }
 
 function es_camarero() {
     var type_user = document.getElementById('rol').value;
-    if (type_user == 2) {
+    if ((type_user == 2)||(type_user == 3)) {
         //console.log(type_user)
         document.getElementById('local').style.display = 'block';
     } else {
         //console.log('no')
         document.getElementById('local').style.display = 'none';
+        document.getElementById('local').value = 0;
     }
+}
+function es_camareroa() {
+    var type_user = document.getElementById('rola').value;
+    if ((type_user == 2)||(type_user == 3)) {
+        //console.log(type_user)
+        document.getElementById('locala').style.display = 'block';
+    } else {
+        //console.log('no')
+        document.getElementById('locala').style.display = 'none';
+        document.getElementById('locala').value = 0;
+    }
+}
+
+const clearInputs = ()=>{
+    for (let i = 0; i < fields.length; i++) {
+        console.log(fields[i]);
+        fields[i].style.border = "1px solid #6D6D6D";
+    }
+    //vacio mensajes de validación
+    message.innerHTML = "";
+    message1.innerHTML = "";
+    message2.innerHTML = "";
+    message3.innerHTML = "";
 }

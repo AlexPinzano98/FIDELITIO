@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido | STIMPA</title>
 </head>
+
 <body>
-<p>Hola {{ $UserController->name }}, su registro ha sido completado con exito, empieze a canjear QR y rellenar tarjetas!!</p>
+    <div style="border: 1px solid black; border-radius: 10px;width: 90%; margin-left: 5%; padding-top: 5%; padding-bottom:5%; background-color: whitesmoke;">
+        <p style="width:90%;text-align: justify;margin-left:5%">Hola {{ $UserController->name }}.<br> Su registro ha sido completado con exito, empieze a canjear QR y rellenar tarjetas!!</p>
+    </div>
 </body>
 </html>

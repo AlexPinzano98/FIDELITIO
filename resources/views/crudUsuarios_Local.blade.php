@@ -142,10 +142,10 @@
             <input name="apellidos" type="text" class="form-control" id="apellidosa" placeholder="Apellidos..."></input>
         </div>
         <div class="mb-3">
-            <input name="email" type="email" class="form-control" id="emaila" placeholder="Correo electrónico...">
+            <input name="email" type="email" class="form-control" id="emaila" placeholder="Correo electrónico..." readonly>
         </div>
         <div class="mb-3">
-            <input name="psswd" type="password" class="form-control" id="contrasenyaa" placeholder="Contrasenya..."></input>
+            <input name="psswd" type="password" class="form-control" id="contrasenyaa" placeholder="Contrasenya..." readonly></input>
         </div>
         <div class="mb-3">
             <input name="phone" type="text" class="form-control" id="phonea" placeholder="Teléfono..."></input>
@@ -185,6 +185,10 @@
     </div>
 
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
+    <div id="invisible">
+        <p> Datos no disponibles para este dispositivo
+        </p>
+    </div>
     <div class="crud" id="content">
         <div class="datos">
             <button id="btn-register" onclick="openRegister()"><i class="fas fa-user-plus"></i>Añadir usuario</button>
@@ -196,7 +200,7 @@
                     <option value="10">10</option>
                     <option value="20">20</option>
                 </select>
-            </div>
+            </div> 
             <table>
                 <thead>
                     <tr>

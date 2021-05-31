@@ -173,6 +173,7 @@ function registrar_tarjeta() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
+            closeRegister();
             ver_tarjetas();
         }
     }
@@ -240,6 +241,7 @@ function ver_card(id_card) {
             console.log(respuesta)
             document.getElementById('id_card').value = respuesta[0].id_card;
             document.getElementById('sellosa').value = respuesta[0].stamp_now;
+            document.getElementById('sellosmax').value = respuesta[0].stamp_max;
             document.getElementById('emaila').value = respuesta[0].email;
             document.getElementById('promoa').value = respuesta[0].name_promo;
             document.getElementById('status_card').value = respuesta[0].status_card;
@@ -272,7 +274,7 @@ function actualizar_tarjeta() {
 }
 
 function openRegister() {
-    message1.innerHTML = "";
+    clearInputs();
     closeUpdate();
     var x = document.getElementById("registrar");
     x.style.display = "block";
@@ -285,7 +287,6 @@ function closeRegister() {
     x.style.display = "none";
     var btn = document.getElementById("btn-register");
     btn.style.display = "block";
-    document.getElementById('local').value = '';
     document.getElementById('promo').value = '';
     document.getElementById('email').value = '';
 }
@@ -329,4 +330,16 @@ function addSello() {
         }
     }
     ajax.send(datasend);
+}
+
+const clearInputs = ()=>{
+
+    let borderInit = "1px solid #6D6D6D";
+    promo.style.border = borderInit;
+    email.style.border = borderInit;
+
+    //vacio mensajes de validación
+    message1.innerHTML = "";
+    message2.innerHTML = "";
+
 }

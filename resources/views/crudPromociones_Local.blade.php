@@ -15,7 +15,7 @@
     <title>CRUD - PROMOCIONES | STIMPA</title>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function() { 
             $('#menu_on').click(function() {
                 $('body').toggleClass('visible_menu');
             })
@@ -31,7 +31,6 @@
         </div>
     </header>
     <nav>
-        <ul>
             <div class="profile">
                 <i class="fas fa-user" id="icono"></i>
                 <a href="{{url('/perfilU')}}" id="link">
@@ -67,7 +66,6 @@
                 </button>
                 <button type="submit" id="sesion">Cerrar Sesion</button>
             </form>
-        </ul>
     </nav>
 
     <div>
@@ -88,7 +86,7 @@
         <button onclick="closeRegisterIcon()" class="btn btn-danger">CANCELAR</button>
         <div id="message1">
         </div>
-    </div>
+    </div> 
 
     <!-- FORMULARIO PARA REGISTRAR UNA PROMOCIÓN -->
     <div id="registrar" class="registrar" style="display: none;">
@@ -96,11 +94,11 @@
             <div>
             <!-- Select para escoger el icono y mostrarlos-->
                 Icono de la promoción<br>
-                <select id="iconos">
+                <select id="iconos" onchange="mostrar_iconos()">
                 </select>
                 <div>
-                    <img id="img_on_r" src="" style="width: 100px;">
-                    <img id="img_off_r" src="" style="width: 100px;">
+                    <img id="img_on_r" src="" style="width: 80px;">
+                    <img id="img_off_r" src="" style="width: 80px;">
                 </div>
                 Nombre de la promoción
                 <input name="nombre" type="text" id="nombre" placeholder="Nombre promo..."></input><br><br>
@@ -172,6 +170,10 @@
     </div>
 
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LAS PROMOCIONES -->
+    <div id="invisible">
+        <p> Datos no disponibles para este dispositivo
+        </p>
+    </div>
     <div class="crud" id="content">
         <div class="datos">
             <button id="btn-register" onclick="openRegister()"><i class="fas fa-clone"></i>Añadir promoción</button>
