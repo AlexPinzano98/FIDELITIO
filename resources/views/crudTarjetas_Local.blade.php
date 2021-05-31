@@ -135,6 +135,10 @@
     </div>
 
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LAS TARJETAS -->
+    <div id="invisible">
+        <p> Datos no disponibles para este dispositivo
+        </p>
+    </div>
     <div class="crud" id="content">
         <div class="datos">
             <button id="btn-register" onclick="openRegister(); start()"><i class="far fa-credit-card"></i>Añadir tarjeta</button>
@@ -147,7 +151,7 @@
             </select>
             <table>
                 <thead>
-                    <tr>
+                    <tr> 
                         <th>Nº sellos</th>
                         <th>Status</th>
                         <th>Promoción</th>

@@ -82,6 +82,10 @@ class PromotionController extends Controller
         $locales = DB::select('SELECT * FROM `tbl_local` WHERE id_local = ?',[$userLog[0]->id_local_fk]);
         return response()->json($locales,200);
     }
+    public function ver_locales_p_master(){
+        $locales = DB::select('SELECT * FROM `tbl_local`');
+        return response()->json($locales,200);
+    }
     public function ver_iconos(){
         $locales = DB::select('SELECT * FROM `tbl_images`');
         return response()->json($locales,200);

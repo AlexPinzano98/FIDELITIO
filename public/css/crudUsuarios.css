@@ -14,10 +14,11 @@ body {
 }
 
 .text-start {
+    width: 30%;
     float: left;
     color: white;
     font-size: 200%;
-    margin: 0.5% 32% 0% 5%
+    margin: 0.5% 7.5% 0% 5%
 }
 
 #admi {
@@ -25,7 +26,7 @@ body {
     color: white !important;
     cursor: pointer;
     float: left;
-    margin: 1% 35% 0% 1%;
+    margin: 1% 30% 0% 1%;
     font-size: 250%;
     text-decoration: none;
 }
@@ -345,4 +346,29 @@ input[type=checkbox] {
 
 #submita {
     margin-left: 22.5%;
+}
+
+#invisible {
+    display: none;
+}
+
+@media (max-width: 972px) {
+    #invisible {
+        display: block;
+        padding-top: 10%;
+    }
+    #invisible p {
+        width: 50%;
+        margin-left: 25%;
+        text-align: center;
+        border: 2px solid green;
+        border-radius: 8px;
+        font-size: 200%;
+    }
+    #content {
+        display: none;
+    }
+    h1 {
+        display: none;
+    }
 }

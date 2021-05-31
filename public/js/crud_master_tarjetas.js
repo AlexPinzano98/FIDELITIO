@@ -31,7 +31,7 @@ function ver_tarjetas() {
     var f_nombre = document.getElementById("f_nombre").value;
     var f_status_card = document.getElementById("f_status_card").value;
     var ajax = new objetoAjax();
-    ajax.open('POST', 'ver_tarjetas_master', true);
+    ajax.open('POST', 'ver_tarjetas_master', true); 
     var datasend = new FormData();
     datasend.append('_token', token);
     datasend.append('sellos', f_sellos);

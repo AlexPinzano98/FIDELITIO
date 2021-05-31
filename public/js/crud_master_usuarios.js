@@ -282,7 +282,13 @@ function ver_usuario(id_user) {
             } else {
                 document.getElementById('consentimientoa').checked = false;
             }
-            document.getElementById('locala').value = respuesta[0].id_local_fk;
+            if ((respuesta[0].id_typeuser_fk == 2)||(respuesta[0].id_typeuser_fk == 3)){
+                document.getElementById('locala').style.display = 'block';
+                document.getElementById('locala').value = respuesta[0].id_local_fk;
+            } else {
+                document.getElementById('locala').style.display = 'none';
+            }
+            
         }
     }
     ajax.send(datasend);
@@ -293,7 +299,7 @@ function cargar_locales() {
     var localesa = document.getElementById("locala");
     var token = document.getElementById("token").getAttribute("content");
     var ajax = new objetoAjax();
-    ajax.open('POST', 'ver_locales_u', true);
+    ajax.open('POST', 'ver_locales_u_master', true);
     var datasend = new FormData();
     datasend.append('_token', token);
     ajax.onreadystatechange = function() {

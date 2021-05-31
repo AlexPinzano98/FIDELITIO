@@ -95,17 +95,19 @@
         <div id="content">
             <div id="card">
                 <div id="datosEdit">
-                    <form action="{{url('actualizarDatosUsuario/'.$usuario->id_user)}}" method="POST"
-                        enctype="multipart/form-data" id="sub">
-                        <h2>Editar mis datos</h2>
-                        @csrf
-                        {{method_field('PUT')}}
+                    <form action="{{url('actualizarDatosUsuario/'.$usuario->id_user)}}" method="POST" enctype="multipart/form-data" id="sub">
+                    <a href="{{url('/perfilU')}}">
+                        <i class="fas fa-arrow-alt-circle-left" id="return"></i>
+                    </a>
+                    <h2>Editar mis datos</h2>
+                    @csrf
+                    {{method_field('PUT')}}
                         <div class="col-sm-6">
                             <p class="m-b-10">Nombre</p>
                             <input type="text" id="name" name="name" value="{{$usuario->name}}">
                         </div>
                         <div class="col-sm-6">
-                            <p class="m-b-10">Apellido</p>
+                            <p class="m-b-10">Apellidos</p>
                             <input type="text" id="lastname" name="lastname" value="{{$usuario->lastname}}">
                         </div>
                         <div class="col-sm-6">
