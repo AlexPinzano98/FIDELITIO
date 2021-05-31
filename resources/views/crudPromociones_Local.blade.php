@@ -88,7 +88,7 @@
         <button onclick="closeRegisterIcon()" class="btn btn-danger">CANCELAR</button>
         <div id="message1">
         </div>
-    </div>
+    </div> 
 
     <!-- FORMULARIO PARA REGISTRAR UNA PROMOCIÓN -->
     <div id="registrar" class="registrar" style="display: none;">

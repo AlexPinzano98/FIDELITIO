@@ -28,7 +28,7 @@
 
 <body>
     <header class="header">
-        <p class="text-start">Pablo Soriano Antón</p>
+        <p class="text-start">{{ session('name') }}</p>
         <!-- <a class="fas fa-chart-bar" href="{{url('/viewMaster')}}" id="est"></a> -->
         <a class="fas fa-users-cog" href="{{url('/viewAdm_LocalesCruds')}}" id="admi"></a>
         <div id="menu_on" onclick="closeModal2()">
@@ -142,10 +142,10 @@
             <input name="apellidos" type="text" class="form-control" id="apellidosa" placeholder="Apellidos..."></input>
         </div>
         <div class="mb-3">
-            <input name="email" type="email" class="form-control" id="emaila" placeholder="Correo electrónico...">
+            <input name="email" type="email" class="form-control" id="emaila" placeholder="Correo electrónico..." readonly>
         </div>
         <div class="mb-3">
-            <input name="psswd" type="password" class="form-control" id="contrasenyaa" placeholder="Contrasenya..."></input>
+            <input name="psswd" type="password" class="form-control" id="contrasenyaa" placeholder="Contrasenya..." readonly></input>
         </div>
         <div class="mb-3">
             <input name="phone" type="text" class="form-control" id="phonea" placeholder="Teléfono..."></input>
