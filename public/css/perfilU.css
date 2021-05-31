@@ -108,6 +108,15 @@ h2 {
     margin-right: 7.5%;
 }
 
+#sub {
+    text-align: center;
+}
+
+#datosEdit .m-b-10 {
+    text-align: left;
+    margin-left: 7%;
+}
+
 input[type=text],
 input[type=email],
 input[type=password] {
@@ -122,7 +131,7 @@ input[type=password] {
     border-radius: 8px;
     padding: 2%;
     font-size: 100%;
-    margin-left: 22.5% !important;
+    margin-left: 0% !important;
 }
 
 #return {
@@ -191,8 +200,12 @@ input[type=password] {
     }
     /* editar */
     .btn-success {
-        margin-left: 35% !important;
+        margin-left: 0% !important;
         margin-top: 2%;
+    }
+    #datosEdit .m-b-10 {
+        text-align: left;
+        margin-left: 8%;
     }
     .list-group {
         width: 70%;
@@ -250,12 +263,15 @@ input[type=password] {
     h2 {
         padding-right: 5%;
         margin-top: -2%;
-        /* background-color: green; */
+    }
+    #datosEdit .m-b-10 {
+        text-align: left;
+        margin-left: 18%;
     }
     .btn-success {
         margin-top: 4%;
         padding: 1%;
-        margin-left: 37.5% !important;
+        margin-left: 0% !important;
     }
     .list-group {
         width: 60%;
