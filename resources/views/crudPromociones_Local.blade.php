@@ -31,7 +31,6 @@
         </div>
     </header>
     <nav>
-        <ul>
             <div class="profile">
                 <i class="fas fa-user" id="icono"></i>
                 <a href="{{url('/perfilU')}}" id="link">
@@ -67,7 +66,6 @@
                 </button>
                 <button type="submit" id="sesion">Cerrar Sesion</button>
             </form>
-        </ul>
     </nav>
 
     <div>
