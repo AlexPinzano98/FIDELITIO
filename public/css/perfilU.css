@@ -30,6 +30,10 @@
     margin-right: 5%;
 }
 
+#sesion {
+    margin-top: 0%;
+}
+
 
 /* cuerpo */
 
@@ -41,6 +45,7 @@
     border-radius: 8px;
     -webkit-box-shadow: 0px 0px 10px 5px #8C8C8C;
     box-shadow: 0px 0px 10px 5px #8C8C8C;
+    margin-bottom: 3%;
 }
 
 .m-b-25 {
@@ -100,8 +105,7 @@ h2 {
     text-align: center;
     font-size: 130%;
     color: rgb(26, 24, 24);
-    margin-bottom: 5%;
-    text-decoration: underline;
+    margin-right: 7.5%;
 }
 
 input[type=text],
@@ -121,6 +125,14 @@ input[type=password] {
     margin-left: 22.5% !important;
 }
 
+#return {
+    font-size: 150%;
+    padding-left: 1%;
+    padding-top: 1%;
+    float: left;
+    color: rgb(73, 156, 107);
+}
+
 @media (min-width: 440px) {
     #list {
         margin-top: 0%;
@@ -135,7 +147,13 @@ input[type=password] {
         margin-top: -0.5%;
         margin-right: 1%;
     }
+    #sesion {
+        margin-top: 2%;
+    }
     /* cuerpo */
+    #card {
+        margin-bottom: 1%;
+    }
     .text-center {
         width: 300%;
         height: 16vh;
@@ -176,6 +194,14 @@ input[type=password] {
         margin-left: 35% !important;
         margin-top: 2%;
     }
+    .list-group {
+        width: 70%;
+        margin-left: 15%;
+    }
+    #return {
+        font-size: 150%;
+        margin-top: -1.5%;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -194,9 +220,12 @@ input[type=password] {
         margin-top: 0.25%;
         margin-right: 2%;
     }
+    #sesion {
+        margin-top: 1.5%;
+    }
     /* cuerpo */
     #card {
-        height: 80vh;
+        margin-bottom: 1%;
         width: 70%;
         margin-left: 15%;
     }
@@ -218,9 +247,22 @@ input[type=password] {
         margin-top: 2%;
     }
     /* editar */
+    h2 {
+        padding-right: 5%;
+        margin-top: -2%;
+        /* background-color: green; */
+    }
     .btn-success {
         margin-top: 4%;
         padding: 1%;
         margin-left: 37.5% !important;
+    }
+    .list-group {
+        width: 60%;
+        margin-left: 20%;
+    }
+    #return {
+        font-size: 200%;
+        margin-top: -2%;
     }
 }

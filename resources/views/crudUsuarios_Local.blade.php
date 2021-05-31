@@ -28,7 +28,7 @@
 
 <body>
     <header class="header">
-        <p class="text-start">{{ session('name') }}</p>
+        <p class="text-start">Pablo Soriano Antón</p>
         <!-- <a class="fas fa-chart-bar" href="{{url('/viewMaster')}}" id="est"></a> -->
         <a class="fas fa-users-cog" href="{{url('/viewAdm_LocalesCruds')}}" id="admi"></a>
         <div id="menu_on" onclick="closeModal2()">
@@ -185,6 +185,10 @@
     </div>
 
     <!-- TABLA QUE CONTENDRÁ TODOS LOS DATOS DE LOS USUARIOS -->
+    <div id="invisible">
+        <p> Datos no disponibles para este dispositivo
+        </p>
+    </div>
     <div class="crud" id="content">
         <div class="datos">
             <button id="btn-register" onclick="openRegister()"><i class="fas fa-user-plus"></i>Añadir usuario</button>

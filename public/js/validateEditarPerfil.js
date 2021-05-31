@@ -22,19 +22,19 @@ document.getElementById("sub").addEventListener("submit", (e) => {
 });
 
 
-const effectForm = (input,borderRed) => {
+const effectForm = (input, borderRed) => {
     console.log(input);
 
     input.style.border = borderRed;
-	message.innerHTML = `<ul class="list-group">
-    <li class="list-group-item list-group-item-danger mt-4">Rellena los campos marcados con color rojo</li>
+    message.innerHTML = `<ul class="list-group">
+    <li class="list-group-item list-group-item-danger mt-4">Rellene los campos marcados en color rojo</li>
 </ul>`;
-    
+
     message.style.textAlign = "center";
 
 
 };
 
-const effectFormInit = (input) =>{
+const effectFormInit = (input) => {
     input.style.border = '1px solid black';
 }
