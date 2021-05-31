@@ -241,6 +241,7 @@ function ver_card(id_card) {
             console.log(respuesta)
             document.getElementById('id_card').value = respuesta[0].id_card;
             document.getElementById('sellosa').value = respuesta[0].stamp_now;
+            document.getElementById('sellosmax').value = respuesta[0].stamp_max;
             document.getElementById('emaila').value = respuesta[0].email;
             document.getElementById('promoa').value = respuesta[0].name_promo;
             document.getElementById('status_card').value = respuesta[0].status_card;
