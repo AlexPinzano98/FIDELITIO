@@ -444,7 +444,15 @@ function registerIcon() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             console.log(respuesta);
-            //ver_promociones();
+            if (respuesta == 1){
+                start_iconos();
+                document.getElementById('icon_name').value = '';
+                document.getElementById('onimg').value = '';
+                document.getElementById('offimg').value = '';
+                document.getElementById('onprev').innerHTML = '';
+                document.getElementById('offprev').innerHTML = '';
+                ver_promociones();
+            }
         }
     }
     ajax.send(datasend);
