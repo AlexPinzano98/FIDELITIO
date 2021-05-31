@@ -99,8 +99,8 @@
                 <select id="iconos" onchange="mostrar_iconos()">
                 </select>
                 <div>
-                    <img id="img_on_r" src="" style="width: 100px;">
-                    <img id="img_off_r" src="" style="width: 100px;">
+                    <img id="img_on_r" src="" style="width: 80px;">
+                    <img id="img_off_r" src="" style="width: 80px;">
                 </div>
                 Nombre de la promoción
                 <input name="nombre" type="text" id="nombre" placeholder="Nombre promo..."></input><br><br>
