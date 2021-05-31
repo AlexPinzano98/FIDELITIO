@@ -96,7 +96,7 @@
             <div>
             <!-- Select para escoger el icono y mostrarlos-->
                 Icono de la promoción<br>
-                <select id="iconos">
+                <select id="iconos" onchange="mostrar_iconos()">
                 </select>
                 <div>
                     <img id="img_on_r" src="" style="width: 100px;">
