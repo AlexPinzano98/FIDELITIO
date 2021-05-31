@@ -184,7 +184,7 @@ function registrar_usuario() {
             }
             message1.innerHTML = alert;
             message3.innerHTML = alert;
-            
+
         }
         ver_usuarios();
         borrar_registro();
@@ -392,7 +392,7 @@ function es_camareroa() {
 
 const clearInputs = ()=>{
     for (let i = 0; i < fields.length; i++) {
-        console.log(fields[i]);
+        // console.log(fields[i]);
         fields[i].style.border = "1px solid #6D6D6D";
     }
     //vacio mensajes de validación
