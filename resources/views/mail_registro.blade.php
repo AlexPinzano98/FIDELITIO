@@ -13,7 +13,7 @@
             color: #fff !important;
             text-transform: uppercase;
             text-decoration: none;
-            background: #ed3330;
+            background: #edd430;
             padding: 20px;
             border-radius: 5px;
             display: inline-block;
@@ -22,7 +22,7 @@
             cursor: pointer;
         }
         .btn:hover {
-            background: #434343;
+            background: #b5a645;
             letter-spacing: 1px;
             -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
             -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -33,8 +33,7 @@
 </head>
 
 <body>
-    <div style="border: 1px solid black; border-radius: 10px;width: 90%; margin-left: 5%; padding-top: 5%; padding-bottom:5%; background-color: whitesmoke;"> 
-        <p style="width:40%;text-align: justify;margin-left:30%">Bienvenido {{ $UserController->name }}.<br> Su cuenta se ha creado exitosamente, hemos asignado una contraseña aleatoria, si desea cambiarla, hágalo desde este correo</p>
+        <p>Bienvenido {{ $UserController->name }}.<br> Su cuenta se ha creado exitosamente, hemos asignado una contraseña aleatoria, si desea cambiarla, hágalo desde este correo</p>
         <form  method="POST" action="https://localhost/FIDELITIO/public/password_reset">
             @csrf
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
